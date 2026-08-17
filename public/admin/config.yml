@@ -28,7 +28,7 @@ collections:
           - { label: "Logo for Light Background", name: "logoLight", widget: "image", default: "/uploads/lizzdo-media-logo-light.svg", required: false }
           - { label: "Logo Mark / Icon", name: "logoMark", widget: "image", default: "/uploads/lizzdo-media-mark.svg", required: false }
           - { label: "Favicon", name: "favicon", widget: "image", default: "/uploads/lizzdo-media-mark.svg", required: false }
-          - { label: "Contact Email", name: "contactEmail", widget: "string", default: "lizzdostudio@gmail.com" }
+          - { label: "Contact Email", name: "contactEmail", widget: "string", default: "contact@media.lizzdo.com" }
           - { label: "Header CTA Text", name: "primaryCtaText", widget: "string", default: "Let's Talk" }
           - { label: "Header CTA URL", name: "primaryCtaUrl", widget: "string", default: "#contact" }
           - { label: "Parent Company URL", name: "parentCompanyUrl", widget: "string", default: "https://lizzdo.com/" }

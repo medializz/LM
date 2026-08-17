@@ -10,7 +10,7 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
     logoLight: "/uploads/lizzdo-media-logo-light.svg",
     logoMark: "/uploads/lizzdo-media-mark.svg",
     favicon: "/uploads/lizzdo-media-mark.svg",
-    contactEmail: "lizzdostudio@gmail.com",
+    contactEmail: "contact@media.lizzdo.com",
     primaryCtaText: "Let's Talk",
     primaryCtaUrl: "#contact",
     parentCompanyUrl: "https://lizzdo.com/",
@@ -795,7 +795,7 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
   ]
 };
 
-const STORAGE_KEY = "lizzdo_media_cms_content_v2";
+const STORAGE_KEY = "lizzdo_media_cms_content_v3";
 
 export function loadCmsData(): DecapCMSData {
   try {

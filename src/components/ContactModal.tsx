@@ -95,7 +95,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                 Let's Build Something Iconic.
               </h2>
               <p className="text-xs sm:text-sm text-slate-400 mt-1 font-['Plus_Jakarta_Sans']">
-                Direct inquiry to <span className="text-white font-medium">{siteSettings.contactEmail || "lizzdostudio@gmail.com"}</span>
+                Direct inquiry to <span className="text-white font-medium">{siteSettings.contactEmail || "contact@media.lizzdo.com"}</span>
               </p>
             </div>
 
