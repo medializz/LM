@@ -1,23 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 interface SuccessStoryIllustration3DProps {
   className?: string;
   envelopeColor?: 'blue' | 'gold' | 'obsidian';
   companyName?: string;
+  forceOpen?: boolean;
 }
 
 export const SuccessStoryIllustration3D: React.FC<SuccessStoryIllustration3DProps> = ({
   className = "w-full h-full",
-  companyName = "Lizzdo Media"
+  companyName = "Lizzdo Media",
+  forceOpen
 }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const activeOpen = Boolean(forceOpen || isOpen);
+
+  const handleToggle = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsOpen((prev) => !prev);
+  };
+
   return (
-    <div className={`relative flex items-center justify-center select-none ${className}`}>
+    <div
+      ref={containerRef}
+      id="cta-envelope-3d-interactive"
+      onClick={handleToggle}
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+      className={`relative flex items-center justify-center select-none cursor-pointer group/envelope transition-transform duration-300 active:scale-[0.98] ${className}`}
+      title="Click or hover to open/close letter"
+      aria-label="Interactive 3D Envelope with Letter & Trophy"
+    >
       <svg
         viewBox="0 0 540 380"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="w-full h-full max-w-[540px] drop-shadow-[0_20px_40px_rgba(0,0,0,0.7)] overflow-visible"
-        aria-label="3D Lizzdo Letter in Envelope with Realistic Gold Trophy"
       >
         <defs>
           {/* ========================================================================= */}
@@ -46,10 +66,18 @@ export const SuccessStoryIllustration3D: React.FC<SuccessStoryIllustration3DProp
             <stop offset="100%" stopColor="#122463" />
           </linearGradient>
 
+          {/* Open Top Flap (pointing upward) */}
           <linearGradient id="envBackFlapGrad" x1="180" y1="50" x2="180" y2="185" gradientUnits="userSpaceOnUse">
             <stop offset="0%" stopColor="#3d62df" />
             <stop offset="50%" stopColor="#2c4cb8" />
             <stop offset="100%" stopColor="#1e3894" />
+          </linearGradient>
+
+          {/* Closed Front Top Flap (pointing downward over pocket) */}
+          <linearGradient id="envFrontClosedFlapGrad" x1="180" y1="180" x2="180" y2="295" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#4f77f7" />
+            <stop offset="45%" stopColor="#3558d4" />
+            <stop offset="100%" stopColor="#1f3da8" />
           </linearGradient>
 
           <linearGradient id="envLeftFlapGrad" x1="60" y1="180" x2="190" y2="280" gradientUnits="userSpaceOnUse">
@@ -170,29 +198,61 @@ export const SuccessStoryIllustration3D: React.FC<SuccessStoryIllustration3DProp
           <filter id="softTrophyGlow" x="-30%" y="-30%" width="160%" height="160%">
             <feDropShadow dx="4" dy="12" stdDeviation="10" floodColor="#000000" floodOpacity="0.5" />
           </filter>
+
+          {/* Envelope Body Clip to ensure paper never overflows envelope bounds */}
+          <clipPath id="envelopeBodyClip">
+            <rect x="68" y="0" width="224" height="326" rx="14" />
+          </clipPath>
         </defs>
 
         {/* ========================================================================= */}
         {/* 1. GROUND PLANE CONTACT SHADOWS */}
         {/* ========================================================================= */}
-        <ellipse cx="175" cy="330" rx="105" ry="22" fill="url(#envGroundShadow)" />
+        <ellipse 
+          cx="175" 
+          cy="330" 
+          rx={activeOpen ? 115 : 100} 
+          ry="22" 
+          fill="url(#envGroundShadow)" 
+          className="transition-all duration-500 ease-out"
+        />
         <ellipse cx="400" cy="328" rx="65" ry="18" fill="url(#trophyGroundShadow)" />
 
         {/* ========================================================================= */}
-        {/* 2. 3D OPEN ENVELOPE (BACK & INTERIOR) */}
+        {/* 2. 3D ENVELOPE BACK WALL & TOP BACK OPEN FLAP */}
         {/* ========================================================================= */}
         <g filter="url(#soft3DShadow)">
-          {/* Back Open Flap (Pointing Upward with Rounded Peak) */}
-          <path
-            d="M 66 182 
-               L 173 62
-               C 176 58, 184 58, 187 62
-               L 294 182
-               C 298 186, 292 192, 284 192
-               L 76 192
-               C 68 192, 62 186, 66 182 Z"
-            fill="url(#envBackFlapGrad)"
-          />
+          
+          {/* Back Open Flap (Visible when OPEN - Pointing Upward) */}
+          <g
+            className="transition-all duration-400 ease-in-out"
+            style={{
+              transformOrigin: '180px 185px',
+              transform: activeOpen 
+                ? 'scaleY(1)' 
+                : 'scaleY(0)',
+              opacity: activeOpen ? 1 : 0
+            }}
+          >
+            <path
+              d="M 66 182 
+                 L 173 62
+                 C 176 58, 184 58, 187 62
+                 L 294 182
+                 C 298 186, 292 192, 284 192
+                 L 76 192
+                 C 68 192, 62 186, 66 182 Z"
+              fill="url(#envBackFlapGrad)"
+            />
+            {/* Flap top highlight rim */}
+            <path
+              d="M 68 182 L 180 63 L 292 182"
+              stroke="#6b8eff"
+              strokeWidth="1.5"
+              fill="none"
+              opacity="0.6"
+            />
+          </g>
 
           {/* Inside Envelope Pocket Wall (Dark Occlusion Chamber) */}
           <path
@@ -207,9 +267,19 @@ export const SuccessStoryIllustration3D: React.FC<SuccessStoryIllustration3DProp
           />
 
           {/* ========================================================================= */}
-          {/* 3. PROTRUDING LETTER DOCUMENT WITH REAL LIZZDO LOGO */}
+          {/* 3. PROTRUDING LETTER DOCUMENT (FULLY INSIDE ENVELOPE WHEN CLOSED) */}
           {/* ========================================================================= */}
-          <g transform="rotate(-3.5 180 180)">
+          <g 
+            clipPath="url(#envelopeBodyClip)"
+            className="transition-all duration-500 ease-out"
+            style={{
+              transformOrigin: '180px 220px',
+              transform: activeOpen 
+                ? 'translateY(-42px) rotate(-3.5deg)' 
+                : 'translateY(130px) rotate(0deg)',
+              opacity: activeOpen ? 1 : 0
+            }}
+          >
             {/* Sheet Occlusion Shadow inside pocket */}
             <rect
               x="96"
@@ -218,7 +288,7 @@ export const SuccessStoryIllustration3D: React.FC<SuccessStoryIllustration3DProp
               height="192"
               rx="12"
               fill="#080f24"
-              opacity="0.4"
+              opacity={activeOpen ? 0.35 : 0.6}
             />
             {/* Main Sheet Card */}
             <rect
@@ -232,9 +302,12 @@ export const SuccessStoryIllustration3D: React.FC<SuccessStoryIllustration3DProp
               strokeWidth="1.5"
             />
 
+            {/* Top Sheet Specular Rim */}
+            <line x1="102" y1="70" x2="254" y2="70" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" opacity="0.9" />
+
             {/* LETTER HEADER: AUTHENTIC LIZZDO MASTER BRAND LOGO */}
             <g transform="translate(108, 86)">
-              {/* Lizzdo Vector Mark Glyph (Exact Brand Geometry) */}
+              {/* Lizzdo Vector Mark Glyph */}
               <svg width="22" height="22" viewBox="0 0 1000 1000" fill="none" className="shrink-0">
                 {/* 1. Delta Chevron */}
                 <path 
@@ -273,7 +346,7 @@ export const SuccessStoryIllustration3D: React.FC<SuccessStoryIllustration3DProp
                   fontWeight="900"
                   letterSpacing="-0.3"
                 >
-                  Lizzdo
+                  {companyName.split(' ')[0] || "Lizzdo"}
                 </text>
                 <text
                   x="48"
@@ -284,18 +357,18 @@ export const SuccessStoryIllustration3D: React.FC<SuccessStoryIllustration3DProp
                   fontWeight="800"
                   letterSpacing="0.8"
                 >
-                  MEDIA
+                  {companyName.split(' ').slice(1).join(' ') || "MEDIA"}
                 </text>
               </g>
             </g>
 
             {/* Stylized High-Craft Letter Typography Lines */}
             <g transform="translate(108, 122)">
-              {/* Line 1: Header subject bar */}
-              <rect x="0" y="0" width="75" height="6.5" rx="3.25" fill="#64748b" />
+              {/* Line 1: Header subject bar with subtle pulse glow */}
+              <rect x="0" y="0" width="75" height="6.5" rx="3.25" fill="#475569" />
               {/* Body lines */}
-              <rect x="0" y="14" width="138" height="5.5" rx="2.75" fill="#94a3b8" />
-              <rect x="0" y="25" width="130" height="5.5" rx="2.75" fill="#cbd5e1" />
+              <rect x="0" y="14" width="138" height="5.5" rx="2.75" fill="#64748b" />
+              <rect x="0" y="25" width="130" height="5.5" rx="2.75" fill="#94a3b8" />
               <rect x="0" y="36" width="134" height="5.5" rx="2.75" fill="#cbd5e1" />
               <rect x="0" y="47" width="90" height="5.5" rx="2.75" fill="#e2e8f0" />
             </g>
@@ -336,6 +409,30 @@ export const SuccessStoryIllustration3D: React.FC<SuccessStoryIllustration3DProp
             fill="url(#envBottomFlapGrad)"
           />
 
+          {/* Front Closed Top Flap (Visible when CLOSED - Pointing Downward over pocket) */}
+          <g
+            className="transition-all duration-400 ease-in-out"
+            style={{
+              transformOrigin: '180px 185px',
+              transform: activeOpen 
+                ? 'scaleY(0)' 
+                : 'scaleY(1)',
+              opacity: activeOpen ? 0 : 1
+            }}
+          >
+            <path
+              d="M 68 185
+                 L 173 285
+                 C 176 288, 184 288, 187 285
+                 L 292 185
+                 Z"
+              fill="url(#envFrontClosedFlapGrad)"
+              filter="drop-shadow(0 4px 6px rgba(0,0,0,0.3))"
+            />
+            {/* Crease line & gold seal */}
+            <circle cx="180" cy="275" r="5" fill="#f59e0b" opacity="0.9" />
+          </g>
+
           {/* Subtle Crease Shadow Lines for 3D realism */}
           <path
             d="M 70 186 L 180 265"
@@ -360,7 +457,14 @@ export const SuccessStoryIllustration3D: React.FC<SuccessStoryIllustration3DProp
         {/* ========================================================================= */}
         {/* 5. 3D REALISTIC GOLD CHAMPIONSHIP TROPHY */}
         {/* ========================================================================= */}
-        <g filter="url(#softTrophyGlow)">
+        <g 
+          filter="url(#softTrophyGlow)"
+          className="transition-all duration-400 ease-out"
+          style={{
+            transformOrigin: '400px 315px',
+            transform: activeOpen ? 'translateY(-4px) scale(1.02)' : 'translateY(0px) scale(1)'
+          }}
+        >
           
           {/* Trophy Left Handle (Smooth 3D curved C-loop) */}
           <path
@@ -471,7 +575,6 @@ export const SuccessStoryIllustration3D: React.FC<SuccessStoryIllustration3DProp
           {/* ========================================================================= */}
           <g>
             {/* Ribbon Tails hanging down */}
-            {/* Left Tail */}
             <path
               d="M 394 212
                  L 387 242
@@ -480,7 +583,6 @@ export const SuccessStoryIllustration3D: React.FC<SuccessStoryIllustration3DProp
                  L 398 212 Z"
               fill="url(#ribbonTailGrad)"
             />
-            {/* Right Tail */}
             <path
               d="M 402 212
                  L 399 242
@@ -527,8 +629,15 @@ export const SuccessStoryIllustration3D: React.FC<SuccessStoryIllustration3DProp
 
         </g>
 
-        {/* Ambient Floating Sparkles / Golden Particles */}
-        <g opacity="0.9">
+        {/* Ambient Floating Sparkles / Golden Particles with Dynamic Glow */}
+        <g 
+          className="transition-all duration-400 ease-out"
+          style={{
+            transform: activeOpen ? 'scale(1.08) translateY(-2px)' : 'scale(1)',
+            transformOrigin: '400px 100px'
+          }}
+          opacity={activeOpen ? 1 : 0.75}
+        >
           <circle cx="82" cy="110" r="3" fill="#ffbe1a" />
           <circle cx="340" cy="85" r="2.5" fill="#ffe585" />
           <circle cx="478" cy="125" r="3" fill="#ffbe1a" />
@@ -537,7 +646,7 @@ export const SuccessStoryIllustration3D: React.FC<SuccessStoryIllustration3DProp
           <path
             d="M 470 85 Q 470 92 477 92 Q 470 92 470 99 Q 470 92 463 92 Q 470 92 470 85 Z"
             fill="#ffbe1a"
-            opacity="0.8"
+            opacity="0.85"
           />
         </g>
       </svg>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SiteSettings, NavigationItem } from '../types';
 import { LizzdoLogo } from './LizzdoLogo';
 import { SuccessStoryIllustration3D } from './visuals/SuccessStoryIllustration3D';
@@ -37,6 +37,8 @@ export const Footer: React.FC<FooterProps> = ({
     }
   };
 
+  const [isCtaHovered, setIsCtaHovered] = useState(false);
+
   return (
     <footer className="relative z-20 overflow-hidden bg-[#07090e] pt-12 sm:pt-16 pb-12 sm:pb-16 text-slate-300 font-['Plus_Jakarta_Sans']">
       
@@ -50,7 +52,11 @@ export const Footer: React.FC<FooterProps> = ({
         {/* 1. OVERLAPPING 2.5D CTA BANNER (Exact Composition & Hierarchy of Reference Image) */}
         {/* ========================================================================= */}
         <div className="relative z-20 max-w-5xl mx-auto mb-[-70px] sm:mb-[-90px] lg:mb-[-100px] px-2 sm:px-4">
-          <div className="relative rounded-[28px] sm:rounded-[36px] bg-gradient-to-r from-[#171a24] via-[#12151e] to-[#0d0f16] text-white p-6 sm:p-8 md:p-10 lg:p-12 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_40px_rgba(255,190,26,0.12)] border border-white/[0.1] overflow-hidden">
+          <div 
+            onMouseEnter={() => setIsCtaHovered(true)}
+            onMouseLeave={() => setIsCtaHovered(false)}
+            className="relative rounded-[28px] sm:rounded-[36px] bg-gradient-to-r from-[#171a24] via-[#12151e] to-[#0d0f16] text-white p-6 sm:p-8 md:p-10 lg:p-12 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_40px_rgba(255,190,26,0.12)] border border-white/[0.1] overflow-hidden group/cta transition-all duration-300 hover:border-white/[0.18]"
+          >
             
             {/* Subtle top golden light rim highlight */}
             <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#ffbe1a]/70 to-transparent pointer-events-none" />
@@ -61,7 +67,10 @@ export const Footer: React.FC<FooterProps> = ({
               {/* Left Column: 2.5D Soft 3D Envelope with Lizzdo Document + Gold Championship Trophy */}
               <div className="md:col-span-5 flex items-center justify-center -my-6 sm:-my-8 md:-my-10">
                 <div className="w-full max-w-[300px] sm:max-w-[360px] md:max-w-[380px] h-[210px] sm:h-[240px] md:h-[260px]">
-                  <SuccessStoryIllustration3D companyName={siteSettings.siteName || "Lizzdo Media"} />
+                  <SuccessStoryIllustration3D 
+                    companyName={siteSettings.siteName || "Lizzdo Media"} 
+                    forceOpen={isCtaHovered || undefined}
+                  />
                 </div>
               </div>
 
