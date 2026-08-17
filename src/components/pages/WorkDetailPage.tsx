@@ -44,9 +44,11 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
 
   // Case study story defaults
   const challengeText = project.challenge || "The client required a distinctive, high-end creative presence to separate their offering from crowded industry competitors while preserving clarity and trust.";
+  const approachText = project.approach || project.strategy || "We formulated a structured visual architecture combining refined typography with geometric dielines, tactile substrates, and responsive brand rules.";
   const strategyText = project.strategy || "We formulated an obsidian-and-gold visual architecture, combining ultra-refined typography with structured geometry and responsive cross-device layout principles.";
   const designText = project.design || "Every vector node, color code, and layout hierarchy was tested across digital and physical substrates to ensure uncompromising visual authority.";
   const executionText = project.execution || "Production-ready guidelines, component libraries, high-resolution rendering, and full source assets were packaged and deployed.";
+  const solutionText = project.solution;
   const resultText = project.result || "Achieved immediate market recognition, increased customer engagement by over 45%, and established a cohesive brand system across all touchpoints.";
 
   // Process timeline
@@ -109,6 +111,7 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
         items={galleryItems}
         currentIndex={activeGalleryIndex}
         onIndexChange={setActiveGalleryIndex}
+        siteSettings={siteSettings}
       />
 
       {/* Breadcrumb Bar */}
@@ -152,7 +155,11 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             ) : (
-              <ProjectGalleryVisual visualType={project.visualType || 'brand-identity'} title={project.title} />
+              <ProjectGalleryVisual 
+                visualType={project.visualType || 'brand-identity'} 
+                title={project.title} 
+                siteSettings={siteSettings}
+              />
             )}
 
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
@@ -220,25 +227,25 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
               <p className="text-neutral-300 text-sm sm:text-base leading-relaxed">{challengeText}</p>
             </div>
 
-            {/* 02 Strategy */}
+            {/* 02 Strategy / Approach */}
             <div className="p-6 rounded-2xl bg-neutral-950 border border-neutral-800/80 space-y-2">
-              <span className="text-xs font-mono font-bold text-[#e5a93c]">02 / STRATEGY</span>
-              <h3 className="text-lg font-bold text-white">Strategic Direction</h3>
-              <p className="text-neutral-300 text-sm sm:text-base leading-relaxed">{strategyText}</p>
+              <span className="text-xs font-mono font-bold text-[#e5a93c]">02 / STRATEGY & APPROACH</span>
+              <h3 className="text-lg font-bold text-white">Strategic Architecture</h3>
+              <p className="text-neutral-300 text-sm sm:text-base leading-relaxed">{approachText || strategyText}</p>
             </div>
 
-            {/* 03 Design */}
+            {/* 03 Design Craft */}
             <div className="p-6 rounded-2xl bg-neutral-950 border border-neutral-800/80 space-y-2">
               <span className="text-xs font-mono font-bold text-[#e5a93c]">03 / DESIGN CRAFT</span>
-              <h3 className="text-lg font-bold text-white">Visual Design & Architecture</h3>
+              <h3 className="text-lg font-bold text-white">Visual Design & Dielines</h3>
               <p className="text-neutral-300 text-sm sm:text-base leading-relaxed">{designText}</p>
             </div>
 
-            {/* 04 Execution */}
+            {/* 04 Execution / Solution */}
             <div className="p-6 rounded-2xl bg-neutral-950 border border-neutral-800/80 space-y-2">
-              <span className="text-xs font-mono font-bold text-[#e5a93c]">04 / EXECUTION</span>
-              <h3 className="text-lg font-bold text-white">System Deployment</h3>
-              <p className="text-neutral-300 text-sm sm:text-base leading-relaxed">{executionText}</p>
+              <span className="text-xs font-mono font-bold text-[#e5a93c]">04 / SYSTEM DEPLOYMENT</span>
+              <h3 className="text-lg font-bold text-white">Production & Implementation</h3>
+              <p className="text-neutral-300 text-sm sm:text-base leading-relaxed">{solutionText || executionText}</p>
             </div>
 
             {/* 05 Result */}
@@ -249,6 +256,57 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
             </div>
           </div>
         </section>
+
+        {/* ========================================================================= */}
+        {/* 3.5. PACKAGING SUBSTRATES & DIELINE SPECIFICATIONS (IF PRESENT) */}
+        {/* ========================================================================= */}
+        {(project.materials || project.dielineSpecs) && (
+          <section className="space-y-6 bg-neutral-950/80 border border-neutral-800/90 rounded-3xl p-6 sm:p-8">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-neutral-800 pb-4">
+              <div>
+                <span className="text-xs uppercase font-mono tracking-widest text-[#e5a93c]">Substrates & Finishes</span>
+                <h3 className="text-2xl font-['Outfit'] font-bold text-white">Tactile Materials & Dieline Engineering</h3>
+              </div>
+              <span className="text-xs text-neutral-400 font-mono">FSC Certified • Production Calibrated</span>
+            </div>
+
+            {project.dielineSpecs && (
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-black/50 p-4 rounded-2xl border border-neutral-800/80 text-xs font-mono">
+                <div>
+                  <span className="text-neutral-500 block text-[10px] uppercase">Dimensions</span>
+                  <span className="text-white font-semibold">{project.dielineSpecs.dimensions}</span>
+                </div>
+                <div>
+                  <span className="text-neutral-500 block text-[10px] uppercase">Paperboard Stock</span>
+                  <span className="text-white font-semibold">{project.dielineSpecs.stock}</span>
+                </div>
+                <div>
+                  <span className="text-neutral-500 block text-[10px] uppercase">Finishes</span>
+                  <span className="text-[#e5a93c] font-semibold">{project.dielineSpecs.finish}</span>
+                </div>
+                <div>
+                  <span className="text-neutral-500 block text-[10px] uppercase">Closure Mechanism</span>
+                  <span className="text-white font-semibold">{project.dielineSpecs.closure}</span>
+                </div>
+              </div>
+            )}
+
+            {project.materials && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {project.materials.map((mat, idx) => (
+                  <div key={idx} className="p-4 rounded-2xl bg-neutral-900/60 border border-neutral-800 space-y-1.5">
+                    <div className="flex items-center gap-2">
+                      <span className="w-3 h-3 rounded-full" style={{ backgroundColor: mat.color }} />
+                      <span className="text-sm font-bold text-white font-['Outfit']">{mat.name}</span>
+                    </div>
+                    <p className="text-xs text-neutral-300 font-mono">{mat.spec}</p>
+                    <span className="text-[11px] text-[#e5a93c] font-mono block">{mat.finish}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </section>
+        )}
 
         {/* ========================================================================= */}
         {/* 4. DESIGN PROCESS TIMELINE */}
@@ -295,7 +353,11 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
                 }`}
               >
                 <div className="h-72 sm:h-80 w-full overflow-hidden">
-                  <ProjectGalleryVisual visualType={item.visualType || project.visualType || 'brand-identity'} title={item.title} />
+                  <ProjectGalleryVisual 
+                    visualType={item.visualType || project.visualType || 'brand-identity'} 
+                    title={item.title} 
+                    siteSettings={siteSettings}
+                  />
                 </div>
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity flex flex-col justify-end p-5">

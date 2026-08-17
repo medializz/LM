@@ -90,7 +90,11 @@ export const WorkIndexPage: React.FC<WorkIndexPageProps> = ({
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                 ) : (
-                  <ProjectGalleryVisual visualType={project.visualType || 'brand-identity'} title={project.title} />
+                  <ProjectGalleryVisual 
+                    visualType={project.visualType || 'brand-identity'} 
+                    title={project.title} 
+                    siteSettings={siteSettings}
+                  />
                 )}
 
                 <div className="absolute top-4 left-4 z-10">

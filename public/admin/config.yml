@@ -82,10 +82,56 @@ collections:
       - { label: "Slug", name: "slug", widget: "string" }
       - { label: "Category", name: "category", widget: "string" }
       - { label: "Short Category Label", name: "shortCategory", widget: "string" }
+      - { label: "Short Description", name: "shortDescription", widget: "string", required: false }
       - { label: "Project Description", name: "description", widget: "text" }
-      - { label: "Project Image / Mockup", name: "image", widget: "image", required: false }
+      - { label: "Hero Showcase Image", name: "heroImage", widget: "image", required: false }
+      - { label: "Featured Image / Mockup", name: "image", widget: "image", required: false }
+      - { label: "Visual Type Preset", name: "visualType", widget: "select", options: ["packaging-hero", "packaging-dieline", "packaging-pouch", "packaging-delivery", "packaging-hangtags", "packaging-formats", "brand-identity", "saas-dashboard", "social-campaign", "web-development"], default: "packaging-hero", required: false }
       - { label: "Display Order", name: "order", widget: "number", value_type: "int" }
       - { label: "Featured on Homepage", name: "featured", widget: "boolean", default: true }
+      - { label: "Published", name: "published", widget: "boolean", default: true }
+      - { label: "Client Name", name: "client", widget: "string", required: false }
+      - { label: "Year", name: "year", widget: "string", default: "2026", required: false }
+      - { label: "Services Provided", name: "services", widget: "list", required: false }
+      - { label: "Tools Used", name: "tools", widget: "list", required: false }
+      - { label: "01 Challenge", name: "challenge", widget: "text", required: false }
+      - { label: "02 Strategy & Approach", name: "approach", widget: "text", required: false }
+      - { label: "03 Design Craft", name: "design", widget: "text", required: false }
+      - { label: "04 System Deployment / Solution", name: "execution", widget: "text", required: false }
+      - { label: "05 Result & Key Metrics", name: "result", widget: "text", required: false }
+      - label: "Gallery Images & Visuals"
+        name: "gallery"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Item ID", name: "id", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Caption / Description", name: "caption", widget: "string", required: false }
+          - { label: "Uploaded Image File", name: "image", widget: "image", required: false }
+          - { label: "Vector Visual Preset", name: "visualType", widget: "select", options: ["packaging-hero", "packaging-dieline", "packaging-pouch", "packaging-delivery", "packaging-hangtags", "packaging-formats", "brand-identity", "saas-dashboard", "social-campaign", "web-development"], default: "packaging-hero", required: false }
+          - { label: "Layout Span", name: "layout", widget: "select", options: ["large", "half"], default: "half" }
+      - label: "Design Process Steps"
+        name: "processSteps"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Step Number (e.g. 01)", name: "stepNumber", widget: "string" }
+          - { label: "Step Title", name: "title", widget: "string" }
+          - { label: "Step Description", name: "description", widget: "text" }
+      - label: "Materials & Substrates"
+        name: "materials"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Material Name", name: "name", widget: "string" }
+          - { label: "Specification", name: "spec", widget: "string" }
+          - { label: "Finish Type", name: "finish", widget: "string" }
+          - { label: "Hex Color Accent", name: "color", widget: "string", default: "#e5a93c" }
+      - { label: "Related Services (slugs)", name: "relatedServices", widget: "list", required: false }
+      - { label: "Related Projects (slugs)", name: "relatedProjects", widget: "list", required: false }
+      - { label: "SEO Meta Title", name: "seoTitle", widget: "string", required: false }
+      - { label: "SEO Meta Description", name: "seoDescription", widget: "text", required: false }
+      - { label: "SEO Share Image", name: "seoImage", widget: "image", required: false }
 
   - name: "whyChooseUs"
     label: "Why Choose Us Section"

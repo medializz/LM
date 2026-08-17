@@ -41,6 +41,21 @@ export interface GalleryItem {
   aspect?: string;
 }
 
+export interface MaterialSpec {
+  name: string;
+  spec: string;
+  finish: string;
+  color: string;
+}
+
+export interface DielineSpecs {
+  dimensions: string;
+  stock: string;
+  finish: string;
+  closure: string;
+  flute?: string;
+}
+
 export interface ServiceCategory {
   id: string;
   title: string;
@@ -90,21 +105,29 @@ export interface PortfolioItem {
   slug: string;
   category: string;
   shortCategory: string;
+  shortDescription?: string;
   description?: string;
   image?: string;
+  heroImage?: string;
+  featuredImage?: string;
   visualType?: 'brand-identity' | 'packaging' | 'saas-dashboard' | 'social-campaign' | 'ecommerce' | string;
   featured?: boolean;
   order: number;
+  published?: boolean;
   // Rich Case Study Extensions
   client?: string;
   year?: string;
   services?: string[];
   tools?: string[];
   challenge?: string;
+  approach?: string;
   strategy?: string;
   design?: string;
   execution?: string;
+  solution?: string;
   result?: string;
+  materials?: MaterialSpec[];
+  dielineSpecs?: DielineSpecs;
   processSteps?: WorkProcessStep[];
   gallery?: GalleryItem[];
   relatedServices?: string[];

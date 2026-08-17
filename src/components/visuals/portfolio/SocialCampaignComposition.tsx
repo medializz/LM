@@ -5,11 +5,15 @@ import { LizzdoLogo } from '../../LizzdoLogo';
 interface SocialCampaignCompositionProps {
   className?: string;
   isDetailed?: boolean;
+  logoSrc?: string;
+  markSrc?: string;
 }
 
 export const SocialCampaignComposition: React.FC<SocialCampaignCompositionProps> = ({
   className = '',
   isDetailed = false,
+  logoSrc,
+  markSrc,
 }) => {
   return (
     <div
@@ -28,7 +32,7 @@ export const SocialCampaignComposition: React.FC<SocialCampaignCompositionProps>
         <div className="absolute left-2 sm:left-4 top-2 sm:top-3 w-[120px] sm:w-[155px] md:w-[175px] h-[140px] sm:h-[180px] md:h-[205px] rounded-2xl bg-gradient-to-br from-[#241a05] via-[#151003] to-[#0a0802] border border-[#ffbe1a]/40 shadow-2xl rotate-[-10deg] transform transition-transform duration-700 group-hover:rotate-[-6deg] p-2.5 sm:p-3 flex flex-col justify-between z-10">
           <div className="flex items-center justify-between text-[6.5px] sm:text-[7.5px] font-mono text-[#ffbe1a]">
             <div className="flex items-center gap-1">
-              <LizzdoLogo variant="mark-only" size="xxs" theme="gold" />
+              <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
               <span>CAROUSEL 02/05</span>
             </div>
             <span className="bg-[#ffbe1a]/20 px-1 py-0.5 rounded font-bold">SWIPE →</span>
@@ -58,7 +62,7 @@ export const SocialCampaignComposition: React.FC<SocialCampaignCompositionProps>
           {/* Top Brand Banner */}
           <div className="flex items-center justify-between z-10">
             <div className="flex items-center gap-1.5 bg-black/15 px-2 py-0.5 rounded backdrop-blur-sm">
-              <LizzdoLogo variant="mark-only" size="xxs" theme="dark" />
+              <LizzdoLogo variant="mark-only" size="xxs" theme="dark" logoSrc={logoSrc} markSrc={markSrc} />
               <span className="text-[8px] sm:text-[10px] font-black text-black tracking-widest uppercase font-['Outfit']">
                 LIZZDO SOUND
               </span>
@@ -79,7 +83,7 @@ export const SocialCampaignComposition: React.FC<SocialCampaignCompositionProps>
                 <span className="text-[5px] font-black text-black">R</span>
               </div>
               <div className="text-center flex flex-col items-center">
-                <LizzdoLogo variant="mark-only" size="xxs" theme="gold" />
+                <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
                 <span className="text-[#ffbe1a] text-[8px] sm:text-[10px] font-black block font-['Outfit'] mt-0.5">ANC</span>
               </div>
             </div>
@@ -117,7 +121,7 @@ export const SocialCampaignComposition: React.FC<SocialCampaignCompositionProps>
           <div className="flex items-center justify-between text-[6px] text-white">
             <div className="flex items-center gap-1">
               <div className="p-0.5 rounded-full bg-[#ffbe1a]/20 border border-[#ffbe1a]/60 flex items-center justify-center">
-                <LizzdoLogo variant="mark-only" size="xxs" theme="gold" />
+                <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
               </div>
               <span className="font-bold">lizzdo_media</span>
             </div>
@@ -142,7 +146,7 @@ export const SocialCampaignComposition: React.FC<SocialCampaignCompositionProps>
 
         {/* --- OBJECT 4 (TOP-LEFT FLOATING ROI BADGE): Verified Social Metric --- */}
         <div className="absolute left-2 sm:left-5 top-1 sm:top-2 z-40 bg-black/90 backdrop-blur-md border border-[#ffbe1a]/60 px-2.5 py-1 rounded-full shadow-2xl flex items-center gap-1.5 transform -rotate-4">
-          <LizzdoLogo variant="mark-only" size="xxs" theme="gold" />
+          <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
           <span className="text-[7px] sm:text-[8px] font-mono text-white font-bold tracking-wider">
             4.2X ROAS • 1.8M REACH
           </span>

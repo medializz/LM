@@ -149,6 +149,7 @@ export default function App() {
             {/* SECTION C: FEATURED WORK / PORTFOLIO */}
             <FeaturedWorkSection 
               portfolio={cmsData.portfolio || []}
+              siteSettings={cmsData.siteSettings}
               onSelectProject={handleSelectProject}
               onViewAll={() => navigateTo('/work')}
             />

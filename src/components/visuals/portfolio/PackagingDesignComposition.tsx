@@ -5,11 +5,15 @@ import { LizzdoLogo } from '../../LizzdoLogo';
 interface PackagingDesignCompositionProps {
   className?: string;
   isDetailed?: boolean;
+  logoSrc?: string;
+  markSrc?: string;
 }
 
 export const PackagingDesignComposition: React.FC<PackagingDesignCompositionProps> = ({
   className = '',
   isDetailed = false,
+  logoSrc,
+  markSrc,
 }) => {
   return (
     <div
@@ -43,7 +47,7 @@ export const PackagingDesignComposition: React.FC<PackagingDesignCompositionProp
               <circle cx="100" cy="50" r="14" fill="none" stroke="#ffbe1a" strokeWidth="1" />
             </svg>
             <div className="absolute text-[6px] sm:text-[7px] font-mono text-slate-300 bg-black/60 px-1.5 py-0.5 rounded border border-purple-500/40 flex items-center gap-1">
-              <LizzdoLogo variant="mark-only" size="xxs" theme="gold" />
+              <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
               <span>Magnetic Flap + Soft-Close</span>
             </div>
           </div>
@@ -64,7 +68,7 @@ export const PackagingDesignComposition: React.FC<PackagingDesignCompositionProp
                 LIZZDO LUXE
               </span>
               <div className="scale-75">
-                <LizzdoLogo variant="mark-only" size="xxs" theme="gold" />
+                <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
               </div>
             </div>
 
@@ -72,7 +76,7 @@ export const PackagingDesignComposition: React.FC<PackagingDesignCompositionProp
             <div className="my-auto text-center py-2">
               <div className="w-12 sm:w-16 h-12 sm:h-16 mx-auto rounded-2xl bg-gradient-to-br from-[#ffbe1a] to-amber-600 p-0.5 shadow-[0_0_20px_rgba(255,190,26,0.4)] mb-2 transform -rotate-3 group-hover:rotate-0 transition-transform">
                 <div className="w-full h-full bg-[#1e0730] rounded-[14px] flex flex-col items-center justify-center p-1">
-                  <LizzdoLogo variant="mark-only" size="sm" theme="gold" />
+                  <LizzdoLogo variant="mark-only" size="sm" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
                 </div>
               </div>
               <div className="text-white font-extrabold text-[9px] sm:text-[12px] font-['Outfit'] tracking-widest uppercase drop-shadow-md">
@@ -106,13 +110,13 @@ export const PackagingDesignComposition: React.FC<PackagingDesignCompositionProp
             <div className="absolute top-0 left-2 w-2 h-full bg-white/20 skew-x-[-15deg] blur-[1px] pointer-events-none" />
             
             <div className="w-5 h-5 rounded-full bg-[#ffbe1a]/20 border border-[#ffbe1a]/60 mx-auto flex items-center justify-center p-0.5">
-              <LizzdoLogo variant="mark-only" size="xxs" theme="gold" />
+              <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
             </div>
 
             {/* Gold Foiled Bottle Label */}
             <div className="bg-[#12031f]/90 border border-[#ffbe1a]/60 rounded-lg p-1.5 text-center shadow-lg my-auto flex flex-col items-center">
               <div className="scale-75">
-                <LizzdoLogo variant="mark-only" size="xxs" theme="gold" />
+                <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
               </div>
               <span className="text-[6.5px] sm:text-[7.5px] font-black text-[#ffbe1a] tracking-widest block font-['Outfit'] mt-0.5">
                 LIZZDO

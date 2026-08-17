@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { GalleryItem } from '../types';
+import { GalleryItem, SiteSettings } from '../types';
 import { ProjectGalleryVisual } from './visuals/ProjectGalleryVisual';
 
 interface ImageLightboxProps {
@@ -10,6 +10,7 @@ interface ImageLightboxProps {
   items: GalleryItem[];
   currentIndex: number;
   onIndexChange: (index: number) => void;
+  siteSettings?: SiteSettings;
 }
 
 export const ImageLightbox: React.FC<ImageLightboxProps> = ({
@@ -17,7 +18,8 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
   onClose,
   items,
   currentIndex,
-  onIndexChange
+  onIndexChange,
+  siteSettings
 }) => {
   const currentItem = items[currentIndex] || items[0];
 
@@ -114,7 +116,11 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
               />
             ) : (
               <div className="w-full h-[55vh] min-h-[360px]">
-                <ProjectGalleryVisual visualType={currentItem.visualType || 'brand-identity'} title={currentItem.title} />
+                <ProjectGalleryVisual
+                  visualType={currentItem.visualType || 'brand-identity'}
+                  title={currentItem.title}
+                  siteSettings={siteSettings}
+                />
               </div>
             )}
           </div>

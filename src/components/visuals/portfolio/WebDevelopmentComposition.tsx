@@ -5,11 +5,15 @@ import { LizzdoLogo } from '../../LizzdoLogo';
 interface WebDevelopmentCompositionProps {
   className?: string;
   isDetailed?: boolean;
+  logoSrc?: string;
+  markSrc?: string;
 }
 
 export const WebDevelopmentComposition: React.FC<WebDevelopmentCompositionProps> = ({
   className = '',
   isDetailed = false,
+  logoSrc,
+  markSrc,
 }) => {
   return (
     <div
@@ -34,7 +38,7 @@ export const WebDevelopmentComposition: React.FC<WebDevelopmentCompositionProps>
               <span className="w-2 h-2 rounded-full bg-amber-400/90" />
               <span className="w-2 h-2 rounded-full bg-emerald-400/90" />
               <div className="bg-black/60 border border-white/10 px-2 py-0.5 rounded text-[7px] sm:text-[8px] font-mono text-emerald-300 ml-1.5 flex items-center gap-1.5">
-                <LizzdoLogo variant="mark-only" size="xxs" theme="gold" />
+                <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
                 <span className="text-white/80">nexus.lizzdo.dev</span>
               </div>
             </div>
@@ -49,7 +53,7 @@ export const WebDevelopmentComposition: React.FC<WebDevelopmentCompositionProps>
             <div className="col-span-3 h-full bg-[#161c2e]/80 rounded-xl p-1.5 border border-white/5 flex flex-col justify-between text-[6px] font-mono text-slate-400">
               <div className="space-y-1">
                 <div className="flex items-center gap-1 mb-1">
-                  <LizzdoLogo variant="mark-only" size="xxs" theme="gold" />
+                  <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
                   <span className="text-[6px] text-white font-bold">NEXUS</span>
                 </div>
                 <div className="h-1 w-14 bg-white/20 rounded" />
@@ -87,7 +91,7 @@ export const WebDevelopmentComposition: React.FC<WebDevelopmentCompositionProps>
           {/* Bottom Terminal Bar */}
           <div className="flex items-center justify-between border-t border-white/[0.08] pt-1.5 text-[6.5px] sm:text-[7.5px] font-mono text-slate-400 z-10">
             <span className="flex items-center gap-1">
-              <LizzdoLogo variant="mark-only" size="xxs" theme="gold" />
+              <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
               <span>Next.js • Vite • Tailwind CSS</span>
             </span>
             <span className="text-[#ffbe1a]">Zero Cumulative Layout Shift</span>
@@ -101,7 +105,7 @@ export const WebDevelopmentComposition: React.FC<WebDevelopmentCompositionProps>
               <Code2 className="w-2.5 h-2.5 text-emerald-400" /> App.tsx
             </span>
             <div className="flex items-center gap-1">
-              <LizzdoLogo variant="mark-only" size="xxs" theme="gold" />
+              <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
               <span className="text-slate-400">TS</span>
             </div>
           </div>
@@ -132,7 +136,7 @@ export const WebDevelopmentComposition: React.FC<WebDevelopmentCompositionProps>
           <div className="flex-1 rounded-xl bg-[#090d17] p-1.5 flex flex-col justify-between border border-white/5 text-[6px] font-mono">
             <div className="flex justify-between items-center text-emerald-300">
               <div className="flex items-center gap-1">
-                <LizzdoLogo variant="mark-only" size="xxs" theme="gold" />
+                <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
                 <span className="text-white font-bold">NEXUS</span>
               </div>
               <span className="text-[#ffbe1a]">● MOBILE</span>

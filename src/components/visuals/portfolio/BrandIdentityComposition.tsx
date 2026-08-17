@@ -5,11 +5,15 @@ import { Sparkles, Check, Bookmark, Layers } from 'lucide-react';
 interface BrandIdentityCompositionProps {
   className?: string;
   isDetailed?: boolean;
+  logoSrc?: string;
+  markSrc?: string;
 }
 
 export const BrandIdentityComposition: React.FC<BrandIdentityCompositionProps> = ({
   className = '',
   isDetailed = false,
+  logoSrc,
+  markSrc,
 }) => {
   return (
     <div
@@ -30,7 +34,7 @@ export const BrandIdentityComposition: React.FC<BrandIdentityCompositionProps> =
           <div className="w-12 h-6 mx-auto -mt-6 border-2 border-[#ffbe1a]/70 rounded-t-full shadow-[0_0_8px_rgba(255,190,26,0.3)]" />
           <div className="text-center pt-2">
             <div className="w-9 h-9 mx-auto rounded-lg bg-[#ffbe1a]/10 border border-[#ffbe1a]/40 flex items-center justify-center shadow-inner p-1">
-              <LizzdoLogo variant="mark-only" size="xxs" theme="gold" />
+              <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
             </div>
             <div className="text-[7px] sm:text-[8px] font-mono tracking-widest text-[#ffbe1a] mt-1 uppercase font-bold">
               LIZZDO LUXE
@@ -73,7 +77,7 @@ export const BrandIdentityComposition: React.FC<BrandIdentityCompositionProps> =
           {/* Center Brand Identity Artwork */}
           <div className="flex items-center justify-center my-auto z-10 py-1">
             <div className="flex items-center gap-2 sm:gap-3 bg-black/40 backdrop-blur-md px-3 sm:px-4 py-2 rounded-xl border border-white/10 shadow-lg">
-              <LizzdoLogo size="sm" theme="gold" />
+              <LizzdoLogo size="sm" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
               <div className="h-6 w-px bg-white/15" />
               <div className="text-left">
                 <div className="text-[9px] sm:text-[11px] font-extrabold text-white font-['Outfit'] tracking-wider">
@@ -105,7 +109,7 @@ export const BrandIdentityComposition: React.FC<BrandIdentityCompositionProps> =
             <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-[#ffbe1a]/20 to-transparent pointer-events-none" />
             <div className="flex items-center justify-between">
               <div className="p-0.5 rounded-md bg-[#ffbe1a]/15 border border-[#ffbe1a]/60">
-                <LizzdoLogo variant="mark-only" size="xxs" theme="gold" />
+                <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
               </div>
               <span className="text-[6.5px] sm:text-[7.5px] font-mono text-[#ffbe1a] font-bold tracking-widest uppercase">
                 LUXE 600G
@@ -133,7 +137,7 @@ export const BrandIdentityComposition: React.FC<BrandIdentityCompositionProps> =
           <div className="flex-1 rounded-xl bg-gradient-to-b from-[#12141d] to-[#090a0f] p-1.5 sm:p-2 flex flex-col justify-between border border-white/5">
             <div className="flex items-center justify-between">
               <div className="scale-75 origin-left">
-                <LizzdoLogo variant="mark-only" size="xxs" theme="gold" />
+                <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
               </div>
               <span className="text-[6px] text-emerald-400 font-mono flex items-center gap-0.5">
                 <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" /> Live
@@ -142,7 +146,7 @@ export const BrandIdentityComposition: React.FC<BrandIdentityCompositionProps> =
 
             <div className="space-y-1 my-auto text-center py-1 flex flex-col items-center">
               <div className="p-1 rounded-lg bg-[#ffbe1a]/15 border border-[#ffbe1a]/50 flex items-center justify-center shadow-inner">
-                <LizzdoLogo variant="mark-only" size="xs" theme="gold" />
+                <LizzdoLogo variant="mark-only" size="xs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
               </div>
               <span className="text-[7px] sm:text-[8px] font-bold text-white block font-['Outfit'] mt-0.5">
                 Lizzdo Studio
@@ -163,7 +167,7 @@ export const BrandIdentityComposition: React.FC<BrandIdentityCompositionProps> =
           <div className="w-full h-1 bg-white/20 rounded-full" />
           <div className="text-center my-auto flex items-center justify-center">
             <div className="p-0.5 rounded-full bg-[#ffbe1a]/20 border border-[#ffbe1a] flex items-center justify-center">
-              <LizzdoLogo variant="mark-only" size="xxs" theme="gold" />
+              <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
             </div>
           </div>
           <div className="w-full h-0.5 bg-[#ffbe1a] rounded" />

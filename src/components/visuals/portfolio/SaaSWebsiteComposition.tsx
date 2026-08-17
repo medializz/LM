@@ -5,11 +5,15 @@ import { LizzdoLogo } from '../../LizzdoLogo';
 interface SaaSWebsiteCompositionProps {
   className?: string;
   isDetailed?: boolean;
+  logoSrc?: string;
+  markSrc?: string;
 }
 
 export const SaaSWebsiteComposition: React.FC<SaaSWebsiteCompositionProps> = ({
   className = '',
   isDetailed = false,
+  logoSrc,
+  markSrc,
 }) => {
   return (
     <div
@@ -34,7 +38,7 @@ export const SaaSWebsiteComposition: React.FC<SaaSWebsiteCompositionProps> = ({
               <span className="w-2 h-2 rounded-full bg-amber-500/90" />
               <span className="w-2 h-2 rounded-full bg-emerald-500/90" />
               <div className="bg-black/60 border border-white/10 px-2 py-0.5 rounded text-[7px] sm:text-[8px] font-mono text-cyan-300 ml-1.5 flex items-center gap-1.5">
-                <LizzdoLogo variant="mark-only" size="xxs" theme="gold" />
+                <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
                 <span className="text-white/80">cloud.lizzdo.io/metrics</span>
               </div>
             </div>
@@ -105,7 +109,7 @@ export const SaaSWebsiteComposition: React.FC<SaaSWebsiteCompositionProps> = ({
           {/* Bottom Bar */}
           <div className="flex items-center justify-between border-t border-white/[0.08] pt-1.5 text-[6.5px] sm:text-[7.5px] font-mono text-slate-400 z-10">
             <span className="flex items-center gap-1">
-              <LizzdoLogo variant="mark-only" size="xxs" theme="gold" />
+              <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
               <span>React 18 • Vite SPA</span>
             </span>
             <span className="text-[#ffbe1a]">Sub-100ms Page Transition</span>
@@ -122,7 +126,7 @@ export const SaaSWebsiteComposition: React.FC<SaaSWebsiteCompositionProps> = ({
           </div>
           <div className="mt-1 text-[8px] sm:text-[9.5px] font-bold text-white font-['Outfit'] flex items-center justify-between">
             <span>Growth Velocity</span>
-            <LizzdoLogo variant="mark-only" size="xxs" theme="gold" />
+            <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
           </div>
           <div className="flex items-center gap-1.5 mt-0.5">
             <span className="text-xs sm:text-sm font-black text-emerald-400 font-mono">+142%</span>
@@ -133,7 +137,7 @@ export const SaaSWebsiteComposition: React.FC<SaaSWebsiteCompositionProps> = ({
 
         {/* --- OBJECT 3 (BOTTOM-LEFT FLOATING PILL): AI Insight Beacon --- */}
         <div className="absolute left-2 sm:left-4 bottom-2 sm:bottom-3 z-30 bg-black/85 backdrop-blur-md border border-[#ffbe1a]/50 px-2.5 py-1 rounded-full shadow-xl flex items-center gap-2 transform -rotate-3">
-          <LizzdoLogo variant="mark-only" size="xxs" theme="gold" />
+          <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
           <span className="text-[7px] sm:text-[8px] font-mono text-white font-bold tracking-wider">
             LIZZDO AI ENGINE: <span className="text-[#ffbe1a]">99.4% EFFICIENCY</span>
           </span>
@@ -145,7 +149,7 @@ export const SaaSWebsiteComposition: React.FC<SaaSWebsiteCompositionProps> = ({
           <div className="flex-1 rounded-xl bg-[#0e1322] p-1.5 flex flex-col justify-between border border-white/5 text-[6px] font-mono">
             <div className="flex justify-between items-center text-cyan-300">
               <div className="flex items-center gap-1">
-                <LizzdoLogo variant="mark-only" size="xxs" theme="gold" />
+                <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
                 <span className="text-white font-bold">LIZZDO</span>
               </div>
               <span className="text-emerald-400">● LIVE</span>
