@@ -215,6 +215,10 @@ export type AppRoute =
   | { view: 'service-detail'; path: string; slug: string }
   | { view: 'work-index'; path: string; slug?: undefined }
   | { view: 'work-detail'; path: string; slug: string }
+  | { view: 'privacy'; path: string; slug?: undefined }
+  | { view: 'terms'; path: string; slug?: undefined }
+  | { view: 'legal'; path: string; slug?: undefined }
+  | { view: 'sitemap'; path: string; slug?: undefined }
   | { view: '404'; path: string; slug?: undefined };
 
 

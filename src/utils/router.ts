@@ -47,6 +47,22 @@ export function parseRoute(pathname: string, search: string = window.location.se
     return { view: 'work-detail', slug: workMatch[1].toLowerCase(), path };
   }
 
+  if (path === '/privacy' || path === '/privacy-policy') {
+    return { view: 'privacy', path: '/privacy' };
+  }
+
+  if (path === '/terms' || path === '/terms-of-use' || path === '/terms-of-service') {
+    return { view: 'terms', path: '/terms' };
+  }
+
+  if (path === '/legal' || path === '/legal-notice' || path === '/disclaimer') {
+    return { view: 'legal', path: '/legal' };
+  }
+
+  if (path === '/sitemap' || path === '/site-map') {
+    return { view: 'sitemap', path: '/sitemap' };
+  }
+
   // Fallback for unmapped paths
   return { view: '404', path };
 }

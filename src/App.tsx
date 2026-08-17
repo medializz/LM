@@ -20,6 +20,10 @@ import { ServiceDetailPage } from './components/pages/ServiceDetailPage';
 import { ServicesIndexPage } from './components/pages/ServicesIndexPage';
 import { WorkDetailPage } from './components/pages/WorkDetailPage';
 import { WorkIndexPage } from './components/pages/WorkIndexPage';
+import { PrivacyPolicyPage } from './components/pages/PrivacyPolicyPage';
+import { TermsOfUsePage } from './components/pages/TermsOfUsePage';
+import { LegalNoticePage } from './components/pages/LegalNoticePage';
+import { SiteMapPage } from './components/pages/SiteMapPage';
 import { SEOHead } from './components/SEOHead';
 import { loadCmsData } from './data/cmsContent';
 import { DecapCMSData, ServiceCategory, PortfolioItem } from './types';
@@ -33,7 +37,7 @@ export default function App() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [preselectedContactService, setPreselectedContactService] = useState<string | null>(null);
 
-  // Handle hash scrolling on initial load or route transition
+  // Handle scroll on route transition
   useEffect(() => {
     if (window.location.hash) {
       const id = window.location.hash.replace('#', '');
@@ -43,6 +47,8 @@ export default function App() {
           el.scrollIntoView({ behavior: 'smooth' });
         }, 100);
       }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'instant' });
     }
   }, [route.path]);
 
@@ -244,7 +250,47 @@ export default function App() {
         )}
 
         {/* ========================================================= */}
-        {/* VIEW 6: 404 NOT FOUND */}
+        {/* VIEW 6: PRIVACY POLICY (/privacy) */}
+        {/* ========================================================= */}
+        {route.view === 'privacy' && (
+          <PrivacyPolicyPage 
+            cmsData={cmsData}
+            onOpenContact={handleOpenContactModal}
+          />
+        )}
+
+        {/* ========================================================= */}
+        {/* VIEW 7: TERMS OF USE (/terms) */}
+        {/* ========================================================= */}
+        {route.view === 'terms' && (
+          <TermsOfUsePage 
+            cmsData={cmsData}
+            onOpenContact={handleOpenContactModal}
+          />
+        )}
+
+        {/* ========================================================= */}
+        {/* VIEW 8: LEGAL NOTICE (/legal) */}
+        {/* ========================================================= */}
+        {route.view === 'legal' && (
+          <LegalNoticePage 
+            cmsData={cmsData}
+            onOpenContact={handleOpenContactModal}
+          />
+        )}
+
+        {/* ========================================================= */}
+        {/* VIEW 9: INTERACTIVE SITE MAP (/sitemap) */}
+        {/* ========================================================= */}
+        {route.view === 'sitemap' && (
+          <SiteMapPage 
+            cmsData={cmsData}
+            onOpenContact={handleOpenContactModal}
+          />
+        )}
+
+        {/* ========================================================= */}
+        {/* VIEW 10: 404 NOT FOUND */}
         {/* ========================================================= */}
         {route.view === '404' && (
           <div className="min-h-[70vh] flex flex-col items-center justify-center p-6 text-center space-y-6">
