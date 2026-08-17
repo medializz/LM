@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { SiteSettings, NavigationItem } from '../types';
 import { LizzdoLogo } from './LizzdoLogo';
-import { MailboxIllustration3D } from './visuals/MailboxIllustration3D';
-import { Phone, Mail, AtSign, CheckCircle2, ArrowRight, ArrowUpRight, Sparkles, ExternalLink } from 'lucide-react';
+import { SuccessStoryIllustration3D } from './visuals/SuccessStoryIllustration3D';
+import { Phone, Mail, ArrowRight, Sparkles, ExternalLink } from 'lucide-react';
 import { navigateTo } from '../utils/router';
 
 interface FooterProps {
@@ -16,24 +16,7 @@ export const Footer: React.FC<FooterProps> = ({
   navigation = [],
   onOpenContact
 }) => {
-  const [email, setEmail] = useState('');
-  const [isSubscribed, setIsSubscribed] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
-
   const currentYear = new Date().getFullYear();
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email || !email.includes('@') || !email.includes('.')) {
-      setErrorMsg('Please enter a valid email address');
-      return;
-    }
-    setErrorMsg('');
-    setIsSubscribed(true);
-    setTimeout(() => {
-      setEmail('');
-    }, 4000);
-  };
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, href: string) => {
     e.preventDefault();
@@ -55,89 +38,82 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   return (
-    <footer className="relative z-20 overflow-hidden bg-[#07090e] pt-20 sm:pt-24 pb-12 sm:pb-16 text-slate-300 font-['Plus_Jakarta_Sans']">
+    <footer className="relative z-20 overflow-hidden bg-[#07090e] pt-12 sm:pt-16 pb-12 sm:pb-16 text-slate-300 font-['Plus_Jakarta_Sans']">
       
-      {/* Background Studio Lighting Glows - No Text in Background */}
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#ffbe1a]/[0.02] rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-900/[0.02] rounded-full blur-3xl pointer-events-none" />
+      {/* Ambient Lighting & Soft Glows */}
+      <div className="absolute top-24 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-[#ffbe1a]/[0.025] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-blue-900/[0.02] rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* ========================================================================= */}
-        {/* 1. FLOATING 2.5D NEWSLETTER CARD (OVERLAPPING TOP OF FOOTER CONTAINER) */}
+        {/* 1. OVERLAPPING 2.5D CTA BANNER (Exact Composition & Hierarchy of Reference Image) */}
         {/* ========================================================================= */}
-        <div className="relative z-20 max-w-5xl mx-auto mb-[-80px] sm:mb-[-100px] lg:mb-[-110px] px-2 sm:px-4">
-          <div className="relative rounded-[28px] sm:rounded-[36px] bg-gradient-to-r from-[#151926] via-[#10131d] to-[#0b0d14] text-white p-6 sm:p-8 md:p-10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_35px_rgba(255,190,26,0.12)] border border-[#ffbe1a]/30 overflow-hidden">
+        <div className="relative z-20 max-w-5xl mx-auto mb-[-70px] sm:mb-[-90px] lg:mb-[-100px] px-2 sm:px-4">
+          <div className="relative rounded-[28px] sm:rounded-[36px] bg-gradient-to-r from-[#171a24] via-[#12151e] to-[#0d0f16] text-white p-6 sm:p-8 md:p-10 lg:p-12 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_40px_rgba(255,190,26,0.12)] border border-white/[0.1] overflow-hidden">
             
-            {/* Top gold rim highlight */}
-            <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#ffbe1a]/60 to-transparent pointer-events-none" />
-            <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-[#ffbe1a]/[0.04] rounded-full blur-2xl pointer-events-none" />
+            {/* Subtle top golden light rim highlight */}
+            <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#ffbe1a]/70 to-transparent pointer-events-none" />
+            <div className="absolute -bottom-28 -right-28 w-80 h-80 bg-[#ffbe1a]/[0.04] rounded-full blur-3xl pointer-events-none" />
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
               
-              {/* Left Column: 2.5D / 3D Mailbox & Manila Envelope Illustration */}
+              {/* Left Column: 2.5D Soft 3D Envelope with Lizzdo Document + Gold Championship Trophy */}
               <div className="md:col-span-5 flex items-center justify-center -my-6 sm:-my-8 md:-my-10">
-                <div className="w-full max-w-[260px] sm:max-w-[320px] md:max-w-[340px] h-[190px] sm:h-[220px] md:h-[240px]">
-                  <MailboxIllustration3D theme="gold" />
+                <div className="w-full max-w-[300px] sm:max-w-[360px] md:max-w-[380px] h-[210px] sm:h-[240px] md:h-[260px]">
+                  <SuccessStoryIllustration3D companyName={siteSettings.siteName || "Lizzdo Media"} />
                 </div>
               </div>
 
-              {/* Right Column: Newsletter Copy & Input Field */}
+              {/* Right Column: Branded CTA Copy & Action Buttons */}
               <div className="md:col-span-7 space-y-4 text-left">
-                <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#ffbe1a]/10 border border-[#ffbe1a]/30 text-[#ffbe1a] text-[10px] font-mono font-bold uppercase tracking-wider">
-                  <Sparkles className="w-3 h-3" />
-                  <span>AGENCY NEWSLETTER</span>
-                </div>
-
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-black font-['Outfit'] text-white leading-tight tracking-tight drop-shadow-sm">
-                  Subscribe to our newsletter for the latest updates and insights.
+                
+                {/* Headline */}
+                <h3 className="text-2xl sm:text-3xl lg:text-[34px] font-black font-['Outfit'] text-white leading-tight tracking-tight drop-shadow-sm">
+                  Let’s Begin Your Success Story Together.
                 </h3>
 
-                {/* Email Form */}
-                <form onSubmit={handleSubscribe} className="space-y-2 pt-1">
-                  <div className="relative flex items-center bg-white/[0.06] backdrop-blur-md rounded-full border border-white/20 focus-within:border-[#ffbe1a] focus-within:bg-white/[0.09] transition-all shadow-inner p-1.5">
-                    <div className="pl-3.5 pr-2 text-[#ffbe1a]">
-                      <AtSign className="w-4 h-4" />
-                    </div>
-                    
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Enter your corporate email..."
-                      className="w-full bg-transparent text-white placeholder-slate-400 text-xs sm:text-sm font-medium focus:outline-none pr-3"
-                      aria-label="Email address for newsletter"
-                    />
-
-                    <button
-                      type="submit"
-                      className="shrink-0 px-5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-[#ffbe1a] hover:bg-[#e5a93c] text-black font-extrabold text-xs sm:text-sm font-['Outfit'] transition-all duration-200 cursor-pointer shadow-md hover:shadow-[0_0_20px_rgba(255,190,26,0.3)] active:scale-95 flex items-center gap-1.5"
-                    >
-                      {isSubscribed ? (
-                        <>
-                          <CheckCircle2 className="w-4 h-4 text-black" />
-                          <span>Subscribed!</span>
-                        </>
-                      ) : (
-                        <span>Subscribe</span>
-                      )}
-                    </button>
-                  </div>
-
-                  {errorMsg && (
-                    <p className="text-xs text-rose-300 font-medium pl-3">{errorMsg}</p>
-                  )}
-                  {isSubscribed && (
-                    <p className="text-xs text-[#ffbe1a] font-medium pl-3 flex items-center gap-1">
-                      <Sparkles className="w-3.5 h-3.5" />
-                      <span>Thank you for joining the {siteSettings.siteName} newsletter!</span>
-                    </p>
-                  )}
-                </form>
-
-                <p className="text-[11px] sm:text-xs text-slate-400 leading-relaxed">
-                  Stay ahead with curated design trends, technical case studies, and creative strategies from {siteSettings.siteName}.
+                {/* Description */}
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-['Plus_Jakarta_Sans'] max-w-xl">
+                  Discover how {siteSettings.siteName} can accelerate your professional growth, elevate your brand presence, and help you thrive. Share your goals with us and let's explore the possibilities.
                 </p>
+
+                {/* Primary and Secondary Pill Buttons */}
+                <div className="flex flex-wrap items-center gap-3.5 pt-2">
+                  
+                  {/* Primary Button: Explore Opportunities (Gold Glowing Pill) */}
+                  <button
+                    onClick={() => navigateTo('/work')}
+                    className="px-6 sm:px-7 py-3 rounded-full bg-gradient-to-r from-[#ffbe1a] to-[#f5b318] hover:from-[#ffc83b] hover:to-[#e5a20e] text-black font-extrabold text-xs sm:text-sm font-['Outfit'] transition-all duration-200 cursor-pointer shadow-[0_0_25px_rgba(255,190,26,0.45)] hover:shadow-[0_0_35px_rgba(255,190,26,0.6)] active:scale-95 flex items-center gap-2"
+                  >
+                    <span>Explore Opportunities</span>
+                    <ArrowRight className="w-4 h-4 text-black" />
+                  </button>
+
+                  {/* Secondary Button: WhatsApp Us (Pill with WhatsApp/Message Icon) */}
+                  <a
+                    href={siteSettings.whatsappNumber ? `https://wa.me/${siteSettings.whatsappNumber.replace(/[^0-9]/g, '')}` : '#contact'}
+                    onClick={(e) => {
+                      if (!siteSettings.whatsappNumber) {
+                        e.preventDefault();
+                        onOpenContact?.();
+                      }
+                    }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-5 sm:px-6 py-3 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/20 hover:border-[#25D366]/60 text-white font-bold text-xs sm:text-sm font-['Outfit'] transition-all duration-200 cursor-pointer flex items-center gap-2.5 active:scale-95 backdrop-blur-sm group"
+                  >
+                    {/* WhatsApp / Message Icon */}
+                    <div className="w-5 h-5 rounded-full bg-[#25D366]/20 border border-[#25D366]/40 flex items-center justify-center text-[#25D366] group-hover:bg-[#25D366] group-hover:text-black transition-colors shrink-0">
+                      <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                      </svg>
+                    </div>
+                    <span>WhatsApp us</span>
+                  </a>
+
+                </div>
+
               </div>
 
             </div>
@@ -146,11 +122,11 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         {/* ========================================================================= */}
-        {/* 2. MAIN FOOTER DARK ROUNDED CONTAINER */}
+        {/* 2. MAIN FOOTER DARK CONTAINER */}
         {/* ========================================================================= */}
         <div className="relative rounded-[32px] sm:rounded-[40px] bg-[#10131d] border border-white/[0.08] pt-28 sm:pt-36 lg:pt-40 pb-8 sm:pb-10 px-6 sm:px-10 lg:px-14 shadow-[0_20px_50px_rgba(0,0,0,0.95)] overflow-hidden">
           
-          {/* Subtle container ambient border */}
+          {/* Subtle container top border accent */}
           <div className="absolute top-0 inset-x-12 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-white/[0.08]">

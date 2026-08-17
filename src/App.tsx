@@ -6,13 +6,11 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { ServiceStrip } from './components/ServiceStrip';
 import { FeatureStrip } from './components/FeatureStrip';
 import { ServicesSection } from './components/body/ServicesSection';
 import { ProcessSection } from './components/body/ProcessSection';
 import { FeaturedWorkSection } from './components/body/FeaturedWorkSection';
 import { WhyChooseUsSection } from './components/body/WhyChooseUsSection';
-import { BodyCtaSection } from './components/body/BodyCtaSection';
 import { Footer } from './components/Footer';
 import { ServiceDetailModal } from './components/ServiceDetailModal';
 import { ContactModal } from './components/ContactModal';
@@ -128,13 +126,6 @@ export default function App() {
               }}
             />
 
-            {/* SERVICE CATEGORY STRIP (PHASE 1) */}
-            <ServiceStrip 
-              services={cmsData.services}
-              activeServiceSlug={undefined}
-              onSelectService={handleSelectService}
-            />
-
             {/* FEATURE / VALUE STRIP (PHASE 1) */}
             <FeatureStrip 
               features={cmsData.features}
@@ -166,13 +157,6 @@ export default function App() {
               statistics={cmsData.statistics || []}
               testimonials={cmsData.testimonials || []}
               onCtaClick={() => handleOpenContactModal()}
-            />
-
-            {/* SECTION E: FINAL BODY CTA */}
-            <BodyCtaSection 
-              content={cmsData.bodyCta || {}}
-              whatsappNumber={cmsData.siteSettings.whatsappNumber}
-              onOpenContact={() => handleOpenContactModal()}
             />
           </>
         )}
