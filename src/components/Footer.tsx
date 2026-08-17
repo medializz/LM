@@ -51,22 +51,22 @@ export const Footer: React.FC<FooterProps> = ({
         {/* ========================================================================= */}
         {/* 1. OVERLAPPING 2.5D CTA BANNER (Exact Composition & Hierarchy of Reference Image) */}
         {/* ========================================================================= */}
-        <div className="relative z-20 max-w-5xl mx-auto mb-[-70px] sm:mb-[-90px] lg:mb-[-100px] px-2 sm:px-4">
+        <div className="relative z-20 max-w-5xl mx-auto mb-[-50px] sm:mb-[-80px] lg:mb-[-100px] px-2 sm:px-4">
           <div 
             onMouseEnter={() => setIsCtaHovered(true)}
             onMouseLeave={() => setIsCtaHovered(false)}
-            className="relative rounded-[28px] sm:rounded-[36px] bg-gradient-to-r from-[#171a24] via-[#12151e] to-[#0d0f16] text-white p-6 sm:p-8 md:p-10 lg:p-12 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_40px_rgba(255,190,26,0.12)] border border-white/[0.1] overflow-hidden group/cta transition-all duration-300 hover:border-white/[0.18]"
+            className="relative rounded-[24px] xs:rounded-[28px] sm:rounded-[36px] bg-gradient-to-r from-[#171a24] via-[#12151e] to-[#0d0f16] text-white p-5 xs:p-6 sm:p-8 md:p-10 lg:p-12 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_40px_rgba(255,190,26,0.12)] border border-white/[0.1] overflow-hidden group/cta transition-all duration-300 hover:border-white/[0.18]"
           >
             
             {/* Subtle top golden light rim highlight */}
             <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#ffbe1a]/70 to-transparent pointer-events-none" />
             <div className="absolute -bottom-28 -right-28 w-80 h-80 bg-[#ffbe1a]/[0.04] rounded-full blur-3xl pointer-events-none" />
 
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 md:gap-8 items-center">
               
               {/* Left Column: 2.5D Soft 3D Envelope with Lizzdo Document + Gold Championship Trophy */}
-              <div className="md:col-span-5 flex items-center justify-center -my-6 sm:-my-8 md:-my-10">
-                <div className="w-full max-w-[300px] sm:max-w-[360px] md:max-w-[380px] h-[210px] sm:h-[240px] md:h-[260px]">
+              <div className="md:col-span-5 flex items-center justify-center -my-3 xs:-my-5 sm:-my-8 md:-my-10">
+                <div className="w-full max-w-[270px] xs:max-w-[310px] sm:max-w-[360px] md:max-w-[380px] h-[190px] xs:h-[215px] sm:h-[240px] md:h-[260px] flex items-center justify-center">
                   <SuccessStoryIllustration3D 
                     companyName={siteSettings.siteName || "Lizzdo Media"} 
                     forceOpen={isCtaHovered || undefined}
@@ -75,10 +75,10 @@ export const Footer: React.FC<FooterProps> = ({
               </div>
 
               {/* Right Column: Branded CTA Copy & Action Buttons */}
-              <div className="md:col-span-7 space-y-4 text-left">
+              <div className="md:col-span-7 space-y-3.5 sm:space-y-4 text-center md:text-left flex flex-col items-center md:items-start">
                 
                 {/* Headline */}
-                <h3 className="text-2xl sm:text-3xl lg:text-[34px] font-black font-['Outfit'] text-white leading-tight tracking-tight drop-shadow-sm">
+                <h3 className="text-xl xs:text-2xl sm:text-3xl lg:text-[34px] font-black font-['Outfit'] text-white leading-tight tracking-tight drop-shadow-sm">
                   Let’s Begin Your Success Story Together.
                 </h3>
 
@@ -87,16 +87,16 @@ export const Footer: React.FC<FooterProps> = ({
                   Discover how {siteSettings.siteName} can accelerate your professional growth, elevate your brand presence, and help you thrive. Share your goals with us and let's explore the possibilities.
                 </p>
 
-                {/* Primary and Secondary Pill Buttons */}
-                <div className="flex flex-wrap items-center gap-3.5 pt-2">
+                {/* Primary and Secondary Pill Buttons (Optimized for 44px+ touch targets on mobile) */}
+                <div className="flex flex-col xs:flex-row items-stretch xs:items-center justify-center md:justify-start gap-3 pt-2 w-full xs:w-auto">
                   
                   {/* Primary Button: Explore Opportunities (Gold Glowing Pill) */}
                   <button
                     onClick={() => navigateTo('/work')}
-                    className="px-6 sm:px-7 py-3 rounded-full bg-gradient-to-r from-[#ffbe1a] to-[#f5b318] hover:from-[#ffc83b] hover:to-[#e5a20e] text-black font-extrabold text-xs sm:text-sm font-['Outfit'] transition-all duration-200 cursor-pointer shadow-[0_0_25px_rgba(255,190,26,0.45)] hover:shadow-[0_0_35px_rgba(255,190,26,0.6)] active:scale-95 flex items-center gap-2"
+                    className="min-h-[44px] px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-gradient-to-r from-[#ffbe1a] to-[#f5b318] hover:from-[#ffc83b] hover:to-[#e5a20e] text-black font-extrabold text-xs sm:text-sm font-['Outfit'] transition-all duration-200 cursor-pointer shadow-[0_0_25px_rgba(255,190,26,0.45)] hover:shadow-[0_0_35px_rgba(255,190,26,0.6)] active:scale-95 flex items-center justify-center gap-2"
                   >
                     <span>Explore Opportunities</span>
-                    <ArrowRight className="w-4 h-4 text-black" />
+                    <ArrowRight className="w-4 h-4 text-black shrink-0" />
                   </button>
 
                   {/* Secondary Button: WhatsApp Us (Pill with WhatsApp/Message Icon) */}
@@ -110,7 +110,7 @@ export const Footer: React.FC<FooterProps> = ({
                     }}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-5 sm:px-6 py-3 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/20 hover:border-[#25D366]/60 text-white font-bold text-xs sm:text-sm font-['Outfit'] transition-all duration-200 cursor-pointer flex items-center gap-2.5 active:scale-95 backdrop-blur-sm group"
+                    className="min-h-[44px] px-5 sm:px-6 py-3 sm:py-3.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/20 hover:border-[#25D366]/60 text-white font-bold text-xs sm:text-sm font-['Outfit'] transition-all duration-200 cursor-pointer flex items-center justify-center gap-2.5 active:scale-95 backdrop-blur-sm group"
                   >
                     {/* WhatsApp / Message Icon */}
                     <div className="w-5 h-5 rounded-full bg-[#25D366]/20 border border-[#25D366]/40 flex items-center justify-center text-[#25D366] group-hover:bg-[#25D366] group-hover:text-black transition-colors shrink-0">
@@ -133,7 +133,7 @@ export const Footer: React.FC<FooterProps> = ({
         {/* ========================================================================= */}
         {/* 2. MAIN FOOTER DARK CONTAINER */}
         {/* ========================================================================= */}
-        <div className="relative rounded-[32px] sm:rounded-[40px] bg-[#10131d] border border-white/[0.08] pt-28 sm:pt-36 lg:pt-40 pb-8 sm:pb-10 px-6 sm:px-10 lg:px-14 shadow-[0_20px_50px_rgba(0,0,0,0.95)] overflow-hidden">
+        <div className="relative rounded-[28px] xs:rounded-[32px] sm:rounded-[40px] bg-[#10131d] border border-white/[0.08] pt-20 sm:pt-32 lg:pt-40 pb-8 sm:pb-10 px-5 sm:px-10 lg:px-14 shadow-[0_20px_50px_rgba(0,0,0,0.95)] overflow-hidden">
           
           {/* Subtle container top border accent */}
           <div className="absolute top-0 inset-x-12 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />

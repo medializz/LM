@@ -13,11 +13,39 @@ export const SuccessStoryIllustration3D: React.FC<SuccessStoryIllustration3DProp
   forceOpen
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [hasScrolledIn, setHasScrolledIn] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const activeOpen = Boolean(forceOpen || isOpen);
+  // Mobile / Viewport Scroll Auto-Trigger:
+  // When scrolled into view on mobile/tablet, smoothly animate open to delight the user
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') return;
 
-  const handleToggle = (e: React.MouseEvent) => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.35) {
+            if (!hasScrolledIn) {
+              setHasScrolledIn(true);
+              setIsOpen(true);
+            }
+          }
+        });
+      },
+      {
+        threshold: [0.35],
+        rootMargin: '0px 0px -20px 0px'
+      }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [hasScrolledIn]);
+
+  const activeOpen = forceOpen !== undefined ? forceOpen : isOpen;
+
+  const handleToggle = (e: React.MouseEvent | React.TouchEvent) => {
     e.stopPropagation();
     setIsOpen((prev) => !prev);
   };
@@ -27,17 +55,30 @@ export const SuccessStoryIllustration3D: React.FC<SuccessStoryIllustration3DProp
       ref={containerRef}
       id="cta-envelope-3d-interactive"
       onClick={handleToggle}
+      onTouchEnd={(e) => {
+        // Prevent ghost click double-triggering
+        e.preventDefault();
+        handleToggle(e);
+      }}
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
-      className={`relative flex items-center justify-center select-none cursor-pointer group/envelope transition-transform duration-300 active:scale-[0.98] ${className}`}
-      title="Click or hover to open/close letter"
+      className={`relative flex flex-col items-center justify-center select-none cursor-pointer group/envelope transition-transform duration-300 active:scale-[0.98] ${className}`}
+      title="Tap or hover to open/close letter"
       aria-label="Interactive 3D Envelope with Letter & Trophy"
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          setIsOpen((prev) => !prev);
+        }
+      }}
     >
       <svg
         viewBox="0 0 540 380"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full max-w-[540px] drop-shadow-[0_20px_40px_rgba(0,0,0,0.7)] overflow-visible"
+        className="w-full h-full max-w-[540px] drop-shadow-[0_15px_35px_rgba(0,0,0,0.65)] overflow-visible touch-manipulation"
       >
         <defs>
           {/* ========================================================================= */}
