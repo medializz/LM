@@ -1,0 +1,145 @@
+backend:
+  name: github
+  repo: lizzdo/media
+  branch: main
+  site_domain: media.lizzdo.com
+
+# When running locally or during development:
+local_backend: true
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "settings"
+    label: "Site Settings"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "general"
+        label: "General Settings & Header"
+        file: "src/content/settings.json"
+        fields:
+          - { label: "Site Name", name: "siteName", widget: "string", default: "Lizzdo Media" }
+          - { label: "Tagline", name: "tagline", widget: "string", default: "Creative & Digital Agency" }
+          - { label: "Master Logo (SVG/Image)", name: "logo", widget: "image", default: "/uploads/lizzdo-media-logo.svg", required: false }
+          - { label: "Logo for Dark Background", name: "logoDark", widget: "image", default: "/uploads/lizzdo-media-logo.svg", required: false }
+          - { label: "Logo for Light Background", name: "logoLight", widget: "image", default: "/uploads/lizzdo-media-logo-light.svg", required: false }
+          - { label: "Logo Mark / Icon", name: "logoMark", widget: "image", default: "/uploads/lizzdo-media-mark.svg", required: false }
+          - { label: "Favicon", name: "favicon", widget: "image", default: "/uploads/lizzdo-media-mark.svg", required: false }
+          - { label: "Contact Email", name: "contactEmail", widget: "string", default: "lizzdostudio@gmail.com" }
+          - { label: "Header CTA Text", name: "primaryCtaText", widget: "string", default: "Let's Talk" }
+          - { label: "Header CTA URL", name: "primaryCtaUrl", widget: "string", default: "#contact" }
+          - { label: "Parent Company URL", name: "parentCompanyUrl", widget: "string", default: "https://lizzdo.com/" }
+          - { label: "Current Domain", name: "currentDomain", widget: "string", default: "https://media.lizzdo.com/" }
+
+      - name: "hero"
+        label: "Hero Section"
+        file: "src/content/hero.json"
+        fields:
+          - { label: "Hero Eyebrow", name: "eyebrow", widget: "string", default: "Creative & Digital Agency" }
+          - { label: "Headline Line 1", name: "headlineLine1", widget: "string", default: "Design. Build." }
+          - { label: "Headline Line 2 Prefix", name: "headlineLine2Prefix", widget: "string", default: "Grow. " }
+          - { label: "Headline Highlighted Word", name: "headlineHighlightedWord", widget: "string", default: "Together." }
+          - { label: "Hero Description", name: "description", widget: "text", default: "We help brands stand out and grow with creative design, powerful websites, and result-driven digital solutions." }
+          - { label: "Primary CTA Label", name: "primaryCtaText", widget: "string", default: "Explore Our Work" }
+          - { label: "Primary CTA URL", name: "primaryCtaUrl", widget: "string", default: "#work" }
+
+  - name: "services"
+    label: "Services (What We Do)"
+    folder: "src/content/services"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Service Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Category", name: "category", widget: "string" }
+      - { label: "Icon Identifier", name: "iconKey", widget: "string" }
+      - { label: "Short Description", name: "shortDescription", widget: "text" }
+      - { label: "Display Order", name: "order", widget: "number", value_type: "int" }
+      - { label: "Featured", name: "featured", widget: "boolean", default: true }
+
+  - name: "process"
+    label: "Our Process"
+    folder: "src/content/process"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Step Number (e.g. 01)", name: "stepNumber", widget: "string" }
+      - { label: "Step Title", name: "title", widget: "string" }
+      - { label: "Icon Identifier", name: "iconKey", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Order", name: "order", widget: "number", value_type: "int" }
+
+  - name: "portfolio"
+    label: "Featured Work / Portfolio"
+    folder: "src/content/portfolio"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Project Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Category", name: "category", widget: "string" }
+      - { label: "Short Category Label", name: "shortCategory", widget: "string" }
+      - { label: "Project Description", name: "description", widget: "text" }
+      - { label: "Project Image / Mockup", name: "image", widget: "image", required: false }
+      - { label: "Display Order", name: "order", widget: "number", value_type: "int" }
+      - { label: "Featured on Homepage", name: "featured", widget: "boolean", default: true }
+
+  - name: "whyChooseUs"
+    label: "Why Choose Us Section"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "content"
+        label: "Section Copy & CTA"
+        file: "src/content/why-choose-us.json"
+        fields:
+          - { label: "Eyebrow", name: "eyebrow", widget: "string", default: "WHY CHOOSE US" }
+          - { label: "Heading Prefix", name: "headingPrefix", widget: "string", default: "Why Brands Choose " }
+          - { label: "Heading Highlight", name: "headingHighlight", widget: "string", default: "Lizzdo Media" }
+          - { label: "Description", name: "description", widget: "text", default: "We combine creativity, strategy, and technology to deliver exceptional results that help brands grow faster and stronger." }
+          - { label: "CTA Button Text", name: "ctaText", widget: "string", default: "Let's Work Together" }
+          - { label: "CTA Button URL", name: "ctaUrl", widget: "string", default: "#contact" }
+
+  - name: "statistics"
+    label: "Statistics"
+    folder: "src/content/statistics"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Value (e.g. 250+)", name: "value", widget: "string" }
+      - { label: "Label (e.g. Happy Clients)", name: "label", widget: "string" }
+      - { label: "Sublabel", name: "sublabel", widget: "string" }
+      - { label: "Icon Identifier", name: "iconKey", widget: "string" }
+      - { label: "Order", name: "order", widget: "number", value_type: "int" }
+
+  - name: "testimonials"
+    label: "Testimonials"
+    folder: "src/content/testimonials"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Quote", name: "quote", widget: "text" }
+      - { label: "Author Name", name: "author", widget: "string" }
+      - { label: "Role / Position", name: "role", widget: "string" }
+      - { label: "Company", name: "company", widget: "string" }
+      - { label: "Avatar Image", name: "avatar", widget: "image", required: false }
+
+  - name: "bodyCta"
+    label: "Final Body CTA"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "cta"
+        label: "Final CTA Settings"
+        file: "src/content/body-cta.json"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string", default: "Let's Build Something Great Together." }
+          - { label: "Description", name: "description", widget: "text", default: "Have a project in mind? Tell us what you need and let's create something that moves your brand forward." }
+          - { label: "CTA Button Label", name: "ctaText", widget: "string", default: "Let's Talk" }
+          - { label: "CTA Button URL", name: "ctaUrl", widget: "string", default: "#contact" }
+

@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" fill="none">
+  <defs>
+    <!-- Main 3D Glossy Gold Gradient -->
+    <linearGradient id="lzLogoGoldBody" x1="20%" y1="10%" x2="80%" y2="90%">
+      <stop offset="0%" stop-color="#FFF266" />
+      <stop offset="25%" stop-color="#FFCE00" />
+      <stop offset="60%" stop-color="#FF9E00" />
+      <stop offset="100%" stop-color="#E85D04" />
+    </linearGradient>
+
+    <!-- Warm Orange Rim Glow for 3D Depth -->
+    <linearGradient id="lzLogoRimOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF7A00" />
+      <stop offset="50%" stop-color="#FF9500" />
+      <stop offset="100%" stop-color="#D04000" />
+    </linearGradient>
+
+    <!-- Diagonal Bar Gradient -->
+    <linearGradient id="lzLogoDiagBar" x1="0%" y1="70%" x2="100%" y2="30%">
+      <stop offset="0%" stop-color="#FF9900" />
+      <stop offset="35%" stop-color="#FFC700" />
+      <stop offset="70%" stop-color="#FFDE43" />
+      <stop offset="100%" stop-color="#FFA800" />
+    </linearGradient>
+
+    <!-- Dot Gradient -->
+    <radialGradient id="lzLogoDotGrad" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#FFF599" />
+      <stop offset="40%" stop-color="#FFBE00" />
+      <stop offset="85%" stop-color="#FF8800" />
+      <stop offset="100%" stop-color="#DE4E00" />
+    </radialGradient>
+
+    <!-- Capsule Gradient -->
+    <linearGradient id="lzLogoCapsuleGrad" x1="0%" y1="20%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFE633" />
+      <stop offset="45%" stop-color="#FFAE00" />
+      <stop offset="100%" stop-color="#E85000" />
+    </linearGradient>
+
+    <!-- Specular Highlight -->
+    <linearGradient id="lzLogoSpecular" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.85" />
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Scaled & Positioned 3D Mark on Left -->
+  <g transform="translate(6, 6) scale(0.068)">
+    <!-- 1. DELTA CHEVRON -->
+    <path 
+      d="M 215 65 C 140 65 105 110 105 195 L 105 805 C 105 890 145 930 220 930 C 285 930 330 875 350 815 L 350 720 C 325 760 295 780 260 780 C 225 780 205 760 205 700 L 205 270 C 205 230 225 210 265 210 C 290 210 320 225 355 250 L 615 425 C 655 450 670 435 660 400 L 620 355 C 600 330 575 310 540 285 L 280 95 C 255 75 235 65 215 65 Z" 
+      fill="url(#lzLogoRimOrange)" 
+    />
+    <path 
+      d="M 215 70 C 148 70 115 112 115 195 L 115 805 C 115 880 150 920 220 920 C 275 920 318 870 338 815 L 338 725 C 315 760 288 775 258 775 C 230 775 215 755 215 700 L 215 270 C 215 235 230 218 268 218 C 292 218 322 232 355 255 L 610 425 C 645 448 655 435 645 405 L 610 360 C 592 335 568 316 535 292 L 278 100 C 255 80 235 70 215 70 Z" 
+      fill="url(#lzLogoGoldBody)" 
+    />
+    <path 
+      d="M 215 80 C 160 80 130 115 130 195 L 130 790 C 130 810 125 800 120 780 L 120 200 C 120 130 150 95 210 95 L 515 300 C 555 328 580 348 595 365 L 580 350 C 560 330 535 310 495 285 L 265 110 C 245 92 230 80 215 80 Z" 
+      fill="url(#lzLogoSpecular)" 
+    />
+
+    <!-- 2. DIAGONAL BAR -->
+    <path 
+      d="M 270 705 L 840 360 C 890 330 930 365 910 415 C 895 450 860 480 815 508 L 245 850 C 200 878 165 845 185 795 C 200 758 232 728 270 705 Z" 
+      fill="url(#lzLogoRimOrange)" 
+    />
+    <path 
+      d="M 275 708 L 838 368 C 882 342 918 372 900 415 C 888 445 855 474 815 498 L 252 840 C 210 865 178 838 195 795 C 208 762 238 732 275 708 Z" 
+      fill="url(#lzLogoDiagBar)" 
+    />
+    <path 
+      d="M 285 715 L 830 380 C 860 362 880 375 870 400 L 310 740 C 275 760 245 770 230 780 C 225 765 245 740 285 715 Z" 
+      fill="url(#lzLogoSpecular)" 
+    />
+
+    <!-- 3. GLOSSY CIRCULAR DOT -->
+    <ellipse cx="808" cy="710" rx="112" ry="94" fill="url(#lzLogoRimOrange)" />
+    <ellipse cx="806" cy="706" rx="106" ry="88" fill="url(#lzLogoDotGrad)" />
+    <ellipse cx="780" cy="670" rx="60" ry="32" transform="rotate(-15 780 670)" fill="url(#lzLogoSpecular)" />
+
+    <!-- 4. HORIZONTAL CAPSULE PILL -->
+    <rect x="435" y="790" width="280" height="135" rx="67.5" fill="url(#lzLogoRimOrange)" />
+    <rect x="438" y="786" width="274" height="128" rx="64" fill="url(#lzLogoCapsuleGrad)" />
+    <path 
+      d="M 505 800 L 645 800 C 685 800 700 812 690 828 C 675 840 650 845 615 845 L 510 845 C 470 845 455 832 465 818 C 475 806 490 800 505 800 Z" 
+      fill="url(#lzLogoSpecular)" 
+    />
+  </g>
+
+  <!-- Typography: LIZZDO MEDIA -->
+  <text x="82" y="44" fill="#ffffff" font-family="'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif" font-size="33" font-weight="900" letter-spacing="-0.5">LIZZDO</text>
+  <text x="84" y="65" fill="#cbd5e1" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="13" font-weight="800" letter-spacing="5">MEDIA</text>
+</svg>
