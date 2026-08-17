@@ -25,13 +25,13 @@ export const HeroGraphicComposition: React.FC<HeroGraphicCompositionProps> = ({ 
       {/* 1. AMBIENT BACKDROP GLOW & GOLD SPLASH TEXTURE */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Soft Gold Radial Glow */}
-        <div className="absolute top-[8%] right-[15%] w-[320px] h-[280px] rounded-full bg-[#ffbe1a]/18 blur-[70px]" />
+        <div className="absolute top-[8%] right-[15%] w-[300px] h-[260px] rounded-full ambient-glow-gold pointer-events-none" />
         {/* Deep Violet / Purple Ambient Glow */}
-        <div className="absolute bottom-[10%] right-[10%] w-[260px] h-[260px] rounded-full bg-purple-600/15 blur-[70px]" />
+        <div className="absolute bottom-[10%] right-[10%] w-[240px] h-[240px] rounded-full ambient-glow-purple pointer-events-none" />
         
         {/* Dynamic Golden Paint/Brush Splash Graphic */}
         <svg 
-          className="absolute top-[2%] left-[10%] w-[82%] h-[68%] opacity-95 filter drop-shadow-[0_0_22px_rgba(255,190,26,0.35)] pointer-events-none"
+          className="absolute top-[2%] left-[10%] w-[82%] h-[68%] opacity-95 pointer-events-none"
           viewBox="0 0 500 300" 
           fill="none" 
           xmlns="http://www.w3.org/2000/svg"
@@ -71,9 +71,7 @@ export const HeroGraphicComposition: React.FC<HeroGraphicCompositionProps> = ({ 
       <VectorArrowGuide className="absolute top-[4%] left-[6%] w-[42%] h-[32%] z-15 pointer-events-none" />
 
       {/* 3. TOP FLOATING 3D GOLD SPHERE */}
-      <motion.div 
-        animate={{ y: [0, -6, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      <div 
         className="absolute top-[0%] left-[40%] w-7 h-7 sm:w-8 sm:h-8 rounded-full z-20 shadow-[0_6px_16px_rgba(0,0,0,0.6)] pointer-events-none"
         style={{
           background: "radial-gradient(circle at 35% 35%, #fff5a6 0%, #ffbe1a 45%, #b47400 85%, #4a2e00 100%)"
@@ -81,9 +79,7 @@ export const HeroGraphicComposition: React.FC<HeroGraphicCompositionProps> = ({ 
       />
 
       {/* 4. FLOATING 3D PURPLE SPHERE (Balanced mid-right) */}
-      <motion.div 
-        animate={{ y: [0, 6, 0] }}
-        transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+      <div 
         className="absolute top-[8%] right-[24%] w-4.5 h-4.5 sm:w-5.5 sm:h-5.5 rounded-full z-22 shadow-[0_8px_18px_rgba(0,0,0,0.7)] pointer-events-none"
         style={{
           background: "radial-gradient(circle at 35% 35%, #d8b4fe 0%, #a855f7 50%, #6b21a8 85%, #3b0764 100%)"

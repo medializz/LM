@@ -19,17 +19,16 @@ export const WebDevelopmentComposition: React.FC<WebDevelopmentCompositionProps>
     <div
       className={`relative w-full h-full min-h-[220px] bg-gradient-to-br from-[#06080d] via-[#0b1018] to-[#040609] overflow-hidden flex items-center justify-center p-3 sm:p-5 select-none ${className}`}
     >
-      {/* 1. Cybernetic Tech Lighting & Blueprint Grid */}
-      <div className="absolute inset-0 bg-[radial-gradient(#10b98114_1px,transparent_1px)] [background-size:20px_20px] opacity-40 pointer-events-none" />
-      <div className="absolute -top-16 -left-16 w-64 h-64 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-[#ffbe1a]/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-blue-600/[0.04] rounded-full blur-2xl pointer-events-none" />
+      {/* 1. Cybernetic Tech Lighting & Clean Overlay */}
+      <div className="absolute inset-0 bg-emerald-500/[0.02] pointer-events-none" />
+      <div className="absolute -top-12 -left-12 w-48 h-48 rounded-full ambient-glow-emerald pointer-events-none" />
+      <div className="absolute -bottom-12 -right-12 w-48 h-48 rounded-full ambient-glow-gold pointer-events-none" />
 
       {/* 2. Main 3D Composition Stage */}
       <div className="relative w-full max-w-[540px] h-[210px] sm:h-[250px] md:h-[280px] flex items-center justify-center">
 
         {/* --- OBJECT 1 (CENTER-HERO): Sleek MacBook Pro / Desktop Web Application Frame --- */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-[56%] -translate-y-[52%] w-[250px] sm:w-[320px] md:w-[370px] h-[150px] sm:h-[190px] md:h-[215px] rounded-2xl bg-gradient-to-br from-[#121624] via-[#0c0f18] to-[#06080d] border-2 border-emerald-500/30 shadow-[0_25px_60px_rgba(0,0,0,0.98),0_0_30px_rgba(16,185,129,0.2)] rotate-[-4deg] transform transition-transform duration-700 group-hover:rotate-[-2deg] p-2.5 sm:p-3.5 flex flex-col justify-between z-20 overflow-hidden">
+        <div className="absolute left-1/2 top-1/2 -translate-x-[56%] -translate-y-[52%] w-[250px] sm:w-[320px] md:w-[370px] h-[150px] sm:h-[190px] md:h-[215px] rounded-2xl bg-[#0c101a] border-2 border-emerald-500/30 shadow-[0_20px_50px_rgba(0,0,0,0.95)] rotate-[-4deg] transform transition-transform duration-700 group-hover:rotate-[-2deg] p-2.5 sm:p-3.5 flex flex-col justify-between z-20 overflow-hidden">
           
           {/* Top Browser Bar */}
           <div className="flex items-center justify-between border-b border-white/[0.08] pb-1.5 z-10">
@@ -37,7 +36,7 @@ export const WebDevelopmentComposition: React.FC<WebDevelopmentCompositionProps>
               <span className="w-2 h-2 rounded-full bg-red-400/90" />
               <span className="w-2 h-2 rounded-full bg-amber-400/90" />
               <span className="w-2 h-2 rounded-full bg-emerald-400/90" />
-              <div className="bg-black/60 border border-white/10 px-2 py-0.5 rounded text-[7px] sm:text-[8px] font-mono text-emerald-300 ml-1.5 flex items-center gap-1.5">
+              <div className="bg-black/80 border border-white/10 px-2 py-0.5 rounded text-[7px] sm:text-[8px] font-mono text-emerald-300 ml-1.5 flex items-center gap-1.5">
                 <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
                 <span className="text-white/80">nexus.lizzdo.dev</span>
               </div>
@@ -50,7 +49,7 @@ export const WebDevelopmentComposition: React.FC<WebDevelopmentCompositionProps>
           {/* Web App Layout Preview */}
           <div className="grid grid-cols-12 gap-2 my-1 z-10 flex-1 items-center">
             {/* Sidebar */}
-            <div className="col-span-3 h-full bg-[#161c2e]/80 rounded-xl p-1.5 border border-white/5 flex flex-col justify-between text-[6px] font-mono text-slate-400">
+            <div className="col-span-3 h-full bg-[#161c2e] rounded-xl p-1.5 border border-white/5 flex flex-col justify-between text-[6px] font-mono text-slate-400">
               <div className="space-y-1">
                 <div className="flex items-center gap-1 mb-1">
                   <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
@@ -99,7 +98,7 @@ export const WebDevelopmentComposition: React.FC<WebDevelopmentCompositionProps>
         </div>
 
         {/* --- OBJECT 2 (TOP-LEFT FLOATING CODE TOKEN CARD): Syntax Highlighted TypeScript --- */}
-        <div className="absolute left-1 sm:left-3 top-1 sm:top-2 w-[125px] sm:w-[155px] md:w-[175px] bg-[#0c101d]/95 backdrop-blur-xl border border-emerald-400/40 p-2 sm:p-2.5 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.9),0_0_20px_rgba(16,185,129,0.25)] rotate-[-8deg] transform transition-transform duration-700 group-hover:rotate-[-4deg] group-hover:scale-105 z-30">
+        <div className="absolute left-1 sm:left-3 top-1 sm:top-2 w-[125px] sm:w-[155px] md:w-[175px] bg-[#0c101d] border border-emerald-400/40 p-2 sm:p-2.5 rounded-2xl shadow-[0_15px_30px_rgba(0,0,0,0.9)] rotate-[-8deg] transform transition-transform duration-700 group-hover:rotate-[-4deg] group-hover:scale-105 z-30">
           <div className="flex items-center justify-between text-[6.5px] sm:text-[7.5px] font-mono text-emerald-300 border-b border-white/10 pb-1">
             <span className="flex items-center gap-1">
               <Code2 className="w-2.5 h-2.5 text-emerald-400" /> App.tsx
@@ -118,7 +117,7 @@ export const WebDevelopmentComposition: React.FC<WebDevelopmentCompositionProps>
         </div>
 
         {/* --- OBJECT 3 (TOP-RIGHT FLOATING LIGHTHOUSE SCORE DOCK): 100/100 Audit --- */}
-        <div className="absolute right-1 sm:right-3 top-1 sm:top-2 z-30 bg-[#0d1424]/95 backdrop-blur-md border border-emerald-400/50 p-2 sm:p-2.5 rounded-2xl shadow-xl flex items-center gap-2 transform rotate-[6deg] group-hover:rotate-[3deg]">
+        <div className="absolute right-1 sm:right-3 top-1 sm:top-2 z-30 bg-[#0d1424] border border-emerald-400/50 p-2 sm:p-2.5 rounded-2xl shadow-xl flex items-center gap-2 transform rotate-[6deg] group-hover:rotate-[3deg]">
           <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-full border-2 border-emerald-400 bg-emerald-500/15 flex items-center justify-center shadow-[0_0_12px_rgba(16,185,129,0.4)]">
             <span className="text-emerald-400 font-black text-[9px] sm:text-xs font-mono">100</span>
           </div>

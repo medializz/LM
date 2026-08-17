@@ -19,17 +19,16 @@ export const BrandIdentityComposition: React.FC<BrandIdentityCompositionProps> =
     <div
       className={`relative w-full h-full min-h-[220px] bg-gradient-to-br from-[#08090d] via-[#10121a] to-[#050608] overflow-hidden flex items-center justify-center p-3 sm:p-5 select-none ${className}`}
     >
-      {/* 1. Futuristic Studio Lighting & Isometric Grid */}
-      <div className="absolute inset-0 bg-[radial-gradient(#ffbe1a14_1px,transparent_1px)] [background-size:20px_20px] opacity-40 pointer-events-none" />
-      <div className="absolute -top-16 -left-16 w-56 h-56 bg-[#ffbe1a]/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-16 -right-16 w-56 h-56 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#ffbe1a]/[0.03] rounded-full blur-2xl pointer-events-none" />
+      {/* 1. Futuristic Studio Lighting & Clean Overlay */}
+      <div className="absolute inset-0 bg-[#ffbe1a]/[0.02] pointer-events-none" />
+      <div className="absolute -top-12 -left-12 w-48 h-48 rounded-full ambient-glow-gold pointer-events-none" />
+      <div className="absolute -bottom-12 -right-12 w-48 h-48 rounded-full ambient-glow-purple pointer-events-none" />
 
       {/* 2. Main 3D Composition Stage */}
       <div className="relative w-full max-w-[540px] h-[210px] sm:h-[250px] md:h-[280px] flex items-center justify-center">
 
         {/* --- OBJECT 1 (BACKGROUND): Luxury Textured Shopping Bag --- */}
-        <div className="absolute -right-2 sm:right-2 top-1 sm:top-2 w-[110px] sm:w-[130px] md:w-[150px] h-[130px] sm:h-[155px] md:h-[175px] rounded-xl bg-gradient-to-b from-[#181a24] via-[#12141c] to-[#0c0d12] border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.8)] rotate-[12deg] transform transition-transform duration-700 group-hover:rotate-[15deg] group-hover:scale-105 p-3 flex flex-col justify-between z-10">
+        <div className="absolute -right-2 sm:right-2 top-1 sm:top-2 w-[110px] sm:w-[130px] md:w-[150px] h-[130px] sm:h-[155px] md:h-[175px] rounded-xl bg-gradient-to-b from-[#181a24] via-[#12141c] to-[#0c0d12] border border-white/10 shadow-[0_15px_30px_rgba(0,0,0,0.8)] rotate-[12deg] transform transition-transform duration-700 group-hover:rotate-[15deg] group-hover:scale-105 p-3 flex flex-col justify-between z-10">
           {/* Twisted Rope Handles */}
           <div className="w-12 h-6 mx-auto -mt-6 border-2 border-[#ffbe1a]/70 rounded-t-full shadow-[0_0_8px_rgba(255,190,26,0.3)]" />
           <div className="text-center pt-2">
@@ -47,7 +46,7 @@ export const BrandIdentityComposition: React.FC<BrandIdentityCompositionProps> =
         </div>
 
         {/* --- OBJECT 2 (CENTER-BACK): Large Master Brand Presentation Board / Laptop Screen --- */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-[55%] -translate-y-[52%] w-[240px] sm:w-[310px] md:w-[360px] h-[145px] sm:h-[185px] md:h-[210px] rounded-2xl bg-gradient-to-br from-[#151722] via-[#0d0f16] to-[#08090d] border-2 border-white/15 shadow-[0_25px_50px_rgba(0,0,0,0.95),0_0_25px_rgba(255,190,26,0.15)] rotate-[-4deg] transform transition-transform duration-700 group-hover:rotate-[-2deg] p-3 sm:p-4 flex flex-col justify-between z-20 overflow-hidden">
+        <div className="absolute left-1/2 top-1/2 -translate-x-[55%] -translate-y-[52%] w-[240px] sm:w-[310px] md:w-[360px] h-[145px] sm:h-[185px] md:h-[210px] rounded-2xl bg-[#0e1017] border-2 border-white/15 shadow-[0_20px_45px_rgba(0,0,0,0.95)] rotate-[-4deg] transform transition-transform duration-700 group-hover:rotate-[-2deg] p-3 sm:p-4 flex flex-col justify-between z-20 overflow-hidden">
           {/* Subtle Vector Construction Guide Lines */}
           <div className="absolute inset-0 opacity-15 pointer-events-none">
             <svg className="w-full h-full" viewBox="0 0 400 240">
@@ -76,7 +75,7 @@ export const BrandIdentityComposition: React.FC<BrandIdentityCompositionProps> =
 
           {/* Center Brand Identity Artwork */}
           <div className="flex items-center justify-center my-auto z-10 py-1">
-            <div className="flex items-center gap-2 sm:gap-3 bg-black/40 backdrop-blur-md px-3 sm:px-4 py-2 rounded-xl border border-white/10 shadow-lg">
+            <div className="flex items-center gap-2 sm:gap-3 bg-[#161a26] px-3 sm:px-4 py-2 rounded-xl border border-white/10 shadow-lg">
               <LizzdoLogo size="sm" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
               <div className="h-6 w-px bg-white/15" />
               <div className="text-left">

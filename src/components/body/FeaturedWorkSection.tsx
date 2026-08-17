@@ -183,13 +183,13 @@ export const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({
 
                 {/* Floating Tag */}
                 <div className="absolute top-3.5 left-3.5 z-20 flex items-center gap-2">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/85 backdrop-blur-md border border-[#ffbe1a]/40 text-[#ffbe1a] text-[10px] font-mono font-bold uppercase tracking-wider shadow-lg">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/90 border border-[#ffbe1a]/40 text-[#ffbe1a] text-[10px] font-mono font-bold uppercase tracking-wider shadow-lg">
                     <Sparkles className="w-3 h-3 text-[#ffbe1a]" />
                     <span>FLAGSHIP CASE STUDY</span>
                   </span>
                 </div>
 
-                <div className="absolute top-3.5 right-3.5 z-20 w-9 h-9 rounded-full bg-black/75 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:text-black group-hover:bg-[#ffbe1a] group-hover:border-[#ffbe1a] transition-all duration-300 shadow-lg">
+                <div className="absolute top-3.5 right-3.5 z-20 w-9 h-9 rounded-full bg-black/85 border border-white/20 flex items-center justify-center text-white group-hover:text-black group-hover:bg-[#ffbe1a] group-hover:border-[#ffbe1a] transition-all duration-300 shadow-lg">
                   <ArrowUpRight className="w-4 h-4" />
                 </div>
               </div>
@@ -276,7 +276,7 @@ export const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({
 
                     {/* Floating Category Badge */}
                     <div className="absolute top-3.5 left-3.5 z-20 flex items-center gap-2">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/85 backdrop-blur-md border border-white/15 text-[#ffbe1a] text-[10px] font-bold uppercase tracking-wider font-['Plus_Jakarta_Sans'] shadow-md">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/90 border border-white/15 text-[#ffbe1a] text-[10px] font-bold uppercase tracking-wider font-['Plus_Jakarta_Sans'] shadow-md">
                         <LizzdoLogo 
                           variant="mark-only" 
                           size="xxs" 
@@ -289,7 +289,7 @@ export const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({
                     </div>
 
                     {/* Top Right Arrow Indicator */}
-                    <div className="absolute top-3.5 right-3.5 z-20 w-8 h-8 rounded-full bg-black/75 backdrop-blur-md border border-white/15 flex items-center justify-center text-white group-hover:text-black group-hover:bg-[#ffbe1a] group-hover:border-[#ffbe1a] transition-all duration-300 shadow-md">
+                    <div className="absolute top-3.5 right-3.5 z-20 w-8 h-8 rounded-full bg-black/85 border border-white/15 flex items-center justify-center text-white group-hover:text-black group-hover:bg-[#ffbe1a] group-hover:border-[#ffbe1a] transition-all duration-300 shadow-md">
                       <ArrowUpRight className="w-4 h-4" />
                     </div>
                   </div>

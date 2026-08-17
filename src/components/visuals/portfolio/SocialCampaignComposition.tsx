@@ -19,11 +19,10 @@ export const SocialCampaignComposition: React.FC<SocialCampaignCompositionProps>
     <div
       className={`relative w-full h-full min-h-[220px] bg-gradient-to-br from-[#1c1404] via-[#100c02] to-[#050401] overflow-hidden flex items-center justify-center p-3 sm:p-5 select-none ${className}`}
     >
-      {/* 1. Radiant Gold Studio Energy & Soundwaves */}
-      <div className="absolute inset-0 bg-[radial-gradient(#ffbe1a1a_1px,transparent_1px)] [background-size:20px_20px] opacity-40 pointer-events-none" />
-      <div className="absolute -top-16 -right-16 w-64 h-64 bg-[#ffbe1a]/25 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-16 -left-16 w-64 h-64 bg-amber-600/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#ffbe1a]/[0.05] rounded-full blur-2xl pointer-events-none" />
+      {/* 1. Radiant Gold Studio Energy & Clean Overlay */}
+      <div className="absolute inset-0 bg-[#ffbe1a]/[0.02] pointer-events-none" />
+      <div className="absolute -top-12 -right-12 w-48 h-48 rounded-full ambient-glow-gold pointer-events-none" />
+      <div className="absolute -bottom-12 -left-12 w-48 h-48 rounded-full ambient-glow-gold pointer-events-none" />
 
       {/* 2. Main 3D Composition Stage */}
       <div className="relative w-full max-w-[540px] h-[210px] sm:h-[250px] md:h-[280px] flex items-center justify-center">
@@ -57,11 +56,11 @@ export const SocialCampaignComposition: React.FC<SocialCampaignCompositionProps>
         </div>
 
         {/* --- OBJECT 2 (CENTER-HERO): 1:1 Bold Typographic Feed Creative --- */}
-        <div className="absolute left-[44%] sm:left-[48%] top-1/2 -translate-x-1/2 -translate-y-1/2 w-[155px] sm:w-[205px] md:w-[235px] h-[155px] sm:h-[205px] md:h-[235px] rounded-2xl bg-gradient-to-br from-[#ffbe1a] via-[#e5a600] to-[#b37e00] border-2 border-amber-200 shadow-[0_25px_60px_rgba(0,0,0,0.98),0_0_40px_rgba(255,190,26,0.45)] rotate-[2deg] transform transition-transform duration-700 group-hover:rotate-0 group-hover:scale-105 p-3 sm:p-4 flex flex-col justify-between z-20 overflow-hidden">
+        <div className="absolute left-[44%] sm:left-[48%] top-1/2 -translate-x-1/2 -translate-y-1/2 w-[155px] sm:w-[205px] md:w-[235px] h-[155px] sm:h-[205px] md:h-[235px] rounded-2xl bg-gradient-to-br from-[#ffbe1a] via-[#e5a600] to-[#b37e00] border-2 border-amber-200 shadow-[0_20px_50px_rgba(0,0,0,0.95)] rotate-[2deg] transform transition-transform duration-700 group-hover:rotate-0 group-hover:scale-105 p-3 sm:p-4 flex flex-col justify-between z-20 overflow-hidden">
           
           {/* Top Brand Banner */}
           <div className="flex items-center justify-between z-10">
-            <div className="flex items-center gap-1.5 bg-black/15 px-2 py-0.5 rounded backdrop-blur-sm">
+            <div className="flex items-center gap-1.5 bg-black/30 px-2 py-0.5 rounded">
               <LizzdoLogo variant="mark-only" size="xxs" theme="dark" logoSrc={logoSrc} markSrc={markSrc} />
               <span className="text-[8px] sm:text-[10px] font-black text-black tracking-widest uppercase font-['Outfit']">
                 LIZZDO SOUND
@@ -108,7 +107,7 @@ export const SocialCampaignComposition: React.FC<SocialCampaignCompositionProps>
         </div>
 
         {/* --- OBJECT 3 (FRONT-RIGHT SMARTPHONE): 9:16 Instagram Story / Reel Ad --- */}
-        <div className="absolute right-2 sm:right-5 bottom-1 sm:bottom-2 w-[75px] sm:w-[95px] md:w-[110px] h-[135px] sm:h-[170px] md:h-[195px] rounded-2xl bg-black border-2 border-slate-700 shadow-[0_20px_45px_rgba(0,0,0,0.95),0_0_20px_rgba(255,190,26,0.3)] rotate-[8deg] transform transition-transform duration-700 group-hover:rotate-[4deg] group-hover:scale-108 p-1.5 flex flex-col justify-between z-30 overflow-hidden">
+        <div className="absolute right-2 sm:right-5 bottom-1 sm:bottom-2 w-[75px] sm:w-[95px] md:w-[110px] h-[135px] sm:h-[170px] md:h-[195px] rounded-2xl bg-black border-2 border-slate-700 shadow-[0_20px_45px_rgba(0,0,0,0.95)] rotate-[8deg] transform transition-transform duration-700 group-hover:rotate-[4deg] group-hover:scale-108 p-1.5 flex flex-col justify-between z-30 overflow-hidden">
           
           {/* Top Story Segments */}
           <div className="flex gap-1 mb-1">
@@ -145,7 +144,7 @@ export const SocialCampaignComposition: React.FC<SocialCampaignCompositionProps>
         </div>
 
         {/* --- OBJECT 4 (TOP-LEFT FLOATING ROI BADGE): Verified Social Metric --- */}
-        <div className="absolute left-2 sm:left-5 top-1 sm:top-2 z-40 bg-black/90 backdrop-blur-md border border-[#ffbe1a]/60 px-2.5 py-1 rounded-full shadow-2xl flex items-center gap-1.5 transform -rotate-4">
+        <div className="absolute left-2 sm:left-5 top-1 sm:top-2 z-40 bg-[#0e0c05] border border-[#ffbe1a]/60 px-2.5 py-1 rounded-full shadow-2xl flex items-center gap-1.5 transform -rotate-4">
           <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
           <span className="text-[7px] sm:text-[8px] font-mono text-white font-bold tracking-wider">
             4.2X ROAS • 1.8M REACH

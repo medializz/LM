@@ -20,16 +20,15 @@ export const PackagingDesignComposition: React.FC<PackagingDesignCompositionProp
       className={`relative w-full h-full min-h-[220px] bg-gradient-to-br from-[#12061f] via-[#0b0314] to-[#05010a] overflow-hidden flex items-center justify-center p-3 sm:p-5 select-none ${className}`}
     >
       {/* 1. Volumetric Violet & Gold Lighting */}
-      <div className="absolute inset-0 bg-[radial-gradient(#a855f718_1px,transparent_1px)] [background-size:20px_20px] opacity-40 pointer-events-none" />
-      <div className="absolute -top-16 -right-16 w-64 h-64 bg-purple-600/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-16 -left-16 w-64 h-64 bg-[#ffbe1a]/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-purple-900/10 rounded-full blur-2xl pointer-events-none" />
+      <div className="absolute inset-0 bg-purple-500/[0.02] pointer-events-none" />
+      <div className="absolute -top-12 -right-12 w-48 h-48 rounded-full ambient-glow-purple pointer-events-none" />
+      <div className="absolute -bottom-12 -left-12 w-48 h-48 rounded-full ambient-glow-gold pointer-events-none" />
 
       {/* 2. Main 3D Composition Stage */}
       <div className="relative w-full max-w-[540px] h-[210px] sm:h-[250px] md:h-[280px] flex items-center justify-center">
 
         {/* --- OBJECT 1 (BACKGROUND-LEFT): Unfolded Structural Packaging Dieline Blueprint --- */}
-        <div className="absolute left-2 sm:left-4 top-2 sm:top-3 w-[150px] sm:w-[190px] md:w-[220px] h-[100px] sm:h-[130px] md:h-[145px] rounded-xl bg-gradient-to-br from-[#1b0d2d]/90 to-[#0d0417]/95 border border-purple-500/30 p-2.5 shadow-2xl rotate-[-8deg] transform transition-transform duration-700 group-hover:rotate-[-5deg] z-10">
+        <div className="absolute left-2 sm:left-4 top-2 sm:top-3 w-[150px] sm:w-[190px] md:w-[220px] h-[100px] sm:h-[130px] md:h-[145px] rounded-xl bg-[#130722] border border-purple-500/30 p-2.5 shadow-xl rotate-[-8deg] transform transition-transform duration-700 group-hover:rotate-[-5deg] z-10">
           <div className="flex items-center justify-between border-b border-purple-500/20 pb-1 text-[7px] sm:text-[8px] font-mono text-purple-300">
             <span className="flex items-center gap-1">
               <Box className="w-2.5 h-2.5 text-[#ffbe1a]" /> DIELINE SPEC #08
@@ -46,7 +45,7 @@ export const PackagingDesignComposition: React.FC<PackagingDesignCompositionProp
               <line x1="150" y1="0" x2="150" y2="100" stroke="#a855f7" strokeWidth="1" strokeDasharray="2,2" />
               <circle cx="100" cy="50" r="14" fill="none" stroke="#ffbe1a" strokeWidth="1" />
             </svg>
-            <div className="absolute text-[6px] sm:text-[7px] font-mono text-slate-300 bg-black/60 px-1.5 py-0.5 rounded border border-purple-500/40 flex items-center gap-1">
+            <div className="absolute text-[6px] sm:text-[7px] font-mono text-slate-300 bg-black/80 px-1.5 py-0.5 rounded border border-purple-500/40 flex items-center gap-1">
               <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
               <span>Magnetic Flap + Soft-Close</span>
             </div>
@@ -57,7 +56,7 @@ export const PackagingDesignComposition: React.FC<PackagingDesignCompositionProp
         <div className="absolute left-[30%] sm:left-[35%] top-1/2 -translate-x-1/2 -translate-y-[45%] w-[130px] sm:w-[165px] md:w-[195px] h-[150px] sm:h-[185px] md:h-[215px] z-30 transform transition-transform duration-700 group-hover:scale-105 group-hover:-translate-y-[48%]">
           
           {/* Main 3D Box Body (Rich Textured Matte Purple & Obsidian) */}
-          <div className="w-full h-full rounded-2xl bg-gradient-to-br from-[#3d1263] via-[#210838] to-[#120320] border-2 border-purple-400/60 shadow-[0_25px_60px_rgba(0,0,0,0.98),0_0_35px_rgba(168,85,247,0.35)] p-3 sm:p-4 flex flex-col justify-between relative overflow-hidden">
+          <div className="w-full h-full rounded-2xl bg-gradient-to-br from-[#2a0c47] via-[#1a062c] to-[#0f021b] border-2 border-purple-400/60 shadow-[0_20px_50px_rgba(0,0,0,0.98)] p-3 sm:p-4 flex flex-col justify-between relative overflow-hidden">
             
             {/* Top Magnetic Lid Bevel & Reflection */}
             <div className="absolute top-0 inset-x-0 h-4 bg-gradient-to-r from-purple-400/40 via-[#ffbe1a]/30 to-purple-400/40 border-b border-purple-300/40" />

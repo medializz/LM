@@ -141,8 +141,8 @@ export const Header: React.FC<HeaderProps> = ({
       id="main-header"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#090a0f]/95 backdrop-blur-md border-b border-white/10 py-2.5 sm:py-3 shadow-xl'
-          : 'bg-[#090a0f]/60 backdrop-blur-sm py-3 sm:py-4 lg:py-4.5'
+          ? 'bg-[#090a0f]/95 sm:backdrop-blur-md border-b border-white/10 py-2.5 sm:py-3 shadow-xl'
+          : 'bg-[#090a0f]/80 sm:backdrop-blur-sm py-3 sm:py-4 lg:py-4.5'
       }`}
       role="banner"
     >
