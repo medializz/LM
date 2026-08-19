@@ -8,7 +8,7 @@ export const StylusPen: React.FC<StylusPenProps> = ({ className = '' }) => {
   return (
     <div 
       id="hero-stylus-pen"
-      className={`relative pointer-events-none select-none filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.95)] ${className}`}
+      className={`relative pointer-events-none select-none gpu-layer ${className}`}
       aria-hidden="true"
     >
       <svg 

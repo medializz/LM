@@ -28,7 +28,7 @@ export const PackagingDesignComposition: React.FC<PackagingDesignCompositionProp
       <div className="relative w-full max-w-[540px] h-[210px] sm:h-[250px] md:h-[280px] flex items-center justify-center">
 
         {/* --- OBJECT 1 (BACKGROUND-LEFT): Unfolded Structural Packaging Dieline Blueprint --- */}
-        <div className="absolute left-2 sm:left-4 top-2 sm:top-3 w-[150px] sm:w-[190px] md:w-[220px] h-[100px] sm:h-[130px] md:h-[145px] rounded-xl bg-[#130722] border border-purple-500/30 p-2.5 shadow-xl rotate-[-8deg] transform transition-transform duration-700 group-hover:rotate-[-5deg] z-10">
+        <div className="hidden sm:block absolute left-2 sm:left-4 top-2 sm:top-3 w-[150px] sm:w-[190px] md:w-[220px] h-[100px] sm:h-[130px] md:h-[145px] rounded-xl bg-[#130722] border border-purple-500/30 p-2.5 shadow-xl rotate-0 sm:rotate-[-6deg] transform transition-transform duration-500 z-10 gpu-layer">
           <div className="flex items-center justify-between border-b border-purple-500/20 pb-1 text-[7px] sm:text-[8px] font-mono text-purple-300">
             <span className="flex items-center gap-1">
               <Box className="w-2.5 h-2.5 text-[#ffbe1a]" /> DIELINE SPEC #08
@@ -47,16 +47,16 @@ export const PackagingDesignComposition: React.FC<PackagingDesignCompositionProp
             </svg>
             <div className="absolute text-[6px] sm:text-[7px] font-mono text-slate-300 bg-black/80 px-1.5 py-0.5 rounded border border-purple-500/40 flex items-center gap-1">
               <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
-              <span>Magnetic Flap + Soft-Close</span>
+              <span>Magnetic Flap</span>
             </div>
           </div>
         </div>
 
         {/* --- OBJECT 2 (CENTER): 3D Luxury Structural Rigid Gift Box --- */}
-        <div className="absolute left-[30%] sm:left-[35%] top-1/2 -translate-x-1/2 -translate-y-[45%] w-[130px] sm:w-[165px] md:w-[195px] h-[150px] sm:h-[185px] md:h-[215px] z-30 transform transition-transform duration-700 group-hover:scale-105 group-hover:-translate-y-[48%]">
+        <div className="absolute left-1/2 sm:left-[35%] top-1/2 -translate-x-1/2 -translate-y-[45%] w-[130px] sm:w-[165px] md:w-[195px] h-[150px] sm:h-[185px] md:h-[215px] z-30 transform transition-transform duration-500 gpu-layer">
           
           {/* Main 3D Box Body (Rich Textured Matte Purple & Obsidian) */}
-          <div className="w-full h-full rounded-2xl bg-gradient-to-br from-[#2a0c47] via-[#1a062c] to-[#0f021b] border-2 border-purple-400/60 shadow-[0_20px_50px_rgba(0,0,0,0.98)] p-3 sm:p-4 flex flex-col justify-between relative overflow-hidden">
+          <div className="w-full h-full rounded-2xl bg-gradient-to-br from-[#2a0c47] via-[#1a062c] to-[#0f021b] border-2 border-purple-400/60 shadow-[0_15px_35px_rgba(0,0,0,0.95)] p-3 sm:p-4 flex flex-col justify-between relative overflow-hidden">
             
             {/* Top Magnetic Lid Bevel & Reflection */}
             <div className="absolute top-0 inset-x-0 h-4 bg-gradient-to-r from-purple-400/40 via-[#ffbe1a]/30 to-purple-400/40 border-b border-purple-300/40" />
@@ -73,12 +73,12 @@ export const PackagingDesignComposition: React.FC<PackagingDesignCompositionProp
 
             {/* Central Embossed Foil Medallion */}
             <div className="my-auto text-center py-2">
-              <div className="w-12 sm:w-16 h-12 sm:h-16 mx-auto rounded-2xl bg-gradient-to-br from-[#ffbe1a] to-amber-600 p-0.5 shadow-[0_0_20px_rgba(255,190,26,0.4)] mb-2 transform -rotate-3 group-hover:rotate-0 transition-transform">
+              <div className="w-12 sm:w-16 h-12 sm:h-16 mx-auto rounded-2xl bg-gradient-to-br from-[#ffbe1a] to-amber-600 p-0.5 shadow-[0_0_20px_rgba(255,190,26,0.4)] mb-2">
                 <div className="w-full h-full bg-[#1e0730] rounded-[14px] flex flex-col items-center justify-center p-1">
                   <LizzdoLogo variant="mark-only" size="sm" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
                 </div>
               </div>
-              <div className="text-white font-extrabold text-[9px] sm:text-[12px] font-['Outfit'] tracking-widest uppercase drop-shadow-md">
+              <div className="text-white font-extrabold text-[9px] sm:text-[12px] font-['Outfit'] tracking-widest uppercase">
                 LIZZDO BOTANICALS
               </div>
               <div className="text-purple-300 text-[6.5px] sm:text-[8px] font-mono tracking-wider mt-0.5">
@@ -95,7 +95,7 @@ export const PackagingDesignComposition: React.FC<PackagingDesignCompositionProp
         </div>
 
         {/* --- OBJECT 3 (FRONT-RIGHT): Cylindrical Frosted Glass Elixir Dropper Bottle --- */}
-        <div className="absolute right-6 sm:right-10 bottom-1 sm:bottom-2 w-[65px] sm:w-[85px] md:w-[98px] h-[135px] sm:h-[170px] md:h-[195px] z-40 transform transition-transform duration-700 group-hover:scale-108 group-hover:rotate-[-2deg]">
+        <div className="absolute right-6 sm:right-10 bottom-1 sm:bottom-2 w-[65px] sm:w-[85px] md:w-[98px] h-[135px] sm:h-[170px] md:h-[195px] z-40 transform transition-transform duration-500 gpu-layer">
           
           {/* Gold Dropper Cap */}
           <div className="w-7 sm:w-9 h-6 sm:h-8 mx-auto rounded-t-lg bg-gradient-to-b from-[#ffe066] via-[#ffbe1a] to-[#d48806] border border-amber-200 shadow-[0_0_12px_rgba(255,190,26,0.5)] relative flex items-center justify-center">
@@ -103,17 +103,17 @@ export const PackagingDesignComposition: React.FC<PackagingDesignCompositionProp
           </div>
           
           {/* Frosted Glass Bottle Body */}
-          <div className="w-full h-[105px] sm:h-[135px] md:h-[155px] rounded-2xl bg-gradient-to-b from-purple-900/60 via-[#1f0633]/80 to-[#0d0117]/95 border-2 border-purple-300/40 backdrop-blur-md shadow-[0_20px_45px_rgba(0,0,0,0.95),0_0_25px_rgba(168,85,247,0.3)] p-2 flex flex-col justify-between relative overflow-hidden">
+          <div className="w-full h-[105px] sm:h-[135px] md:h-[155px] rounded-2xl bg-gradient-to-b from-purple-950 via-[#1f0633] to-[#0d0117] border-2 border-purple-300/40 shadow-[0_15px_35px_rgba(0,0,0,0.95)] p-2 flex flex-col justify-between relative overflow-hidden">
             
             {/* Glass Specular Sheen Reflection Stripe */}
-            <div className="absolute top-0 left-2 w-2 h-full bg-white/20 skew-x-[-15deg] blur-[1px] pointer-events-none" />
+            <div className="absolute top-0 left-2 w-2 h-full bg-white/20 skew-x-[-15deg] pointer-events-none" />
             
             <div className="w-5 h-5 rounded-full bg-[#ffbe1a]/20 border border-[#ffbe1a]/60 mx-auto flex items-center justify-center p-0.5">
               <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
             </div>
 
             {/* Gold Foiled Bottle Label */}
-            <div className="bg-[#12031f]/90 border border-[#ffbe1a]/60 rounded-lg p-1.5 text-center shadow-lg my-auto flex flex-col items-center">
+            <div className="bg-[#12031f] border border-[#ffbe1a]/60 rounded-lg p-1.5 text-center shadow-lg my-auto flex flex-col items-center">
               <div className="scale-75">
                 <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
               </div>
@@ -133,7 +133,7 @@ export const PackagingDesignComposition: React.FC<PackagingDesignCompositionProp
         </div>
 
         {/* --- OBJECT 4 (BOTTOM-LEFT / FLOATING): Material Swatches Dock --- */}
-        <div className="absolute left-3 sm:left-6 bottom-2 sm:bottom-3 z-40 bg-[#160726]/90 backdrop-blur-md border border-purple-500/40 p-2 sm:p-2.5 rounded-xl shadow-xl space-y-1.5 text-[7px] sm:text-[8px] font-mono">
+        <div className="hidden sm:block absolute left-3 sm:left-6 bottom-2 sm:bottom-3 z-40 bg-[#160726]/95 border border-purple-500/40 p-2 sm:p-2.5 rounded-xl shadow-xl space-y-1.5 text-[7px] sm:text-[8px] font-mono gpu-layer">
           <div className="text-white font-bold text-[8px] sm:text-[9px] flex items-center gap-1">
             <Sparkles className="w-2.5 h-2.5 text-[#ffbe1a]" /> Tactile Finishes
           </div>

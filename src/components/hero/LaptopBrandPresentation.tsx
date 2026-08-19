@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'motion/react';
 import { LizzdoLogo } from '../LizzdoLogo';
 import { SiteSettings } from '../../types';
 
@@ -13,11 +12,9 @@ export const LaptopBrandPresentation: React.FC<LaptopBrandPresentationProps> = (
   className = '' 
 }) => {
   return (
-    <motion.div 
+    <div 
       id="laptop-brand-mockup"
-      whileHover={{ scale: 1.015 }}
-      transition={{ duration: 0.3 }}
-      className={`relative select-none filter drop-shadow-[0_30px_60px_rgba(0,0,0,0.95)] ${className}`}
+      className={`relative select-none gpu-layer ${className}`}
       aria-label="Lizzdo Media Creative Digital Solutions Laptop Mockup"
     >
       {/* 1. LAPTOP SCREEN (Upright Display) */}
@@ -32,9 +29,9 @@ export const LaptopBrandPresentation: React.FC<LaptopBrandPresentationProps> = (
         {/* Screen Workspace - Creative Digital Solutions UI */}
         <div className="w-full h-full rounded-lg bg-[#0a0c13] border border-white/10 p-1.5 sm:p-2 flex flex-col justify-between overflow-hidden relative">
           
-          {/* Ambient Glows inside Screen */}
-          <div className="absolute top-0 right-0 w-36 h-36 rounded-full bg-purple-600/25 blur-2xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-24 h-24 rounded-full bg-[#ffbe1a]/15 blur-xl pointer-events-none" />
+          {/* Ambient Glows inside Screen using lightweight radial gradients */}
+          <div className="absolute top-0 right-0 w-32 h-32 rounded-full ambient-glow-purple pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-24 h-24 rounded-full ambient-glow-gold pointer-events-none" />
 
           {/* Main Content Layout (Sidebar + Headline + Colorful Abstract Ribbon Waves) */}
           <div className="w-full h-full grid grid-cols-12 gap-1.5 sm:gap-2 items-center relative z-10">
@@ -200,6 +197,6 @@ export const LaptopBrandPresentation: React.FC<LaptopBrandPresentationProps> = (
         {/* Bottom Display Opening Thumb Notch */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 sm:w-12 h-0.5 sm:h-1 bg-[#090b10] rounded-t-sm border-t border-white/10" />
       </div>
-    </motion.div>
+    </div>
   );
 };

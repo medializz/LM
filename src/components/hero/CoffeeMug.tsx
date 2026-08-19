@@ -11,7 +11,7 @@ export const CoffeeMug: React.FC<CoffeeMugProps> = ({ siteSettings, className = 
   return (
     <div 
       id="hero-coffee-mug"
-      className={`relative select-none filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.95)] hover:scale-105 transition-transform duration-300 ${className}`}
+      className={`relative select-none gpu-layer ${className}`}
       aria-label="Lizzdo Media Branded Ceramic Mug"
     >
       <div className="relative w-full aspect-[1/1.05]">

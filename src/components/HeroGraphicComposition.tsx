@@ -18,20 +18,20 @@ export const HeroGraphicComposition: React.FC<HeroGraphicCompositionProps> = ({ 
   return (
     <div 
       id="hero-creative-composition"
-      className="relative w-full max-w-[560px] sm:max-w-[620px] lg:max-w-[680px] xl:max-w-[720px] h-[340px] xs:h-[390px] sm:h-[460px] md:h-[500px] lg:h-[530px] mx-auto select-none overflow-visible"
+      className="relative w-full max-w-[560px] sm:max-w-[620px] lg:max-w-[680px] xl:max-w-[720px] h-[320px] xs:h-[360px] sm:h-[460px] md:h-[500px] lg:h-[530px] mx-auto select-none overflow-hidden sm:overflow-visible gpu-layer"
       role="img"
       aria-label="Lizzdo Media Creative Design Ecosystem showing brand identity presentation, full laptop mockup, smartphone social feed, designer tablet, coffee mug, and brand assets"
     >
       {/* 1. AMBIENT BACKDROP GLOW & GOLD SPLASH TEXTURE */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Soft Gold Radial Glow */}
-        <div className="absolute top-[8%] right-[15%] w-[300px] h-[260px] rounded-full ambient-glow-gold pointer-events-none" />
+        <div className="absolute top-[8%] right-[15%] w-[260px] sm:w-[300px] h-[220px] sm:h-[260px] rounded-full ambient-glow-gold pointer-events-none" />
         {/* Deep Violet / Purple Ambient Glow */}
-        <div className="absolute bottom-[10%] right-[10%] w-[240px] h-[240px] rounded-full ambient-glow-purple pointer-events-none" />
+        <div className="absolute bottom-[10%] right-[10%] w-[200px] sm:w-[240px] h-[200px] sm:h-[240px] rounded-full ambient-glow-purple pointer-events-none" />
         
         {/* Dynamic Golden Paint/Brush Splash Graphic */}
         <svg 
-          className="absolute top-[2%] left-[10%] w-[82%] h-[68%] opacity-95 pointer-events-none"
+          className="absolute top-[2%] left-[10%] w-[82%] h-[68%] opacity-90 pointer-events-none"
           viewBox="0 0 500 300" 
           fill="none" 
           xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +39,7 @@ export const HeroGraphicComposition: React.FC<HeroGraphicCompositionProps> = ({ 
           <path 
             d="M45 140 C95 75, 175 115, 235 55 C295 5, 375 35, 455 65 C485 75, 475 115, 435 135 C395 155, 445 205, 385 225 C315 245, 265 195, 195 225 C125 255, 75 215, 45 140 Z" 
             fill="#ffbe1a" 
-            fillOpacity="0.9"
+            fillOpacity="0.85"
           />
           {/* Splash Droplets & Paint Spatters */}
           <circle cx="115" cy="45" r="7" fill="#ffbe1a" />
@@ -48,58 +48,41 @@ export const HeroGraphicComposition: React.FC<HeroGraphicCompositionProps> = ({ 
           <circle cx="465" cy="175" r="5.5" fill="#ffbe1a" />
           <circle cx="335" cy="255" r="6" fill="#ffbe1a" />
           <circle cx="155" cy="265" r="5" fill="#ffbe1a" />
-          {/* Subtle distress texture lines */}
-          <path d="M65 115 L35 125 M145 35 L165 25 M445 45 L465 40" stroke="#ffbe1a" strokeWidth="3" strokeLinecap="round" opacity="0.8" />
         </svg>
 
         {/* Vector orbital curves & Halftone dots */}
-        <svg className="absolute top-[0%] right-[0%] w-[48%] h-[60%] opacity-45 pointer-events-none" viewBox="0 0 200 200" fill="none">
+        <svg className="hidden sm:block absolute top-[0%] right-[0%] w-[48%] h-[60%] opacity-40 pointer-events-none" viewBox="0 0 200 200" fill="none">
           <path d="M20 180 C80 60, 160 80, 190 20" stroke="#ffbe1a" strokeWidth="1.5" strokeDasharray="4 4" />
           <circle cx="190" cy="20" r="3" fill="#ffbe1a" />
           <path d="M140 160 C180 140, 190 100, 180 60" stroke="#a855f7" strokeWidth="1.5" />
-          {/* Halftone Dot Grid */}
           <circle cx="160" cy="80" r="1.5" fill="#ffbe1a" opacity="0.6" />
           <circle cx="170" cy="80" r="1.5" fill="#ffbe1a" opacity="0.6" />
           <circle cx="180" cy="80" r="1.5" fill="#ffbe1a" opacity="0.6" />
-          <circle cx="160" cy="90" r="1.5" fill="#ffbe1a" opacity="0.6" />
-          <circle cx="170" cy="90" r="1.5" fill="#ffbe1a" opacity="0.6" />
-          <circle cx="180" cy="90" r="1.5" fill="#ffbe1a" opacity="0.6" />
         </svg>
       </div>
 
-      {/* 2. REFINED VECTOR DESIGN ARROW (Communicating Creative Direction & Vector Craft) */}
-      <VectorArrowGuide className="absolute top-[4%] left-[6%] w-[42%] h-[32%] z-15 pointer-events-none" />
+      {/* 2. REFINED VECTOR DESIGN ARROW */}
+      <VectorArrowGuide className="hidden sm:block absolute top-[4%] left-[6%] w-[42%] h-[32%] z-15 pointer-events-none" />
 
       {/* 3. TOP FLOATING 3D GOLD SPHERE */}
       <div 
-        className="absolute top-[0%] left-[40%] w-7 h-7 sm:w-8 sm:h-8 rounded-full z-20 shadow-[0_6px_16px_rgba(0,0,0,0.6)] pointer-events-none"
+        className="hidden sm:block absolute top-[0%] left-[40%] w-7 h-7 sm:w-8 sm:h-8 rounded-full z-20 shadow-[0_6px_16px_rgba(0,0,0,0.6)] pointer-events-none"
         style={{
           background: "radial-gradient(circle at 35% 35%, #fff5a6 0%, #ffbe1a 45%, #b47400 85%, #4a2e00 100%)"
         }}
       />
 
-      {/* 4. FLOATING 3D PURPLE SPHERE (Balanced mid-right) */}
+      {/* 4. LUXURY BRANDED PRESENTATION BOX */}
       <div 
-        className="absolute top-[8%] right-[24%] w-4.5 h-4.5 sm:w-5.5 sm:h-5.5 rounded-full z-22 shadow-[0_8px_18px_rgba(0,0,0,0.7)] pointer-events-none"
-        style={{
-          background: "radial-gradient(circle at 35% 35%, #d8b4fe 0%, #a855f7 50%, #6b21a8 85%, #3b0764 100%)"
-        }}
-      />
-
-      {/* 5. LUXURY BRANDED PRESENTATION BOX (Standing back center-left) */}
-      <div 
-        className="absolute top-[1%] left-[26%] w-[33%] h-[52%] z-10 rounded-lg shadow-[0_20px_45px_-10px_rgba(0,0,0,0.95)] overflow-hidden transform -rotate-2 hover:rotate-0 transition-transform duration-500"
+        className="absolute top-[1%] left-[26%] w-[33%] h-[52%] z-10 rounded-lg shadow-[0_15px_35px_rgba(0,0,0,0.9)] overflow-hidden transform rotate-0 sm:-rotate-2 transition-transform duration-500 gpu-layer"
         style={{
           background: "linear-gradient(145deg, #1e2029 0%, #111217 60%, #0a0b0e 100%)",
           border: "1px solid rgba(255, 255, 255, 0.08)"
         }}
       >
-        {/* Subtle top edge highlight */}
         <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-        {/* Box side fold depth */}
         <div className="absolute top-0 right-0 w-[12%] h-full bg-black/40 border-l border-white/5" />
         
-        {/* Master Brand Logo foiled prominently in upper box */}
         <div className="absolute inset-x-0 top-0 pt-3 sm:pt-4 px-3 flex flex-col items-center justify-start z-10">
           <LizzdoLogo 
             size="sm" 
@@ -114,8 +97,8 @@ export const HeroGraphicComposition: React.FC<HeroGraphicCompositionProps> = ({ 
         </div>
       </div>
 
-      {/* 6. COLOR SWATCH FAN (Pantone style cards fanning out) */}
-      <div className="absolute top-[16%] left-[14%] z-14 flex -space-x-3 sm:-space-x-3.5 transform -rotate-12 hover:rotate-[-8deg] transition-transform duration-300 pointer-events-none">
+      {/* 5. COLOR SWATCH FAN (Pantone style cards) */}
+      <div className="hidden sm:flex absolute top-[16%] left-[14%] z-14 -space-x-3 sm:-space-x-3.5 transform -rotate-12 pointer-events-none gpu-layer">
         {[
           { name: "Magenta", color: "#e11d48", shade: "Pantone 219C" },
           { name: "Cyan", color: "#06b6d4", shade: "Pantone 312C" },
@@ -125,7 +108,7 @@ export const HeroGraphicComposition: React.FC<HeroGraphicCompositionProps> = ({ 
         ].map((swatch, idx) => (
           <div 
             key={idx}
-            className="w-5.5 sm:w-7 h-15 sm:h-20 rounded-md bg-white p-0.5 sm:p-1 flex flex-col justify-between shadow-[0_8px_20px_rgba(0,0,0,0.6)] border border-slate-200/20 transform"
+            className="w-5.5 sm:w-7 h-15 sm:h-20 rounded-md bg-white p-0.5 sm:p-1 flex flex-col justify-between shadow-[0_8px_20px_rgba(0,0,0,0.6)] border border-slate-200/20"
             style={{ transform: `rotate(${idx * 4 - 8}deg)` }}
           >
             <div className="w-full h-[62%] rounded-sm" style={{ backgroundColor: swatch.color }} />
@@ -137,62 +120,45 @@ export const HeroGraphicComposition: React.FC<HeroGraphicCompositionProps> = ({ 
         ))}
       </div>
 
-      {/* 7. DIGITAL MARKETING ANALYTICS BADGE (Far Right Background) */}
-      <div 
-        className="absolute top-[6%] right-[1%] w-[24%] sm:w-[22%] aspect-[1.3/1] z-12 rounded-lg bg-[#12141c] p-1.5 sm:p-2 border border-white/10 shadow-[0_12px_28px_rgba(0,0,0,0.8)]"
-      >
-        <span className="text-[5.5px] sm:text-[7px] font-bold text-white block font-['Outfit'] leading-tight">Grow Your Brand</span>
-        <span className="text-[3.5px] sm:text-[4.5px] text-slate-400 block mb-0.5 font-mono">Digital Marketing</span>
-
-        {/* Rising Golden Bar Chart */}
-        <div className="flex items-end justify-between gap-0.5 sm:gap-1 h-7 sm:h-9 pt-0.5 border-b border-white/10">
-          <div className="w-1.5 h-[25%] bg-[#ffbe1a]/30 rounded-t-sm" />
-          <div className="w-1.5 h-[45%] bg-[#ffbe1a]/50 rounded-t-sm" />
-          <div className="w-1.5 h-[65%] bg-[#ffbe1a]/70 rounded-t-sm" />
-          <div className="w-1.5 h-[85%] bg-[#ffbe1a]/90 rounded-t-sm" />
-          <div className="w-1.5 h-[100%] bg-[#ffbe1a] rounded-t-sm shadow-[0_0_6px_#ffbe1a]" />
-        </div>
-      </div>
-
-      {/* 8. SMARTPHONE MOCKUP - SOCIAL MEDIA FEED & GOURMET FOOD AD CREATIVE (Upper Right) */}
-      <div className="absolute top-[0%] right-[11%] sm:right-[13%] w-[22%] sm:w-[20%] z-23 transform rotate-4">
+      {/* 6. SMARTPHONE MOCKUP - SOCIAL MEDIA FEED (Upper Right) */}
+      <div className="absolute top-[0%] right-[8%] sm:right-[13%] w-[24%] sm:w-[20%] z-23 transform rotate-0 sm:rotate-4 gpu-layer">
         <PhoneSocialMockup 
           siteSettings={siteSettings}
           className="w-full"
         />
       </div>
 
-      {/* 9. DESIGNER TABLET - BRAND IDENTITY CANVAS (Mid-Left Foreground) */}
-      <div className="absolute top-[26%] left-[1%] sm:left-[2%] w-[48%] sm:w-[46%] z-24">
+      {/* 7. DESIGNER TABLET - BRAND IDENTITY CANVAS (Mid-Left Foreground) */}
+      <div className="absolute top-[24%] left-[1%] sm:left-[2%] w-[50%] sm:w-[46%] z-24 gpu-layer">
         <DesignerTablet 
           siteSettings={siteSettings}
           className="w-full"
         />
       </div>
 
-      {/* 10. LIZZDO MEDIA BRAND CARD MOCKUP (Resting between tablet & laptop) */}
-      <div className="absolute top-[36%] left-[37%] w-[20%] sm:w-[19%] z-26">
+      {/* 8. LIZZDO MEDIA BRAND CARD MOCKUP (Resting between tablet & laptop) */}
+      <div className="absolute top-[36%] left-[37%] w-[22%] sm:w-[19%] z-26 gpu-layer">
         <BrandCard 
           siteSettings={siteSettings}
           className="w-full"
         />
       </div>
 
-      {/* 11. REFINED GRAPHIC DESIGN STYLUS PEN (Resting with Tablet Canvas) */}
+      {/* 9. REFINED GRAPHIC DESIGN STYLUS PEN */}
       <StylusPen 
-        className="absolute top-[37%] left-[18%] sm:left-[20%] w-[22%] h-4 sm:h-5 z-28 transform -rotate-[35deg]"
+        className="hidden sm:block absolute top-[37%] left-[18%] sm:left-[20%] w-[22%] h-4 sm:h-5 z-28 transform -rotate-[35deg] gpu-layer"
       />
 
-      {/* 12. FULL LAPTOP MOCKUP - CREATIVE DIGITAL SOLUTIONS & WAVE ARTWORK (Mid-Right Foreground) */}
-      <div className="absolute top-[22%] right-[0%] w-[58%] sm:w-[56%] z-22">
+      {/* 10. FULL LAPTOP MOCKUP - CREATIVE DIGITAL SOLUTIONS (Mid-Right Foreground) */}
+      <div className="absolute top-[22%] right-[0%] w-[58%] sm:w-[56%] z-22 gpu-layer">
         <LaptopBrandPresentation 
           siteSettings={siteSettings}
           className="w-full"
         />
       </div>
 
-      {/* 13. BRANDED MATTE BLACK CERAMIC MUG (Bottom-Right Foreground) */}
-      <div className="absolute bottom-[2%] right-[0%] w-[16%] sm:w-[14%] z-28">
+      {/* 11. BRANDED MATTE BLACK CERAMIC MUG */}
+      <div className="hidden xs:block absolute bottom-[2%] right-[0%] w-[16%] sm:w-[14%] z-28 gpu-layer">
         <CoffeeMug 
           siteSettings={siteSettings}
           className="w-full"

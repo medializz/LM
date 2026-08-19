@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'motion/react';
 import { LizzdoLogo } from '../LizzdoLogo';
 import { SiteSettings } from '../../types';
 
@@ -13,11 +12,9 @@ export const DesignerTablet: React.FC<DesignerTabletProps> = ({
   className = '' 
 }) => {
   return (
-    <motion.div 
+    <div 
       id="hero-designer-tablet"
-      whileHover={{ scale: 1.02 }}
-      transition={{ duration: 0.3 }}
-      className={`relative aspect-[1.32/1] rounded-2xl bg-[#141722] p-2.5 sm:p-3.5 shadow-[0_30px_70px_rgba(0,0,0,0.95)] border border-white/10 ${className}`}
+      className={`relative aspect-[1.32/1] rounded-2xl bg-[#141722] p-2.5 sm:p-3.5 shadow-[0_20px_50px_rgba(0,0,0,0.9)] border border-white/10 gpu-layer ${className}`}
       aria-label="Lizzdo Media Graphic Design Tablet Interface"
     >
       {/* Tablet Bezel & Camera */}
@@ -152,6 +149,6 @@ export const DesignerTablet: React.FC<DesignerTabletProps> = ({
 
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };

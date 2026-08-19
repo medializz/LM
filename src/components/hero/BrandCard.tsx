@@ -11,12 +11,12 @@ export const BrandCard: React.FC<BrandCardProps> = ({ siteSettings, className = 
   return (
     <div 
       id="hero-brand-card"
-      className={`relative rounded-xl bg-gradient-to-br from-[#ffffff] via-[#f8fafc] to-[#f1f5f9] p-3 sm:p-3.5 shadow-[0_20px_45px_rgba(0,0,0,0.85)] border border-slate-200/80 overflow-hidden transform rotate-[9deg] hover:rotate-[4deg] transition-all duration-300 ${className}`}
+      className={`relative rounded-xl bg-gradient-to-br from-[#ffffff] via-[#f8fafc] to-[#f1f5f9] p-3 sm:p-3.5 shadow-[0_15px_35px_rgba(0,0,0,0.85)] border border-slate-200/80 overflow-hidden transform rotate-0 sm:rotate-[8deg] transition-all duration-300 gpu-layer ${className}`}
       aria-label="Lizzdo Media Brand Card Mockup"
     >
       {/* Subtle Foil Reflection */}
       <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/50 to-transparent pointer-events-none opacity-60" />
-      <div className="absolute -right-6 -bottom-6 w-20 h-20 rounded-full bg-[#ffbe1a]/15 blur-xl pointer-events-none" />
+      <div className="absolute -right-6 -bottom-6 w-20 h-20 rounded-full ambient-glow-gold pointer-events-none" />
 
       <div className="relative z-10 flex flex-col justify-between h-full">
         {/* Top: Master Lizzdo Media Logo in Light Theme */}

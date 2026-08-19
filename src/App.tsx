@@ -23,6 +23,7 @@ import { TermsOfUsePage } from './components/pages/TermsOfUsePage';
 import { LegalNoticePage } from './components/pages/LegalNoticePage';
 import { SiteMapPage } from './components/pages/SiteMapPage';
 import { SEOHead } from './components/SEOHead';
+import { MobileQuickBar } from './components/MobileQuickBar';
 import { loadCmsData } from './data/cmsContent';
 import { DecapCMSData, ServiceCategory, PortfolioItem } from './types';
 import { useAppRoute, navigateTo } from './utils/router';
@@ -109,7 +110,7 @@ export default function App() {
       />
 
       {/* MAIN CONTENT LANDMARK */}
-      <main id="main-content" className="flex-1 flex flex-col justify-center pt-16">
+      <main id="main-content" className="flex-1 flex flex-col justify-center pt-16 pb-16 md:pb-0">
         
         {/* ========================================================= */}
         {/* VIEW 1: HOME PAGE (PHASE 1 HERO + PHASE 2 BODY) */}
@@ -325,6 +326,13 @@ export default function App() {
         onClose={() => setIsContactModalOpen(false)}
         siteSettings={cmsData.siteSettings}
         preselectedService={preselectedContactService}
+      />
+
+      {/* MOBILE QUICK ACTION BOTTOM BAR */}
+      <MobileQuickBar 
+        siteSettings={cmsData.siteSettings}
+        onOpenContact={() => handleOpenContactModal()}
+        isModalOpen={isContactModalOpen || !!selectedServiceForModal}
       />
 
     </div>

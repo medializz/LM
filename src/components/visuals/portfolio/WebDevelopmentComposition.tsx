@@ -28,7 +28,7 @@ export const WebDevelopmentComposition: React.FC<WebDevelopmentCompositionProps>
       <div className="relative w-full max-w-[540px] h-[210px] sm:h-[250px] md:h-[280px] flex items-center justify-center">
 
         {/* --- OBJECT 1 (CENTER-HERO): Sleek MacBook Pro / Desktop Web Application Frame --- */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-[56%] -translate-y-[52%] w-[250px] sm:w-[320px] md:w-[370px] h-[150px] sm:h-[190px] md:h-[215px] rounded-2xl bg-[#0c101a] border-2 border-emerald-500/30 shadow-[0_20px_50px_rgba(0,0,0,0.95)] rotate-[-4deg] transform transition-transform duration-700 group-hover:rotate-[-2deg] p-2.5 sm:p-3.5 flex flex-col justify-between z-20 overflow-hidden">
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 sm:-translate-x-[56%] sm:-translate-y-[52%] w-[250px] sm:w-[320px] md:w-[370px] h-[150px] sm:h-[190px] md:h-[215px] rounded-2xl bg-[#0c101a] border-2 border-emerald-500/30 shadow-[0_15px_35px_rgba(0,0,0,0.9)] rotate-0 sm:rotate-[-4deg] transform transition-transform duration-500 p-2.5 sm:p-3.5 flex flex-col justify-between z-20 overflow-hidden gpu-layer">
           
           {/* Top Browser Bar */}
           <div className="flex items-center justify-between border-b border-white/[0.08] pb-1.5 z-10">
@@ -42,7 +42,7 @@ export const WebDevelopmentComposition: React.FC<WebDevelopmentCompositionProps>
               </div>
             </div>
             <span className="text-[7px] sm:text-[8px] font-mono text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/30 flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> 100/100 SPEED
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" /> 100/100 SPEED
             </span>
           </div>
 
@@ -93,12 +93,12 @@ export const WebDevelopmentComposition: React.FC<WebDevelopmentCompositionProps>
               <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
               <span>Next.js • Vite • Tailwind CSS</span>
             </span>
-            <span className="text-[#ffbe1a]">Zero Cumulative Layout Shift</span>
+            <span className="text-[#ffbe1a]">Zero Layout Shift</span>
           </div>
         </div>
 
         {/* --- OBJECT 2 (TOP-LEFT FLOATING CODE TOKEN CARD): Syntax Highlighted TypeScript --- */}
-        <div className="absolute left-1 sm:left-3 top-1 sm:top-2 w-[125px] sm:w-[155px] md:w-[175px] bg-[#0c101d] border border-emerald-400/40 p-2 sm:p-2.5 rounded-2xl shadow-[0_15px_30px_rgba(0,0,0,0.9)] rotate-[-8deg] transform transition-transform duration-700 group-hover:rotate-[-4deg] group-hover:scale-105 z-30">
+        <div className="hidden sm:block absolute left-1 sm:left-3 top-1 sm:top-2 w-[125px] sm:w-[155px] md:w-[175px] bg-[#0c101d] border border-emerald-400/40 p-2 sm:p-2.5 rounded-2xl shadow-[0_15px_30px_rgba(0,0,0,0.9)] rotate-[-6deg] transform transition-transform duration-500 z-30 gpu-layer">
           <div className="flex items-center justify-between text-[6.5px] sm:text-[7.5px] font-mono text-emerald-300 border-b border-white/10 pb-1">
             <span className="flex items-center gap-1">
               <Code2 className="w-2.5 h-2.5 text-emerald-400" /> App.tsx
@@ -117,20 +117,20 @@ export const WebDevelopmentComposition: React.FC<WebDevelopmentCompositionProps>
         </div>
 
         {/* --- OBJECT 3 (TOP-RIGHT FLOATING LIGHTHOUSE SCORE DOCK): 100/100 Audit --- */}
-        <div className="absolute right-1 sm:right-3 top-1 sm:top-2 z-30 bg-[#0d1424] border border-emerald-400/50 p-2 sm:p-2.5 rounded-2xl shadow-xl flex items-center gap-2 transform rotate-[6deg] group-hover:rotate-[3deg]">
-          <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-full border-2 border-emerald-400 bg-emerald-500/15 flex items-center justify-center shadow-[0_0_12px_rgba(16,185,129,0.4)]">
+        <div className="absolute right-1 sm:right-3 top-1 sm:top-2 z-30 bg-[#0d1424] border border-emerald-400/50 p-2 sm:p-2.5 rounded-2xl shadow-xl flex items-center gap-2 transform rotate-0 sm:rotate-[4deg] gpu-layer">
+          <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-full border-2 border-emerald-400 bg-emerald-500/15 flex items-center justify-center">
             <span className="text-emerald-400 font-black text-[9px] sm:text-xs font-mono">100</span>
           </div>
           <div className="text-[6.5px] sm:text-[7.5px] font-mono text-slate-300">
             <div className="text-white font-bold font-sans">Core Web Vitals</div>
             <div className="text-emerald-400 flex items-center gap-0.5">
-              <CheckCircle2 className="w-2 h-2" /> All 4 Audits Passed
+              <CheckCircle2 className="w-2 h-2" /> All Audits Passed
             </div>
           </div>
         </div>
 
         {/* --- OBJECT 4 (FRONT-RIGHT SMARTPHONE): Synced Mobile Responsive Screen --- */}
-        <div className="absolute right-3 sm:right-6 bottom-0 sm:bottom-1 w-[70px] sm:w-[85px] md:w-[98px] h-[125px] sm:h-[155px] md:h-[175px] rounded-2xl bg-black border-2 border-slate-700 shadow-[0_20px_45px_rgba(0,0,0,0.95)] rotate-[8deg] transform transition-transform duration-700 group-hover:rotate-[4deg] group-hover:scale-108 p-1 flex flex-col justify-between z-40 overflow-hidden">
+        <div className="absolute right-3 sm:right-6 bottom-0 sm:bottom-1 w-[70px] sm:w-[85px] md:w-[98px] h-[125px] sm:h-[155px] md:h-[175px] rounded-2xl bg-black border-2 border-slate-700 shadow-[0_15px_35px_rgba(0,0,0,0.9)] rotate-0 sm:rotate-[6deg] transform transition-transform duration-500 p-1 flex flex-col justify-between z-40 overflow-hidden gpu-layer">
           <div className="w-6 h-1.5 bg-slate-900 mx-auto rounded-full mb-0.5" />
           <div className="flex-1 rounded-xl bg-[#090d17] p-1.5 flex flex-col justify-between border border-white/5 text-[6px] font-mono">
             <div className="flex justify-between items-center text-emerald-300">

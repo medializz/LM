@@ -28,7 +28,7 @@ export const SaaSWebsiteComposition: React.FC<SaaSWebsiteCompositionProps> = ({
       <div className="relative w-full max-w-[540px] h-[210px] sm:h-[250px] md:h-[280px] flex items-center justify-center">
 
         {/* --- OBJECT 1 (MAIN 3D DASHBOARD WINDOW): Dark SaaS Interface in Perspective --- */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-[56%] -translate-y-[52%] w-[260px] sm:w-[330px] md:w-[380px] h-[155px] sm:h-[195px] md:h-[220px] rounded-2xl bg-[#090d18] border-2 border-cyan-500/30 shadow-[0_20px_50px_rgba(0,0,0,0.98)] rotate-[-4deg] transform transition-transform duration-700 group-hover:rotate-[-2deg] group-hover:scale-102 p-2.5 sm:p-3.5 flex flex-col justify-between z-20 overflow-hidden">
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 sm:-translate-x-[56%] sm:-translate-y-[52%] w-[260px] sm:w-[330px] md:w-[380px] h-[155px] sm:h-[195px] md:h-[220px] rounded-2xl bg-[#090d18] border-2 border-cyan-500/30 shadow-[0_15px_35px_rgba(0,0,0,0.95)] rotate-0 sm:rotate-[-4deg] transform transition-transform duration-500 p-2.5 sm:p-3.5 flex flex-col justify-between z-20 overflow-hidden gpu-layer">
           
           {/* Top Browser Bar & URL */}
           <div className="flex items-center justify-between border-b border-white/[0.08] pb-1.5 z-10">
@@ -42,7 +42,7 @@ export const SaaSWebsiteComposition: React.FC<SaaSWebsiteCompositionProps> = ({
               </div>
             </div>
             <span className="text-[7px] sm:text-[8px] font-mono text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/30 flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> 99.9% LIVE
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" /> 99.9% LIVE
             </span>
           </div>
 
@@ -57,7 +57,7 @@ export const SaaSWebsiteComposition: React.FC<SaaSWebsiteCompositionProps> = ({
                 $148.2k
               </div>
               <div className="text-[6px] sm:text-[7px] text-emerald-400 font-mono mt-0.5">
-                +24.8% MoM
+                +24.8%
               </div>
             </div>
 
@@ -83,7 +83,7 @@ export const SaaSWebsiteComposition: React.FC<SaaSWebsiteCompositionProps> = ({
                 24ms
               </div>
               <div className="text-[6px] sm:text-[7px] text-cyan-400 font-mono mt-0.5">
-                Edge Caching
+                Edge Cache
               </div>
             </div>
           </div>
@@ -100,7 +100,6 @@ export const SaaSWebsiteComposition: React.FC<SaaSWebsiteCompositionProps> = ({
               </defs>
               <path d="M0,35 Q30,15 60,25 T120,10 T170,5 L200,8 L200,45 L0,45 Z" fill="url(#saasAreaGrad)" />
               <path d="M0,35 Q30,15 60,25 T120,10 T170,5 L200,8" fill="none" stroke="#ffbe1a" strokeWidth="2" />
-              <circle cx="170" cy="5" r="3" fill="#ffbe1a" className="animate-ping" />
               <circle cx="170" cy="5" r="2.5" fill="#ffffff" />
             </svg>
           </div>
@@ -111,12 +110,12 @@ export const SaaSWebsiteComposition: React.FC<SaaSWebsiteCompositionProps> = ({
               <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
               <span>React 18 • Vite SPA</span>
             </span>
-            <span className="text-[#ffbe1a]">Sub-100ms Page Transition</span>
+            <span className="text-[#ffbe1a]">Sub-100ms Transitions</span>
           </div>
         </div>
 
         {/* --- OBJECT 2 (ELEVATED FLOATING METRIC CARD - TOP RIGHT): Real-time Telemetry Widget --- */}
-        <div className="absolute right-1 sm:right-3 top-1 sm:top-2 w-[110px] sm:w-[135px] md:w-[150px] bg-[#11172a]/95 backdrop-blur-xl border border-cyan-400/50 p-2 sm:p-2.5 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.9),0_0_20px_rgba(6,182,212,0.3)] rotate-[6deg] transform transition-transform duration-700 group-hover:rotate-[3deg] group-hover:scale-108 z-30">
+        <div className="hidden sm:block absolute right-1 sm:right-3 top-1 sm:top-2 w-[110px] sm:w-[135px] md:w-[150px] bg-[#11172a] border border-cyan-400/50 p-2 sm:p-2.5 rounded-2xl shadow-xl rotate-0 sm:rotate-[4deg] transform transition-transform duration-500 z-30 gpu-layer">
           <div className="flex items-center justify-between text-[7px] sm:text-[8px] font-mono font-bold text-cyan-300">
             <span className="flex items-center gap-1">
               <Activity className="w-2.5 h-2.5 text-cyan-400" /> AI ANOMALY
@@ -129,21 +128,21 @@ export const SaaSWebsiteComposition: React.FC<SaaSWebsiteCompositionProps> = ({
           </div>
           <div className="flex items-center gap-1.5 mt-0.5">
             <span className="text-xs sm:text-sm font-black text-emerald-400 font-mono">+142%</span>
-            <span className="text-[6.5px] text-slate-400 font-mono">Conversion Index</span>
+            <span className="text-[6.5px] text-slate-400 font-mono">Conversion</span>
           </div>
           <div className="w-full h-1 bg-gradient-to-r from-cyan-400 via-emerald-400 to-[#ffbe1a] rounded-full mt-1.5" />
         </div>
 
         {/* --- OBJECT 3 (BOTTOM-LEFT FLOATING PILL): AI Insight Beacon --- */}
-        <div className="absolute left-2 sm:left-4 bottom-2 sm:bottom-3 z-30 bg-black/85 backdrop-blur-md border border-[#ffbe1a]/50 px-2.5 py-1 rounded-full shadow-xl flex items-center gap-2 transform -rotate-3">
+        <div className="hidden sm:flex absolute left-2 sm:left-4 bottom-2 sm:bottom-3 z-30 bg-black/90 border border-[#ffbe1a]/50 px-2.5 py-1 rounded-full shadow-xl items-center gap-2 transform -rotate-2 gpu-layer">
           <LizzdoLogo variant="mark-only" size="xxs" theme="gold" logoSrc={logoSrc} markSrc={markSrc} />
           <span className="text-[7px] sm:text-[8px] font-mono text-white font-bold tracking-wider">
-            LIZZDO AI ENGINE: <span className="text-[#ffbe1a]">99.4% EFFICIENCY</span>
+            LIZZDO ENGINE: <span className="text-[#ffbe1a]">99.4% EFFICIENCY</span>
           </span>
         </div>
 
         {/* --- OBJECT 4 (FRONT-RIGHT SMARTPHONE): Synced Mobile Telemetry Companion --- */}
-        <div className="absolute right-4 sm:right-6 bottom-0 sm:bottom-1 w-[65px] sm:w-[80px] md:w-[92px] h-[115px] sm:h-[145px] md:h-[165px] rounded-2xl bg-black border-2 border-slate-700 shadow-[0_20px_45px_rgba(0,0,0,0.95)] rotate-[8deg] transform transition-transform duration-700 group-hover:rotate-[4deg] group-hover:scale-105 p-1 flex flex-col justify-between z-40 overflow-hidden">
+        <div className="absolute right-4 sm:right-6 bottom-0 sm:bottom-1 w-[65px] sm:w-[80px] md:w-[92px] h-[115px] sm:h-[145px] md:h-[165px] rounded-2xl bg-black border-2 border-slate-700 shadow-[0_15px_35px_rgba(0,0,0,0.95)] rotate-0 sm:rotate-[6deg] transform transition-transform duration-500 p-1 flex flex-col justify-between z-40 overflow-hidden gpu-layer">
           <div className="w-6 h-1.5 bg-slate-900 mx-auto rounded-full mb-0.5" />
           <div className="flex-1 rounded-xl bg-[#0e1322] p-1.5 flex flex-col justify-between border border-white/5 text-[6px] font-mono">
             <div className="flex justify-between items-center text-cyan-300">

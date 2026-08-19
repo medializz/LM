@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'motion/react';
 import { Heart, MessageCircle, Bookmark } from 'lucide-react';
 import { LizzdoLogo } from '../LizzdoLogo';
 import { SiteSettings } from '../../types';
@@ -14,15 +13,13 @@ export const PhoneSocialMockup: React.FC<PhoneSocialMockupProps> = ({
   className = '' 
 }) => {
   return (
-    <motion.div 
+    <div 
       id="phone-social-mockup"
-      whileHover={{ scale: 1.03 }}
-      transition={{ duration: 0.3 }}
-      className={`relative select-none ${className}`}
+      className={`relative select-none gpu-layer ${className}`}
       aria-label="Lizzdo Media Smartphone Social Media & Food Creative Presentation"
     >
       {/* Smartphone Outer Chassis & Metallic Edge */}
-      <div className="w-full aspect-[9/18.5] rounded-[24px] sm:rounded-[28px] bg-[#1a1d28] p-1.5 sm:p-2 border-[2px] sm:border-[2.5px] border-slate-600/80 shadow-[0_30px_70px_rgba(0,0,0,0.98)] relative overflow-hidden flex flex-col justify-between">
+      <div className="w-full aspect-[9/18.5] rounded-[24px] sm:rounded-[28px] bg-[#1a1d28] p-1.5 sm:p-2 border-[2px] sm:border-[2.5px] border-slate-600/80 shadow-[0_20px_50px_rgba(0,0,0,0.95)] relative overflow-hidden flex flex-col justify-between">
         
         {/* Dynamic Island / Camera Notch */}
         <div className="absolute top-2 left-1/2 -translate-x-1/2 w-10 sm:w-12 h-2.5 sm:h-3 bg-black rounded-full z-30 flex items-center justify-between px-1.5 border border-white/10">
@@ -94,7 +91,7 @@ export const PhoneSocialMockup: React.FC<PhoneSocialMockupProps> = ({
 
               {/* Graphic Food/Burger Icon + Delicious Illustration */}
               <div className="my-auto z-10 flex flex-col items-center">
-                <svg className="w-6 h-6 sm:w-7 sm:h-7 drop-shadow-[0_4px_8px_rgba(255,190,26,0.4)]" viewBox="0 0 48 48" fill="none">
+                <svg className="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 48 48" fill="none">
                   {/* Sesame Bun Top */}
                   <path d="M8 22 C8 12, 40 12, 40 22 Z" fill="#f59e0b" />
                   <ellipse cx="18" cy="16" rx="1" ry="0.5" fill="#fef3c7" />
@@ -162,6 +159,6 @@ export const PhoneSocialMockup: React.FC<PhoneSocialMockupProps> = ({
         </div>
 
       </div>
-    </motion.div>
+    </div>
   );
 };
