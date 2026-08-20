@@ -18,16 +18,20 @@ import { ServiceDetailPage } from './components/pages/ServiceDetailPage';
 import { ServicesIndexPage } from './components/pages/ServicesIndexPage';
 import { WorkDetailPage } from './components/pages/WorkDetailPage';
 import { WorkIndexPage } from './components/pages/WorkIndexPage';
+import { AboutPage } from './components/pages/AboutPage';
+import { BlogIndexPage } from './components/pages/BlogIndexPage';
+import { BlogDetailPage } from './components/pages/BlogDetailPage';
+import { ContactPage } from './components/pages/ContactPage';
 import { PrivacyPolicyPage } from './components/pages/PrivacyPolicyPage';
 import { TermsOfUsePage } from './components/pages/TermsOfUsePage';
 import { LegalNoticePage } from './components/pages/LegalNoticePage';
 import { SiteMapPage } from './components/pages/SiteMapPage';
+import { NotFoundPage } from './components/pages/NotFoundPage';
 import { SEOHead } from './components/SEOHead';
 import { MobileQuickBar } from './components/MobileQuickBar';
 import { loadCmsData } from './data/cmsContent';
 import { DecapCMSData, ServiceCategory, PortfolioItem } from './types';
 import { useAppRoute, navigateTo } from './utils/router';
-import { ArrowLeft, Sparkles } from 'lucide-react';
 
 export default function App() {
   const route = useAppRoute();
@@ -61,12 +65,10 @@ export default function App() {
   };
 
   const handleSelectService = (service: ServiceCategory) => {
-    // Navigate directly to the dedicated service page
     navigateTo(`/services/${service.slug}`);
   };
 
   const handleSelectProject = (project: PortfolioItem) => {
-    // Navigate directly to the dedicated project case study page
     navigateTo(`/work/${project.slug}`);
   };
 
@@ -79,16 +81,42 @@ export default function App() {
     ? cmsData.portfolio.find(p => p.slug === route.slug)
     : null;
 
+  const activeArticle = route.view === 'blog-detail' && route.slug
+    ? cmsData.blog?.find(b => b.slug === route.slug)
+    : null;
+
   return (
-    <div className="relative min-h-screen bg-[#090a0f] text-slate-100 selection:bg-[#ffbe1a] selection:text-black flex flex-col justify-between overflow-x-hidden">
+    <div className="relative min-h-screen bg-[#07090e] text-slate-100 selection:bg-[#ffbe1a] selection:text-black flex flex-col justify-between overflow-x-hidden">
       
       {/* Default SEO Header for root/home view */}
       {route.view === 'home' && (
         <SEOHead
-          title="Lizzdo Media | Let's Build Your Brand Together"
-          description="We help brands stand out and grow with creative design, powerful websites, and result-driven digital solutions. High-impact brand identities, web apps, and campaigns."
+          title="Lizzdo Media | Creative & Digital Agency - Branding, Packaging & Web"
+          description="Lizzdo Media is a premier creative and digital agency crafting high-impact brand identities, packaging design systems, web development, and digital marketing."
           canonicalUrl="https://media.lizzdo.com/"
           type="website"
+          schemaData={[
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": cmsData.siteSettings.siteName,
+              "url": "https://media.lizzdo.com/",
+              "logo": "https://media.lizzdo.com/uploads/lizzdo-media-logo.svg",
+              "email": cmsData.siteSettings.contactEmail,
+              "description": "Lizzdo Media is a creative & digital agency offering brand identity, packaging design, high-speed web engineering, and performance marketing."
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": cmsData.siteSettings.siteName,
+              "url": "https://media.lizzdo.com/",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://media.lizzdo.com/blog?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            }
+          ]}
         />
       )}
 
@@ -110,14 +138,13 @@ export default function App() {
       />
 
       {/* MAIN CONTENT LANDMARK */}
-      <main id="main-content" className="flex-1 flex flex-col justify-center pt-16 pb-16 md:pb-0">
+      <main id="main-content" className="flex-1 flex flex-col justify-center">
         
         {/* ========================================================= */}
-        {/* VIEW 1: HOME PAGE (PHASE 1 HERO + PHASE 2 BODY) */}
+        {/* VIEW 1: HOME PAGE */}
         {/* ========================================================= */}
         {route.view === 'home' && (
           <>
-            {/* HERO SECTION (PHASE 1) */}
             <Hero 
               content={cmsData.hero}
               siteSettings={cmsData.siteSettings}
@@ -127,24 +154,20 @@ export default function App() {
               }}
             />
 
-            {/* FEATURE / VALUE STRIP (PHASE 1) */}
             <FeatureStrip 
               features={cmsData.features}
             />
 
-            {/* SECTION A: WHAT WE DO / 11 SERVICES GRID */}
             <ServicesSection 
               services={cmsData.services}
               onSelectService={handleSelectService}
               onExploreAll={() => navigateTo('/services')}
             />
 
-            {/* SECTION B: OUR PROCESS (6-STEP TIMELINE) */}
             <ProcessSection 
               steps={cmsData.processSteps || []}
             />
 
-            {/* SECTION C: FEATURED WORK / PORTFOLIO */}
             <FeaturedWorkSection 
               portfolio={cmsData.portfolio || []}
               siteSettings={cmsData.siteSettings}
@@ -152,7 +175,6 @@ export default function App() {
               onViewAll={() => navigateTo('/work')}
             />
 
-            {/* SECTION D: WHY CHOOSE US (STATS + TESTIMONIAL) */}
             <WhyChooseUsSection 
               content={cmsData.whyChooseUs || {}}
               statistics={cmsData.statistics || []}
@@ -183,18 +205,7 @@ export default function App() {
               onOpenContact={handleOpenContactModal}
             />
           ) : (
-            <div className="min-h-[60vh] flex flex-col items-center justify-center p-6 text-center space-y-4">
-              <h2 className="text-3xl font-bold text-white font-['Outfit']">Service Not Found</h2>
-              <p className="text-slate-400 text-sm max-w-md">
-                The requested service could not be located in our directory.
-              </p>
-              <button
-                onClick={() => navigateTo('/services')}
-                className="px-6 py-2.5 rounded-xl bg-[#ffbe1a] text-black font-semibold text-sm flex items-center gap-2 cursor-pointer"
-              >
-                <ArrowLeft className="w-4 h-4" /> Return to Services Directory
-              </button>
-            </div>
+            <NotFoundPage attemptedPath={route.path} />
           )
         )}
 
@@ -219,23 +230,55 @@ export default function App() {
               onOpenContact={handleOpenContactModal}
             />
           ) : (
-            <div className="min-h-[60vh] flex flex-col items-center justify-center p-6 text-center space-y-4">
-              <h2 className="text-3xl font-bold text-white font-['Outfit']">Case Study Not Found</h2>
-              <p className="text-slate-400 text-sm max-w-md">
-                The requested project case study could not be located.
-              </p>
-              <button
-                onClick={() => navigateTo('/work')}
-                className="px-6 py-2.5 rounded-xl bg-[#ffbe1a] text-black font-semibold text-sm flex items-center gap-2 cursor-pointer"
-              >
-                <ArrowLeft className="w-4 h-4" /> Return to Portfolio
-              </button>
-            </div>
+            <NotFoundPage attemptedPath={route.path} />
           )
         )}
 
         {/* ========================================================= */}
-        {/* VIEW 6: PRIVACY POLICY (/privacy) */}
+        {/* VIEW 6: ABOUT PAGE (/about) */}
+        {/* ========================================================= */}
+        {route.view === 'about' && (
+          <AboutPage 
+            cmsData={cmsData}
+            onOpenContact={handleOpenContactModal}
+          />
+        )}
+
+        {/* ========================================================= */}
+        {/* VIEW 7: BLOG INDEX (/blog) */}
+        {/* ========================================================= */}
+        {route.view === 'blog-index' && (
+          <BlogIndexPage 
+            cmsData={cmsData}
+          />
+        )}
+
+        {/* ========================================================= */}
+        {/* VIEW 8: BLOG DETAIL (/blog/:slug) */}
+        {/* ========================================================= */}
+        {route.view === 'blog-detail' && (
+          activeArticle ? (
+            <BlogDetailPage 
+              article={activeArticle}
+              cmsData={cmsData}
+              onOpenContact={handleOpenContactModal}
+            />
+          ) : (
+            <NotFoundPage attemptedPath={route.path} />
+          )
+        )}
+
+        {/* ========================================================= */}
+        {/* VIEW 9: CONTACT PAGE (/contact) */}
+        {/* ========================================================= */}
+        {route.view === 'contact' && (
+          <ContactPage 
+            cmsData={cmsData}
+          />
+        )}
+
+        {/* ========================================================= */}
+        {/* VIEW 10: PRIVACY POLICY (/privacy) */}
         {/* ========================================================= */}
         {route.view === 'privacy' && (
           <PrivacyPolicyPage 
@@ -245,7 +288,7 @@ export default function App() {
         )}
 
         {/* ========================================================= */}
-        {/* VIEW 7: TERMS OF USE (/terms) */}
+        {/* VIEW 11: TERMS OF USE (/terms) */}
         {/* ========================================================= */}
         {route.view === 'terms' && (
           <TermsOfUsePage 
@@ -255,7 +298,7 @@ export default function App() {
         )}
 
         {/* ========================================================= */}
-        {/* VIEW 8: LEGAL NOTICE (/legal) */}
+        {/* VIEW 12: LEGAL NOTICE (/legal) */}
         {/* ========================================================= */}
         {route.view === 'legal' && (
           <LegalNoticePage 
@@ -265,7 +308,7 @@ export default function App() {
         )}
 
         {/* ========================================================= */}
-        {/* VIEW 9: INTERACTIVE SITE MAP (/sitemap) */}
+        {/* VIEW 13: INTERACTIVE SITE MAP (/sitemap) */}
         {/* ========================================================= */}
         {route.view === 'sitemap' && (
           <SiteMapPage 
@@ -275,33 +318,10 @@ export default function App() {
         )}
 
         {/* ========================================================= */}
-        {/* VIEW 10: 404 NOT FOUND */}
+        {/* VIEW 14: 404 NOT FOUND */}
         {/* ========================================================= */}
         {route.view === '404' && (
-          <div className="min-h-[70vh] flex flex-col items-center justify-center p-6 text-center space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ffbe1a]/10 border border-[#ffbe1a]/30 text-[#ffbe1a] text-xs font-mono tracking-wider uppercase">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>404 ERROR</span>
-            </div>
-            <h1 className="text-4xl sm:text-6xl font-black text-white font-['Outfit']">Page Not Found</h1>
-            <p className="text-slate-400 text-base max-w-md">
-              The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
-            </p>
-            <div className="flex gap-4 pt-2">
-              <button
-                onClick={() => navigateTo('/')}
-                className="px-6 py-3 rounded-xl bg-[#ffbe1a] text-black font-bold text-sm cursor-pointer shadow-lg shadow-[#ffbe1a]/20"
-              >
-                Go to Homepage
-              </button>
-              <button
-                onClick={() => navigateTo('/services')}
-                className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-white font-semibold text-sm hover:bg-white/10 cursor-pointer"
-              >
-                Explore Services
-              </button>
-            </div>
-          </div>
+          <NotFoundPage attemptedPath={route.path} />
         )}
 
       </main>
@@ -313,7 +333,7 @@ export default function App() {
         onOpenContact={() => handleOpenContactModal()}
       />
 
-      {/* OPTIONAL QUICK MODAL (when triggered specifically) */}
+      {/* OPTIONAL QUICK MODAL */}
       <ServiceDetailModal 
         service={selectedServiceForModal}
         onClose={() => setSelectedServiceForModal(null)}
@@ -338,6 +358,3 @@ export default function App() {
     </div>
   );
 }
-
-
-

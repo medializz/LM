@@ -1,27 +1,35 @@
 import React, { useEffect } from 'react';
 
-interface SEOHeadProps {
+export interface SEOHeadProps {
   title?: string;
   description?: string;
   canonicalUrl?: string;
   ogImage?: string;
   type?: 'website' | 'article' | 'service';
-  schemaData?: Record<string, any>;
+  noindex?: boolean;
+  publishedTime?: string;
+  modifiedTime?: string;
+  authorName?: string;
+  schemaData?: Record<string, any> | Array<Record<string, any>>;
 }
 
 export const SEOHead: React.FC<SEOHeadProps> = ({
-  title = "Lizzdo Media | Creative & Digital Agency",
-  description = "We help brands stand out and grow with creative design, powerful websites, and result-driven digital solutions.",
+  title = "Lizzdo Media | Branding, Graphic Design, Web Development & Digital Marketing",
+  description = "Lizzdo Media provides branding, graphic design, social media content, digital marketing and website development for businesses looking to build a stronger digital presence.",
   canonicalUrl = "https://media.lizzdo.com/",
   ogImage = "https://media.lizzdo.com/uploads/og-cover.png",
   type = "website",
+  noindex = false,
+  publishedTime,
+  modifiedTime,
+  authorName,
   schemaData
 }) => {
   useEffect(() => {
-    // Update document title
+    // 1. Update Document Title
     document.title = title;
 
-    // Helper to update or create meta tags
+    // Helper: update or create meta tag by attribute name & value
     const setMetaTag = (attrName: string, attrVal: string, content: string) => {
       let element = document.querySelector(`meta[${attrName}="${attrVal}"]`);
       if (!element) {
@@ -32,23 +40,49 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       element.setAttribute('content', content);
     };
 
-    // Standard description
-    setMetaTag('name', 'description', description);
+    const removeMetaTag = (attrName: string, attrVal: string) => {
+      const element = document.querySelector(`meta[${attrName}="${attrVal}"]`);
+      if (element) {
+        element.remove();
+      }
+    };
 
-    // OpenGraph tags
+    // 2. Standard Meta Tags
+    setMetaTag('name', 'description', description);
+    
+    // Meta Robots
+    if (noindex) {
+      setMetaTag('name', 'robots', 'noindex, follow');
+    } else {
+      setMetaTag('name', 'robots', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+    }
+
+    // 3. Open Graph Tags
+    setMetaTag('property', 'og:site_name', 'Lizzdo Media');
     setMetaTag('property', 'og:title', title);
     setMetaTag('property', 'og:description', description);
     setMetaTag('property', 'og:url', canonicalUrl);
     setMetaTag('property', 'og:type', type === 'service' ? 'website' : type);
     setMetaTag('property', 'og:image', ogImage);
+    setMetaTag('property', 'og:locale', 'en_US');
 
-    // Twitter Card tags
+    if (type === 'article') {
+      if (publishedTime) setMetaTag('property', 'article:published_time', publishedTime);
+      if (modifiedTime) setMetaTag('property', 'article:modified_time', modifiedTime);
+      if (authorName) setMetaTag('property', 'article:author', authorName);
+    } else {
+      removeMetaTag('property', 'article:published_time');
+      removeMetaTag('property', 'article:modified_time');
+      removeMetaTag('property', 'article:author');
+    }
+
+    // 4. Twitter Card Tags
     setMetaTag('name', 'twitter:card', 'summary_large_image');
     setMetaTag('name', 'twitter:title', title);
     setMetaTag('name', 'twitter:description', description);
     setMetaTag('name', 'twitter:image', ogImage);
 
-    // Canonical link
+    // 5. Canonical Link
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
     if (!canonical) {
       canonical = document.createElement('link');
@@ -57,7 +91,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     }
     canonical.setAttribute('href', canonicalUrl);
 
-    // Structured data injection
+    // 6. JSON-LD Structured Data Injection
     let jsonLdScript = document.getElementById('page-structured-data');
     if (schemaData) {
       if (!jsonLdScript) {
@@ -70,7 +104,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     } else if (jsonLdScript) {
       jsonLdScript.remove();
     }
-  }, [title, description, canonicalUrl, ogImage, type, schemaData]);
+  }, [title, description, canonicalUrl, ogImage, type, noindex, publishedTime, modifiedTime, authorName, schemaData]);
 
   return null;
 };

@@ -12,36 +12,36 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
     favicon: "/uploads/lizzdo-media-mark.svg",
     contactEmail: "contact@media.lizzdo.com",
     primaryCtaText: "Let's Talk",
-    primaryCtaUrl: "#contact",
+    primaryCtaUrl: "/contact",
     parentCompanyUrl: "https://lizzdo.com/",
     currentDomain: "https://media.lizzdo.com/",
     whatsappNumber: "+1234567890",
   },
   navigation: [
-    { id: "home", label: "Home", href: "#", active: true },
+    { id: "home", label: "Home", href: "/", active: true },
     {
       id: "services",
       label: "Services",
-      href: "#services",
+      href: "/services",
       hasDropdown: true,
       dropdownItems: [
-        { title: "Brand Identity", slug: "brand-identity", description: "Strategic brand identity design" },
-        { title: "Logo Design", slug: "logo-design", description: "Memorable & iconic logo designs" },
-        { title: "Graphic Design", slug: "graphic-design", description: "Eye-catching visuals for print & digital" },
-        { title: "Web Development", slug: "web-development", description: "Fast, modern web experiences" },
-        { title: "Social Media Design", slug: "social-media-design", description: "Stunning creatives that boost engagement" },
+        { title: "Brand Identity", slug: "brand-identity", description: "Strategic brand identity & design systems" },
+        { title: "Logo Design", slug: "logo-design", description: "Memorable, mathematical vector logo marks" },
+        { title: "Graphic Design", slug: "graphic-design", description: "Print, editorial, & corporate visual craft" },
+        { title: "Web Development", slug: "web-development", description: "Fast, modern web engineering & UX" },
+        { title: "Social Media Design", slug: "social-media-design", description: "Scroll-stopping social visual assets" },
         { title: "Content Posting", slug: "content-posting", description: "Consistent storytelling & scheduling" },
-        { title: "Digital Marketing", slug: "digital-marketing", description: "Data-driven marketing strategies" },
-        { title: "Social Media Management", slug: "social-media-management", description: "Complete growth & community management" },
-        { title: "Advertising Creatives", slug: "advertising-creatives", description: "High-converting ad visuals" },
+        { title: "Digital Marketing", slug: "digital-marketing", description: "Data-driven marketing & CRO campaigns" },
+        { title: "Social Media Management", slug: "social-media-management", description: "Community growth & profile management" },
+        { title: "Advertising Creatives", slug: "advertising-creatives", description: "High-converting ad banners & hooks" },
         { title: "AI Visuals Content", slug: "ai-visuals-content", description: "Next-gen generative visual craft" },
-        { title: "Website Development", slug: "website-development", description: "Powerful websites designed for growth" }
+        { title: "Website Development", slug: "website-development", description: "Bespoke corporate websites for growth" }
       ]
     },
-    { id: "process", label: "Process", href: "#process" },
-    { id: "work", label: "Work", href: "#work" },
-    { id: "why-us", label: "Why Us", href: "#why-us" },
-    { id: "contact", label: "Contact", href: "#contact" },
+    { id: "work", label: "Work", href: "/work" },
+    { id: "about", label: "About", href: "/about" },
+    { id: "blog", label: "Blog", href: "/blog" },
+    { id: "contact", label: "Contact", href: "/contact" },
   ],
   hero: {
     eyebrow: "Creative & Digital Agency",
@@ -50,7 +50,7 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
     headlineHighlightedWord: "Together.",
     description: "We help brands stand out and grow with creative design, powerful websites, and result-driven digital solutions.",
     primaryCtaText: "Explore Our Work",
-    primaryCtaUrl: "#work"
+    primaryCtaUrl: "/work"
   },
   services: [
     {
@@ -58,24 +58,24 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
       title: "Brand Identity",
       slug: "brand-identity",
       iconKey: "brand-identity",
-      shortDescription: "Strategic brand identity design that defines and distinguishes you.",
+      shortDescription: "Strategic brand identity design that defines and distinguishes your business.",
       category: "Branding",
       order: 1,
       heroHeadline: "Brand Identity",
       heroHighlight: "That Defines You.",
-      heroDescription: "From visual direction and custom typography to luxury stationery and digital guidelines, we build cohesive brand identities designed to captivate and endure.",
+      heroDescription: "From strategic visual direction and custom typography to luxury stationery and digital design systems, we build cohesive brand identities engineered to captivate and endure.",
       ctaButtonText: "Build My Brand →",
       deliverables: [
         "Primary & Secondary Logo Marks",
-        "Comprehensive Brand Book & Rules",
-        "Custom Typography & Font Pairing",
-        "Color Palette Matrix (Pantone/RGB/CMYK)",
+        "Comprehensive Brand Manual & Rules",
+        "Custom Typography & Font Pairing Matrix",
+        "Color Palette System (Pantone, CMYK, RGB, Hex)",
         "Luxury Stationery & Business Cards",
         "Digital Social & Presentation Kits"
       ],
       processSteps: [
         { stepNumber: "01", title: "Brand Discovery", description: "In-depth audit of your core values, mission, target personas, and industry competitive landscape." },
-        { stepNumber: "02", title: "Visual Direction", description: "Creating moodboards, tonal concepts, and creative vectors aligned with your aesthetic goals." },
+        { stepNumber: "02", title: "Visual Direction", description: "Creating moodboards, tonal concepts, and creative vectors aligned with your strategic aesthetic goals." },
         { stepNumber: "03", title: "Logo System", description: "Crafting mathematical vector logo marks, monograms, badges, and responsive variations." },
         { stepNumber: "04", title: "Brand Guidelines", description: "Documenting clear rules for spacing, minimum sizing, typography hierarchies, and do's/don'ts." },
         { stepNumber: "05", title: "Brand Applications", description: "Applying the visual identity across stationery, packaging, merchandise, and digital mockups." },
@@ -86,9 +86,28 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
         { id: "bi-g2", title: "Color & Typography Guidelines", caption: "Precision hierarchy and contrast ratios", visualType: "brand-guidelines", layout: "half" },
         { id: "bi-g3", title: "Embossed Substrate Mockup", caption: "Premium tactile physical production spec", visualType: "stationery", layout: "half" }
       ],
+      faqs: [
+        {
+          question: "What is included in a complete brand identity package?",
+          answer: "Our brand identity package includes primary and secondary logo variations, responsive icon marks, color palette specifications (Pantone, CMYK, RGB, Hex), typography pairing rules, stationery design (business cards, letterheads, envelopes), social media brand templates, and a comprehensive PDF Brand Guidelines manual."
+        },
+        {
+          question: "How long does a brand identity project usually take?",
+          answer: "A standard brand identity project typically takes 2 to 4 weeks depending on the complexity of deliverables, feedback cycles, and the breadth of collateral required."
+        },
+        {
+          question: "Do you provide editable vector source files?",
+          answer: "Yes, upon project completion you receive 100% full commercial ownership and master vector source files (AI, EPS, SVG, PDF, and high-resolution transparent PNGs)."
+        },
+        {
+          question: "Can you rebrand an existing business without losing recognition?",
+          answer: "Absolutely. We specialize in both brand evolutions (refining and modernizing your existing brand equity) and full strategic transformations."
+        }
+      ],
       relatedProjects: ["brand-identity-design", "packaging-design"],
-      seoTitle: "Lizzdo Media | Brand Identity Design",
-      seoDescription: "Strategic brand identity design that defines and distinguishes you. Full vector logo systems, guidelines, stationery, and collateral."
+      relatedServices: ["logo-design", "graphic-design", "website-development"],
+      seoTitle: "Brand Identity Design Services | Lizzdo Media",
+      seoDescription: "Strategic brand identity design services by Lizzdo Media. Full vector logo systems, comprehensive brand guidelines, luxury stationery, and collateral."
     },
     {
       id: "logo-design",
@@ -100,13 +119,13 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
       order: 2,
       heroHeadline: "Logo Design",
       heroHighlight: "Made to Be Remembered.",
-      heroDescription: "We create distinctive, mathematically balanced, and timeless logo systems that anchor your brand across every medium.",
+      heroDescription: "We create distinctive, mathematically balanced, and timeless logo systems that anchor your brand across digital screens and physical mediums.",
       ctaButtonText: "Start a Logo Project →",
       deliverables: [
         "Primary Logo, Secondary Mark, & Favicon",
         "Mathematical Vector Construction Grids",
         "Light & Dark Monochromatic Variations",
-        "Scalable Formats (SVG, AI, EPS, PNG, PDF)",
+        "Scalable Master Formats (SVG, AI, EPS, PNG, PDF)",
         "Color Space Specifications (Hex, CMYK, PMS)",
         "Clearance & Sizing Usage Cheat Sheet"
       ],
@@ -123,9 +142,24 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
         { id: "ld-g2", title: "Monochrome Versatility", caption: "High-contrast reproduction on light and dark surfaces", visualType: "brand-guidelines", layout: "half" },
         { id: "ld-g3", title: "Embossed Foil Application", caption: "Gold stamped insignia on black cotton paper", visualType: "stationery", layout: "half" }
       ],
+      faqs: [
+        {
+          question: "How many initial logo concepts do you present?",
+          answer: "We typically present 2 to 3 distinct, thoughtfully crafted creative directions rooted in strategy, each showing real-world application mockups."
+        },
+        {
+          question: "Will the logo work in a single color or on dark backgrounds?",
+          answer: "Yes, every logo is engineered and rigorously tested for light backgrounds, dark mode, single-color black, white inverse, and monochromatic stamping."
+        },
+        {
+          question: "Will I own the full copyright to the final logo?",
+          answer: "Yes. Once final sign-off is complete, full intellectual property and commercial copyright are transferred to you."
+        }
+      ],
       relatedProjects: ["brand-identity-design"],
-      seoTitle: "Lizzdo Media | Logo Design",
-      seoDescription: "Distinctive, mathematically balanced logo designs that create a strong and lasting impression."
+      relatedServices: ["brand-identity", "graphic-design", "social-media-design"],
+      seoTitle: "Logo Design Services | Lizzdo Media",
+      seoDescription: "Distinctive, mathematically balanced logo design services by Lizzdo Media. Custom vector marks, monograms, and versatile symbol systems."
     },
     {
       id: "graphic-design",
@@ -137,7 +171,7 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
       order: 3,
       heroHeadline: "Graphic Design",
       heroHighlight: "Visuals That Speak.",
-      heroDescription: "From editorial posters and marketing brochures to corporate collateral and digital assets, our design team produces stunning visual communication.",
+      heroDescription: "From editorial lookbooks and packaging dielines to marketing brochures and corporate collateral, our design team produces stunning visual communication.",
       ctaButtonText: "Request Graphic Design →",
       deliverables: [
         "High-Impact Posters, Flyers, & Banners",
@@ -160,9 +194,24 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
         { id: "gd-g2", title: "Marketing Collateral Suite", caption: "Brochures and corporate lookbooks", visualType: "stationery", layout: "half" },
         { id: "gd-g3", title: "Custom Packaging Dieline", caption: "Vector dielines and foil finishes", visualType: "packaging", layout: "half" }
       ],
+      faqs: [
+        {
+          question: "What graphic design services do you provide?",
+          answer: "We design marketing collateral, brochures, flyers, pitch decks, product packaging, dielines, exhibition displays, banners, and digital marketing graphics."
+        },
+        {
+          question: "Do you prepare print-ready files with bleeds and crop marks?",
+          answer: "Yes, all print collateral is pre-flighted with precise 300 DPI resolution, CMYK color profiles, bleed margins, and crop marks ready for your print vendor."
+        },
+        {
+          question: "Can you design materials aligned with our existing brand guidelines?",
+          answer: "Yes, we strictly adhere to your existing brand book, typography, and palette guidelines to ensure seamless visual harmony."
+        }
+      ],
       relatedProjects: ["packaging-design", "social-media-campaign"],
-      seoTitle: "Lizzdo Media | Graphic Design",
-      seoDescription: "High-impact graphic design, brochures, posters, packaging, and digital communication craft."
+      relatedServices: ["brand-identity", "social-media-design", "advertising-creatives"],
+      seoTitle: "Graphic Design Services | Lizzdo Media",
+      seoDescription: "High-impact graphic design services by Lizzdo Media. Brochures, posters, packaging dielines, corporate collateral, and visual communication craft."
     },
     {
       id: "web-development",
@@ -174,10 +223,10 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
       order: 4,
       heroHeadline: "Web Development",
       heroHighlight: "Built for Performance.",
-      heroDescription: "High-speed, SEO-optimized, and responsive web applications built with modern frontend frameworks, flawless accessibility, and fluid animations.",
+      heroDescription: "High-speed, SEO-optimized, and responsive web applications built with modern frontend frameworks, sub-second loading speeds, and fluid animations.",
       ctaButtonText: "Build My Website →",
       deliverables: [
-        "Custom Responsive Frontend (React/Next.js/Vite)",
+        "Custom Responsive Frontend (React/TypeScript/Vite)",
         "Mobile-First Touch Optimized Experiences",
         "Lighthouse 95+ Core Web Vitals Performance",
         "Decap CMS & Content Management Integration",
@@ -186,7 +235,7 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
       ],
       processSteps: [
         { stepNumber: "01", title: "Plan", description: "Information architecture, route maps, and tech stack selection." },
-        { stepNumber: "02", title: "Design", description: "Interactive wireframes and pixel-perfect Figma prototypes." },
+        { stepNumber: "02", title: "Design", description: "Interactive wireframes and pixel-perfect prototypes." },
         { stepNumber: "03", title: "Develop", description: "Writing clean, componentized TypeScript and Tailwind CSS." },
         { stepNumber: "04", title: "Test", description: "Cross-browser testing, accessibility audit, and performance checks." },
         { stepNumber: "05", title: "Launch", description: "Domain routing, CDN edge caching, and DNS propagation." },
@@ -197,9 +246,24 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
         { id: "wd-g2", title: "Mobile Viewport Optimization", caption: "Fluid typography and smooth bottom navigation", visualType: "saas-mobile", layout: "half" },
         { id: "wd-g3", title: "E-Commerce Experience", caption: "Fast headless storefront with frictionless checkout", visualType: "ecommerce", layout: "half" }
       ],
-      relatedProjects: ["saas-website-design", "ecommerce-website"],
-      seoTitle: "Lizzdo Media | Web Development",
-      seoDescription: "Modern web development with lightning-fast speeds, responsive layouts, and rich interactive experiences."
+      faqs: [
+        {
+          question: "What web development technologies do you use?",
+          answer: "We engineer with modern, high-performance technologies including React, TypeScript, Tailwind CSS, Vite, Next.js, and static CMS architectures like Decap CMS."
+        },
+        {
+          question: "Will the website be optimized for mobile devices and search engines?",
+          answer: "Yes, every website is built mobile-first with responsive breakpoints, touch-friendly navigation, structured JSON-LD schemas, and Lighthouse 95+ Core Web Vitals optimization."
+        },
+        {
+          question: "Can I update website content myself after launch?",
+          answer: "Yes. We integrate easy-to-use content management systems (such as Decap CMS) so you can update text, images, blog posts, and projects without touching code."
+        }
+      ],
+      relatedProjects: ["saas-website-design", "web-development"],
+      relatedServices: ["website-development", "brand-identity", "digital-marketing"],
+      seoTitle: "Website Development Services | Lizzdo Media",
+      seoDescription: "Modern web development services by Lizzdo Media. Lightning-fast load times, responsive UI/UX, Decap CMS, and Core Web Vitals optimization."
     },
     {
       id: "social-media-design",
@@ -234,9 +298,20 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
         { id: "smd-g2", title: "Carousel Slide Sequence", caption: "Educational step-by-step swipe framework", visualType: "social-grid", layout: "half" },
         { id: "smd-g3", title: "Story Graphics Suite", caption: "9:16 interactive engagement stories", visualType: "social-stories", layout: "half" }
       ],
+      faqs: [
+        {
+          question: "What social platforms do you design for?",
+          answer: "We design for Instagram (Feeds, Stories, Carousels, Reels covers), LinkedIn, X (Twitter), Facebook, TikTok, YouTube thumbnails, and Pinterest."
+        },
+        {
+          question: "Do you deliver templates that our team can edit?",
+          answer: "Yes, we can provide editable Figma or Canva template packages alongside final high-resolution PNG/MP4 assets."
+        }
+      ],
       relatedProjects: ["social-media-campaign"],
-      seoTitle: "Lizzdo Media | Social Media Design",
-      seoDescription: "High-converting social media design, Instagram grids, carousels, and stories crafted for maximum engagement."
+      relatedServices: ["content-posting", "social-media-management", "advertising-creatives"],
+      seoTitle: "Social Media Design & Content Services | Lizzdo Media",
+      seoDescription: "High-converting social media design services by Lizzdo Media. Instagram grids, carousels, story graphics, and brand templates crafted for engagement."
     },
     {
       id: "content-posting",
@@ -271,9 +346,20 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
         { id: "cp-g2", title: "Multi-Channel Distribution", caption: "Synchronized posting across Instagram, LinkedIn, and X", visualType: "social-grid", layout: "half" },
         { id: "cp-g3", title: "Audience Peak Time Heatmap", caption: "Data-backed timing algorithms", visualType: "saas-dashboard", layout: "half" }
       ],
+      faqs: [
+        {
+          question: "Do you require approval before publishing posts?",
+          answer: "Yes, every batch of copy and creative is submitted in an interactive preview calendar for your team to review, edit, and approve prior to scheduling."
+        },
+        {
+          question: "How often will content be posted?",
+          answer: "We tailor cadence to your audience and goals, ranging from 3 to 7 posts per week across your chosen channels."
+        }
+      ],
       relatedProjects: ["social-media-campaign"],
-      seoTitle: "Lizzdo Media | Content Posting",
-      seoDescription: "Consistent content posting and scheduling to build authority and keep your audience engaged."
+      relatedServices: ["social-media-design", "social-media-management", "digital-marketing"],
+      seoTitle: "Content Posting & Scheduling Services | Lizzdo Media",
+      seoDescription: "Consistent content posting and scheduling services by Lizzdo Media. Editorial calendars, strategic copywriting, and scheduled multi-channel distribution."
     },
     {
       id: "digital-marketing",
@@ -308,9 +394,20 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
         { id: "dm-g2", title: "A/B Tested Creative Suite", caption: "High-performing visual hook variants", visualType: "social-campaign", layout: "half" },
         { id: "dm-g3", title: "Real-Time Telemetry", caption: "Custom analytics and ROI dashboard", visualType: "saas-dashboard", layout: "half" }
       ],
+      faqs: [
+        {
+          question: "Which ad networks do you manage?",
+          answer: "We manage paid acquisition campaigns across Meta Ads (Facebook & Instagram), Google Search & Display, LinkedIn Ads, and TikTok."
+        },
+        {
+          question: "How do you track campaign performance?",
+          answer: "We set up comprehensive server-side and pixel tracking (Google Analytics 4, Meta Conversions API) and provide custom transparent reporting dashboards."
+        }
+      ],
       relatedProjects: ["social-media-campaign", "saas-website-design"],
-      seoTitle: "Lizzdo Media | Digital Marketing",
-      seoDescription: "Data-driven digital marketing, paid ads management, and conversion optimization to drive measurable growth."
+      relatedServices: ["advertising-creatives", "social-media-management", "web-development"],
+      seoTitle: "Digital Marketing Services | Lizzdo Media",
+      seoDescription: "Data-driven digital marketing services by Lizzdo Media. Paid advertising management, conversion rate optimization, and growth campaigns."
     },
     {
       id: "social-media-management",
@@ -345,9 +442,20 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
         { id: "smm-g2", title: "Community Response Protocol", caption: "Fast, brand-aligned customer touchpoints", visualType: "social-grid", layout: "half" },
         { id: "smm-g3", title: "Monthly Growth Trajectory", caption: "Organic audience expansion analytics", visualType: "saas-dashboard", layout: "half" }
       ],
+      faqs: [
+        {
+          question: "What is included in full-service social management?",
+          answer: "Full-service management includes content calendar planning, custom graphic design and copy, active community moderation, DM handling, and monthly analytics reporting."
+        },
+        {
+          question: "Can you handle customer service inquiries in comments and DMs?",
+          answer: "Yes, we develop an approved FAQ playbook and brand tone guidelines to professionally handle inquiries and escalate high-priority leads."
+        }
+      ],
       relatedProjects: ["social-media-campaign"],
-      seoTitle: "Lizzdo Media | Social Media Management",
-      seoDescription: "Full-service social media management, community engagement, and strategic brand growth."
+      relatedServices: ["social-media-design", "content-posting", "advertising-creatives"],
+      seoTitle: "Social Media Management Services | Lizzdo Media",
+      seoDescription: "Full-service social media management by Lizzdo Media. Organic audience growth, community moderation, visual content creation, and strategy."
     },
     {
       id: "advertising-creatives",
@@ -382,9 +490,20 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
         { id: "ac-g2", title: "Product Focus Visual Hooks", caption: "Crisp studio lighting and bold price anchoring", visualType: "packaging", layout: "half" },
         { id: "ac-g3", title: "Display Network Ad Sizes", caption: "IAB standard compliant responsive units", visualType: "saas-dashboard", layout: "half" }
       ],
+      faqs: [
+        {
+          question: "Why are custom ad creatives better than generic templates?",
+          answer: "Custom ad creatives are tailored specifically to your unique value proposition, target persona triggers, and brand aesthetic, resulting in significantly higher CTR and lower cost per acquisition."
+        },
+        {
+          question: "Do you supply multiple dimensions for different placements?",
+          answer: "Yes, every creative concept is delivered in feed squares (1:1), vertical stories/reels (9:16), feed portrait (4:5), and Google display banner standards."
+        }
+      ],
       relatedProjects: ["social-media-campaign", "brand-identity-design"],
-      seoTitle: "Lizzdo Media | Advertising Creatives",
-      seoDescription: "High-converting advertising creatives, banner designs, and social ads engineered for high CTR."
+      relatedServices: ["digital-marketing", "social-media-design", "ai-visuals-content"],
+      seoTitle: "Advertising Creatives & Ad Design Services | Lizzdo Media",
+      seoDescription: "High-converting advertising creative services by Lizzdo Media. Banner designs, social sponsored ads, and visual hooks engineered for high CTR."
     },
     {
       id: "ai-visuals-content",
@@ -419,9 +538,20 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
         { id: "ai-g2", title: "Futuristic Visual Atmosphere", caption: "Volumetric lighting and obsidian textures", visualType: "brand-identity", layout: "half" },
         { id: "ai-g3", title: "Generative Ad Asset Library", caption: "Dynamic product scenes in high resolution", visualType: "social-campaign", layout: "half" }
       ],
+      faqs: [
+        {
+          question: "Can AI visuals be used for commercial branding and print?",
+          answer: "Yes, our team refines and upscales generative assets to 4K and 8K master resolutions with post-production color grading suitable for digital campaigns and large format print."
+        },
+        {
+          question: "How do you ensure brand consistency with AI content?",
+          answer: "We use strict art direction protocols, fixed color matrices, and negative prompt guardrails to guarantee every output matches your brand guidelines."
+        }
+      ],
       relatedProjects: ["packaging-design", "brand-identity-design"],
-      seoTitle: "Lizzdo Media | AI Visuals Content",
-      seoDescription: "Next-generation generative AI visual production, cinematic product scenes, and creative concept art."
+      relatedServices: ["graphic-design", "advertising-creatives", "social-media-design"],
+      seoTitle: "AI Visual Content & Generative Production | Lizzdo Media",
+      seoDescription: "Next-generation generative AI visual production services by Lizzdo Media. Cinematic product scenes, creative concept art, and commercial visual craft."
     },
     {
       id: "website-development",
@@ -456,9 +586,20 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
         { id: "wsd-g2", title: "Mobile UI Excellence", caption: "Thumb-friendly navigation and lightning-fast loading", visualType: "saas-mobile", layout: "half" },
         { id: "wsd-g3", title: "Decap CMS Integration", caption: "Intuitive markdown content editing interface", visualType: "brand-guidelines", layout: "half" }
       ],
-      relatedProjects: ["saas-website-design", "ecommerce-website"],
-      seoTitle: "Lizzdo Media | Website Development",
-      seoDescription: "Bespoke corporate websites and landing pages engineered for speed, high conversion, and easy CMS updates."
+      faqs: [
+        {
+          question: "How long does a full corporate website build take?",
+          answer: "Most corporate website projects take between 3 and 6 weeks from initial architecture and Figma prototyping to final QA and edge deployment."
+        },
+        {
+          question: "Is ongoing website hosting and maintenance included?",
+          answer: "We deploy on scalable edge infrastructure (Cloudflare, GitHub Pages, or Vercel) which offers zero server maintenance, automated SSL certificates, and 99.99% uptime."
+        }
+      ],
+      relatedProjects: ["saas-website-design", "web-development"],
+      relatedServices: ["web-development", "brand-identity", "digital-marketing"],
+      seoTitle: "Website Development & UI Engineering Services | Lizzdo Media",
+      seoDescription: "Bespoke corporate websites and digital platforms by Lizzdo Media. Engineered for speed, high conversion, responsive UX, and effortless CMS updates."
     }
   ],
   processSteps: [
@@ -545,7 +686,7 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
       ],
       relatedServices: ["brand-identity", "logo-design", "graphic-design"],
       relatedProjects: ["packaging-design", "saas-website-design"],
-      seoTitle: "Lizzdo Media | Brand Identity Design Case Study",
+      seoTitle: "Brand Identity Design Case Study | Lizzdo Media",
       seoDescription: "Case study for Aura Luxe luxury brand identity design, custom typography, stationery, and guidelines by Lizzdo Media."
     },
     {
@@ -600,7 +741,7 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
       ],
       relatedServices: ["graphic-design", "brand-identity", "ai-visuals-content", "website-development"],
       relatedProjects: ["brand-identity-design", "saas-website-design", "social-media-campaign"],
-      seoTitle: "Lizzdo Media | Packaging Design",
+      seoTitle: "Packaging Design Case Study | Lizzdo Media",
       seoDescription: "Explore the Packaging Design case study by Lizzdo Media. Luxury structural dielines, 3D mockups, foil finishes, and sustainable unboxing systems."
     },
     {
@@ -635,8 +776,8 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
         { id: "w3-g3", title: "Design System Tokens", caption: "Reusable UI components, buttons, and badges", visualType: "saas-analytics", layout: "half" }
       ],
       relatedServices: ["web-development", "website-development", "digital-marketing"],
-      relatedProjects: ["ecommerce-website", "brand-identity-design"],
-      seoTitle: "Lizzdo Media | SaaS Website Design Case Study",
+      relatedProjects: ["web-development", "brand-identity-design"],
+      seoTitle: "SaaS Website Design Case Study | Lizzdo Media",
       seoDescription: "Case study for PulseMetrics AI SaaS dashboard UI design and high-performance frontend engineering by Lizzdo Media."
     },
     {
@@ -672,7 +813,7 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
       ],
       relatedServices: ["social-media-design", "advertising-creatives", "digital-marketing"],
       relatedProjects: ["saas-website-design", "packaging-design"],
-      seoTitle: "Lizzdo Media | Social Media Campaign Case Study",
+      seoTitle: "Social Media Campaign Case Study | Lizzdo Media",
       seoDescription: "Case study for Acoustix high-conversion social media campaign and advertising creatives by Lizzdo Media."
     },
     {
@@ -708,8 +849,373 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
       ],
       relatedServices: ["web-development", "website-development", "brand-identity"],
       relatedProjects: ["saas-website-design", "brand-identity-design"],
-      seoTitle: "Lizzdo Media | Web Development Case Study",
+      seoTitle: "Web Development Case Study | Lizzdo Media",
       seoDescription: "Case study for Nexus Core Technologies high-performance web development, 100 Core Web Vitals, and responsive UI by Lizzdo Media."
+    }
+  ],
+  blog: [
+    {
+      id: "blog-1",
+      title: "How to Build a Powerful Brand Identity in 2026",
+      slug: "how-to-build-a-powerful-brand-identity",
+      summary: "A strategic guide on how modern businesses create distinctive visual identities, consistent typography systems, and enduring brand recognition.",
+      category: "Branding",
+      author: {
+        name: "Lizzdo Design Studio",
+        role: "Brand Strategy Lead",
+        bio: "Specializing in brand architecture, mathematical vector design, and high-end visual systems for global businesses.",
+        avatar: "/uploads/lizzdo-media-mark.svg"
+      },
+      publishedDate: "2026-03-15",
+      updatedDate: "2026-06-20",
+      readTime: "6 min read",
+      visualType: "brand-identity",
+      tags: ["Brand Identity", "Design Systems", "Typography", "Strategy"],
+      keyTakeaways: [
+        "Brand identity is far more than a logo; it is the entire visual and emotional vocabulary of your company.",
+        "Consistency across digital screens and tactile print substrates creates subconscious consumer trust.",
+        "Mathematical vector grids ensure marks scale flawlessly from 16px favicons to building billboards.",
+        "A well-documented Brand Manual empowers your entire internal team to maintain visual discipline."
+      ],
+      content: `## 1. The Anatomy of Modern Brand Identity
+
+In an era saturated with generic templates and disposable visual trends, a truly powerful brand identity serves as an unshakeable anchor for your company. Many founders mistakenly conflate a "logo" with a complete "brand identity." While a logo serves as your primary signature, the broader identity encompasses your typography system, color psychology, spatial composition, packaging tactile finishes, and digital motion rules.
+
+When all these moving pieces harmoniously reinforce one another, your brand commands immediate authority and commands higher customer trust from the very first impression.
+
+---
+
+## 2. Core Pillars of an Enduring Visual System
+
+### A. Strategic Brand Discovery
+Before drawing a single vector bezier curve, design teams must conduct rigorous market positioning audits. Who are the primary personas? What emotional triggers drive their purchasing choices? What visual cliches dominate the industry that your brand must deliberately subvert?
+
+### B. Mathematical Vector Construction
+Timeless logo marks rely on geometric optical alignment, golden-ratio balance, and deliberate negative space. Every curve is planned so that it renders with crystal sharpness whether rendered as an app icon on an OLED display or laser-etched onto metal packaging.
+
+### C. Typographic Hierarchy & Contrast
+Typography does the heavy lifting in day-to-day brand communication. Pairing a distinctive display heading typeface with a highly readable, geometric sans-serif for body copy establishes rhythm and guides the reader's eye effortlessly through complex information.
+
+---
+
+## 3. Extending the Identity Across Physical & Digital Mediums
+
+A robust brand identity must effortlessly bridge the physical and digital divide:
+- **Physical Applications**: Luxury cotton business cards, hot-stamped metallic foils, embossed packaging dielines, and corporate lookbooks.
+- **Digital Ecosystems**: Responsive web navigation, dark mode contrast formulas, social media carousel kits, and video motion graphics.
+
+For companies looking to revamp their existing market presence, exploring our specialized [Brand Identity Design Services](/services/brand-identity) and [Logo Design](/services/logo-design) provides a direct blueprint for systematic growth.
+
+---
+
+## 4. The Value of Brand Manuals & Guidelines
+
+Without strict guidelines, even the most beautiful design degrades over time. A comprehensive 40+ page Brand Manual codifies minimum clear-space parameters, forbidden color mutations, exact Pantone print codes, and accessible digital contrast ratios. This document guarantees that every designer, marketer, and agency partner produces 100% brand-aligned collateral.`,
+      faqs: [
+        {
+          question: "How does a brand identity differ from just a logo?",
+          answer: "A logo is an individual identifying mark, whereas a brand identity is the complete ecosystem: color palette rules, typography scales, photo direction, packaging standards, and tone of voice."
+        },
+        {
+          question: "When should a business consider a complete rebrand?",
+          answer: "Businesses typically rebrand when expanding into premium markets, launching new product categories, experiencing market confusion, or when their existing visuals appear outdated compared to modern competitors."
+        }
+      ],
+      relatedServices: ["brand-identity", "logo-design", "graphic-design"],
+      relatedProjects: ["brand-identity-design", "packaging-design"],
+      relatedArticles: ["what-makes-a-good-business-logo", "why-packaging-design-matters"],
+      seoTitle: "How to Build a Powerful Brand Identity | Lizzdo Media Blog",
+      seoDescription: "Learn how to build a powerful, enduring brand identity. Expert insights on design systems, typography hierarchy, vector craft, and brand manuals."
+    },
+    {
+      id: "blog-2",
+      title: "Why Strategic Packaging Design Directly Drives Retail & D2C Sales",
+      slug: "why-packaging-design-matters",
+      summary: "Explore how custom structural packaging, tactile substrates, and dieline engineering convert casual retail browsers into loyal buyers.",
+      category: "Packaging Design",
+      author: {
+        name: "Lizzdo Design Studio",
+        role: "Packaging & Print Director",
+        bio: "Expert in structural dielines, 3D product simulation, sustainable substrates, and high-end retail packaging finishes.",
+        avatar: "/uploads/lizzdo-media-mark.svg"
+      },
+      publishedDate: "2026-04-02",
+      updatedDate: "2026-07-10",
+      readTime: "8 min read",
+      visualType: "packaging",
+      tags: ["Packaging Design", "Dielines", "Print Production", "Unboxing Experience"],
+      keyTakeaways: [
+        "Packaging is your final, physical sales pitch at the point of purchase.",
+        "Millimeter-accurate dielines prevent expensive manufacturing defects and transit damage.",
+        "Tactile finishes like soft-touch laminates and hot foil stamping increase perceived product value.",
+        "The D2C unboxing experience drives organic social sharing and repeat customer loyalty."
+      ],
+      content: `## 1. Packaging as the Silent Sales Representative
+
+In both physical retail aisles and direct-to-consumer (D2C) e-commerce shipments, packaging is the first physical touchpoint a customer experiences with your product. Research consistently demonstrates that consumers make subconscious purchasing evaluations within 3 to 7 seconds of viewing a shelf display.
+
+A thoughtfully designed package communicates product quality, ingredients purity, and brand stature before the customer even samples the contents inside.
+
+---
+
+## 2. Structural Engineering & Dieline Precision
+
+Visual art on a box is meaningless if the structural dieline is flawed. Professional packaging design demands rigorous engineering:
+- **Flute & Board Weight Calculation**: Selecting between 350GSM cotton duplex board, rigid setup boxes, or corrugated E-flute depending on weight distribution and drop-test thresholds.
+- **Closure Mechanisms**: Concealed magnetic flaps, friction-fit lids, or hermetic tear-notch zippers for barrier food pouches.
+- **Pre-Flight Production**: Checking fold creases, glue flaps, bar code scanning zones, and legal ingredient clearances.
+
+Learn more about our structural packaging capabilities by reviewing our [Packaging Design Case Study](/work/packaging-design) and [Graphic Design Services](/services/graphic-design).
+
+---
+
+## 3. The Sensory Unboxing Journey
+
+The modern consumer unboxing journey is a multi-sensory ritual:
+1. **The Outer Mailer**: Eco-friendly corrugated shipping box sealed with branded water-activated gummed tape.
+2. **The Reveal**: Smooth, non-sticking lid opening with calibrated pneumatic air-release friction.
+3. **The Texture**: Soft-touch matte laminate paired with embossed 24K gold foil stamps.
+4. **The Details**: Die-cut swing tags tied with natural twine and custom printed parchment wrap.
+
+This level of intentional craft transforms standard product delivery into a shareable unboxing event that amplifies organic word-of-mouth marketing.`,
+      faqs: [
+        {
+          question: "What information is needed to start a packaging design project?",
+          answer: "We need your exact product dimensions, container type (bottle, jar, pouch, rigid box), substrate preferences, required regulatory copy/barcodes, and brand assets."
+        },
+        {
+          question: "Do you supply 3D mockups before sending to the printer?",
+          answer: "Yes, we produce raytraced 3D photorealistic mockups with accurate lighting, foil shaders, and texture simulations so you can approve every detail before print runs."
+        }
+      ],
+      relatedServices: ["graphic-design", "brand-identity", "ai-visuals-content"],
+      relatedProjects: ["packaging-design", "brand-identity-design"],
+      relatedArticles: ["how-to-build-a-powerful-brand-identity", "how-to-create-high-converting-social-media-creatives"],
+      seoTitle: "Why Packaging Design Directly Drives Sales | Lizzdo Media Blog",
+      seoDescription: "Discover how strategic packaging design, structural dielines, and premium unboxing experiences drive retail sales and customer loyalty."
+    },
+    {
+      id: "blog-3",
+      title: "What Makes a Truly Memorable Business Logo?",
+      slug: "what-makes-a-good-business-logo",
+      summary: "Deconstructing the mathematical principles, scalability rules, and visual metaphors behind world-class logo designs.",
+      category: "Branding",
+      author: {
+        name: "Lizzdo Design Studio",
+        role: "Senior Visual Designer",
+        bio: "Specializing in vector identity marks, brand geometry, and iconic brand signatures.",
+        avatar: "/uploads/lizzdo-media-mark.svg"
+      },
+      publishedDate: "2026-05-18",
+      readTime: "5 min read",
+      visualType: "brand-identity",
+      tags: ["Logo Design", "Branding", "Vector Art", "Simplicity"],
+      keyTakeaways: [
+        "Simplicity is the ultimate sophistication in logo craft.",
+        "A great logo must remain instantly legible at 16x16 pixel favicon scale.",
+        "Monochromatic black and white testing reveals true structural strength.",
+        "Avoid short-lived visual fads in favor of geometric timelessness."
+      ],
+      content: `## 1. The Myth of the Complicated Logo
+
+When inexperienced founders commission a logo, there is a common temptation to cram every aspect of the company's story into a single visual emblem. The result is often an over-cluttered illustration that turns into a muddy smudge when scaled down on a mobile screen.
+
+The world's most enduring marks—from iconic technology companies to heritage fashion houses—are astonishingly simple. Their strength lies not in decorative excess, but in distinctive geometry, memorability, and effortless adaptability.
+
+---
+
+## 2. The Four Tests of a World-Class Logo
+
+### Test 1: The 16-Pixel Favicon Test
+If you scale the logo down to a 16x16 pixel browser favicon or a tiny smartwatch screen, can a viewer still identify the silhouette? If fine lines vanish or merge, the design must be simplified.
+
+### Test 2: The Single-Color Silhouette Test
+Strip away all gradients, shadows, and colors. Can the mark be rendered in 100% solid black on a white background, or reverse white on black? If a logo relies solely on colors or gradients to hold its shape, its underlying geometry is weak.
+
+### Test 3: The Embroidery & Substrate Test
+Can this mark be embroidered on a polo shirt, laser-etched onto metal, stamped in hot gold foil, or 3D embossed on leather? High-end brands demand cross-medium versatility.
+
+### Test 4: The 5-Second Memory Recall Test
+If someone glances at your logo for five seconds, can they sketch its general form from memory on a napkin? High recall value is the hallmark of great brand design.
+
+---
+
+## 3. Ready to Build Your Brand Signature?
+
+Explore our dedicated [Logo Design Services](/services/logo-design) and [Brand Identity Design](/services/brand-identity) to discover how Lizzdo Media crafts mathematical, enduring brand marks.`,
+      faqs: [
+        {
+          question: "Should my logo include my business name (wordmark) or a standalone symbol?",
+          answer: "Most growing businesses benefit from a combination mark: an iconic symbol paired with a custom typographic wordmark that can be separated as brand recognition expands."
+        }
+      ],
+      relatedServices: ["logo-design", "brand-identity"],
+      relatedProjects: ["brand-identity-design"],
+      relatedArticles: ["how-to-build-a-powerful-brand-identity"],
+      seoTitle: "What Makes a Good Business Logo? | Lizzdo Media Blog",
+      seoDescription: "Explore the core principles of memorable logo design. Learn about scalability, monochromatic testing, and timeless vector craft."
+    },
+    {
+      id: "blog-4",
+      title: "How to Create High-Converting Social Media Creatives & Ad Campaigns",
+      slug: "how-to-create-high-converting-social-media-creatives",
+      summary: "Actionable frameworks for designing high-CTR advertising banners, multi-slide carousels, and thumb-stopping visual hooks.",
+      category: "Social Media & Ads",
+      author: {
+        name: "Lizzdo Growth Team",
+        role: "Performance Marketing Lead",
+        bio: "Specializing in paid ad creatives, conversion rate optimization, and multi-channel creative testing.",
+        avatar: "/uploads/lizzdo-media-mark.svg"
+      },
+      publishedDate: "2026-06-08",
+      readTime: "7 min read",
+      visualType: "social-campaign",
+      tags: ["Social Media", "Ad Creatives", "Paid Ads", "CTR Optimization"],
+      keyTakeaways: [
+        "The first 3 seconds of visual engagement determine 80% of campaign success.",
+        "Use high-contrast typographic hierarchy to deliver your core value proposition instantly.",
+        "A/B test visual hook variations (product closeup vs. customer problem vs. social proof).",
+        "Design natively for each platform's aspect ratios (1:1, 4:5, 9:16)."
+      ],
+      content: `## 1. The 3-Second Visual Hook Rule
+
+In fast-scrolling feeds on Instagram, TikTok, and LinkedIn, your creative has approximately 1.5 to 3 seconds to halt the user's thumb before they swipe past. If your ad starts with slow introductory text or generic stock imagery, your cost-per-click will skyrocket.
+
+High-converting creative relies on immediate visual friction: bold color contrast, high-contrast headline typography, intriguing product angles, and clear value anchoring.
+
+---
+
+## 2. Structuring Multi-Slide Carousel Frameworks
+
+Carousels remain one of the highest-engaging organic and paid formats across social networks. A proven 5-slide framework includes:
+- **Slide 1 (The Hook)**: A polarizing question, surprising metric, or high-value promise.
+- **Slide 2 (The Agitation)**: Illustrating the friction or pain point the audience currently faces.
+- **Slide 3 (The Breakdown)**: Step-by-step visual solution or product feature breakdown.
+- **Slide 4 (The Social Proof / Result)**: Metrics, client testimonial, or dramatic before/after visual.
+- **Slide 5 (The Direct CTA)**: Clear instruction on what action to take next.
+
+---
+
+## 3. Scale Your Advertising Pipeline
+
+Discover how Lizzdo Media delivers high-converting visual suites through our [Social Media Design Services](/services/social-media-design), [Advertising Creatives](/services/advertising-creatives), and our [Acoustix Campaign Case Study](/work/social-media-campaign).`,
+      faqs: [
+        {
+          question: "How many creative variations should I test per ad campaign?",
+          answer: "We recommend launching with 3 to 5 distinct visual angles per audience segment to rapidly discover the lowest CAC winning variation."
+        }
+      ],
+      relatedServices: ["social-media-design", "advertising-creatives", "digital-marketing"],
+      relatedProjects: ["social-media-campaign"],
+      relatedArticles: ["why-packaging-design-matters"],
+      seoTitle: "How to Create High-Converting Social Media Creatives | Lizzdo Media Blog",
+      seoDescription: "Master the art of high-converting social media creatives and paid ad design. Learn about visual hooks, carousel frameworks, and CTR optimization."
+    },
+    {
+      id: "blog-5",
+      title: "Modern Web Development: Why Performance & Core Web Vitals Define Conversion",
+      slug: "modern-web-development-performance-conversion",
+      summary: "Why sub-second load times, flawless mobile responsiveness, and zero layout shift are critical for both SEO rankings and conversion rates.",
+      category: "Web Development",
+      author: {
+        name: "Lizzdo Engineering",
+        role: "Head of Web Engineering",
+        bio: "Specializing in modern frontend architectures, Core Web Vitals optimization, and edge-deployed web applications.",
+        avatar: "/uploads/lizzdo-media-mark.svg"
+      },
+      publishedDate: "2026-07-22",
+      readTime: "7 min read",
+      visualType: "saas-dashboard",
+      tags: ["Web Development", "Core Web Vitals", "SEO", "Performance", "React"],
+      keyTakeaways: [
+        "Every 100ms of extra page load latency reduces user conversion rates by 7%.",
+        "Google's ranking algorithm directly rewards sites that score 90+ on Core Web Vitals.",
+        "Client-side SPA architectures with instant route transitions boost user session depth.",
+        "Decap CMS allows marketing teams to publish without risking website stability."
+      ],
+      content: `## 1. Speed Is Not a Feature—It Is the Foundation
+
+Modern web users expect digital experiences to respond instantly. Research by Google and Akamai repeatedly shows that if a page takes more than 2.5 seconds to become interactive, over 50% of visitors bounce immediately.
+
+Search engines like Google and Bing have explicitly incorporated Core Web Vitals into their ranking algorithms:
+- **Largest Contentful Paint (LCP)**: Measures how quickly the main content of a page loads (target: < 2.5s).
+- **Interaction to Next Paint (INP)**: Measures page responsiveness to user clicks and taps (target: < 200ms).
+- **Cumulative Layout Shift (CLS)**: Measures visual stability as elements load (target: < 0.1).
+
+---
+
+## 2. Engineering for 100/100 Lighthouse Scores
+
+Achieving top-tier web performance requires intentional architectural discipline:
+1. **Modern Frontend Stack**: Building with lightweight, tree-shakeable frameworks like React 18, Vite, and Tailwind CSS.
+2. **Asset Optimization**: Using next-generation WebP/AVIF images with explicit width and height dimensions to prevent layout shifts.
+3. **Edge CDN Delivery**: Deploying static production bundles across global Cloudflare edge nodes for sub-20ms TTFB worldwide.
+4. **Clean Semantic HTML**: Writing crawlable semantic headers, breadcrumbs, and JSON-LD structured data.
+
+Explore our technical capabilities through our [Web Development Services](/services/web-development) and [Nexus Core Technologies Case Study](/work/web-development).`,
+      faqs: [
+        {
+          question: "How do you test and verify website speed?",
+          answer: "We run automated audits via Google PageSpeed Insights, Lighthouse CLI, and WebPageTest across both real 4G mobile devices and desktop connections."
+        }
+      ],
+      relatedServices: ["web-development", "website-development", "digital-marketing"],
+      relatedProjects: ["web-development", "saas-website-design"],
+      relatedArticles: ["how-to-build-a-powerful-brand-identity"],
+      seoTitle: "Modern Web Development & Core Web Vitals | Lizzdo Media Blog",
+      seoDescription: "Learn why high-performance web development and Core Web Vitals optimization are vital for search engine rankings and business conversion rates."
+    },
+    {
+      id: "blog-6",
+      title: "How AI Visual Content is Transforming Creative Production",
+      slug: "how-ai-visual-content-is-transforming-creative-production",
+      summary: "How blending generative AI capabilities with human artistic direction produces impossible brand visuals and rapid concept iterations.",
+      category: "AI & Innovation",
+      author: {
+        name: "Lizzdo Creative Technologist",
+        role: "AI Visual Director",
+        bio: "Specializing in neural generative workflows, 3D compositing, and hyper-realistic digital imagery.",
+        avatar: "/uploads/lizzdo-media-mark.svg"
+      },
+      publishedDate: "2026-08-01",
+      readTime: "6 min read",
+      visualType: "packaging",
+      tags: ["AI Visuals", "Creative Production", "Generative Art", "Brand Imagery"],
+      keyTakeaways: [
+        "AI is a powerful accelerator, but human art direction determines quality and commercial viability.",
+        "Generative tools enable impossible photo scenes without expensive multi-week studio shoots.",
+        "Post-processing and 8K upscaling are necessary to make AI assets print-ready.",
+        "Establishing consistent aesthetic prompt matrices prevents fragmented brand imagery."
+      ],
+      content: `## 1. The Intersection of Neural Technology & Human Art Direction
+
+Generative visual tools have radically expanded the horizons of commercial imagery. Concepts that once required expensive multi-week location shoots, elaborate physical staging, and heavy CGI rendering can now be prototyped and art-directed in a fraction of the time.
+
+However, raw AI outputs are rarely ready for high-end corporate use out-of-the-box. Without skilled creative direction, color grading, and artifact correction, AI imagery looks generic. The real magic happens when senior designers guide the models with precise lighting, color palettes, and brand guidelines.
+
+---
+
+## 2. Production Workflows for Commercial-Grade AI Visuals
+
+Our studio workflow follows a disciplined 5-stage pipeline:
+1. **Creative Art Direction**: Establishing moodboards, lighting schemes (volumetric, studio rim-light), and strict color codes.
+2. **Mathematical Prompt Matrices**: Formulating detailed prompt matrices specifying camera lenses, aperture depths, and texture materials.
+3. **Curation & Refinement**: Selecting top 1% candidates and repainting imperfections, anatomical details, and geometry.
+4. **Deep Upscaling**: Enhancing resolution to 8K master files suitable for billboard and packaging print.
+5. **Brand Integration**: Compositing vector logos, packaging dielines, and typography onto the final artwork.
+
+Discover our full range of creative services via our [AI Visuals Content Services](/services/ai-visuals-content).`,
+      faqs: [
+        {
+          question: "Can generated AI images be used for commercial advertising?",
+          answer: "Yes, our team uses commercially licensed diffusion workflows and provides full commercial usage rights for all final delivered assets."
+        }
+      ],
+      relatedServices: ["ai-visuals-content", "graphic-design", "advertising-creatives"],
+      relatedProjects: ["packaging-design", "brand-identity-design"],
+      relatedArticles: ["why-packaging-design-matters", "how-to-create-high-converting-social-media-creatives"],
+      seoTitle: "How AI Visual Content Is Transforming Creative Production | Lizzdo Media Blog",
+      seoDescription: "Discover how AI visual content and generative art direction are revolutionizing commercial product photography, concept design, and advertising."
     }
   ],
   whyChooseUs: {
@@ -718,7 +1224,7 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
     headingHighlight: "Lizzdo Media",
     description: "We combine creativity, strategy, and technology to deliver exceptional results that help brands grow faster and stronger.",
     ctaText: "Let's Work Together",
-    ctaUrl: "#contact"
+    ctaUrl: "/contact"
   },
   statistics: [
     {
@@ -784,7 +1290,7 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
     heading: "Let's Build Something Great Together.",
     description: "Have a project in mind? Tell us what you need and let's create something that moves your brand forward.",
     ctaText: "Let's Talk",
-    ctaUrl: "#contact"
+    ctaUrl: "/contact"
   },
   features: [
     {
@@ -814,7 +1320,7 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
   ]
 };
 
-const STORAGE_KEY = "lizzdo_media_cms_content_v3";
+const STORAGE_KEY = "lizzdo_media_cms_content_v4";
 
 export function loadCmsData(): DecapCMSData {
   try {
@@ -826,10 +1332,11 @@ export function loadCmsData(): DecapCMSData {
         ...parsed,
         siteSettings: { ...DEFAULT_CMS_DATA.siteSettings, ...parsed.siteSettings },
         hero: { ...DEFAULT_CMS_DATA.hero, ...parsed.hero },
-        navigation: parsed.navigation || DEFAULT_CMS_DATA.navigation,
+        navigation: DEFAULT_CMS_DATA.navigation, // prioritize updated canonical navigation
         services: parsed.services || DEFAULT_CMS_DATA.services,
         processSteps: parsed.processSteps || DEFAULT_CMS_DATA.processSteps,
         portfolio: parsed.portfolio || DEFAULT_CMS_DATA.portfolio,
+        blog: parsed.blog || DEFAULT_CMS_DATA.blog,
         whyChooseUs: { ...DEFAULT_CMS_DATA.whyChooseUs, ...parsed.whyChooseUs },
         statistics: parsed.statistics || DEFAULT_CMS_DATA.statistics,
         testimonials: parsed.testimonials || DEFAULT_CMS_DATA.testimonials,
@@ -850,4 +1357,3 @@ export function saveCmsData(data: DecapCMSData): void {
     console.error("Failed to save CMS data to localStorage", e);
   }
 }
-

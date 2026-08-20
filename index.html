@@ -3,19 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lizzdo Media — Creative & Digital Agency</title>
-    <meta name="description" content="We help brands stand out and grow with creative design, powerful websites, and result-driven digital solutions." />
+    <title>Lizzdo Media — Creative & Digital Agency | Branding, Web & Marketing</title>
+    <meta name="description" content="Lizzdo Media is a premier creative and digital agency crafting high-impact brand identities, packaging systems, custom web applications, and digital marketing." />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://media.lizzdo.com/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:site_name" content="Lizzdo Media" />
     <meta property="og:title" content="Lizzdo Media — Creative & Digital Agency" />
-    <meta property="og:description" content="Design. Build. Grow. Together. Leading creative agency specializing in brand identity, graphic design, web development, and digital marketing." />
+    <meta property="og:description" content="We help brands stand out and grow with creative design, high-speed websites, and result-driven digital solutions." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://media.lizzdo.com/" />
+    <meta property="og:image" content="https://media.lizzdo.com/uploads/og-cover.png" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Lizzdo Media — Creative & Digital Agency" />
+    <meta name="twitter:description" content="We help brands stand out and grow with creative design, high-speed websites, and result-driven digital solutions." />
+    <meta name="twitter:image" content="https://media.lizzdo.com/uploads/og-cover.png" />
+
+    <!-- Typography & Favicon -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="/uploads/lizzdo-media-mark.svg" />
+
+    <!-- Global Organization Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Lizzdo Media",
+      "url": "https://media.lizzdo.com/",
+      "logo": "https://media.lizzdo.com/uploads/lizzdo-media-logo.svg",
+      "description": "Lizzdo Media provides branding, graphic design, social media content, digital marketing and website development for businesses looking to build a stronger digital presence.",
+      "email": "contact@media.lizzdo.com",
+      "sameAs": [
+        "https://lizzdo.com"
+      ]
+    }
+    </script>
+
     <script type="text/javascript">
-      // GitHub Pages SPA redirect receiver
+      // GitHub Pages Single Page App routing receiver
       (function(l) {
         if (l.search[1] === '/' ) {
           var decoded = l.search.slice(1).split('&').map(function(s) { 
@@ -28,9 +59,38 @@
       }(window.location))
     </script>
   </head>
-  <body class="bg-[#090a0f] text-slate-100 antialiased font-sans selection:bg-[#ffbe1a] selection:text-black overflow-x-hidden min-h-screen">
+  <body class="bg-[#07090e] text-slate-100 antialiased font-sans selection:bg-[#ffbe1a] selection:text-black overflow-x-hidden min-h-screen">
+    
+    <!-- Fallback static navigation for crawlers without JavaScript execution -->
+    <noscript>
+      <div style="padding: 24px; background-color: #10131d; color: #ffffff; font-family: sans-serif;">
+        <h2>Lizzdo Media — Creative & Digital Agency</h2>
+        <p>We craft high-impact brand identities, custom web applications, packaging systems, and digital marketing strategies.</p>
+        <nav aria-label="Noscript Directory">
+          <h3>Explore Lizzdo Media:</h3>
+          <ul>
+            <li><a href="/" style="color: #ffbe1a;">Home</a></li>
+            <li><a href="/services" style="color: #ffbe1a;">Services Directory (11 Core Capabilities)</a></li>
+            <li><a href="/services/brand-identity" style="color: #ffbe1a;">Brand Identity & Strategy</a></li>
+            <li><a href="/services/graphic-design" style="color: #ffbe1a;">Packaging & Graphic Design</a></li>
+            <li><a href="/services/web-development" style="color: #ffbe1a;">Web Development & Engineering</a></li>
+            <li><a href="/services/saas-website" style="color: #ffbe1a;">SaaS Website & Product UI/UX</a></li>
+            <li><a href="/services/social-media-design" style="color: #ffbe1a;">Social Media Content & Ad Creatives</a></li>
+            <li><a href="/services/ai-visuals-content" style="color: #ffbe1a;">AI Visuals & Next-Gen Content</a></li>
+            <li><a href="/work" style="color: #ffbe1a;">Case Studies & Work Portfolio</a></li>
+            <li><a href="/about" style="color: #ffbe1a;">About Our Agency</a></li>
+            <li><a href="/blog" style="color: #ffbe1a;">Insights & Industry Articles</a></li>
+            <li><a href="/contact" style="color: #ffbe1a;">Start a Project / Contact Us</a></li>
+            <li><a href="/sitemap" style="color: #ffbe1a;">Site Map & Index</a></li>
+            <li><a href="/privacy" style="color: #ffbe1a;">Privacy Policy</a></li>
+            <li><a href="/terms" style="color: #ffbe1a;">Terms of Service</a></li>
+            <li><a href="/legal" style="color: #ffbe1a;">Legal Notice</a></li>
+          </ul>
+        </nav>
+      </div>
+    </noscript>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

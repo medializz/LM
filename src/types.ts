@@ -56,6 +56,11 @@ export interface DielineSpecs {
   flute?: string;
 }
 
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
 export interface ServiceCategory {
   id: string;
   title: string;
@@ -74,6 +79,7 @@ export interface ServiceCategory {
   processSteps?: ServiceProcessStep[];
   gallery?: GalleryItem[];
   benefits?: string[];
+  faqs?: FAQItem[];
   relatedServices?: string[]; // array of slugs
   relatedProjects?: string[]; // array of project slugs
   ctaTitle?: string;
@@ -130,8 +136,40 @@ export interface PortfolioItem {
   dielineSpecs?: DielineSpecs;
   processSteps?: WorkProcessStep[];
   gallery?: GalleryItem[];
+  faqs?: FAQItem[];
   relatedServices?: string[];
   relatedProjects?: string[];
+  seoTitle?: string;
+  seoDescription?: string;
+  seoImage?: string;
+}
+
+export interface AuthorInfo {
+  name: string;
+  role: string;
+  bio: string;
+  avatar?: string;
+}
+
+export interface BlogArticle {
+  id: string;
+  title: string;
+  slug: string;
+  summary: string;
+  content: string;
+  category: string;
+  author: AuthorInfo;
+  publishedDate: string;
+  updatedDate?: string;
+  readTime: string;
+  heroImage?: string;
+  visualType?: string;
+  tags?: string[];
+  keyTakeaways?: string[];
+  faqs?: FAQItem[];
+  relatedServices?: string[];
+  relatedProjects?: string[];
+  relatedArticles?: string[];
   seoTitle?: string;
   seoDescription?: string;
   seoImage?: string;
@@ -202,6 +240,7 @@ export interface DecapCMSData {
   services: ServiceCategory[];
   processSteps: ProcessStep[];
   portfolio: PortfolioItem[];
+  blog: BlogArticle[];
   whyChooseUs: WhyChooseUsContent;
   statistics: StatItem[];
   testimonials: TestimonialItem[];
@@ -215,10 +254,12 @@ export type AppRoute =
   | { view: 'service-detail'; path: string; slug: string }
   | { view: 'work-index'; path: string; slug?: undefined }
   | { view: 'work-detail'; path: string; slug: string }
+  | { view: 'about'; path: string; slug?: undefined }
+  | { view: 'blog-index'; path: string; slug?: undefined }
+  | { view: 'blog-detail'; path: string; slug: string }
+  | { view: 'contact'; path: string; slug?: undefined }
   | { view: 'privacy'; path: string; slug?: undefined }
   | { view: 'terms'; path: string; slug?: undefined }
   | { view: 'legal'; path: string; slug?: undefined }
   | { view: 'sitemap'; path: string; slug?: undefined }
   | { view: '404'; path: string; slug?: undefined };
-
-

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { 
   ArrowRight, CheckCircle2, MessageCircle, Sparkles, Layers, 
-  ChevronRight, ExternalLink, ShieldCheck, Zap
+  ChevronRight, ChevronDown, ChevronUp, ExternalLink, ShieldCheck, Zap
 } from 'lucide-react';
 import { ServiceCategory, DecapCMSData, GalleryItem } from '../../types';
 import { Breadcrumb } from '../Breadcrumb';
@@ -26,8 +26,13 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
 }) => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   const { siteSettings, services = [], portfolio = [] } = cmsData;
+
+  const toggleFaq = (idx: number) => {
+    setOpenFaqIndex(openFaqIndex === idx ? null : idx);
+  };
 
   // Fallback defaults for rich fields if not in basic CMS
   const heroHeadline = service.heroHeadline || service.title;
@@ -96,46 +101,83 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
   };
 
   const canonicalUrl = `https://media.lizzdo.com/services/${service.slug}`;
-  const seoTitle = service.seoTitle || `Lizzdo Media | ${service.title}`;
+  const seoTitle = service.seoTitle || `${service.title} Services | Lizzdo Media`;
   const seoDescription = service.seoDescription || service.shortDescription;
 
+  const schemaData: any[] = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": service.title,
+      "serviceType": service.category,
+      "description": service.shortDescription,
+      "url": canonicalUrl,
+      "provider": {
+        "@type": "Organization",
+        "name": siteSettings.siteName,
+        "url": "https://media.lizzdo.com/",
+        "logo": "https://media.lizzdo.com/uploads/lizzdo-media-logo.svg"
+      },
+      "areaServed": "Worldwide"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://media.lizzdo.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://media.lizzdo.com/services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": service.title,
+          "item": canonicalUrl
+        }
+      ]
+    }
+  ];
+
+  if (service.faqs && service.faqs.length > 0) {
+    schemaData.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": service.faqs.map(f => ({
+        "@type": "Question",
+        "name": f.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.answer
+        }
+      }))
+    });
+  }
+
   return (
-    <div className="min-h-screen bg-[#0b0b0c] text-white selection:bg-[#e5a93c] selection:text-black">
+    <div className="min-h-screen bg-[#07090e] text-white selection:bg-[#ffbe1a] selection:text-black font-['Plus_Jakarta_Sans']">
       <SEOHead 
         title={seoTitle}
         description={seoDescription}
         canonicalUrl={canonicalUrl}
         type="service"
-        schemaData={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": service.title,
-          "provider": {
-            "@type": "Organization",
-            "name": siteSettings.siteName,
-            "url": "https://media.lizzdo.com/"
-          },
-          "description": service.shortDescription,
-          "serviceType": service.category
-        }}
-      />
-
-      {/* Lightbox Modal */}
-      <ImageLightbox
-        isOpen={lightboxOpen}
-        onClose={() => setLightboxOpen(false)}
-        items={galleryItems}
-        currentIndex={activeGalleryIndex}
-        onIndexChange={setActiveGalleryIndex}
+        schemaData={schemaData}
       />
 
       {/* Breadcrumb Bar */}
-      <div className="border-b border-neutral-800/80 bg-neutral-950/60 backdrop-blur-md sticky top-16 z-30">
+      <div className="border-b border-white/[0.06] bg-[#0c0e15]/60 backdrop-blur-md pt-20">
         <Breadcrumb 
           items={[
             { label: 'Services', href: '/services' },
             { label: service.title }
-          ]}
+          ]} 
         />
       </div>
 
@@ -144,258 +186,327 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
         {/* ========================================================================= */}
         {/* 1. HERO SECTION */}
         {/* ========================================================================= */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          <div className="lg:col-span-6 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e5a93c]/10 border border-[#e5a93c]/30 text-[#e5a93c] text-xs font-mono tracking-wider uppercase">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>{service.category || "CREATIVE SERVICE"}</span>
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center">
+          
+          {/* Left Column: Details */}
+          <div className="lg:col-span-7 space-y-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ffbe1a]/10 border border-[#ffbe1a]/30 text-[#ffbe1a] text-xs font-mono font-bold tracking-wider uppercase">
+              <ServiceIcon iconKey={service.iconKey} size={14} />
+              <span>{service.category}</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-['Outfit'] font-black text-white tracking-tight leading-[1.1]">
-              {service.title} <br className="hidden sm:inline" />
-              <span className="text-[#e5a93c]">{heroHighlight}</span>
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black font-['Outfit'] text-white tracking-tight leading-[1.1]">
+              {heroHeadline}{' '}
+              <span className="text-[#ffbe1a]">{heroHighlight}</span>
             </h1>
 
-            <p className="text-neutral-400 text-base sm:text-lg leading-relaxed max-w-xl">
+            <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-xl">
               {heroDesc}
             </p>
 
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
-              <button
-                onClick={() => onOpenContact(service.title)}
-                className="px-6 py-3 rounded-xl bg-[#e5a93c] hover:bg-amber-400 text-neutral-950 font-semibold text-sm sm:text-base transition-all transform hover:-translate-y-0.5 shadow-lg shadow-[#e5a93c]/20 flex items-center gap-2 cursor-pointer"
+            <div className="pt-2 flex flex-wrap items-center gap-4">
+              <a
+                href="/contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onOpenContact(service.title);
+                }}
+                className="px-8 py-3.5 rounded-full bg-[#ffbe1a] hover:bg-amber-400 text-black font-extrabold text-sm font-['Outfit'] transition-all shadow-[0_0_20px_rgba(255,190,26,0.3)] hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer"
               >
                 <span>{ctaBtnText}</span>
-              </button>
+                <ArrowRight className="w-4 h-4" />
+              </a>
 
               <button
                 onClick={handleWhatsApp}
-                className="px-5 py-3 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-neutral-200 border border-neutral-800 font-medium text-sm sm:text-base transition-all flex items-center gap-2 cursor-pointer"
+                className="px-6 py-3.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-white border border-white/20 font-bold text-sm font-['Outfit'] transition-all hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer"
               >
-                <MessageCircle className="w-4 h-4 text-emerald-400" />
-                <span>WhatsApp Us</span>
+                <MessageCircle className="w-4 h-4 text-[#25D366]" />
+                <span>WhatsApp</span>
               </button>
+            </div>
+
+            {/* Quick Guarantees Pill Bar */}
+            <div className="pt-4 border-t border-white/[0.08] grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs text-slate-400 font-mono">
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#ffbe1a]" />
+                <span>100% Vector Ownership</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#ffbe1a]" />
+                <span>Zero AI Templates</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#ffbe1a]" />
+                <span>Dedicated Director</span>
+              </div>
             </div>
           </div>
 
-          {/* Right Hero Visual */}
-          <div className="lg:col-span-6">
-            <ServiceHeroVisual slug={service.slug} />
+          {/* Right Column: Hero Visual Showcase */}
+          <div className="lg:col-span-5">
+            <div className="relative rounded-3xl overflow-hidden border border-white/[0.1] bg-[#10131d] p-6 sm:p-8 shadow-2xl">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#ffbe1a]/10 rounded-full blur-3xl pointer-events-none" />
+              <ServiceHeroVisual visualType={service.slug} title={service.title} />
+            </div>
           </div>
+
         </section>
 
         {/* ========================================================================= */}
-        {/* 2. OVERVIEW & DELIVERABLES */}
+        {/* 2. DELIVERABLES & WHAT'S INCLUDED */}
         {/* ========================================================================= */}
-        <section className="bg-neutral-950 border border-neutral-800/80 rounded-2xl p-6 sm:p-10 shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          <div className="lg:col-span-5 space-y-4">
-            <span className="text-xs uppercase font-mono tracking-widest text-[#e5a93c]">What is Included</span>
-            <h2 className="text-2xl sm:text-3xl font-['Outfit'] font-bold text-white tracking-tight">
-              Designed for Measurable Impact & Scalability
+        <section className="space-y-6">
+          <div className="space-y-2">
+            <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Scope & Specifications</span>
+            <h2 className="text-2xl sm:text-4xl font-bold font-['Outfit'] text-white">
+              What's Included in This Discipline
             </h2>
-            <p className="text-neutral-400 text-sm sm:text-base leading-relaxed">
-              Every deliverable is crafted to fit seamlessly into your broader brand architecture, ensuring visual consistency across all customer touchpoints.
-            </p>
           </div>
 
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {deliverables.map((item, idx) => (
               <div 
                 key={idx}
-                className="flex items-start gap-3 p-3.5 rounded-xl bg-neutral-900/70 border border-neutral-800/60"
+                className="p-5 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/40 transition-all flex items-start gap-3.5"
               >
-                <CheckCircle2 className="w-4 h-4 text-[#e5a93c] shrink-0 mt-0.5" />
-                <span className="text-sm text-neutral-200 font-medium">{item}</span>
+                <div className="w-6 h-6 rounded-full bg-[#ffbe1a]/10 border border-[#ffbe1a]/30 flex items-center justify-center shrink-0 mt-0.5 text-[#ffbe1a]">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                </div>
+                <span className="text-sm font-semibold text-slate-200">{item}</span>
               </div>
             ))}
           </div>
         </section>
 
         {/* ========================================================================= */}
-        {/* 3. SIX-STEP SERVICE PROCESS */}
+        {/* 3. STEP-BY-STEP PRODUCTION PROCESS */}
         {/* ========================================================================= */}
         <section className="space-y-8">
-          <div className="text-center max-w-2xl mx-auto space-y-2">
-            <span className="text-xs uppercase font-mono tracking-widest text-[#e5a93c]">Structured Workflow</span>
-            <h2 className="text-2xl sm:text-3xl font-['Outfit'] font-bold text-white">
-              Our 6-Step Execution Method
+          <div className="space-y-2">
+            <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Workflow</span>
+            <h2 className="text-2xl sm:text-4xl font-bold font-['Outfit'] text-white">
+              Our 6-Phase Creative Pipeline
             </h2>
-            <p className="text-neutral-400 text-sm">
-              Transparent, disciplined, and focused on creative perfection.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {processSteps.map((step, idx) => (
               <div 
                 key={idx}
-                className="bg-neutral-950 border border-neutral-800/80 hover:border-[#e5a93c]/50 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 space-y-3 group"
+                className="p-6 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/50 transition-all space-y-3 group"
               >
-                <div className="flex justify-between items-center">
-                  <span className="text-2xl font-black font-['Outfit'] text-neutral-600 group-hover:text-[#e5a93c] transition-colors">
+                <div className="flex items-center justify-between">
+                  <span className="text-2xl font-black font-['Outfit'] text-[#ffbe1a]/60 group-hover:text-[#ffbe1a] transition-colors">
                     {step.stepNumber}
                   </span>
-                  <div className="w-8 h-8 rounded-full bg-purple-950/60 border border-purple-800/50 flex items-center justify-center text-purple-400">
-                    <Sparkles className="w-3.5 h-3.5" />
-                  </div>
+                  <span className="text-[10px] font-mono uppercase text-slate-500">Stage {idx + 1}</span>
                 </div>
-                <h3 className="text-lg font-bold text-white">{step.title}</h3>
-                <p className="text-sm text-neutral-400 leading-relaxed">{step.description}</p>
+                <h3 className="text-lg font-bold font-['Outfit'] text-white group-hover:text-[#ffbe1a] transition-colors">
+                  {step.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  {step.description}
+                </p>
               </div>
             ))}
           </div>
         </section>
 
         {/* ========================================================================= */}
-        {/* 4. VISUAL SHOWCASE GALLERY */}
+        {/* 4. SERVICE GALLERY */}
         {/* ========================================================================= */}
-        {galleryItems.length > 0 && (
-          <section className="space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-              <div>
-                <span className="text-xs uppercase font-mono tracking-widest text-[#e5a93c]">Visual Portfolio</span>
-                <h2 className="text-2xl sm:text-3xl font-['Outfit'] font-bold text-white">
-                  {service.title} in Action
-                </h2>
+        <section className="space-y-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Visual Gallery</span>
+              <h2 className="text-2xl sm:text-4xl font-bold font-['Outfit'] text-white">
+                Execution Artifacts
+              </h2>
+            </div>
+            <span className="text-xs text-slate-400 font-mono">Click to expand</span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {galleryItems.map((item, idx) => (
+              <div 
+                key={item.id || idx}
+                onClick={() => openLightboxAt(idx)}
+                className="group relative rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/60 p-4 transition-all duration-300 cursor-pointer overflow-hidden"
+              >
+                <div className="h-48 sm:h-56 rounded-xl overflow-hidden bg-black/40 flex items-center justify-center">
+                  <ProjectGalleryVisual visualType={item.visualType} title={item.title} />
+                </div>
+                <div className="mt-3 space-y-1">
+                  <h4 className="text-sm font-bold text-white group-hover:text-[#ffbe1a] transition-colors">{item.title}</h4>
+                  <p className="text-xs text-slate-400">{item.caption}</p>
+                </div>
               </div>
-              <span className="text-xs text-neutral-500 font-mono">
-                Click any asset to expand
-              </span>
+            ))}
+          </div>
+        </section>
+
+        {/* ========================================================================= */}
+        {/* 5. SERVICE FAQS ACCORDION */}
+        {/* ========================================================================= */}
+        {service.faqs && service.faqs.length > 0 && (
+          <section className="space-y-6 pt-4 border-t border-white/[0.08]">
+            <div className="space-y-2">
+              <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Service FAQs</span>
+              <h2 className="text-2xl sm:text-3xl font-bold font-['Outfit'] text-white">
+                Frequently Asked Questions About {service.title}
+              </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-              {galleryItems.map((item, idx) => (
-                <div
-                  key={item.id || idx}
-                  onClick={() => openLightboxAt(idx)}
-                  className={`group relative rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-950 hover:border-[#e5a93c]/60 transition-all cursor-pointer shadow-xl ${
-                    item.layout === 'large' ? 'md:col-span-2' : ''
-                  }`}
-                >
-                  <div className="h-64 sm:h-72 w-full overflow-hidden">
-                    <ProjectGalleryVisual visualType={item.visualType || 'brand-identity'} title={item.title} />
-                  </div>
-
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity flex flex-col justify-end p-5">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <h4 className="text-white font-semibold text-sm sm:text-base group-hover:text-[#e5a93c] transition-colors">{item.title}</h4>
-                        {item.caption && <p className="text-xs text-neutral-400 mt-0.5">{item.caption}</p>}
+            <div className="space-y-3">
+              {service.faqs.map((faq, idx) => {
+                const isOpen = openFaqIndex === idx;
+                return (
+                  <div 
+                    key={idx}
+                    className="rounded-xl bg-[#10131d] border border-white/[0.08] overflow-hidden transition-all"
+                  >
+                    <button
+                      onClick={() => toggleFaq(idx)}
+                      className="w-full text-left p-4 sm:p-5 flex items-center justify-between gap-4 cursor-pointer hover:text-[#ffbe1a] transition-colors"
+                    >
+                      <span className="font-bold text-sm sm:text-base text-white">{faq.question}</span>
+                      {isOpen ? (
+                        <ChevronUp className="w-4 h-4 text-[#ffbe1a] shrink-0" />
+                      ) : (
+                        <ChevronDown className="w-4 h-4 text-slate-400 shrink-0" />
+                      )}
+                    </button>
+                    {isOpen && (
+                      <div className="px-4 sm:px-5 pb-5 text-sm text-slate-300 leading-relaxed border-t border-white/[0.04] pt-3">
+                        {faq.answer}
                       </div>
-                      <div className="w-8 h-8 rounded-full bg-neutral-900/90 text-white border border-neutral-700 flex items-center justify-center group-hover:bg-[#e5a93c] group-hover:text-black transition-all">
-                        <ExternalLink className="w-3.5 h-3.5" />
-                      </div>
-                    </div>
+                    )}
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </section>
         )}
 
         {/* ========================================================================= */}
-        {/* 5. RELATED WORK / CASE STUDIES */}
+        {/* 6. RELATED WORK / CASE STUDIES */}
         {/* ========================================================================= */}
         {relatedWorkList.length > 0 && (
-          <section className="space-y-6">
+          <section className="space-y-6 pt-4 border-t border-white/[0.08]">
             <div className="flex items-center justify-between">
               <div>
-                <span className="text-xs uppercase font-mono tracking-widest text-[#e5a93c]">Case Studies</span>
-                <h2 className="text-2xl sm:text-3xl font-['Outfit'] font-bold text-white">
+                <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Case Studies</span>
+                <h2 className="text-2xl sm:text-3xl font-bold font-['Outfit'] text-white">
                   Related Projects
                 </h2>
               </div>
-              <button
-                onClick={() => navigateTo('/work')}
-                className="text-xs sm:text-sm text-neutral-400 hover:text-[#e5a93c] flex items-center gap-1 font-mono transition-colors"
+              <a
+                href="/work"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigateTo('/work');
+                }}
+                className="text-xs sm:text-sm text-slate-400 hover:text-[#ffbe1a] flex items-center gap-1 font-mono transition-colors"
               >
                 View All Work <ArrowRight className="w-3.5 h-3.5" />
-              </button>
+              </a>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {relatedWorkList.map((project) => (
-                <div
+                <a
                   key={project.id}
-                  onClick={() => navigateTo(`/work/${project.slug}`)}
-                  className="group bg-neutral-950 border border-neutral-800 hover:border-[#e5a93c]/60 rounded-2xl overflow-hidden p-6 transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
+                  href={`/work/${project.slug}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo(`/work/${project.slug}`);
+                  }}
+                  className="group bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/60 rounded-2xl overflow-hidden p-6 transition-all duration-300 hover:-translate-y-1 block flex flex-col justify-between"
                 >
                   <div className="space-y-3">
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#e5a93c] bg-[#e5a93c]/10 px-2 py-0.5 rounded border border-[#e5a93c]/30">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#ffbe1a] bg-[#ffbe1a]/10 px-2 py-0.5 rounded border border-[#ffbe1a]/30">
                       {project.category}
                     </span>
-                    <h3 className="text-xl font-bold text-white group-hover:text-[#e5a93c] transition-colors">
+                    <h3 className="text-xl font-bold text-white group-hover:text-[#ffbe1a] transition-colors">
                       {project.title}
                     </h3>
-                    <p className="text-sm text-neutral-400 line-clamp-2">
+                    <p className="text-sm text-slate-300 line-clamp-2">
                       {project.description}
                     </p>
                   </div>
-                  <div className="pt-6 flex items-center gap-2 text-xs font-mono text-[#e5a93c] font-medium">
+                  <div className="pt-6 flex items-center gap-2 text-xs font-mono text-[#ffbe1a] font-medium">
                     <span>Read Case Study</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </section>
         )}
 
         {/* ========================================================================= */}
-        {/* 6. RELATED SERVICES DIRECTORY */}
+        {/* 7. RELATED SERVICES DIRECTORY */}
         {/* ========================================================================= */}
-        <section className="space-y-6 pt-4 border-t border-neutral-800/80">
-          <span className="text-xs uppercase font-mono tracking-widest text-neutral-500">Explore Other Services</span>
+        <section className="space-y-6 pt-4 border-t border-white/[0.08]">
+          <span className="text-xs uppercase font-mono tracking-widest text-slate-400">Explore Other Disciplines</span>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {relatedServicesList.map((relService) => (
-              <button
+              <a
                 key={relService.id}
-                onClick={() => navigateTo(`/services/${relService.slug}`)}
-                className="text-left p-4 rounded-xl bg-neutral-950 border border-neutral-800 hover:border-[#e5a93c]/50 transition-all group flex items-center justify-between"
+                href={`/services/${relService.slug}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigateTo(`/services/${relService.slug}`);
+                }}
+                className="text-left p-4 rounded-xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/50 transition-all group flex items-center justify-between block"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-neutral-900 flex items-center justify-center text-[#e5a93c]">
+                  <div className="w-8 h-8 rounded-lg bg-white/[0.05] flex items-center justify-center text-[#ffbe1a]">
                     <ServiceIcon iconKey={relService.iconKey} size={16} />
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-white group-hover:text-[#e5a93c] transition-colors">{relService.title}</h4>
-                    <span className="text-[10px] text-neutral-500 font-mono">{relService.category}</span>
+                    <h4 className="text-sm font-semibold text-white group-hover:text-[#ffbe1a] transition-colors">{relService.title}</h4>
+                    <span className="text-[10px] text-slate-400 font-mono">{relService.category}</span>
                   </div>
                 </div>
-                <ChevronRight className="w-4 h-4 text-neutral-600 group-hover:text-[#e5a93c] group-hover:translate-x-0.5 transition-all" />
-              </button>
+                <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-[#ffbe1a] group-hover:translate-x-0.5 transition-all" />
+              </a>
             ))}
           </div>
         </section>
 
         {/* ========================================================================= */}
-        {/* 7. FINAL SERVICE PAGE CTA */}
+        {/* 8. FINAL SERVICE PAGE CTA */}
         {/* ========================================================================= */}
-        <section className="bg-gradient-to-br from-neutral-900 via-neutral-950 to-black border border-[#e5a93c]/30 rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden shadow-2xl space-y-6">
-          <div className="absolute inset-0 bg-[radial-gradient(#e5a93c15_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+        <section className="bg-gradient-to-br from-[#171a24] via-[#12151e] to-[#0d0f16] border border-[#ffbe1a]/30 rounded-3xl p-8 sm:p-14 text-center relative overflow-hidden shadow-2xl space-y-6">
+          <div className="absolute inset-0 bg-[radial-gradient(#ffbe1a15_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
           
           <div className="max-w-2xl mx-auto space-y-4 relative z-10">
-            <span className="text-xs uppercase font-mono tracking-widest text-[#e5a93c]">Have a Project in Mind?</span>
-            <h2 className="text-3xl sm:text-4xl font-['Outfit'] font-black text-white">
-              Let's Build Something That Represents Your Brand.
+            <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Have a Project in Mind?</span>
+            <h2 className="text-2xl sm:text-4xl font-['Outfit'] font-black text-white">
+              Let's Build Something Exceptional for Your Brand.
             </h2>
-            <p className="text-neutral-400 text-sm sm:text-base">
-              Contact us to discuss requirements and receive an estimated timeline and tailored creative plan.
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Contact us to discuss your requirements and receive a comprehensive timeline and tailored creative plan.
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-              <button
-                onClick={() => onOpenContact(service.title)}
-                className="px-8 py-3.5 rounded-xl bg-[#e5a93c] hover:bg-amber-400 text-neutral-950 font-bold text-base transition-all transform hover:-translate-y-0.5 shadow-xl shadow-[#e5a93c]/20 flex items-center gap-2 cursor-pointer"
+              <a
+                href="/contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onOpenContact(service.title);
+                }}
+                className="px-8 py-3.5 rounded-full bg-[#ffbe1a] hover:bg-amber-400 text-black font-extrabold text-base font-['Outfit'] transition-all shadow-xl shadow-[#ffbe1a]/20 hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer"
               >
                 <span>Let's Talk →</span>
-              </button>
+              </a>
               <button
                 onClick={handleWhatsApp}
-                className="px-6 py-3.5 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-neutral-200 border border-neutral-700 font-semibold text-base transition-all flex items-center gap-2 cursor-pointer"
+                className="px-6 py-3.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-white border border-white/20 font-bold text-base font-['Outfit'] transition-all hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer"
               >
-                <MessageCircle className="w-4 h-4 text-emerald-400" />
+                <MessageCircle className="w-4 h-4 text-[#25D366]" />
                 <span>WhatsApp →</span>
               </button>
             </div>
@@ -403,6 +514,14 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
         </section>
 
       </div>
+
+      {lightboxOpen && (
+        <ImageLightbox
+          items={galleryItems}
+          initialIndex={activeGalleryIndex}
+          onClose={() => setLightboxOpen(false)}
+        />
+      )}
     </div>
   );
 };

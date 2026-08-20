@@ -29,8 +29,9 @@ collections:
           - { label: "Logo Mark / Icon", name: "logoMark", widget: "image", default: "/uploads/lizzdo-media-mark.svg", required: false }
           - { label: "Favicon", name: "favicon", widget: "image", default: "/uploads/lizzdo-media-mark.svg", required: false }
           - { label: "Contact Email", name: "contactEmail", widget: "string", default: "contact@media.lizzdo.com" }
+          - { label: "WhatsApp / Phone", name: "whatsappNumber", widget: "string", default: "+1234567890" }
           - { label: "Header CTA Text", name: "primaryCtaText", widget: "string", default: "Let's Talk" }
-          - { label: "Header CTA URL", name: "primaryCtaUrl", widget: "string", default: "#contact" }
+          - { label: "Header CTA URL", name: "primaryCtaUrl", widget: "string", default: "/contact" }
           - { label: "Parent Company URL", name: "parentCompanyUrl", widget: "string", default: "https://lizzdo.com/" }
           - { label: "Current Domain", name: "currentDomain", widget: "string", default: "https://media.lizzdo.com/" }
 
@@ -44,7 +45,7 @@ collections:
           - { label: "Headline Highlighted Word", name: "headlineHighlightedWord", widget: "string", default: "Together." }
           - { label: "Hero Description", name: "description", widget: "text", default: "We help brands stand out and grow with creative design, powerful websites, and result-driven digital solutions." }
           - { label: "Primary CTA Label", name: "primaryCtaText", widget: "string", default: "Explore Our Work" }
-          - { label: "Primary CTA URL", name: "primaryCtaUrl", widget: "string", default: "#work" }
+          - { label: "Primary CTA URL", name: "primaryCtaUrl", widget: "string", default: "/work" }
 
   - name: "services"
     label: "Services (What We Do)"
@@ -57,20 +58,20 @@ collections:
       - { label: "Category", name: "category", widget: "string" }
       - { label: "Icon Identifier", name: "iconKey", widget: "string" }
       - { label: "Short Description", name: "shortDescription", widget: "text" }
+      - { label: "Overview & Philosophy", name: "overview", widget: "markdown", required: false }
+      - { label: "Deliverables Included", name: "deliverables", widget: "list", required: false }
+      - { label: "Methodology & Steps", name: "methodology", widget: "list", required: false }
       - { label: "Display Order", name: "order", widget: "number", value_type: "int" }
       - { label: "Featured", name: "featured", widget: "boolean", default: true }
-
-  - name: "process"
-    label: "Our Process"
-    folder: "src/content/process"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Step Number (e.g. 01)", name: "stepNumber", widget: "string" }
-      - { label: "Step Title", name: "title", widget: "string" }
-      - { label: "Icon Identifier", name: "iconKey", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Order", name: "order", widget: "number", value_type: "int" }
+      - { label: "SEO Meta Title", name: "seoTitle", widget: "string", required: false }
+      - { label: "SEO Meta Description", name: "seoDescription", widget: "text", required: false }
+      - label: "Frequently Asked Questions (FAQ)"
+        name: "faqs"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Question", name: "question", widget: "string" }
+          - { label: "Answer", name: "answer", widget: "text" }
 
   - name: "portfolio"
     label: "Featured Work / Portfolio"
@@ -118,20 +119,52 @@ collections:
           - { label: "Step Number (e.g. 01)", name: "stepNumber", widget: "string" }
           - { label: "Step Title", name: "title", widget: "string" }
           - { label: "Step Description", name: "description", widget: "text" }
-      - label: "Materials & Substrates"
-        name: "materials"
+      - { label: "SEO Meta Title", name: "seoTitle", widget: "string", required: false }
+      - { label: "SEO Meta Description", name: "seoDescription", widget: "text", required: false }
+
+  - name: "blog"
+    label: "Blog & Insights"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Article Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Category", name: "category", widget: "string" }
+      - { label: "Published Date", name: "publishedDate", widget: "date" }
+      - { label: "Read Time", name: "readTime", widget: "string", default: "5 min read" }
+      - { label: "Summary / Excerpt", name: "summary", widget: "text" }
+      - { label: "Full Article Content (Markdown)", name: "content", widget: "markdown" }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - label: "Author Details"
+        name: "author"
+        widget: "object"
+        fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Role / Job Title", name: "role", widget: "string" }
+          - { label: "Avatar Image", name: "avatar", widget: "image", required: false }
+      - { label: "SEO Meta Title", name: "seoTitle", widget: "string", required: false }
+      - { label: "SEO Meta Description", name: "seoDescription", widget: "text", required: false }
+      - label: "Article FAQs"
+        name: "faqs"
         widget: "list"
         required: false
         fields:
-          - { label: "Material Name", name: "name", widget: "string" }
-          - { label: "Specification", name: "spec", widget: "string" }
-          - { label: "Finish Type", name: "finish", widget: "string" }
-          - { label: "Hex Color Accent", name: "color", widget: "string", default: "#e5a93c" }
-      - { label: "Related Services (slugs)", name: "relatedServices", widget: "list", required: false }
-      - { label: "Related Projects (slugs)", name: "relatedProjects", widget: "list", required: false }
-      - { label: "SEO Meta Title", name: "seoTitle", widget: "string", required: false }
-      - { label: "SEO Meta Description", name: "seoDescription", widget: "text", required: false }
-      - { label: "SEO Share Image", name: "seoImage", widget: "image", required: false }
+          - { label: "Question", name: "question", widget: "string" }
+          - { label: "Answer", name: "answer", widget: "text" }
+
+  - name: "process"
+    label: "Our Process"
+    folder: "src/content/process"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Step Number (e.g. 01)", name: "stepNumber", widget: "string" }
+      - { label: "Step Title", name: "title", widget: "string" }
+      - { label: "Icon Identifier", name: "iconKey", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Order", name: "order", widget: "number", value_type: "int" }
 
   - name: "whyChooseUs"
     label: "Why Choose Us Section"
@@ -148,7 +181,7 @@ collections:
           - { label: "Heading Highlight", name: "headingHighlight", widget: "string", default: "Lizzdo Media" }
           - { label: "Description", name: "description", widget: "text", default: "We combine creativity, strategy, and technology to deliver exceptional results that help brands grow faster and stronger." }
           - { label: "CTA Button Text", name: "ctaText", widget: "string", default: "Let's Work Together" }
-          - { label: "CTA Button URL", name: "ctaUrl", widget: "string", default: "#contact" }
+          - { label: "CTA Button URL", name: "ctaUrl", widget: "string", default: "/contact" }
 
   - name: "statistics"
     label: "Statistics"
@@ -173,19 +206,3 @@ collections:
       - { label: "Role / Position", name: "role", widget: "string" }
       - { label: "Company", name: "company", widget: "string" }
       - { label: "Avatar Image", name: "avatar", widget: "image", required: false }
-
-  - name: "bodyCta"
-    label: "Final Body CTA"
-    delete: false
-    editor:
-      preview: false
-    files:
-      - name: "cta"
-        label: "Final CTA Settings"
-        file: "src/content/body-cta.json"
-        fields:
-          - { label: "Heading", name: "heading", widget: "string", default: "Let's Build Something Great Together." }
-          - { label: "Description", name: "description", widget: "text", default: "Have a project in mind? Tell us what you need and let's create something that moves your brand forward." }
-          - { label: "CTA Button Label", name: "ctaText", widget: "string", default: "Let's Talk" }
-          - { label: "CTA Button URL", name: "ctaUrl", widget: "string", default: "#contact" }
-
