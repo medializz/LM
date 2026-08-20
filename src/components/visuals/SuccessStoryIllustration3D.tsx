@@ -78,7 +78,7 @@ export const SuccessStoryIllustration3D: React.FC<SuccessStoryIllustration3DProp
         viewBox="0 0 540 380"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full max-w-[540px] drop-shadow-[0_15px_35px_rgba(0,0,0,0.65)] overflow-visible touch-manipulation"
+        className="w-full h-full max-w-[540px] overflow-visible touch-manipulation"
       >
         <defs>
           {/* ========================================================================= */}
@@ -231,15 +231,6 @@ export const SuccessStoryIllustration3D: React.FC<SuccessStoryIllustration3DProp
             <stop offset="100%" stopColor="#8f5204" />
           </linearGradient>
 
-          {/* 3D Soft Drop Shadow Filter */}
-          <filter id="soft3DShadow" x="-30%" y="-30%" width="160%" height="160%">
-            <feDropShadow dx="-2" dy="10" stdDeviation="12" floodColor="#000000" floodOpacity="0.45" />
-          </filter>
-
-          <filter id="softTrophyGlow" x="-30%" y="-30%" width="160%" height="160%">
-            <feDropShadow dx="4" dy="12" stdDeviation="10" floodColor="#000000" floodOpacity="0.5" />
-          </filter>
-
           {/* Envelope Body Clip to ensure paper never overflows envelope bounds */}
           <clipPath id="envelopeBodyClip">
             <rect x="68" y="0" width="224" height="326" rx="14" />
@@ -262,7 +253,7 @@ export const SuccessStoryIllustration3D: React.FC<SuccessStoryIllustration3DProp
         {/* ========================================================================= */}
         {/* 2. 3D ENVELOPE BACK WALL & TOP BACK OPEN FLAP */}
         {/* ========================================================================= */}
-        <g filter="url(#soft3DShadow)">
+        <g>
           
           {/* Back Open Flap (Visible when OPEN - Pointing Upward) */}
           <g
@@ -468,7 +459,6 @@ export const SuccessStoryIllustration3D: React.FC<SuccessStoryIllustration3DProp
                  L 292 185
                  Z"
               fill="url(#envFrontClosedFlapGrad)"
-              filter="drop-shadow(0 4px 6px rgba(0,0,0,0.3))"
             />
             {/* Crease line & gold seal */}
             <circle cx="180" cy="275" r="5" fill="#f59e0b" opacity="0.9" />
@@ -499,7 +489,6 @@ export const SuccessStoryIllustration3D: React.FC<SuccessStoryIllustration3DProp
         {/* 5. 3D REALISTIC GOLD CHAMPIONSHIP TROPHY */}
         {/* ========================================================================= */}
         <g 
-          filter="url(#softTrophyGlow)"
           className="transition-all duration-400 ease-out"
           style={{
             transformOrigin: '400px 315px',
@@ -639,7 +628,6 @@ export const SuccessStoryIllustration3D: React.FC<SuccessStoryIllustration3DProp
               cy="202"
               r="13"
               fill="url(#medalBadgeRadial)"
-              filter="drop-shadow(0 2px 5px rgba(0,0,0,0.35))"
             />
             {/* Scalloped Gold Star Edge */}
             <circle

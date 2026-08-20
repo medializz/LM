@@ -61,16 +61,16 @@ export const Footer: React.FC<FooterProps> = ({
           <div 
             onMouseEnter={() => setIsCtaHovered(true)}
             onMouseLeave={() => setIsCtaHovered(false)}
-            className="relative rounded-[24px] xs:rounded-[28px] sm:rounded-[36px] bg-gradient-to-r from-[#171a24] via-[#12151e] to-[#0d0f16] text-white p-5 xs:p-6 sm:p-8 md:p-10 lg:p-12 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),0_0_40px_rgba(255,190,26,0.12)] border border-white/[0.1] overflow-hidden group/cta transition-all duration-300 hover:border-white/[0.18]"
+            className="relative rounded-[24px] xs:rounded-[28px] sm:rounded-[36px] bg-[#12151f] text-white p-5 xs:p-6 sm:p-8 md:p-10 lg:p-12 shadow-[0_20px_45px_rgba(0,0,0,0.85)] border border-white/[0.12] overflow-hidden group/cta transition-all duration-300 hover:border-white/[0.2]"
           >
             
             <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#ffbe1a]/70 to-transparent pointer-events-none" />
-            <div className="absolute -bottom-28 -right-28 w-80 h-80 bg-[#ffbe1a]/[0.04] rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full ambient-glow-gold pointer-events-none" />
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 md:gap-8 items-center">
               
               {/* Left Column: 2.5D Visual */}
-              <div className="md:col-span-5 flex items-center justify-center -my-3 xs:-my-5 sm:-my-8 md:-my-10">
+              <div className="md:col-span-5 flex items-center justify-center -my-2 xs:-my-3 sm:-my-6 md:-my-8">
                 <div className="w-full max-w-[270px] xs:max-w-[310px] sm:max-w-[360px] md:max-w-[380px] h-[190px] xs:h-[215px] sm:h-[240px] md:h-[260px] flex items-center justify-center">
                   <SuccessStoryIllustration3D 
                     companyName={siteSettings.siteName || "Lizzdo Media"} 
@@ -82,7 +82,7 @@ export const Footer: React.FC<FooterProps> = ({
               {/* Right Column: Branded CTA Copy & Action Buttons */}
               <div className="md:col-span-7 space-y-3.5 sm:space-y-4 text-center md:text-left flex flex-col items-center md:items-start">
                 
-                <h3 className="text-xl xs:text-2xl sm:text-3xl lg:text-[34px] font-black font-['Outfit'] text-white leading-tight tracking-tight drop-shadow-sm">
+                <h3 className="text-xl xs:text-2xl sm:text-3xl lg:text-[34px] font-black font-['Outfit'] text-white leading-tight tracking-tight">
                   Let’s Begin Your Success Story Together.
                 </h3>
 
@@ -97,7 +97,7 @@ export const Footer: React.FC<FooterProps> = ({
                       e.preventDefault();
                       navigateTo('/contact');
                     }}
-                    className="min-h-[44px] px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-gradient-to-r from-[#ffbe1a] to-[#f5b318] hover:from-[#ffc83b] hover:to-[#e5a20e] text-black font-extrabold text-xs sm:text-sm font-['Outfit'] transition-all duration-200 cursor-pointer shadow-[0_0_25px_rgba(255,190,26,0.45)] hover:shadow-[0_0_35px_rgba(255,190,26,0.6)] active:scale-95 flex items-center justify-center gap-2"
+                    className="min-h-[44px] px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-[#ffbe1a] hover:bg-yellow-400 text-black font-extrabold text-xs sm:text-sm font-['Outfit'] transition-all duration-200 cursor-pointer shadow-[0_4px_20px_rgba(255,190,26,0.35)] active:scale-95 flex items-center justify-center gap-2"
                   >
                     <span>Start a Project</span>
                     <ArrowRight className="w-4 h-4 text-black shrink-0" />
@@ -105,7 +105,7 @@ export const Footer: React.FC<FooterProps> = ({
 
                   <button
                     onClick={handleWhatsApp}
-                    className="min-h-[44px] px-5 sm:px-6 py-3 sm:py-3.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/20 hover:border-[#25D366]/60 text-white font-bold text-xs sm:text-sm font-['Outfit'] transition-all duration-200 cursor-pointer flex items-center justify-center gap-2.5 active:scale-95 backdrop-blur-sm group"
+                    className="min-h-[44px] px-5 sm:px-6 py-3 sm:py-3.5 rounded-full bg-[#181d2a] hover:bg-[#202738] border border-white/15 hover:border-[#25D366]/60 text-white font-bold text-xs sm:text-sm font-['Outfit'] transition-all duration-200 cursor-pointer flex items-center justify-center gap-2.5 active:scale-95 group"
                   >
                     <MessageCircle className="w-4 h-4 text-[#25D366]" />
                     <span>WhatsApp us</span>
