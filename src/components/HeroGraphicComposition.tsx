@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'motion/react';
 import { SiteSettings } from '../types';
 import { LizzdoLogo } from './LizzdoLogo';
 import { BrandCard } from './hero/BrandCard';
@@ -20,7 +19,7 @@ export const HeroGraphicComposition: React.FC<HeroGraphicCompositionProps> = ({ 
       id="hero-creative-composition"
       className="relative w-full max-w-[560px] sm:max-w-[620px] lg:max-w-[680px] xl:max-w-[720px] h-[320px] xs:h-[360px] sm:h-[460px] md:h-[500px] lg:h-[530px] mx-auto select-none overflow-hidden sm:overflow-visible gpu-layer"
       role="img"
-      aria-label="Lizzdo Media Creative Design Ecosystem showing brand identity presentation, full laptop mockup, smartphone social feed, designer tablet, coffee mug, and brand assets"
+      aria-label="Lizzdo Media Creative Design Ecosystem showing brand identity presentation, full laptop mockup, smartphone social feed, designer tablet, coffee cup, and brand assets"
     >
       {/* 1. AMBIENT BACKDROP GLOW & GOLD SPLASH TEXTURE */}
       <div className="absolute inset-0 pointer-events-none">
@@ -64,15 +63,7 @@ export const HeroGraphicComposition: React.FC<HeroGraphicCompositionProps> = ({ 
       {/* 2. REFINED VECTOR DESIGN ARROW */}
       <VectorArrowGuide className="hidden sm:block absolute top-[4%] left-[6%] w-[42%] h-[32%] z-15 pointer-events-none" />
 
-      {/* 3. TOP FLOATING 3D GOLD SPHERE */}
-      <div 
-        className="hidden sm:block absolute top-[0%] left-[40%] w-7 h-7 sm:w-8 sm:h-8 rounded-full z-20 shadow-[0_6px_16px_rgba(0,0,0,0.6)] pointer-events-none"
-        style={{
-          background: "radial-gradient(circle at 35% 35%, #fff5a6 0%, #ffbe1a 45%, #b47400 85%, #4a2e00 100%)"
-        }}
-      />
-
-      {/* 4. LUXURY BRANDED PRESENTATION BOX */}
+      {/* 3. LUXURY BRANDED PRESENTATION BOX */}
       <div 
         className="absolute top-[1%] left-[26%] w-[33%] h-[52%] z-10 rounded-lg shadow-[0_15px_35px_rgba(0,0,0,0.9)] overflow-hidden transform rotate-0 sm:-rotate-2 transition-transform duration-500 gpu-layer"
         style={{
@@ -97,7 +88,7 @@ export const HeroGraphicComposition: React.FC<HeroGraphicCompositionProps> = ({ 
         </div>
       </div>
 
-      {/* 5. COLOR SWATCH FAN (Pantone style cards) */}
+      {/* 4. COLOR SWATCH FAN (Pantone style cards) */}
       <div className="hidden sm:flex absolute top-[16%] left-[14%] z-14 -space-x-3 sm:-space-x-3.5 transform -rotate-12 pointer-events-none gpu-layer">
         {[
           { name: "Magenta", color: "#e11d48", shade: "Pantone 219C" },
@@ -120,7 +111,7 @@ export const HeroGraphicComposition: React.FC<HeroGraphicCompositionProps> = ({ 
         ))}
       </div>
 
-      {/* 6. SMARTPHONE MOCKUP - SOCIAL MEDIA FEED (Upper Right) */}
+      {/* 5. SMARTPHONE MOCKUP - SOCIAL MEDIA FEED (Upper Right) */}
       <div className="absolute top-[0%] right-[8%] sm:right-[13%] w-[24%] sm:w-[20%] z-23 transform rotate-0 sm:rotate-4 gpu-layer">
         <PhoneSocialMockup 
           siteSettings={siteSettings}
@@ -128,7 +119,7 @@ export const HeroGraphicComposition: React.FC<HeroGraphicCompositionProps> = ({ 
         />
       </div>
 
-      {/* 7. DESIGNER TABLET - BRAND IDENTITY CANVAS (Mid-Left Foreground) */}
+      {/* 6. DESIGNER TABLET - BRAND IDENTITY CANVAS (Mid-Left Foreground) */}
       <div className="absolute top-[24%] left-[1%] sm:left-[2%] w-[50%] sm:w-[46%] z-24 gpu-layer">
         <DesignerTablet 
           siteSettings={siteSettings}
@@ -136,7 +127,7 @@ export const HeroGraphicComposition: React.FC<HeroGraphicCompositionProps> = ({ 
         />
       </div>
 
-      {/* 8. LIZZDO MEDIA BRAND CARD MOCKUP (Resting between tablet & laptop) */}
+      {/* 7. LIZZDO MEDIA BRAND CARD MOCKUP (Resting between tablet & laptop) */}
       <div className="absolute top-[36%] left-[37%] w-[22%] sm:w-[19%] z-26 gpu-layer">
         <BrandCard 
           siteSettings={siteSettings}
@@ -144,12 +135,12 @@ export const HeroGraphicComposition: React.FC<HeroGraphicCompositionProps> = ({ 
         />
       </div>
 
-      {/* 9. REFINED GRAPHIC DESIGN STYLUS PEN */}
+      {/* 8. REFINED GRAPHIC DESIGN STYLUS PEN */}
       <StylusPen 
         className="hidden sm:block absolute top-[37%] left-[18%] sm:left-[20%] w-[22%] h-4 sm:h-5 z-28 transform -rotate-[35deg] gpu-layer"
       />
 
-      {/* 10. FULL LAPTOP MOCKUP - CREATIVE DIGITAL SOLUTIONS (Mid-Right Foreground) */}
+      {/* 9. FULL LAPTOP MOCKUP - CREATIVE DIGITAL SOLUTIONS (Mid-Right Foreground) */}
       <div className="absolute top-[22%] right-[0%] w-[58%] sm:w-[56%] z-22 gpu-layer">
         <LaptopBrandPresentation 
           siteSettings={siteSettings}
@@ -157,8 +148,11 @@ export const HeroGraphicComposition: React.FC<HeroGraphicCompositionProps> = ({ 
         />
       </div>
 
-      {/* 11. BRANDED MATTE BLACK CERAMIC MUG */}
-      <div className="hidden xs:block absolute bottom-[2%] right-[0%] w-[16%] sm:w-[14%] z-28 gpu-layer">
+      {/* 10. RESTORED BRANDED COFFEE CUP - PLACED NATURALLY NEAR THE LAPTOP */}
+      <div 
+        id="hero-coffee-cup-container"
+        className="block absolute bottom-[0%] xs:bottom-[1%] sm:bottom-[2%] right-[1%] xs:right-[1.5%] sm:right-[2%] w-[14.5%] xs:w-[14%] sm:w-[13.5%] md:w-[13%] lg:w-[14%] z-28 gpu-layer"
+      >
         <CoffeeMug 
           siteSettings={siteSettings}
           className="w-full"

@@ -50,7 +50,7 @@ export const Hero: React.FC<HeroProps> = ({ content, siteSettings, onExploreWork
             {/* Main Headline - Single H1 for SEO */}
             <h1 
               id="hero-headline"
-              className="text-[32px] xs:text-4xl sm:text-4xl md:text-5xl lg:text-[46px] xl:text-[54px] font-black text-white tracking-tight leading-[1.08] font-['Outfit'] mb-3 sm:mb-3.5 max-w-lg"
+              className="text-[28px] xs:text-[32px] sm:text-4xl md:text-5xl lg:text-[46px] xl:text-[54px] font-black text-white tracking-tight leading-[1.1] sm:leading-[1.08] font-['Outfit'] mb-3 sm:mb-3.5 max-w-lg"
             >
               <span className="block">{content.headlineLine1 || "Design. Build."}</span>
               <span className="block">
@@ -62,7 +62,7 @@ export const Hero: React.FC<HeroProps> = ({ content, siteSettings, onExploreWork
             </h1>
 
             {/* Description */}
-            <p className="text-slate-300 text-[13.5px] sm:text-[15px] md:text-base font-normal leading-relaxed max-w-[460px] mb-5 sm:mb-6 font-['Plus_Jakarta_Sans']">
+            <p className="text-slate-300 text-[13px] xs:text-[13.5px] sm:text-[15px] md:text-base font-normal leading-relaxed max-w-[460px] mb-5 sm:mb-6 font-['Plus_Jakarta_Sans']">
               {content.description || "We help brands stand out and grow with creative design, powerful websites, and result-driven digital solutions."}
             </p>
 
@@ -72,7 +72,7 @@ export const Hero: React.FC<HeroProps> = ({ content, siteSettings, onExploreWork
                 id="hero-primary-cta"
                 href={content.primaryCtaUrl || "#work"}
                 onClick={handleCtaClick}
-                className="group inline-flex items-center justify-between gap-3.5 px-6 sm:px-7 py-3.5 sm:py-3 rounded-full bg-[#ffbe1a] text-black font-bold text-sm sm:text-[15px] tracking-wide hover:bg-yellow-400 active:scale-[0.98] transition-all duration-300 shadow-[0_4px_20px_rgba(255,190,26,0.4)] hover:shadow-[0_6px_30px_rgba(255,190,26,0.6)] cursor-pointer outline-none focus-visible:ring-4 focus-visible:ring-[#ffbe1a]/50"
+                className="group inline-flex items-center justify-between gap-3.5 min-h-[48px] px-6 sm:px-7 py-3.5 sm:py-3 rounded-full bg-[#ffbe1a] text-black font-bold text-sm sm:text-[15px] tracking-wide hover:bg-yellow-400 active:scale-[0.98] transition-all duration-300 shadow-[0_4px_20px_rgba(255,190,26,0.4)] hover:shadow-[0_6px_30px_rgba(255,190,26,0.6)] cursor-pointer outline-none focus-visible:ring-4 focus-visible:ring-[#ffbe1a]/50"
               >
                 <span>{content.primaryCtaText || "Explore Our Work"}</span>
                 <div className="w-6 h-6 rounded-full bg-black/10 group-hover:bg-black/20 flex items-center justify-center transition-colors">
