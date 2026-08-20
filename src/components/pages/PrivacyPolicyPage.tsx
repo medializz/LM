@@ -18,13 +18,51 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({
   const siteSettings = cmsData.siteSettings;
   const lastUpdated = "February 17, 2026";
 
+  const canonicalUrl = "https://media.lizzdo.com/privacy";
+  const seoTitle = `Privacy Policy | ${siteSettings.siteName}`;
+  const seoDescription = `Read the Privacy Policy for ${siteSettings.siteName}. Learn how we collect, protect, and handle your data across our creative and digital design services.`;
+
+  const schemaData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Privacy Policy",
+      "description": seoDescription,
+      "url": canonicalUrl,
+      "publisher": {
+        "@type": "Organization",
+        "name": siteSettings.siteName,
+        "url": "https://media.lizzdo.com/"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://media.lizzdo.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Privacy Policy",
+          "item": canonicalUrl
+        }
+      ]
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-[#07090e] text-slate-300 font-['Plus_Jakarta_Sans'] selection:bg-[#ffbe1a]/30 selection:text-white">
       <SEOHead
-        title={`Privacy Policy | ${siteSettings.siteName}`}
-        description={`Read the Privacy Policy for ${siteSettings.siteName}. Learn how we collect, protect, and handle your data across our creative and digital design services.`}
-        canonicalUrl={`${siteSettings.currentDomain}privacy`}
-        siteSettings={siteSettings}
+        title={seoTitle}
+        description={seoDescription}
+        canonicalUrl={canonicalUrl}
+        type="website"
+        schemaData={schemaData}
       />
 
       {/* Breadcrumb Navigation */}

@@ -48,13 +48,19 @@
 
   <!-- 11 Core Service Detail Pages -->
   <url>
-    <loc>https://media.lizzdo.com/services/graphic-design</loc>
+    <loc>https://media.lizzdo.com/services/brand-identity</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://media.lizzdo.com/services/social-media-design</loc>
+    <loc>https://media.lizzdo.com/services/logo-design</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://media.lizzdo.com/services/graphic-design</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
@@ -66,19 +72,31 @@
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://media.lizzdo.com/services/saas-website</loc>
+    <loc>https://media.lizzdo.com/services/social-media-design</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://media.lizzdo.com/services/packaging-design</loc>
+    <loc>https://media.lizzdo.com/services/content-posting</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://media.lizzdo.com/services/video-editing</loc>
+    <loc>https://media.lizzdo.com/services/digital-marketing</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://media.lizzdo.com/services/social-media-management</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://media.lizzdo.com/services/advertising-creatives</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
@@ -90,31 +108,13 @@
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://media.lizzdo.com/services/brand-identity</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://media.lizzdo.com/services/custom-websites</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://media.lizzdo.com/services/mobile-apps</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://media.lizzdo.com/services/maintenance-growth</loc>
+    <loc>https://media.lizzdo.com/services/website-development</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
-  <!-- 6 Featured Portfolio Case Studies -->
+  <!-- 5 Featured Portfolio Case Studies -->
   <url>
     <loc>https://media.lizzdo.com/work/brand-identity-design</loc>
     <lastmod>2026-03-01</lastmod>
@@ -140,39 +140,45 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://media.lizzdo.com/work/ai-concept-art</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://media.lizzdo.com/work/web-development</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- 4 In-Depth Blog Articles -->
+  <!-- 6 In-Depth Blog Articles -->
   <url>
-    <loc>https://media.lizzdo.com/blog/brand-identity-evolution-digital-age</loc>
+    <loc>https://media.lizzdo.com/blog/how-to-build-a-powerful-brand-identity</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://media.lizzdo.com/blog/sustainable-luxury-packaging-design-tactics</loc>
+    <loc>https://media.lizzdo.com/blog/why-packaging-design-matters</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://media.lizzdo.com/blog/core-web-vitals-high-converting-saas-engineering</loc>
+    <loc>https://media.lizzdo.com/blog/what-makes-a-good-business-logo</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://media.lizzdo.com/blog/mastering-ai-visual-direction-generative-workflows</loc>
+    <loc>https://media.lizzdo.com/blog/how-to-create-high-converting-social-media-creatives</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://media.lizzdo.com/blog/modern-web-development-performance-conversion</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://media.lizzdo.com/blog/how-ai-visual-content-is-transforming-creative-production</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>

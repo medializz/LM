@@ -17,13 +17,51 @@ export const TermsOfUsePage: React.FC<TermsOfUsePageProps> = ({
   const siteSettings = cmsData.siteSettings;
   const lastUpdated = "February 17, 2026";
 
+  const canonicalUrl = "https://media.lizzdo.com/terms";
+  const seoTitle = `Terms of Use | ${siteSettings.siteName}`;
+  const seoDescription = `Review the Terms of Use and service agreements for ${siteSettings.siteName}. Understand our design deliverables, intellectual property terms, and client responsibilities.`;
+
+  const schemaData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Terms of Use",
+      "description": seoDescription,
+      "url": canonicalUrl,
+      "publisher": {
+        "@type": "Organization",
+        "name": siteSettings.siteName,
+        "url": "https://media.lizzdo.com/"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://media.lizzdo.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Terms of Use",
+          "item": canonicalUrl
+        }
+      ]
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-[#07090e] text-slate-300 font-['Plus_Jakarta_Sans'] selection:bg-[#ffbe1a]/30 selection:text-white">
       <SEOHead
-        title={`Terms of Use | ${siteSettings.siteName}`}
-        description={`Review the Terms of Use and service agreements for ${siteSettings.siteName}. Understand our design deliverables, intellectual property terms, and client responsibilities.`}
-        canonicalUrl={`${siteSettings.currentDomain}terms`}
-        siteSettings={siteSettings}
+        title={seoTitle}
+        description={seoDescription}
+        canonicalUrl={canonicalUrl}
+        type="website"
+        schemaData={schemaData}
       />
 
       {/* Breadcrumb Navigation */}

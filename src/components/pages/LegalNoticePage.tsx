@@ -17,13 +17,51 @@ export const LegalNoticePage: React.FC<LegalNoticePageProps> = ({
   const siteSettings = cmsData.siteSettings;
   const currentYear = new Date().getFullYear();
 
+  const canonicalUrl = "https://media.lizzdo.com/legal";
+  const seoTitle = `Legal Notice & Disclaimers | ${siteSettings.siteName}`;
+  const seoDescription = `Legal disclosure, company identification, copyright policies, and intellectual property notices for ${siteSettings.siteName}.`;
+
+  const schemaData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Legal Notice & Disclaimers",
+      "description": seoDescription,
+      "url": canonicalUrl,
+      "publisher": {
+        "@type": "Organization",
+        "name": siteSettings.siteName,
+        "url": "https://media.lizzdo.com/"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://media.lizzdo.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Legal Notice",
+          "item": canonicalUrl
+        }
+      ]
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-[#07090e] text-slate-300 font-['Plus_Jakarta_Sans'] selection:bg-[#ffbe1a]/30 selection:text-white">
       <SEOHead
-        title={`Legal Notice & Disclaimers | ${siteSettings.siteName}`}
-        description={`Legal disclosure, company identification, copyright policies, and intellectual property notices for ${siteSettings.siteName}.`}
-        canonicalUrl={`${siteSettings.currentDomain}legal`}
-        siteSettings={siteSettings}
+        title={seoTitle}
+        description={seoDescription}
+        canonicalUrl={canonicalUrl}
+        type="website"
+        schemaData={schemaData}
       />
 
       {/* Breadcrumb Navigation */}

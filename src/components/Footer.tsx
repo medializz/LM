@@ -251,11 +251,11 @@ export const Footer: React.FC<FooterProps> = ({
                   </li>
                   <li>
                     <a 
-                      href="/services/saas-website"
-                      onClick={(e) => handleLinkClick(e, '/services/saas-website')} 
+                      href="/services/logo-design"
+                      onClick={(e) => handleLinkClick(e, '/services/logo-design')} 
                       className="hover:text-[#ffbe1a] transition-colors block"
                     >
-                      SaaS UI/UX Design
+                      Logo &amp; Brand Systems
                     </a>
                   </li>
                   <li>
