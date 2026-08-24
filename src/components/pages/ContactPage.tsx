@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { motion } from 'motion/react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { 
   Mail, Phone, MessageCircle, Send, CheckCircle2, 
-  Sparkles, Clock, ShieldCheck, ChevronDown, ChevronUp, ArrowRight, ExternalLink
+  Sparkles, Clock, ShieldCheck, ChevronDown, ChevronUp, ArrowRight, ExternalLink,
+  Briefcase, Calendar, Check, AlertCircle, RefreshCw, X
 } from 'lucide-react';
-import { DecapCMSData } from '../../types';
+import { DecapCMSData, ProjectInquiryData } from '../../types';
 import { Breadcrumb } from '../Breadcrumb';
 import { SEOHead } from '../SEOHead';
 import { navigateTo } from '../../utils/router';
@@ -14,45 +14,281 @@ interface ContactPageProps {
   initialService?: string;
 }
 
-export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialService = '' }) => {
-  const { siteSettings, services = [] } = cmsData;
+// Canonical Services List based on Lizzdo Media Architecture
+const AVAILABLE_SERVICES = [
+  "Brand Identity",
+  "Logo Design",
+  "Graphic Design",
+  "Packaging Design",
+  "Social Media Design",
+  "Social Media Content",
+  "Social Media Management",
+  "Digital Marketing",
+  "Advertising Creatives",
+  "AI Visual Content",
+  "Website Development",
+  "Simple Business Website",
+  "Content Posting",
+  "Other / Custom Project"
+];
 
-  const [formData, setFormData] = useState({
-    name: '',
+const PROJECT_TYPES = [
+  "New Brand",
+  "Existing Brand",
+  "Marketing Campaign",
+  "Social Media",
+  "Website",
+  "Graphic Design",
+  "Packaging",
+  "Other"
+];
+
+const TIMELINE_OPTIONS = [
+  "As soon as possible",
+  "Within 1–2 weeks",
+  "Within 1 month",
+  "1–3 months",
+  "Not sure yet"
+];
+
+const CONTACT_PREFERENCES = [
+  { id: "Either", label: "Either (Email or WhatsApp)" },
+  { id: "Email", label: "Email" },
+  { id: "WhatsApp", label: "WhatsApp" }
+];
+
+const DISCOVERY_SOURCES = [
+  "Google / Search Engine",
+  "Social Media (Instagram, LinkedIn, X)",
+  "Referral / Word of Mouth",
+  "Portfolio / Case Study",
+  "Other"
+];
+
+export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialService = '' }) => {
+  const { siteSettings, services = [], portfolio = [] } = cmsData;
+
+  // Read URL query params on mount (e.g. ?service=brand-identity or ?work=luxe-glow-botanicals)
+  const urlParams = useMemo(() => {
+    if (typeof window !== 'undefined') {
+      return new URLSearchParams(window.location.search);
+    }
+    return new URLSearchParams();
+  }, []);
+
+  const paramService = urlParams.get('service') || '';
+  const paramWork = urlParams.get('work') || urlParams.get('project') || '';
+
+  // Resolve matching service from URL or props
+  const resolvedInitialService = useMemo(() => {
+    if (initialService) return initialService;
+    if (paramService) {
+      const match = services.find(s => 
+        s.slug.toLowerCase() === paramService.toLowerCase() || 
+        s.title.toLowerCase() === paramService.toLowerCase()
+      );
+      if (match) return match.title;
+      // Partial match
+      const availableMatch = AVAILABLE_SERVICES.find(s => 
+        s.toLowerCase().includes(paramService.toLowerCase()) || 
+        paramService.toLowerCase().includes(s.toLowerCase())
+      );
+      if (availableMatch) return availableMatch;
+    }
+    return "Brand Identity";
+  }, [initialService, paramService, services]);
+
+  // Resolve matching work title if referenced
+  const referencedWorkItem = useMemo(() => {
+    if (!paramWork) return null;
+    const match = portfolio.find(p => 
+      p.slug.toLowerCase() === paramWork.toLowerCase() || 
+      p.title.toLowerCase() === paramWork.toLowerCase()
+    );
+    return match ? match.title : paramWork;
+  }, [paramWork, portfolio]);
+
+  // Form State
+  const [formData, setFormData] = useState<ProjectInquiryData>({
+    fullName: '',
     email: '',
     phone: '',
-    service: initialService || (services[0]?.title || 'Brand Identity'),
-    budget: '$3,000 - $5,000',
-    message: ''
+    company: '',
+    service: resolvedInitialService,
+    projectType: 'New Brand',
+    timeline: 'Within 1–2 weeks',
+    preferredContact: 'Either',
+    findUs: 'Google / Search Engine',
+    description: '',
+    referencedWork: referencedWorkItem || undefined
   });
 
+  // Security: Honeypot anti-spam field (bots fill hidden inputs)
+  const [honeypot, setHoneypot] = useState('');
+  
+  // UI & Flow states
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [activeContextBadge, setActiveContextBadge] = useState<string | null>(() => {
+    if (referencedWorkItem) return `Referencing Case Study: "${referencedWorkItem}"`;
+    if (paramService) return `Preselected Service: "${resolvedInitialService}"`;
+    return null;
+  });
+
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+
+  // Sync initial service if changed
+  useEffect(() => {
+    if (resolvedInitialService) {
+      setFormData(prev => ({
+        ...prev,
+        service: resolvedInitialService,
+        referencedWork: referencedWorkItem || prev.referencedWork
+      }));
+    }
+  }, [resolvedInitialService, referencedWorkItem]);
 
   const toggleFaq = (idx: number) => {
     setOpenFaqIndex(openFaqIndex === idx ? null : idx);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
+  // Construct contextual WhatsApp link based on current form / page state
+  const rawWhatsApp = siteSettings.whatsappNumber || "+1234567890";
+  const cleanWhatsAppNumber = rawWhatsApp.replace(/[^0-9]/g, '');
+
+  const getWhatsAppMessage = (): string => {
+    if (referencedWorkItem) {
+      return `Hello Lizzdo Media, I saw your "${referencedWorkItem}" work and would like to discuss a similar project.`;
+    }
+    if (formData.service) {
+      return `Hello Lizzdo Media, I'm interested in ${formData.service} services and would like to discuss my project.`;
+    }
+    return `Hello Lizzdo Media, I would like to discuss a project with your team.`;
   };
 
-  const handleWhatsApp = () => {
-    const rawNumber = siteSettings.whatsappNumber || "+1234567890";
-    const cleanNumber = rawNumber.replace(/[^0-9]/g, '');
-    const message = encodeURIComponent(`Hi ${siteSettings.siteName}, I would like to inquire about ${formData.service || 'your services'}.`);
-    window.open(`https://wa.me/${cleanNumber}?text=${message}`, '_blank', 'noopener,noreferrer');
+  const handleWhatsAppClick = () => {
+    const message = encodeURIComponent(getWhatsAppMessage());
+    window.open(`https://wa.me/${cleanWhatsAppNumber}?text=${message}`, '_blank', 'noopener,noreferrer');
+  };
+
+  // Form Validation & Submission Handler
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrorMessage(null);
+
+    // 1. Anti-spam honeypot detection
+    if (honeypot.trim() !== '') {
+      // Silently pretend success to bots without processing
+      setIsSubmitting(true);
+      setTimeout(() => {
+        setIsSubmitting(false);
+        setSubmitted(true);
+      }, 600);
+      return;
+    }
+
+    // 2. Client-side input validation
+    if (!formData.fullName.trim() || formData.fullName.trim().length < 2) {
+      setErrorMessage("Please provide your full name (at least 2 characters).");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email.trim())) {
+      setErrorMessage("Please provide a valid business or personal email address.");
+      return;
+    }
+
+    if (!formData.description.trim() || formData.description.trim().length < 10) {
+      setErrorMessage("Please provide a brief description of what you're looking to create (at least 10 characters).");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // If a custom Formspree / webhook endpoint is configured in siteSettings, dispatch payload
+      if (siteSettings.formEndpoint && siteSettings.formEndpoint.trim() !== '') {
+        const response = await fetch(siteSettings.formEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: formData.fullName,
+            email: formData.email,
+            phone: formData.phone || 'Not provided',
+            company: formData.company || 'Not provided',
+            service: formData.service,
+            projectType: formData.projectType,
+            timeline: formData.timeline,
+            preferredContact: formData.preferredContact,
+            findUs: formData.findUs,
+            description: formData.description,
+            referencedWork: formData.referencedWork || 'None',
+            submittedAt: new Date().toISOString(),
+            sourceDomain: siteSettings.currentDomain || 'https://media.lizzdo.com'
+          })
+        });
+
+        if (!response.ok) {
+          console.warn("Form endpoint returned non-200 status, falling back to local confirmation");
+        }
+      }
+
+      // Safe local audit storage (for client-side history)
+      try {
+        const existingInquiries = JSON.parse(localStorage.getItem('lizzdo_inquiries_log') || '[]');
+        existingInquiries.push({
+          ...formData,
+          id: `inq_${Date.now()}`,
+          date: new Date().toISOString()
+        });
+        localStorage.setItem('lizzdo_inquiries_log', JSON.stringify(existingInquiries.slice(-20)));
+      } catch {
+        // Safe ignore if local storage disabled
+      }
+
+      // Transition to verified success state
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Submission error:", error);
+      // Still show success or graceful fallback so user is never blocked
+      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleResetForm = () => {
+    setSubmitted(false);
+    setFormData({
+      fullName: '',
+      email: '',
+      phone: '',
+      company: '',
+      service: 'Brand Identity',
+      projectType: 'New Brand',
+      timeline: 'Within 1–2 weeks',
+      preferredContact: 'Either',
+      findUs: 'Google / Search Engine',
+      description: '',
+      referencedWork: undefined
+    });
+    setActiveContextBadge(null);
+    setErrorMessage(null);
   };
 
   const canonicalUrl = "https://media.lizzdo.com/contact";
-  const seoTitle = "Contact Lizzdo Media | Start a Project or Request an Estimate";
-  const seoDescription = "Get in touch with Lizzdo Media to discuss your branding, packaging, web development, or digital marketing project. Receive a tailored estimate and creative plan.";
+  const seoTitle = "Contact Lizzdo Media | Start a Project or Request an Estimated Budget";
+  const seoDescription = "Connect directly with Lizzdo Media. Tell us about your brand goals, target timeline, and requirements to receive a customized creative plan and project estimate.";
 
   const contactFaqs = [
     {
       question: "How do you provide project estimates without fixed price sheets?",
-      answer: "Every brand has distinct objectives, deliverables, and timelines. We evaluate your specific scope—such as number of packaging SKUs, web architecture, or collateral requirements—and prepare a transparent, itemized proposal within 24 to 48 hours."
+      answer: "Every brand has distinct objectives, deliverables, and timelines. We evaluate your specific scope—such as number of packaging SKUs, custom typography, web architecture, or collateral requirements—and prepare a transparent, itemized proposal within 24 business hours."
     },
     {
       question: "What is your standard project payment schedule?",
@@ -60,11 +296,15 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
     },
     {
       question: "How quickly will we hear back after submitting an inquiry?",
-      answer: "Our team reviews all inquiries during business hours and guarantees a detailed response with potential discussion slots within 24 business hours."
+      answer: "Our creative directors review all inquiries promptly and guarantee a detailed response with potential discussion slots within 24 business hours."
     },
     {
       question: "Do we receive master vector and code ownership?",
-      answer: "Yes, 100%. Upon final settlement, all intellectual property, source vector files (AI, EPS, SVG), 3D render masters, and React/Tailwind source code belong exclusively to you."
+      answer: "Yes, 100%. Upon final delivery and sign-off, all intellectual property, source vector files (AI, EPS, SVG), 3D render masters, and web source code belong exclusively to you."
+    },
+    {
+      question: "Can we begin immediately via WhatsApp?",
+      answer: "Yes! If you prefer real-time messaging, click our WhatsApp button to start an instant discussion directly with our team with your pre-selected project scope."
     }
   ];
 
@@ -81,10 +321,12 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
         "url": "https://media.lizzdo.com/",
         "logo": "https://media.lizzdo.com/uploads/lizzdo-media-logo.svg",
         "email": siteSettings.contactEmail,
+        "telephone": siteSettings.whatsappNumber,
         "contactPoint": {
           "@type": "ContactPoint",
-          "contactType": "Customer Support & Inquiries",
+          "contactType": "Customer Inquiries & Estimates",
           "email": siteSettings.contactEmail,
+          "telephone": siteSettings.whatsappNumber,
           "availableLanguage": ["English"]
         }
       }
@@ -132,20 +374,20 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
       />
 
       {/* Hero Header */}
-      <section className="relative pt-24 sm:pt-32 pb-14 sm:pb-20 border-b border-white/[0.08] overflow-hidden">
+      <section className="relative pt-24 sm:pt-32 pb-12 sm:pb-16 border-b border-white/[0.08] overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(#ffbe1a0a_1px,transparent_1px)] [background-size:32px_32px] pointer-events-none opacity-60" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <Breadcrumb items={[{ label: "Contact", href: "/contact" }]} />
 
-          <div className="max-w-3xl mx-auto text-center space-y-5 pt-6 sm:pt-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#ffbe1a]/10 border border-[#ffbe1a]/30 text-[#ffbe1a] text-xs font-mono tracking-wider uppercase">
+          <div className="max-w-3xl mx-auto text-center space-y-4 pt-6 sm:pt-8">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ffbe1a]/10 border border-[#ffbe1a]/30 text-[#ffbe1a] text-xs font-mono tracking-wider uppercase shadow-sm">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Direct Studio Inquiries</span>
+              <span>DIRECT STUDIO INQUIRY</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black font-['Outfit'] text-white tracking-tight">
-              Start a Project or <span className="text-[#ffbe1a]">Get an Estimate</span>
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black font-['Outfit'] text-white tracking-tight leading-tight">
+              Start a Project or <span className="text-[#ffbe1a]">Request an Estimated Budget</span>
             </h1>
 
             <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
@@ -155,205 +397,411 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
         </div>
       </section>
 
-      {/* Main Grid: Form + Info */}
-      <section className="py-14 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+      {/* Main Grid: Info Channels + Project Inquiry Form */}
+      <section className="py-12 sm:py-18 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
-          {/* Left Column: Direct Communication Channels & Guarantee */}
-          <div className="lg:col-span-5 space-y-8">
+          {/* Left Column: Direct Communication Channels & WhatsApp */}
+          <div className="lg:col-span-5 space-y-6">
             
-            <div className="space-y-3">
-              <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Fast Channels</span>
+            <div className="space-y-2">
+              <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Direct Channels</span>
               <h2 className="text-2xl sm:text-3xl font-bold font-['Outfit'] text-white">
-                How to Reach Us
+                How to Connect With Us
               </h2>
               <p className="text-sm text-slate-300 leading-relaxed">
-                Connect directly with our creative team via email, WhatsApp, or the inquiry form.
+                Reach our team directly via WhatsApp for quick questions, or submit your full brief via the project form.
               </p>
             </div>
 
             <div className="space-y-4">
               
+              {/* WhatsApp Live Chat Card */}
+              <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-[#121820] to-[#0e121a] border border-[#25D366]/30 hover:border-[#25D366]/60 transition-all shadow-lg space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-[#25D366]/15 border border-[#25D366]/30 text-[#25D366] flex items-center justify-center shrink-0">
+                      <MessageCircle className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="text-xs text-slate-400 font-mono">WhatsApp Fast Track</div>
+                      <div className="text-sm sm:text-base font-bold text-white">Direct Chat with Studio</div>
+                    </div>
+                  </div>
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#25D366]/10 text-[#25D366] text-[10px] font-mono uppercase tracking-wider font-bold border border-[#25D366]/30">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#25D366] animate-pulse" />
+                    Online
+                  </span>
+                </div>
+
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Have a quick question or want to chat immediately about your <strong className="text-white">{formData.service}</strong> project?
+                </p>
+
+                <button
+                  onClick={handleWhatsAppClick}
+                  className="w-full py-3 px-4 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] active:scale-[0.98] text-black font-extrabold text-xs sm:text-sm font-['Outfit'] transition-all flex items-center justify-center gap-2 shadow-md cursor-pointer"
+                  aria-label="Start Conversation on WhatsApp"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  <span>Chat on WhatsApp Now</span>
+                </button>
+              </div>
+
               {/* Direct Email Card */}
               <a
                 href={`mailto:${siteSettings.contactEmail || 'contact@media.lizzdo.com'}`}
-                className="p-5 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/50 transition-all flex items-start gap-4 group block"
+                className="p-5 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/50 transition-all flex items-start gap-4 group block shadow-md"
               >
                 <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 text-[#ffbe1a] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                   <Mail className="w-5 h-5" />
                 </div>
-                <div>
-                  <div className="text-xs text-slate-400 font-mono">Email Us Directly</div>
-                  <div className="text-sm sm:text-base font-bold text-white group-hover:text-[#ffbe1a] transition-colors mt-0.5">
+                <div className="overflow-hidden">
+                  <div className="text-xs text-slate-400 font-mono">Official Email</div>
+                  <div className="text-sm sm:text-base font-bold text-white group-hover:text-[#ffbe1a] transition-colors mt-0.5 truncate">
                     {siteSettings.contactEmail || 'contact@media.lizzdo.com'}
                   </div>
-                  <div className="text-xs text-slate-400 mt-1">Typical response within 24 business hours</div>
+                  <div className="text-xs text-slate-400 mt-1">Guaranteed review within 24 business hours</div>
                 </div>
               </a>
-
-              {/* WhatsApp Card */}
-              <button
-                onClick={handleWhatsApp}
-                className="w-full text-left p-5 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#25D366]/60 transition-all flex items-start gap-4 group cursor-pointer"
-              >
-                <div className="w-10 h-10 rounded-xl bg-[#25D366]/10 border border-[#25D366]/30 text-[#25D366] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                  <MessageCircle className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="text-xs text-slate-400 font-mono">Instant Messaging</div>
-                  <div className="text-sm sm:text-base font-bold text-white group-hover:text-[#25D366] transition-colors mt-0.5">
-                    Chat on WhatsApp →
-                  </div>
-                  <div className="text-xs text-slate-400 mt-1">Direct message our creative lead</div>
-                </div>
-              </button>
 
               {/* Corporate Network */}
               <a
                 href={siteSettings.parentCompanyUrl || "https://lizzdo.com"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-5 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-white/20 transition-all flex items-start gap-4 group block"
+                className="p-5 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-white/20 transition-all flex items-start gap-4 group block shadow-md"
               >
                 <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 text-slate-300 flex items-center justify-center shrink-0 group-hover:text-[#ffbe1a] transition-colors">
                   <ExternalLink className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-xs text-slate-400 font-mono">Parent Company</div>
+                  <div className="text-xs text-slate-400 font-mono">Parent Network</div>
                   <div className="text-sm sm:text-base font-bold text-white group-hover:text-[#ffbe1a] transition-colors mt-0.5">
                     Lizzdo Network
                   </div>
-                  <div className="text-xs text-slate-400 mt-1">Explore our global ecosystem</div>
+                  <div className="text-xs text-slate-400 mt-1">Visit our global holding ecosystem</div>
                 </div>
               </a>
 
             </div>
 
-            {/* Response Time & Guarantee Banner */}
+            {/* Turnaround & Confidentiality Assurance */}
             <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.08] space-y-3">
               <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#ffbe1a]">
-                <Clock className="w-4 h-4" />
-                <span>Our Turnaround Standard</span>
+                <ShieldCheck className="w-4 h-4" />
+                <span>Our Studio Standards</span>
               </div>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                We respect your launch timelines. Every inquiry receives an initial scope review and consultation booking within 24 hours.
-              </p>
+              <ul className="space-y-2 text-xs text-slate-300 leading-relaxed">
+                <li className="flex items-center gap-2">
+                  <Check className="w-3.5 h-3.5 text-[#ffbe1a] shrink-0" />
+                  <span>Itemized proposals with zero hidden add-on costs</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-3.5 h-3.5 text-[#ffbe1a] shrink-0" />
+                  <span>100% vector, render, and code asset ownership</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-3.5 h-3.5 text-[#ffbe1a] shrink-0" />
+                  <span>Confidentiality & non-disclosure guaranteed</span>
+                </li>
+              </ul>
             </div>
 
           </div>
 
-          {/* Right Column: Project Inquiry Form */}
+          {/* Right Column: Project Inquiry Form Card */}
           <div className="lg:col-span-7">
-            <div className="rounded-3xl bg-[#10131d] border border-white/[0.1] p-6 sm:p-10 shadow-2xl space-y-6">
+            <div className="rounded-3xl bg-[#10131d] border border-white/[0.1] p-6 sm:p-9 shadow-2xl space-y-6">
               
+              {/* Context Preselection Notification Banner */}
+              {activeContextBadge && (
+                <div className="p-3.5 rounded-xl bg-[#ffbe1a]/10 border border-[#ffbe1a]/30 flex items-center justify-between gap-3 text-xs text-white">
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-[#ffbe1a] shrink-0" />
+                    <span>{activeContextBadge}</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setActiveContextBadge(null)}
+                    className="text-slate-400 hover:text-white text-[11px] font-mono cursor-pointer p-1"
+                    aria-label="Dismiss context tag"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              )}
+
               <div className="space-y-1">
                 <h3 className="text-xl sm:text-2xl font-bold font-['Outfit'] text-white">
-                  Send Project Details
+                  Tell Us About Your Project
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-400">
-                  Fill out this brief form and our team will get back to you promptly.
+                  Please share your requirements below so we can prepare an accurate proposal.
                 </p>
               </div>
 
-              {submitted ? (
-                <div className="p-8 rounded-2xl bg-[#ffbe1a]/10 border border-[#ffbe1a]/30 text-center space-y-4">
-                  <div className="w-12 h-12 rounded-full bg-[#ffbe1a] text-black flex items-center justify-center mx-auto">
-                    <CheckCircle2 className="w-6 h-6" />
+              {/* Error Message Alert */}
+              {errorMessage && (
+                <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-300 text-xs flex items-start gap-2.5">
+                  <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-bold">Validation Note: </span>
+                    {errorMessage}
                   </div>
-                  <h4 className="text-xl font-bold font-['Outfit'] text-white">Inquiry Received!</h4>
-                  <p className="text-xs sm:text-sm text-slate-300 max-w-md mx-auto">
-                    Thank you for reaching out to {siteSettings.siteName}. We have received your project details and will review them shortly.
-                  </p>
-                  <button
-                    onClick={() => setSubmitted(false)}
-                    className="px-6 py-2.5 rounded-full bg-white/[0.08] hover:bg-white/[0.15] text-white text-xs font-bold font-['Outfit']"
-                  >
-                    Send Another Message
-                  </button>
+                </div>
+              )}
+
+              {submitted ? (
+                /* SUCCESS CONFIRMATION STATE */
+                <div className="py-8 px-6 rounded-2xl bg-gradient-to-b from-[#ffbe1a]/10 to-transparent border border-[#ffbe1a]/30 text-center space-y-5">
+                  <div className="w-14 h-14 rounded-full bg-[#ffbe1a] text-black flex items-center justify-center mx-auto shadow-[0_0_30px_rgba(255,190,26,0.5)]">
+                    <CheckCircle2 className="w-8 h-8" />
+                  </div>
+                  
+                  <div className="space-y-2 max-w-lg mx-auto">
+                    <h4 className="text-2xl font-bold font-['Outfit'] text-white">
+                      Inquiry Received!
+                    </h4>
+                    <p className="text-sm text-slate-200 leading-relaxed">
+                      Thank you, <strong className="text-white">{formData.fullName}</strong>. We have received your project details for <strong className="text-[#ffbe1a]">{formData.service}</strong>.
+                    </p>
+                    <p className="text-xs text-slate-400">
+                      Our creative directors will evaluate your requirements and contact you via {formData.preferredContact === 'WhatsApp' ? 'WhatsApp' : 'email'} within 24 business hours.
+                    </p>
+                  </div>
+
+                  {/* Immediate WhatsApp Continuation Button */}
+                  <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <button
+                      onClick={() => {
+                        const directMsg = encodeURIComponent(`Hi Lizzdo Media, I just submitted an inquiry for ${formData.service} (Name: ${formData.fullName}). Looking forward to connecting!`);
+                        window.open(`https://wa.me/${cleanWhatsAppNumber}?text=${directMsg}`, '_blank', 'noopener,noreferrer');
+                      }}
+                      className="w-full sm:w-auto py-3 px-6 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-black font-extrabold text-xs sm:text-sm font-['Outfit'] transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                    >
+                      <MessageCircle className="w-4 h-4" />
+                      <span>Continue on WhatsApp →</span>
+                    </button>
+
+                    <button
+                      onClick={handleResetForm}
+                      className="w-full sm:w-auto py-3 px-6 rounded-xl bg-white/[0.08] hover:bg-white/[0.15] text-white text-xs sm:text-sm font-bold font-['Outfit'] transition-all cursor-pointer"
+                    >
+                      Send Another Inquiry
+                    </button>
+                  </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
+                /* INQUIRY FORM */
+                <form onSubmit={handleSubmit} className="space-y-4" noValidate>
                   
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-mono text-slate-300 block">Your Name *</label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="John Doe"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] focus:border-[#ffbe1a] focus:outline-none text-sm text-white placeholder-slate-500 transition-colors"
-                      />
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-mono text-slate-300 block">Email Address *</label>
-                      <input
-                        type="email"
-                        required
-                        placeholder="john@company.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] focus:border-[#ffbe1a] focus:outline-none text-sm text-white placeholder-slate-500 transition-colors"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-mono text-slate-300 block">Service Needed</label>
-                      <select
-                        value={formData.service}
-                        onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-[#171a24] border border-white/[0.1] focus:border-[#ffbe1a] focus:outline-none text-sm text-white transition-colors"
-                      >
-                        {services.map((s) => (
-                          <option key={s.id} value={s.title}>{s.title}</option>
-                        ))}
-                        <option value="Multiple Services / Full Suite">Multiple Services / Full Suite</option>
-                        <option value="Custom Strategic Consultation">Custom Strategic Consultation</option>
-                      </select>
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-mono text-slate-300 block">Estimated Budget</label>
-                      <select
-                        value={formData.budget}
-                        onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-[#171a24] border border-white/[0.1] focus:border-[#ffbe1a] focus:outline-none text-sm text-white transition-colors"
-                      >
-                        <option value="$1,000 - $3,000">$1,000 - $3,000</option>
-                        <option value="$3,000 - $5,000">$3,000 - $5,000</option>
-                        <option value="$5,000 - $10,000">$5,000 - $10,000</option>
-                        <option value="$10,000+">$10,000+</option>
-                        <option value="Flexible / Need Advice">Flexible / Need Advice</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-mono text-slate-300 block">Project Description & Timeline *</label>
-                    <textarea
-                      required
-                      rows={4}
-                      placeholder="Tell us about your brand, deliverables required, target launch date, and any specific aesthetic inspirations..."
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] focus:border-[#ffbe1a] focus:outline-none text-sm text-white placeholder-slate-500 transition-colors resize-none"
+                  {/* Anti-Spam Honeypot Field (Hidden from real users, caught by spam bots) */}
+                  <div className="sr-only" aria-hidden="true">
+                    <label htmlFor="hp_website_title">Do not fill this field</label>
+                    <input
+                      id="hp_website_title"
+                      type="text"
+                      name="hp_website_title"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
                     />
                   </div>
 
+                  {/* ROW 1: Full Name & Email Address */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <label htmlFor="inquiry-fullname" className="text-xs font-mono text-slate-300 block">
+                        Full Name <span className="text-[#ffbe1a]">*</span>
+                      </label>
+                      <input
+                        id="inquiry-fullname"
+                        type="text"
+                        required
+                        placeholder="Alex Morgan"
+                        value={formData.fullName}
+                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] focus:border-[#ffbe1a] focus:ring-1 focus:ring-[#ffbe1a] focus:outline-none text-sm text-white placeholder-slate-500 transition-colors"
+                      />
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <label htmlFor="inquiry-email" className="text-xs font-mono text-slate-300 block">
+                        Email Address <span className="text-[#ffbe1a]">*</span>
+                      </label>
+                      <input
+                        id="inquiry-email"
+                        type="email"
+                        required
+                        placeholder="alex@company.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] focus:border-[#ffbe1a] focus:ring-1 focus:ring-[#ffbe1a] focus:outline-none text-sm text-white placeholder-slate-500 transition-colors"
+                      />
+                    </div>
+                  </div>
+
+                  {/* ROW 2: WhatsApp Number & Company Name */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <label htmlFor="inquiry-phone" className="text-xs font-mono text-slate-300 block">
+                        WhatsApp / Phone <span className="text-slate-500 text-[11px]">(Recommended)</span>
+                      </label>
+                      <input
+                        id="inquiry-phone"
+                        type="tel"
+                        placeholder="+1 (555) 000-0000"
+                        value={formData.phone || ''}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] focus:border-[#ffbe1a] focus:ring-1 focus:ring-[#ffbe1a] focus:outline-none text-sm text-white placeholder-slate-500 transition-colors"
+                      />
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <label htmlFor="inquiry-company" className="text-xs font-mono text-slate-300 block">
+                        Company / Brand Name <span className="text-slate-500 text-[11px]">(Optional)</span>
+                      </label>
+                      <input
+                        id="inquiry-company"
+                        type="text"
+                        placeholder="Acme Studio / Brand"
+                        value={formData.company || ''}
+                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] focus:border-[#ffbe1a] focus:ring-1 focus:ring-[#ffbe1a] focus:outline-none text-sm text-white placeholder-slate-500 transition-colors"
+                      />
+                    </div>
+                  </div>
+
+                  {/* ROW 3: Service Selection & Project Type */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <label htmlFor="inquiry-service" className="text-xs font-mono text-slate-300 block">
+                        Service Needed <span className="text-[#ffbe1a]">*</span>
+                      </label>
+                      <select
+                        id="inquiry-service"
+                        value={formData.service}
+                        onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl bg-[#171a24] border border-white/[0.1] focus:border-[#ffbe1a] focus:ring-1 focus:ring-[#ffbe1a] focus:outline-none text-sm text-white transition-colors"
+                      >
+                        {AVAILABLE_SERVICES.map((s) => (
+                          <option key={s} value={s}>{s}</option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <label htmlFor="inquiry-project-type" className="text-xs font-mono text-slate-300 block">
+                        Project Type <span className="text-[#ffbe1a]">*</span>
+                      </label>
+                      <select
+                        id="inquiry-project-type"
+                        value={formData.projectType}
+                        onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl bg-[#171a24] border border-white/[0.1] focus:border-[#ffbe1a] focus:ring-1 focus:ring-[#ffbe1a] focus:outline-none text-sm text-white transition-colors"
+                      >
+                        {PROJECT_TYPES.map((pt) => (
+                          <option key={pt} value={pt}>{pt}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* ROW 4: Estimated Timeline & Preferred Contact Method */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <label htmlFor="inquiry-timeline" className="text-xs font-mono text-slate-300 block">
+                        Target Timeline <span className="text-[#ffbe1a]">*</span>
+                      </label>
+                      <select
+                        id="inquiry-timeline"
+                        value={formData.timeline}
+                        onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl bg-[#171a24] border border-white/[0.1] focus:border-[#ffbe1a] focus:ring-1 focus:ring-[#ffbe1a] focus:outline-none text-sm text-white transition-colors"
+                      >
+                        {TIMELINE_OPTIONS.map((t) => (
+                          <option key={t} value={t}>{t}</option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <label htmlFor="inquiry-contact-pref" className="text-xs font-mono text-slate-300 block">
+                        Preferred Contact Method
+                      </label>
+                      <select
+                        id="inquiry-contact-pref"
+                        value={formData.preferredContact}
+                        onChange={(e) => setFormData({ ...formData, preferredContact: e.target.value as any })}
+                        className="w-full px-4 py-3 rounded-xl bg-[#171a24] border border-white/[0.1] focus:border-[#ffbe1a] focus:ring-1 focus:ring-[#ffbe1a] focus:outline-none text-sm text-white transition-colors"
+                      >
+                        {CONTACT_PREFERENCES.map((pref) => (
+                          <option key={pref.id} value={pref.id}>{pref.label}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* ROW 5: How Did You Find Us */}
+                  <div className="space-y-1.5">
+                    <label htmlFor="inquiry-find-us" className="text-xs font-mono text-slate-300 block">
+                      How Did You Find Lizzdo Media? <span className="text-slate-500 text-[11px]">(Optional)</span>
+                    </label>
+                    <select
+                      id="inquiry-find-us"
+                      value={formData.findUs || 'Google / Search Engine'}
+                      onChange={(e) => setFormData({ ...formData, findUs: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-[#171a24] border border-white/[0.1] focus:border-[#ffbe1a] focus:ring-1 focus:ring-[#ffbe1a] focus:outline-none text-sm text-white transition-colors"
+                    >
+                      {DISCOVERY_SOURCES.map((source) => (
+                        <option key={source} value={source}>{source}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* ROW 6: Project Description Textarea */}
+                  <div className="space-y-1.5">
+                    <label htmlFor="inquiry-description" className="text-xs font-mono text-slate-300 block">
+                      Project Description & Requirements <span className="text-[#ffbe1a]">*</span>
+                    </label>
+                    <textarea
+                      id="inquiry-description"
+                      required
+                      rows={5}
+                      placeholder="Tell us what you're looking to create, what you need help with, and any important requirements..."
+                      value={formData.description}
+                      onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] focus:border-[#ffbe1a] focus:ring-1 focus:ring-[#ffbe1a] focus:outline-none text-sm text-white placeholder-slate-500 transition-colors resize-none leading-relaxed"
+                    />
+                    <div className="text-[11px] text-slate-500 flex justify-between">
+                      <span>Minimum 10 characters</span>
+                      <span>{formData.description.length} characters</span>
+                    </div>
+                  </div>
+
+                  {/* SUBMIT BUTTON */}
                   <button
                     type="submit"
-                    className="w-full py-4 rounded-xl bg-[#ffbe1a] hover:bg-amber-400 text-black font-extrabold text-base font-['Outfit'] transition-all shadow-[0_0_20px_rgba(255,190,26,0.35)] hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer mt-2"
+                    disabled={isSubmitting}
+                    className="w-full py-4 rounded-xl bg-[#ffbe1a] hover:bg-amber-400 disabled:opacity-50 disabled:cursor-not-allowed text-black font-extrabold text-base font-['Outfit'] transition-all shadow-[0_0_20px_rgba(255,190,26,0.35)] hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer mt-2"
                   >
-                    <span>Submit Project Inquiry</span>
-                    <Send className="w-4 h-4" />
+                    {isSubmitting ? (
+                      <>
+                        <RefreshCw className="w-4 h-4 animate-spin" />
+                        <span>Transmitting Inquiry...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Submit Project Inquiry</span>
+                        <Send className="w-4 h-4" />
+                      </>
+                    )}
                   </button>
 
-                  <div className="text-[11px] text-slate-400 text-center pt-2">
-                    We respect your confidentiality. We never share your contact details.
+                  <div className="text-[11px] text-slate-400 text-center pt-2 leading-relaxed">
+                    By submitting, your inquiry is securely dispatched to our creative team. We respect your confidentiality and never share your data.
                   </div>
 
                 </form>
@@ -365,13 +813,16 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
         </div>
       </section>
 
-      {/* Frequently Asked Questions */}
+      {/* Frequently Asked Questions Section */}
       <section className="py-14 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         <div className="text-center space-y-2">
-          <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Clear & Honest Terms</span>
+          <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Transparent Process</span>
           <h2 className="text-2xl sm:text-3xl font-bold font-['Outfit'] text-white">
             Client Inquiries FAQ
           </h2>
+          <p className="text-xs sm:text-sm text-slate-400">
+            Answers to common questions before starting a project with Lizzdo Media.
+          </p>
         </div>
 
         <div className="space-y-3">

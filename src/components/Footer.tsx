@@ -41,7 +41,7 @@ export const Footer: React.FC<FooterProps> = ({
   const handleWhatsApp = () => {
     const rawNumber = siteSettings.whatsappNumber || "+1234567890";
     const cleanNumber = rawNumber.replace(/[^0-9]/g, '');
-    const message = encodeURIComponent(`Hi ${siteSettings.siteName}, I am reaching out from your website.`);
+    const message = encodeURIComponent(`Hello ${siteSettings.siteName}, I'd like to discuss a project with your team.`);
     window.open(`https://wa.me/${cleanNumber}?text=${message}`, '_blank', 'noopener,noreferrer');
   };
 

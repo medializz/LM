@@ -96,7 +96,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
   const handleWhatsApp = () => {
     const rawNumber = siteSettings.whatsappNumber || "+1234567890";
     const cleanNumber = rawNumber.replace(/[^0-9]/g, '');
-    const message = encodeURIComponent(`Hi Lizzdo Media, I am interested in your ${service.title} service.`);
+    const message = encodeURIComponent(`Hello Lizzdo Media, I'm interested in ${service.title} services and would like to discuss my project.`);
     window.open(`https://wa.me/${cleanNumber}?text=${message}`, '_blank', 'noopener,noreferrer');
   };
 

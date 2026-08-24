@@ -71,6 +71,8 @@ export interface ServiceCategory {
   category: string;
   order: number;
   // Rich Service Page Extensions
+  heroImage?: string;
+  heroImageAlt?: string;
   heroHeadline?: string;
   heroHighlight?: string;
   heroDescription?: string;
@@ -89,6 +91,8 @@ export interface ServiceCategory {
   seoTitle?: string;
   seoDescription?: string;
   seoImage?: string;
+  ogImage?: string;
+  published?: boolean;
 }
 
 export interface ProcessStep {
@@ -116,11 +120,13 @@ export interface PortfolioItem {
   description?: string;
   image?: string;
   heroImage?: string;
+  heroImageAlt?: string;
   featuredImage?: string;
   visualType?: 'brand-identity' | 'packaging' | 'saas-dashboard' | 'social-campaign' | 'ecommerce' | string;
   featured?: boolean;
   order: number;
   published?: boolean;
+  date?: string;
   // Rich Case Study Extensions
   client?: string;
   year?: string;
@@ -132,6 +138,7 @@ export interface PortfolioItem {
   design?: string;
   execution?: string;
   solution?: string;
+  creativeDirection?: string;
   result?: string;
   materials?: MaterialSpec[];
   dielineSpecs?: DielineSpecs;
@@ -143,6 +150,7 @@ export interface PortfolioItem {
   seoTitle?: string;
   seoDescription?: string;
   seoImage?: string;
+  ogImage?: string;
 }
 
 export interface AuthorInfo {
@@ -164,7 +172,10 @@ export interface BlogArticle {
   updatedDate?: string;
   readTime: string;
   heroImage?: string;
+  image?: string;
+  imageAlt?: string;
   visualType?: string;
+  published?: boolean;
   tags?: string[];
   keyTakeaways?: string[];
   faqs?: FAQItem[];
@@ -174,6 +185,7 @@ export interface BlogArticle {
   seoTitle?: string;
   seoDescription?: string;
   seoImage?: string;
+  ogImage?: string;
 }
 
 export interface StatItem {
@@ -217,6 +229,13 @@ export interface FeatureItem {
   order: number;
 }
 
+export interface SocialLink {
+  platform: string;
+  url: string;
+  label?: string;
+  icon?: string;
+}
+
 export interface SiteSettings {
   siteName: string;
   tagline: string;
@@ -232,6 +251,29 @@ export interface SiteSettings {
   parentCompanyUrl: string;
   currentDomain: string;
   whatsappNumber?: string;
+  instagramUrl?: string;
+  facebookUrl?: string;
+  linkedinUrl?: string;
+  twitterUrl?: string;
+  location?: string;
+  formEndpoint?: string;
+  footerText?: string;
+  copyrightText?: string;
+  socialLinks?: SocialLink[];
+}
+
+export interface ProjectInquiryData {
+  fullName: string;
+  email: string;
+  phone?: string;
+  company?: string;
+  service: string;
+  projectType: string;
+  timeline: string;
+  preferredContact: 'Email' | 'WhatsApp' | 'Either';
+  findUs?: string;
+  description: string;
+  referencedWork?: string;
 }
 
 export interface DecapCMSData {

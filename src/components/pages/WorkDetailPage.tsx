@@ -74,7 +74,7 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
   const handleWhatsApp = () => {
     const rawNumber = siteSettings.whatsappNumber || "+1234567890";
     const cleanNumber = rawNumber.replace(/[^0-9]/g, '');
-    const message = encodeURIComponent(`Hi ${siteSettings.siteName}, I saw your work on "${project.title}" and would like to discuss a project.`);
+    const message = encodeURIComponent(`Hello ${siteSettings.siteName}, I saw your "${project.title}" work and would like to discuss a similar project.`);
     window.open(`https://wa.me/${cleanNumber}?text=${message}`, '_blank', 'noopener,noreferrer');
   };
 

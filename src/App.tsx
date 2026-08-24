@@ -274,6 +274,7 @@ export default function App() {
         {route.view === 'contact' && (
           <ContactPage 
             cmsData={cmsData}
+            initialService={preselectedContactService || undefined}
           />
         )}
 
