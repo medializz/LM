@@ -36,6 +36,7 @@ export interface GalleryItem {
   title: string;
   caption?: string;
   image?: string;
+  alt?: string;
   visualType?: string;
   layout?: 'large' | 'half' | 'third' | 'full';
   aspect?: string;

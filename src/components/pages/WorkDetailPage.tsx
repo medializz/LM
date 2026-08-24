@@ -256,11 +256,11 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
                   <span className="text-white font-semibold mt-0.5 block">{project.year || '2024'} • Completed</span>
                 </div>
 
-                {project.technologies && project.technologies.length > 0 && (
+                {((project.tools && project.tools.length > 0) || (project.services && project.services.length > 0)) && (
                   <div>
                     <span className="text-slate-400 font-mono block text-xs mb-1.5">Deliverables & Tools</span>
                     <div className="flex flex-wrap gap-1.5">
-                      {project.technologies.map((t, idx) => (
+                      {(project.tools || project.services || []).map((t, idx) => (
                         <span key={idx} className="px-2 py-0.5 rounded bg-white/[0.05] border border-white/[0.08] text-[11px] text-slate-300 font-mono">
                           {t}
                         </span>

@@ -107,6 +107,7 @@ collections:
         fields:
           - { label: "Item ID", name: "id", widget: "string" }
           - { label: "Title", name: "title", widget: "string" }
+          - { label: "Alt Text", name: "alt", widget: "string", required: false }
           - { label: "Caption / Description", name: "caption", widget: "string", required: false }
           - { label: "Uploaded Image File", name: "image", widget: "image", required: false }
           - { label: "Vector Visual Preset", name: "visualType", widget: "select", options: ["packaging-hero", "packaging-dieline", "packaging-pouch", "packaging-delivery", "packaging-hangtags", "packaging-formats", "brand-identity", "saas-dashboard", "social-campaign", "web-development"], default: "packaging-hero", required: false }
