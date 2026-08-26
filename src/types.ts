@@ -70,6 +70,10 @@ export interface ServiceCategory {
   shortDescription: string;
   category: string;
   order: number;
+  // Service Preview Image / Visual Thumbnail (Decap CMS editable)
+  previewImage?: string;
+  image?: string;
+  previewImageAlt?: string;
   // Rich Service Page Extensions
   heroImage?: string;
   heroImageAlt?: string;

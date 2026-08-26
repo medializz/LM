@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" fill="none">
+  <defs>
+    <linearGradient id="chartGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffbe1a" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#ffbe1a" stop-opacity="0.0" />
+    </linearGradient>
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffe066" />
+      <stop offset="100%" stop-color="#ffbe1a" />
+    </linearGradient>
+    <filter id="shadowM" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+  </defs>
+
+  <!-- Marketing Analytics Board -->
+  <g filter="url(#shadowM)">
+    <rect x="50" y="30" width="220" height="140" rx="12" fill="#10131d" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1.2" />
+    
+    <!-- Header with Growth Pill -->
+    <g transform="translate(68, 48)">
+      <text x="0" y="0" fill="#ffffff" font-family="sans-serif" font-size="10" font-weight="bold">CAMPAIGN ROI</text>
+      <text x="0" y="16" fill="#ffbe1a" font-family="sans-serif" font-size="16" font-weight="900">+348%</text>
+      
+      <!-- Conversion Tag -->
+      <rect x="130" y="-8" width="55" height="18" rx="9" fill="#22c55e" fill-opacity="0.15" stroke="#22c55e" stroke-width="0.8" />
+      <text x="138" y="4" fill="#22c55e" font-family="monospace" font-size="7" font-weight="bold">4.82x ROAS</text>
+    </g>
+
+    <!-- Grid Lines -->
+    <line x1="68" y1="95" x2="252" y2="95" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1" />
+    <line x1="68" y1="120" x2="252" y2="120" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1" />
+    <line x1="68" y1="145" x2="252" y2="145" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1" />
+
+    <!-- Performance Trend Area & Line -->
+    <path d="M68 140 Q105 135 125 110 T180 100 T215 80 T252 68 L252 145 L68 145 Z" fill="url(#chartGrad)" />
+    <path d="M68 140 Q105 135 125 110 T180 100 T215 80 T252 68" fill="none" stroke="url(#lineGrad)" stroke-width="2.5" stroke-linecap="round" />
+
+    <!-- Pulse Points on Line -->
+    <circle cx="125" cy="110" r="3" fill="#ffbe1a" stroke="#ffffff" stroke-width="1" />
+    <circle cx="180" cy="100" r="3" fill="#ffbe1a" stroke="#ffffff" stroke-width="1" />
+    <circle cx="215" cy="80" r="3" fill="#ffbe1a" stroke="#ffffff" stroke-width="1" />
+    <circle cx="252" cy="68" r="4.5" fill="#ffe066" stroke="#ffffff" stroke-width="1.5" />
+    
+    <!-- Target Bullseye Icon -->
+    <circle cx="252" cy="68" r="9" fill="none" stroke="#ffbe1a" stroke-width="1" stroke-dasharray="2 2" />
+  </g>
+</svg>

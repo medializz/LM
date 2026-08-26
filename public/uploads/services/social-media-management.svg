@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" fill="none">
+  <defs>
+    <linearGradient id="mgmtGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1b1e2c" />
+      <stop offset="100%" stop-color="#0a0c13" />
+    </linearGradient>
+    <filter id="shadowSM" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+  </defs>
+
+  <!-- Community Dashboard Card -->
+  <g filter="url(#shadowSM)">
+    <rect x="50" y="30" width="220" height="140" rx="12" fill="url(#mgmtGrad)" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1.2" />
+    
+    <!-- Top Channels Row -->
+    <g transform="translate(68, 45)">
+      <circle cx="10" cy="10" r="10" fill="#e1306c" fill-opacity="0.2" stroke="#e1306c" stroke-width="1" />
+      <circle cx="38" cy="10" r="10" fill="#0077b5" fill-opacity="0.2" stroke="#0077b5" stroke-width="1" />
+      <circle cx="66" cy="10" r="10" fill="#ffbe1a" fill-opacity="0.2" stroke="#ffbe1a" stroke-width="1" />
+      <circle cx="94" cy="10" r="10" fill="#1877f2" fill-opacity="0.2" stroke="#1877f2" stroke-width="1" />
+      
+      <!-- Online Badge -->
+      <rect x="135" y="2" width="48" height="16" rx="8" fill="#22c55e" fill-opacity="0.15" stroke="#22c55e" stroke-width="0.8" />
+      <circle cx="145" cy="10" r="3" fill="#22c55e" />
+      <text x="153" y="13" fill="#22c55e" font-family="monospace" font-size="7" font-weight="bold">ACTIVE</text>
+    </g>
+
+    <!-- Community Engagement Feed Messages -->
+    <!-- Message 1 (Customer Lead) -->
+    <g transform="translate(68, 75)">
+      <rect x="0" y="0" width="184" height="26" rx="6" fill="#10131d" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1" />
+      <circle cx="14" cy="13" r="6" fill="#ffbe1a" />
+      <line x1="28" y1="10" x2="80" y2="10" stroke="#ffffff" stroke-opacity="0.8" stroke-width="2" />
+      <line x1="28" y1="17" x2="130" y2="17" stroke="#ffffff" stroke-opacity="0.3" stroke-width="1.5" />
+      <!-- Reply Tag -->
+      <rect x="145" y="6" width="32" height="14" rx="4" fill="#ffbe1a" fill-opacity="0.2" stroke="#ffbe1a" stroke-width="0.6" />
+      <text x="151" y="16" fill="#ffbe1a" font-family="sans-serif" font-size="6" font-weight="bold">REPLIED</text>
+    </g>
+
+    <!-- Message 2 -->
+    <g transform="translate(68, 107)">
+      <rect x="0" y="0" width="184" height="26" rx="6" fill="#10131d" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1" />
+      <circle cx="14" cy="13" r="6" fill="#38bdf8" />
+      <line x1="28" y1="10" x2="95" y2="10" stroke="#ffffff" stroke-opacity="0.8" stroke-width="2" />
+      <line x1="28" y1="17" x2="145" y2="17" stroke="#ffffff" stroke-opacity="0.3" stroke-width="1.5" />
+      <!-- Star / Priority Tag -->
+      <polygon points="160,8 162,13 167,13 163,16 165,21 160,18 155,21 157,16 153,13 158,13" fill="#ffbe1a" />
+    </g>
+
+    <!-- Live Growth Metric at Bottom -->
+    <g transform="translate(68, 142)">
+      <text x="0" y="14" fill="#94a3b8" font-family="sans-serif" font-size="8">Community Reach</text>
+      <text x="120" y="14" fill="#ffbe1a" font-family="sans-serif" font-size="8" font-weight="bold">124.8K (+24%)</text>
+    </g>
+  </g>
+</svg>

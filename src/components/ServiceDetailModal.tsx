@@ -86,6 +86,18 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
           </div>
         </div>
 
+        {/* Optional Visual Thumbnail Preview */}
+        {(service.previewImage || service.image) && (
+          <div className="relative w-full h-36 rounded-xl bg-gradient-to-b from-white/[0.03] to-transparent border border-white/[0.08] overflow-hidden flex items-center justify-center p-2.5 mb-4">
+            <img
+              src={service.previewImage || service.image}
+              alt={service.previewImageAlt || `${service.title} visual preview`}
+              loading="lazy"
+              className="w-full h-full object-contain"
+            />
+          </div>
+        )}
+
         {/* Description */}
         <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-5 font-['Plus_Jakarta_Sans']">
           {service.shortDescription} — engineered to help your brand establish an iconic market presence and drive measurable customer engagement.

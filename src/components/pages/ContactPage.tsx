@@ -835,7 +835,9 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
               >
                 <button
                   onClick={() => toggleFaq(idx)}
-                  className="w-full text-left p-4 sm:p-5 flex items-center justify-between gap-4 cursor-pointer hover:text-[#ffbe1a] transition-colors"
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${idx}`}
+                  className="w-full text-left p-4 sm:p-5 flex items-center justify-between gap-4 cursor-pointer hover:text-[#ffbe1a] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffbe1a]"
                 >
                   <span className="font-bold text-sm sm:text-base text-white">{faq.question}</span>
                   {isOpen ? (
@@ -845,7 +847,12 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
                   )}
                 </button>
                 {isOpen && (
-                  <div className="px-4 sm:px-5 pb-5 text-sm text-slate-300 leading-relaxed border-t border-white/[0.04] pt-3">
+                  <div 
+                    id={`faq-answer-${idx}`}
+                    role="region"
+                    aria-label={faq.question}
+                    className="px-4 sm:px-5 pb-5 text-sm text-slate-300 leading-relaxed border-t border-white/[0.04] pt-3"
+                  >
                     {faq.answer}
                   </div>
                 )}

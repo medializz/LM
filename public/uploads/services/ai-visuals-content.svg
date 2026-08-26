@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" fill="none">
+  <defs>
+    <radialGradient id="aiOrb" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#fff5cc" />
+      <stop offset="30%" stop-color="#ffbe1a" />
+      <stop offset="70%" stop-color="#ec4899" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </radialGradient>
+    <radialGradient id="aiGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffbe1a" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#ffbe1a" stop-opacity="0" />
+    </radialGradient>
+    <filter id="shadowAI" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="15" stdDeviation="15" flood-color="#ffbe1a" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <!-- Ambient Golden / Violet Glow -->
+  <circle cx="160" cy="95" r="85" fill="url(#aiGlow)" />
+
+  <!-- Neural Prompt Matrix Grid -->
+  <g stroke="#ffffff" stroke-opacity="0.1" stroke-width="0.8">
+    <ellipse cx="160" cy="95" rx="90" ry="35" transform="rotate(-15 160 95)" />
+    <ellipse cx="160" cy="95" rx="90" ry="35" transform="rotate(25 160 95)" />
+    <ellipse cx="160" cy="95" rx="90" ry="35" transform="rotate(65 160 95)" />
+  </g>
+
+  <!-- 3D Generative Crystal Sphere / Neural Orb -->
+  <g filter="url(#shadowAI)">
+    <circle cx="160" cy="95" r="48" fill="url(#aiOrb)" />
+    <!-- Specular Highlight Curve -->
+    <path d="M135 65 Q160 55 185 70 Q160 65 135 65 Z" fill="#ffffff" fill-opacity="0.75" />
+  </g>
+
+  <!-- Neural Node Data Points & Sparkles -->
+  <g fill="#ffbe1a">
+    <circle cx="70" cy="70" r="3" />
+    <line x1="70" y1="70" x2="120" y2="85" stroke="#ffbe1a" stroke-opacity="0.4" stroke-width="0.8" />
+    
+    <circle cx="250" cy="60" r="3" />
+    <line x1="250" y1="60" x2="200" y2="80" stroke="#ffbe1a" stroke-opacity="0.4" stroke-width="0.8" />
+
+    <circle cx="85" cy="140" r="2.5" fill="#38bdf8" />
+    <line x1="85" y1="140" x2="130" y2="120" stroke="#38bdf8" stroke-opacity="0.4" stroke-width="0.8" />
+
+    <circle cx="235" cy="135" r="2.5" fill="#a78bfa" />
+    <line x1="235" y1="135" x2="190" y2="115" stroke="#a78bfa" stroke-opacity="0.4" stroke-width="0.8" />
+  </g>
+
+  <!-- Floating Sparkles -->
+  <g transform="translate(110, 40)">
+    <path d="M6 0 L8 4 L12 6 L8 8 L6 12 L4 8 L0 6 L4 4 Z" fill="#ffffff" />
+  </g>
+  <g transform="translate(205, 120)">
+    <path d="M5 0 L6 3 L9 5 L6 7 L5 10 L4 7 L1 5 L4 3 Z" fill="#ffbe1a" />
+  </g>
+  <g transform="translate(210, 35)">
+    <path d="M4 0 L5 2 L7 4 L5 6 L4 8 L3 6 L1 4 L3 2 Z" fill="#ffe066" />
+  </g>
+</svg>

@@ -17,6 +17,11 @@ export const ServicesIndexPage: React.FC<ServicesIndexPageProps> = ({
 }) => {
   const { services = [], siteSettings } = cmsData;
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
+
+  const handleImageError = (serviceId: string) => {
+    setFailedImages(prev => ({ ...prev, [serviceId]: true }));
+  };
 
   const categories = ['All', 'Branding', 'Design', 'Engineering', 'Social', 'Marketing', 'AI & Innovation'];
 
@@ -75,38 +80,57 @@ export const ServicesIndexPage: React.FC<ServicesIndexPageProps> = ({
 
         {/* 11 Services Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredServices.map((service) => (
-            <div
-              key={service.id}
-              onClick={() => navigateTo(`/services/${service.slug}`)}
-              className="group bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/60 rounded-2xl p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer shadow-xl flex flex-col justify-between"
-            >
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] group-hover:border-[#ffbe1a]/40 flex items-center justify-center text-[#ffbe1a] group-hover:bg-[#ffbe1a] group-hover:text-black transition-all shadow-md">
-                    <ServiceIcon iconKey={service.iconKey} size={22} />
+          {filteredServices.map((service) => {
+            const imageSrc = service.previewImage || service.image;
+            const hasValidImage = Boolean(imageSrc && !failedImages[service.id]);
+
+            return (
+              <div
+                key={service.id}
+                onClick={() => navigateTo(`/services/${service.slug}`)}
+                className="group bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/60 rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer shadow-xl flex flex-col justify-between overflow-hidden"
+              >
+                <div className="space-y-4">
+                  {/* Service Image / Visual Preview Thumbnail (Optional, Transparent-safe) */}
+                  {hasValidImage && (
+                    <div className="relative w-full h-36 sm:h-40 rounded-xl bg-gradient-to-b from-white/[0.03] to-transparent border border-white/[0.05] overflow-hidden flex items-center justify-center p-2.5 group-hover:border-[#ffbe1a]/30 transition-all">
+                      <img
+                        src={imageSrc}
+                        alt={service.previewImageAlt || `${service.title} visual preview and mockup`}
+                        loading="lazy"
+                        decoding="async"
+                        onError={() => handleImageError(service.id)}
+                        className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  )}
+
+                  <div className="flex items-center justify-between">
+                    <div className="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/[0.08] group-hover:border-[#ffbe1a]/40 flex items-center justify-center text-[#ffbe1a] group-hover:bg-[#ffbe1a] group-hover:text-black transition-all shadow-md">
+                      <ServiceIcon iconKey={service.iconKey} size={22} />
+                    </div>
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400 bg-[#07090e] px-2.5 py-0.5 rounded border border-white/[0.08]">
+                      {service.category}
+                    </span>
                   </div>
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400 bg-[#07090e] px-2 py-0.5 rounded border border-white/[0.08]">
-                    {service.category}
-                  </span>
+
+                  <div>
+                    <h3 className="text-xl font-bold text-white group-hover:text-[#ffbe1a] transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-sm text-slate-300 mt-2 leading-relaxed">
+                      {service.shortDescription}
+                    </p>
+                  </div>
                 </div>
 
-                <div>
-                  <h3 className="text-xl font-bold text-white group-hover:text-[#ffbe1a] transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm text-slate-300 mt-2 leading-relaxed">
-                    {service.shortDescription}
-                  </p>
+                <div className="pt-5 mt-4 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono text-[#ffbe1a] font-semibold">
+                  <span>Explore Service Details</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
                 </div>
               </div>
-
-              <div className="pt-6 mt-4 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono text-[#ffbe1a] font-semibold">
-                <span>Explore Service Details</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Global CTA Box */}

@@ -71,6 +71,8 @@ collections:
       - { label: "Slug", name: "slug", widget: "string", required: true }
       - { label: "Category", name: "category", widget: "select", options: ["Brand Identity", "Logo Design", "Graphic Design", "Packaging Design", "Social Media Design", "Social Media Content", "Social Media Management", "Digital Marketing", "Advertising Creatives", "AI Visual Content", "Website Development", "Simple Business Websites", "Content Posting", "Marketing Campaigns"], required: true }
       - { label: "Icon Identifier", name: "iconKey", widget: "string", default: "brand-identity" }
+      - { label: "Service Preview Image", name: "previewImage", widget: "image", required: false, hint: "Upload a transparent PNG, WebP, or SVG thumbnail/mockup visual for the service card." }
+      - { label: "Preview Image Alt Text", name: "previewImageAlt", widget: "string", required: false, hint: "Descriptive alt text for the service visual preview." }
       - { label: "Short Description", name: "short_description", widget: "text", required: true }
       - { label: "Hero Image", name: "hero_image", widget: "image", required: false }
       - { label: "Hero Image Alt Text", name: "hero_image_alt", widget: "string", required: false }

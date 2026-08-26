@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" fill="none">
+  <defs>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1c1f2e" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#0c0e15" stop-opacity="0.98" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe066" />
+      <stop offset="50%" stop-color="#ffbe1a" />
+      <stop offset="100%" stop-color="#d49400" />
+    </linearGradient>
+    <linearGradient id="cardGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#25293d" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#12141e" stop-opacity="0.95" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+  </defs>
+
+  <!-- Background Stationery Card (Rotated slightly) -->
+  <g transform="rotate(-6 160 100)" filter="url(#shadow)">
+    <rect x="50" y="35" width="180" height="110" rx="10" fill="url(#cardGrad2)" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1.2" />
+    <!-- Grid Lines on Stationery -->
+    <line x1="70" y1="60" x2="150" y2="60" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1" />
+    <line x1="70" y1="75" x2="200" y2="75" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1" />
+    <line x1="70" y1="90" x2="180" y2="90" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1" />
+    <circle cx="200" cy="55" r="12" fill="url(#goldGrad)" fill-opacity="0.15" stroke="url(#goldGrad)" stroke-width="1" />
+  </g>
+
+  <!-- Foreground Stationery Card (Luxury Business Card) -->
+  <g transform="rotate(4 160 100)" filter="url(#shadow)">
+    <rect x="100" y="50" width="175" height="105" rx="10" fill="url(#cardGrad)" stroke="url(#goldGrad)" stroke-opacity="0.5" stroke-width="1.5" />
+    
+    <!-- Gold Foil Crest Mark -->
+    <g transform="translate(130, 75)">
+      <path d="M0 0 L14 -10 L28 0 L24 22 L14 28 L4 22 Z" fill="none" stroke="url(#goldGrad)" stroke-width="1.8" />
+      <path d="M10 8 L18 8 L14 18 Z" fill="url(#goldGrad)" />
+    </g>
+
+    <!-- Typography Lines -->
+    <text x="170" y="86" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" letter-spacing="1.5">LIZZDO</text>
+    <text x="170" y="98" fill="#ffbe1a" font-family="system-ui, sans-serif" font-size="7" font-weight="600" letter-spacing="1">BRAND SYSTEM</text>
+    
+    <line x1="125" y1="125" x2="250" y2="125" stroke="#ffffff" stroke-opacity="0.15" stroke-width="0.8" />
+    <circle cx="132" cy="138" r="3" fill="#ffbe1a" />
+    <circle cx="144" cy="138" r="3" fill="#ffffff" fill-opacity="0.3" />
+    <circle cx="156" cy="138" r="3" fill="#ffffff" fill-opacity="0.3" />
+  </g>
+
+  <!-- Floating Brand Swatch Accent -->
+  <g transform="translate(240, 30)" filter="url(#shadow)">
+    <rect x="0" y="0" width="36" height="50" rx="6" fill="#0c0e15" stroke="#ffbe1a" stroke-opacity="0.4" stroke-width="1" />
+    <rect x="4" y="4" width="28" height="24" rx="3" fill="url(#goldGrad)" />
+    <text x="7" y="38" fill="#ffffff" font-family="monospace" font-size="5.5" font-weight="bold">#FFBE1A</text>
+    <text x="7" y="44" fill="#94a3b8" font-family="monospace" font-size="4.5">PANTONE</text>
+  </g>
+</svg>

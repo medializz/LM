@@ -34,9 +34,9 @@ export const FeatureStrip: React.FC<FeatureStripProps> = ({ features }) => {
 
               {/* Title & Subtitle */}
               <div className="flex flex-col">
-                <h2 className="text-sm sm:text-[15px] font-bold text-white tracking-tight leading-snug font-['Outfit'] group-hover:text-[#ffbe1a] transition-colors">
+                <h3 className="text-sm sm:text-[15px] font-bold text-white tracking-tight leading-snug font-['Outfit'] group-hover:text-[#ffbe1a] transition-colors">
                   {item.title}
-                </h2>
+                </h3>
                 <p className="text-xs sm:text-[13px] text-slate-400 font-normal leading-relaxed mt-0.5 font-['Plus_Jakarta_Sans']">
                   {item.description}
                 </p>

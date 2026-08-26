@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" fill="none">
+  <defs>
+    <linearGradient id="posterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#181b28" />
+      <stop offset="100%" stop-color="#0a0c13" />
+    </linearGradient>
+    <linearGradient id="goldGradG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe066" />
+      <stop offset="100%" stop-color="#ffbe1a" />
+    </linearGradient>
+    <filter id="shadowG" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+  </defs>
+
+  <!-- Editorial Poster (Layer 1) -->
+  <g transform="rotate(-5 160 100)" filter="url(#shadowG)">
+    <rect x="70" y="25" width="130" height="150" rx="8" fill="url(#posterGrad)" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1.2" />
+    <rect x="80" y="35" width="110" height="70" rx="4" fill="#ffbe1a" fill-opacity="0.1" />
+    <circle cx="135" cy="70" r="22" fill="url(#goldGradG)" fill-opacity="0.8" />
+    <line x1="80" y1="120" x2="160" y2="120" stroke="#ffffff" stroke-opacity="0.25" stroke-width="2" />
+    <line x1="80" y1="132" x2="175" y2="132" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1" />
+    <line x1="80" y1="142" x2="150" y2="142" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1" />
+    <text x="80" y="160" fill="#ffbe1a" font-family="sans-serif" font-size="7" font-weight="bold">LIZZDO STUDIO</text>
+  </g>
+
+  <!-- Editorial Card (Layer 2 Overlapping) -->
+  <g transform="rotate(7 160 100)" filter="url(#shadowG)">
+    <rect x="135" y="40" width="125" height="140" rx="8" fill="#141724" stroke="url(#goldGradG)" stroke-opacity="0.4" stroke-width="1.5" />
+    
+    <!-- Geometric Vector Layout -->
+    <path d="M145 50 L250 50 L250 110 L145 110 Z" fill="#0c0e15" />
+    <polygon points="145,110 200,60 250,110" fill="url(#goldGradG)" fill-opacity="0.25" />
+    <polygon points="180,110 220,75 250,110" fill="url(#goldGradG)" fill-opacity="0.6" />
+    <circle cx="170" cy="70" r="8" fill="#ffffff" fill-opacity="0.9" />
+    
+    <!-- Typographic Balance -->
+    <text x="145" y="130" fill="#ffffff" font-family="sans-serif" font-size="9" font-weight="bold">VISUAL CRAFT</text>
+    <text x="145" y="142" fill="#94a3b8" font-family="sans-serif" font-size="6.5">Editorial &amp; Print System</text>
+    
+    <!-- CMYK Swatch Dots -->
+    <circle cx="150" cy="162" r="3.5" fill="#00e5ff" />
+    <circle cx="162" cy="162" r="3.5" fill="#ff007f" />
+    <circle cx="174" cy="162" r="3.5" fill="#ffbe1a" />
+    <circle cx="186" cy="162" r="3.5" fill="#ffffff" />
+  </g>
+
+  <!-- Precision Crop Marks / Dielines -->
+  <g stroke="#ffbe1a" stroke-width="1" stroke-opacity="0.6">
+    <line x1="55" y1="20" x2="65" y2="20" />
+    <line x1="55" y1="20" x2="55" y2="30" />
+    <line x1="265" y1="180" x2="255" y2="180" />
+    <line x1="265" y1="180" x2="265" y2="170" />
+  </g>
+</svg>

@@ -198,7 +198,11 @@ export const ContactModal: React.FC<ContactModalProps> = ({
 
             {/* Error Message */}
             {errorMessage && (
-              <div className="mb-4 p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-300 text-xs flex items-center gap-2">
+              <div 
+                id="modal-error-alert" 
+                role="alert" 
+                className="mb-4 p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-300 text-xs flex items-center gap-2"
+              >
                 <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
                 <span>{errorMessage}</span>
               </div>
@@ -208,7 +212,9 @@ export const ContactModal: React.FC<ContactModalProps> = ({
               
               {/* Honeypot field */}
               <div className="sr-only" aria-hidden="true">
+                <label htmlFor="modal-hp-input">Do not fill this field</label>
                 <input
+                  id="modal-hp-input"
                   type="text"
                   tabIndex={-1}
                   autoComplete="off"
@@ -218,12 +224,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                <label htmlFor="modal-name" className="block text-xs font-semibold text-slate-300 mb-1">
                   Full Name <span className="text-[#ffbe1a]">*</span>
                 </label>
                 <input
+                  id="modal-name"
                   type="text"
                   required
+                  aria-required="true"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Alex Morgan"
@@ -233,12 +241,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">
+                  <label htmlFor="modal-email" className="block text-xs font-semibold text-slate-300 mb-1">
                     Email Address <span className="text-[#ffbe1a]">*</span>
                   </label>
                   <input
+                    id="modal-email"
                     type="email"
                     required
+                    aria-required="true"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="alex@company.com"
@@ -247,10 +257,11 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">
+                  <label htmlFor="modal-phone" className="block text-xs font-semibold text-slate-300 mb-1">
                     WhatsApp / Phone
                   </label>
                   <input
+                    id="modal-phone"
                     type="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
@@ -262,10 +273,11 @@ export const ContactModal: React.FC<ContactModalProps> = ({
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">
+                  <label htmlFor="modal-service" className="block text-xs font-semibold text-slate-300 mb-1">
                     Service Needed <span className="text-[#ffbe1a]">*</span>
                   </label>
                   <select
+                    id="modal-service"
                     value={service}
                     onChange={(e) => setService(e.target.value)}
                     className="w-full bg-[#181a24] border border-white/10 rounded-xl px-4 py-3 sm:py-2.5 text-base sm:text-sm text-white focus:outline-none focus:border-[#ffbe1a] focus:ring-1 focus:ring-[#ffbe1a] transition-colors"
@@ -277,10 +289,11 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">
+                  <label htmlFor="modal-project-type" className="block text-xs font-semibold text-slate-300 mb-1">
                     Project Type <span className="text-[#ffbe1a]">*</span>
                   </label>
                   <select
+                    id="modal-project-type"
                     value={projectType}
                     onChange={(e) => setProjectType(e.target.value)}
                     className="w-full bg-[#181a24] border border-white/10 rounded-xl px-4 py-3 sm:py-2.5 text-base sm:text-sm text-white focus:outline-none focus:border-[#ffbe1a] focus:ring-1 focus:ring-[#ffbe1a] transition-colors"
@@ -293,12 +306,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                <label htmlFor="modal-description" className="block text-xs font-semibold text-slate-300 mb-1">
                   Project Description & Requirements <span className="text-[#ffbe1a]">*</span>
                 </label>
                 <textarea
+                  id="modal-description"
                   rows={3}
                   required
+                  aria-required="true"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="Tell us what you're looking to create, deliverables needed, and any specific timelines..."

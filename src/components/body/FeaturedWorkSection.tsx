@@ -166,7 +166,16 @@ export const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             onClick={() => onSelectProject && onSelectProject(flagshipProject)}
-            className="group relative rounded-3xl bg-gradient-to-br from-[#121520] via-[#0c0e15] to-[#07080c] border border-white/[0.1] hover:border-[#ffbe1a]/60 p-5 sm:p-7 md:p-8 mb-8 overflow-hidden hover:shadow-[0_20px_50px_rgba(0,0,0,0.95),0_0_30px_rgba(255,190,26,0.15)] transition-all duration-500 cursor-pointer"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                onSelectProject && onSelectProject(flagshipProject);
+              }
+            }}
+            role="button"
+            tabIndex={0}
+            aria-label={`View flagship case study: ${flagshipProject.title}`}
+            className="group relative rounded-3xl bg-gradient-to-br from-[#121520] via-[#0c0e15] to-[#07080c] border border-white/[0.1] hover:border-[#ffbe1a]/60 p-5 sm:p-7 md:p-8 mb-8 overflow-hidden hover:shadow-[0_20px_50px_rgba(0,0,0,0.95),0_0_30px_rgba(255,190,26,0.15)] transition-all duration-500 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#ffbe1a] focus-visible:outline-none"
           >
             {/* Top Substrate Spec Line */}
             <div className="absolute top-0 inset-x-8 h-px bg-gradient-to-r from-transparent via-[#ffbe1a]/30 to-transparent pointer-events-none" />
@@ -264,7 +273,16 @@ export const FeaturedWorkSection: React.FC<FeaturedWorkSectionProps> = ({
                   viewport={{ once: true }}
                   transition={{ duration: 0.45, delay: index * 0.08 }}
                   onClick={() => onSelectProject && onSelectProject(item)}
-                  className="group relative flex flex-col rounded-3xl bg-gradient-to-b from-[#10131d] via-[#0b0d14] to-[#06070a] border border-white/[0.08] hover:border-[#ffbe1a]/60 overflow-hidden hover:shadow-[0_20px_45px_rgba(0,0,0,0.95),0_0_25px_rgba(255,190,26,0.12)] hover:-translate-y-1.5 transition-all duration-400 cursor-pointer"
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      onSelectProject && onSelectProject(item);
+                    }
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`View project: ${item.title}`}
+                  className="group relative flex flex-col rounded-3xl bg-gradient-to-b from-[#10131d] via-[#0b0d14] to-[#06070a] border border-white/[0.08] hover:border-[#ffbe1a]/60 overflow-hidden hover:shadow-[0_20px_45px_rgba(0,0,0,0.95),0_0_25px_rgba(255,190,26,0.12)] hover:-translate-y-1.5 transition-all duration-400 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#ffbe1a] focus-visible:outline-none"
                 >
                   {/* Visual Stage Container */}
                   <div className="relative w-full h-[240px] sm:h-[280px] overflow-hidden bg-black/60 border-b border-white/[0.06]">

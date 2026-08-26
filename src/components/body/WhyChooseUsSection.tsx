@@ -162,17 +162,17 @@ export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({
                   <div className="flex items-center gap-1.5">
                     <button 
                       onClick={handlePrevTestimonial}
-                      className="w-7 h-7 rounded-full bg-white/[0.05] hover:bg-[#ffbe1a] text-slate-300 hover:text-black flex items-center justify-center transition-colors"
+                      className="min-w-[36px] min-h-[36px] p-1.5 rounded-full bg-white/[0.05] hover:bg-[#ffbe1a] active:scale-95 text-slate-300 hover:text-black flex items-center justify-center transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-[#ffbe1a] focus-visible:outline-none"
                       aria-label="Previous testimonial"
                     >
-                      <ChevronLeft className="w-3.5 h-3.5" />
+                      <ChevronLeft className="w-4 h-4" />
                     </button>
                     <button 
                       onClick={handleNextTestimonial}
-                      className="w-7 h-7 rounded-full bg-white/[0.05] hover:bg-[#ffbe1a] text-slate-300 hover:text-black flex items-center justify-center transition-colors"
+                      className="min-w-[36px] min-h-[36px] p-1.5 rounded-full bg-white/[0.05] hover:bg-[#ffbe1a] active:scale-95 text-slate-300 hover:text-black flex items-center justify-center transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-[#ffbe1a] focus-visible:outline-none"
                       aria-label="Next testimonial"
                     >
-                      <ChevronRight className="w-3.5 h-3.5" />
+                      <ChevronRight className="w-4 h-4" />
                     </button>
                   </div>
                 )}

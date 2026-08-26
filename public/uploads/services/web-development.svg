@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" fill="none">
+  <defs>
+    <linearGradient id="laptopGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e2233" />
+      <stop offset="100%" stop-color="#0c0e17" />
+    </linearGradient>
+    <linearGradient id="goldScreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffbe1a" />
+      <stop offset="100%" stop-color="#ff9900" />
+    </linearGradient>
+    <filter id="shadowW" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#000000" flood-opacity="0.65" />
+    </filter>
+  </defs>
+
+  <!-- Developer Laptop Mockup -->
+  <g filter="url(#shadowW)">
+    <!-- Screen Bezel -->
+    <rect x="65" y="28" width="190" height="120" rx="9" fill="#131622" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1.2" />
+    
+    <!-- Camera Dot -->
+    <circle cx="160" cy="34" r="1.5" fill="#ffffff" fill-opacity="0.4" />
+    
+    <!-- Screen Area -->
+    <rect x="73" y="40" width="174" height="100" rx="4" fill="#07090e" />
+
+    <!-- Browser / Editor Topbar -->
+    <rect x="73" y="40" width="174" height="14" fill="#10131d" />
+    <circle cx="81" cy="47" r="2" fill="#ff5f56" />
+    <circle cx="88" cy="47" r="2" fill="#ffbd2e" />
+    <circle cx="95" cy="47" r="2" fill="#27c93f" />
+    
+    <!-- URL / Tab Bar -->
+    <rect x="110" y="44" width="70" height="6" rx="3" fill="#1c2030" />
+    
+    <!-- Code Editor & Live Preview Split Screen -->
+    <!-- Left: Code Lines -->
+    <g transform="translate(80, 60)">
+      <text x="0" y="5" fill="#ffbe1a" font-family="monospace" font-size="6">&lt;App /&gt;</text>
+      <line x1="0" y1="15" x2="35" y2="15" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" />
+      <line x1="0" y1="23" x2="45" y2="23" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" />
+      <line x1="8" y1="31" x2="40" y2="31" stroke="#34d399" stroke-width="2" stroke-linecap="round" />
+      <line x1="8" y1="39" x2="30" y2="39" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" />
+      <line x1="0" y1="47" x2="25" y2="47" stroke="#ffbe1a" stroke-width="2" stroke-linecap="round" />
+      <line x1="0" y1="55" x2="50" y2="55" stroke="#f43f5e" stroke-width="2" stroke-linecap="round" />
+    </g>
+
+    <!-- Center Split Divider -->
+    <line x1="145" y1="54" x2="145" y2="135" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1" />
+
+    <!-- Right: Modern UI Preview -->
+    <g transform="translate(152, 58)">
+      <!-- Mini Dashboard Header -->
+      <rect x="0" y="0" width="88" height="12" rx="3" fill="#161926" />
+      <rect x="4" y="4" width="16" height="4" rx="1" fill="#ffbe1a" />
+      
+      <!-- Mini Metric Cards -->
+      <rect x="0" y="16" width="41" height="24" rx="3" fill="#161926" stroke="#ffbe1a" stroke-opacity="0.3" stroke-width="0.8" />
+      <rect x="4" y="20" width="12" height="3" rx="1" fill="#94a3b8" />
+      <rect x="4" y="26" width="24" height="6" rx="1.5" fill="#ffbe1a" />
+
+      <rect x="47" y="16" width="41" height="24" rx="3" fill="#161926" stroke="#38bdf8" stroke-opacity="0.3" stroke-width="0.8" />
+      <rect x="51" y="20" width="12" height="3" rx="1" fill="#94a3b8" />
+      <rect x="51" y="26" width="20" height="6" rx="1.5" fill="#38bdf8" />
+
+      <!-- Mini Chart -->
+      <path d="M0 65 L20 54 L45 58 L65 46 L88 50" fill="none" stroke="url(#goldScreen)" stroke-width="1.8" />
+    </g>
+
+    <!-- Laptop Base / Keyboard Deck -->
+    <path d="M45 148 L275 148 L290 156 L30 156 Z" fill="#1b1e2c" stroke="#ffffff" stroke-opacity="0.2" stroke-width="1" />
+    <!-- Trackpad Notch -->
+    <rect x="135" y="149" width="50" height="3" rx="1.5" fill="#0b0d14" />
+  </g>
+</svg>
