@@ -1,0 +1,17 @@
+{
+  "name": "lizzdo-media-auth-worker",
+  "version": "1.0.0",
+  "description": "Secure Cloudflare Worker OAuth Proxy for Decap CMS GitHub Authentication",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241022.0",
+    "typescript": "^5.3.3",
+    "wrangler": "^3.80.0"
+  }
+}

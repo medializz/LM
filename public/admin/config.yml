@@ -1,11 +1,13 @@
 backend:
   name: github
-  repo: lizzdo/media
-  branch: main
+  repo: medializz/LM # GitHub repository
+  branch: main # Production deployment branch
+  base_url: https://media-lizzdo-auth.lets3do.workers.dev # Existing Cloudflare OAuth Worker URL
+  auth_endpoint: auth # OAuth auth endpoint (GET /auth)
   site_domain: media.lizzdo.com
 
-# When running locally or during development:
-local_backend: true
+# Optional Decap local backend (active only when running npx decap-server locally)
+# local_backend: true
 
 media_folder: "public/uploads"
 public_folder: "/uploads"

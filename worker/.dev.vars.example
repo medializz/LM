@@ -1,0 +1,24 @@
+# =============================================================================
+# LOCAL DEVELOPMENT ENVIRONMENT VARIABLES (.dev.vars)
+# Copy this file to .dev.vars for local testing with `wrangler dev`
+# DO NOT COMMIT YOUR REAL .dev.vars FILE TO GIT!
+# =============================================================================
+
+# Your GitHub OAuth App Client ID (from GitHub Settings -> Developer settings -> OAuth Apps)
+GITHUB_CLIENT_ID="YOUR_GITHUB_CLIENT_ID"
+
+# Your GitHub OAuth App Client Secret (KEEP PRIVATE)
+GITHUB_CLIENT_SECRET="YOUR_GITHUB_CLIENT_SECRET"
+
+# Cryptographically strong 64-character random string for HMAC state signing
+# Generate with: openssl rand -hex 32
+SESSION_SECRET="CHANGE_ME_TO_A_CRYPTOGRAPHICALLY_SECURE_64_CHAR_HEX_STRING"
+
+# Base URL of the OAuth Worker
+OAUTH_BASE_URL="http://localhost:8787"
+
+# Expected Decap CMS domain
+CMS_ORIGIN="http://localhost:3000"
+
+# Optional comma-separated GitHub usernames allowed to access CMS
+ALLOWED_USERS=""
