@@ -1,0 +1,14 @@
+{
+  "id": "team-1",
+  "name": "Alex Chen",
+  "position": "Creative Director & Brand Strategist",
+  "shortBio": "Over 10 years of experience directing identity systems, visual hierarchies, and brand repositioning for category-defining companies.",
+  "fullBio": "Alex leads our multidisciplinary design team, focusing on brand positioning, vector craftsmanship, and typographic architecture.",
+  "avatar": "/uploads/team-alex.jpg",
+  "avatarAlt": "Alex Chen - Creative Director",
+  "skills": ["Brand Strategy", "Creative Direction", "Typography", "Visual Identity"],
+  "linkedin": "https://linkedin.com/in/alexchen-lizzdo",
+  "instagram": "https://instagram.com/alexchen.design",
+  "featured": true,
+  "order": 1
+}

@@ -11,7 +11,7 @@ public_folder: "/uploads"
 
 collections:
   # =========================================================================
-  # 1. SITE SETTINGS & PAGES
+  # 1. SITE SETTINGS & CONFIGURATION
   # =========================================================================
   - name: "settings"
     label: "Site Settings & Configuration"
@@ -33,25 +33,79 @@ collections:
           - { label: "Favicon", name: "favicon", widget: "image", default: "/uploads/lizzdo-media-mark.svg", required: false }
           - { label: "Contact Email", name: "contactEmail", widget: "string", default: "contact@media.lizzdo.com" }
           - { label: "WhatsApp Number", name: "whatsappNumber", widget: "string", default: "+1234567890" }
+          - { label: "WhatsApp Prefilled Message", name: "whatsappPrefilledMessage", widget: "string", default: "Hello Lizzdo, I would like to discuss a project." }
           - { label: "Phone", name: "phone", widget: "string", default: "+1234567890", required: false }
           - { label: "Location", name: "location", widget: "string", default: "Global Digital Agency", required: false }
           - { label: "Address", name: "address", widget: "string", default: "Global Creative Studio & Digital Innovation Hub", required: false }
-          - { label: "Instagram URL", name: "instagramUrl", widget: "string", required: false }
-          - { label: "Facebook URL", name: "facebookUrl", widget: "string", required: false }
-          - { label: "LinkedIn URL", name: "linkedinUrl", widget: "string", required: false }
-          - { label: "Twitter / X URL", name: "twitterUrl", widget: "string", required: false }
-          - { label: "Behance URL", name: "behanceUrl", widget: "string", required: false }
-          - { label: "Dribbble URL", name: "dribbbleUrl", widget: "string", required: false }
-          - { label: "GitHub URL", name: "githubUrl", widget: "string", required: false }
           - { label: "Header CTA Text", name: "primaryCtaText", widget: "string", default: "Let's Talk" }
           - { label: "Header CTA URL", name: "primaryCtaUrl", widget: "string", default: "/contact" }
           - { label: "Parent Company URL", name: "parentCompanyUrl", widget: "string", default: "https://lizzdo.com/" }
           - { label: "Current Domain", name: "currentDomain", widget: "string", default: "https://media.lizzdo.com/" }
           - { label: "Inquiry Form Webhook URL", name: "formEndpoint", widget: "string", required: false }
-          - { label: "Contact Page Text", name: "contactPageText", widget: "text", required: false }
-          - { label: "Contact CTA Text", name: "contactCtaText", widget: "string", default: "Schedule a Discovery Call" }
           - { label: "Footer Description", name: "footerText", widget: "text", required: false }
           - { label: "Copyright Text", name: "copyrightText", widget: "string", default: "© 2026 Lizzdo Media. All rights reserved." }
+
+      - name: "social"
+        label: "Social Media Settings"
+        file: "src/content/social.json"
+        fields:
+          - { label: "Instagram URL", name: "instagram", widget: "string", required: false }
+          - { label: "Facebook URL", name: "facebook", widget: "string", required: false }
+          - { label: "LinkedIn URL", name: "linkedin", widget: "string", required: false }
+          - { label: "Twitter / X URL", name: "twitter", widget: "string", required: false }
+          - { label: "YouTube URL", name: "youtube", widget: "string", required: false }
+          - { label: "TikTok URL", name: "tiktok", widget: "string", required: false }
+          - { label: "Pinterest URL", name: "pinterest", widget: "string", required: false }
+          - { label: "Behance URL", name: "behance", widget: "string", required: false }
+          - { label: "Dribbble URL", name: "dribbble", widget: "string", required: false }
+          - { label: "GitHub URL", name: "github", widget: "string", required: false }
+
+      - name: "aboutPage"
+        label: "About Page Content"
+        file: "src/content/about.json"
+        fields:
+          - { label: "Eyebrow", name: "eyebrow", widget: "string", default: "AGENCY OVERVIEW & PHILOSOPHY" }
+          - { label: "Headline Line 1", name: "headlineLine1", widget: "string", default: "Design. Build." }
+          - { label: "Headline Highlight", name: "headlineHighlight", widget: "string", default: "Grow. Together." }
+          - { label: "Introduction Description", name: "introDescription", widget: "text" }
+          - { label: "Mission Title", name: "missionTitle", widget: "string", default: "Our Mission" }
+          - { label: "Mission Description", name: "missionDescription", widget: "text" }
+          - { label: "Vision Title", name: "visionTitle", widget: "string", default: "Our Vision" }
+          - { label: "Vision Description", name: "visionDescription", widget: "text" }
+          - { label: "Story Title", name: "storyTitle", widget: "string", default: "Built on Strategy, Craft & Speed" }
+          - { label: "Story Description", name: "storyDescription", widget: "text" }
+          - { label: "CTA Title", name: "ctaTitle", widget: "string", default: "Ready to Build Something Extraordinary?" }
+          - { label: "CTA Description", name: "ctaDescription", widget: "text" }
+          - { label: "CTA Button Text", name: "ctaButtonText", widget: "string", default: "Start a Project" }
+          - { label: "CTA Button URL", name: "ctaButtonUrl", widget: "string", default: "/contact" }
+          - { label: "SEO Meta Title", name: "seoTitle", widget: "string", required: false }
+          - { label: "SEO Meta Description", name: "seoDescription", widget: "text", required: false }
+
+      - name: "contactPage"
+        label: "Contact Page Content"
+        file: "src/content/contact.json"
+        fields:
+          - { label: "Contact Heading", name: "heading", widget: "string", default: "Let's Start Your Project" }
+          - { label: "Contact Description", name: "description", widget: "text" }
+          - { label: "Primary Contact Email", name: "contactEmail", widget: "string", default: "contact@media.lizzdo.com" }
+          - { label: "Support Email", name: "supportEmail", widget: "string", default: "support@media.lizzdo.com", required: false }
+          - { label: "Business Email", name: "businessEmail", widget: "string", default: "business@media.lizzdo.com", required: false }
+          - { label: "Phone", name: "phone", widget: "string", default: "+1234567890", required: false }
+          - { label: "WhatsApp Number", name: "whatsappNumber", widget: "string", default: "+1234567890" }
+          - { label: "WhatsApp Prefilled Message", name: "whatsappPrefilledMessage", widget: "string", default: "Hello Lizzdo, I would like to discuss a project with your team." }
+          - { label: "Address / Studio Location", name: "address", widget: "string", required: false }
+          - { label: "Office Availability", name: "availability", widget: "string", default: "Monday – Friday: 9:00 AM – 6:00 PM (EST)", required: false }
+          - { label: "Direct WhatsApp Heading", name: "ctaHeading", widget: "string", default: "Prefer instant messaging?" }
+          - { label: "Direct WhatsApp Subtext", name: "ctaText", widget: "text", default: "Chat directly on WhatsApp for expedited project scoping and immediate consultations." }
+
+      - name: "analytics"
+        label: "Analytics & Tracking"
+        file: "src/content/analytics.json"
+        fields:
+          - { label: "Enable Google Analytics 4", name: "googleAnalyticsEnabled", widget: "boolean", default: false }
+          - { label: "GA4 Measurement ID (e.g. G-XXXXXXXXXX)", name: "measurementId", widget: "string", required: false }
+          - { label: "Google Tag Manager ID (optional)", name: "googleTagManagerId", widget: "string", required: false }
+          - { label: "Enable Cookie Consent Banner", name: "cookieConsentEnabled", widget: "boolean", default: true }
 
       - name: "seo"
         label: "Global SEO & Meta Configuration"
@@ -75,8 +129,6 @@ collections:
           - { label: "Hero Description", name: "description", widget: "text", default: "We help brands stand out and grow with creative design, powerful websites, and result-driven digital solutions." }
           - { label: "Primary CTA Label", name: "primaryCtaText", widget: "string", default: "Explore Our Work" }
           - { label: "Primary CTA URL", name: "primaryCtaUrl", widget: "string", default: "/work" }
-          - { label: "Secondary CTA Label", name: "secondaryCtaText", widget: "string", default: "Get in Touch" }
-          - { label: "Secondary CTA URL", name: "secondaryCtaUrl", widget: "string", default: "/contact" }
 
       - name: "footer"
         label: "Footer Section & CTA"
@@ -261,7 +313,51 @@ collections:
       - { label: "Open Graph Image", name: "ogImage", widget: "image", required: false }
 
   # =========================================================================
-  # 5. GLOBAL FAQS COLLECTION
+  # 5. TEAM MEMBERS COLLECTION
+  # =========================================================================
+  - name: "team"
+    label: "Team Members"
+    folder: "src/content/team"
+    format: "json"
+    extension: "json"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Member Name", name: "name", widget: "string", required: true }
+      - { label: "Position / Role", name: "position", widget: "string", required: true }
+      - { label: "Short Bio", name: "shortBio", widget: "text", required: true }
+      - { label: "Full Bio", name: "fullBio", widget: "text", required: false }
+      - { label: "Avatar Image", name: "avatar", widget: "image", required: false }
+      - { label: "Avatar Alt Text", name: "avatarAlt", widget: "string", required: false }
+      - { label: "Skills", name: "skills", widget: "list", required: false }
+      - { label: "LinkedIn URL", name: "linkedin", widget: "string", required: false }
+      - { label: "Instagram URL", name: "instagram", widget: "string", required: false }
+      - { label: "GitHub / Portfolio URL", name: "portfolioUrl", widget: "string", required: false }
+      - { label: "Featured", name: "featured", widget: "boolean", default: true }
+      - { label: "Display Order", name: "order", widget: "number", value_type: "int", default: 1 }
+
+  # =========================================================================
+  # 6. LEGAL & POLICY PAGES COLLECTION
+  # =========================================================================
+  - name: "legal"
+    label: "Legal & Policy Pages"
+    folder: "src/content/legal"
+    format: "json"
+    extension: "json"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Page Title", name: "title", widget: "string", required: true }
+      - { label: "Slug (e.g. privacy-policy)", name: "slug", widget: "string", required: true }
+      - { label: "Last Updated", name: "lastUpdated", widget: "string", default: "March 1, 2026" }
+      - { label: "Content (Markdown)", name: "content", widget: "markdown", required: true }
+      - { label: "Published", name: "published", widget: "boolean", default: true }
+      - { label: "SEO Meta Title", name: "seoTitle", widget: "string", required: false }
+      - { label: "SEO Meta Description", name: "metaDescription", widget: "text", required: false }
+      - { label: "Canonical URL", name: "canonicalUrl", widget: "string", required: false }
+
+  # =========================================================================
+  # 7. GLOBAL FAQS COLLECTION
   # =========================================================================
   - name: "faqs"
     label: "FAQs"
@@ -277,7 +373,7 @@ collections:
       - { label: "Display Order", name: "order", widget: "number", value_type: "int", default: 1 }
 
   # =========================================================================
-  # 6. OUR 6-STEP PROCESS COLLECTION
+  # 8. OUR 6-STEP PROCESS COLLECTION
   # =========================================================================
   - name: "process"
     label: "Our Process"
@@ -293,7 +389,7 @@ collections:
       - { label: "Display Order", name: "order", widget: "number", value_type: "int", default: 1 }
 
   # =========================================================================
-  # 7. STATISTICS COLLECTION
+  # 9. STATISTICS COLLECTION
   # =========================================================================
   - name: "statistics"
     label: "Statistics & Milestones"
@@ -309,7 +405,7 @@ collections:
       - { label: "Display Order", name: "order", widget: "number", value_type: "int", default: 1 }
 
   # =========================================================================
-  # 8. TESTIMONIALS COLLECTION
+  # 10. TESTIMONIALS COLLECTION
   # =========================================================================
   - name: "testimonials"
     label: "Testimonials"

@@ -6,7 +6,14 @@ import {
   ProcessStep, 
   StatItem, 
   TestimonialItem,
-  NavigationItem
+  NavigationItem,
+  LegalPage,
+  TeamMember,
+  AboutContent,
+  ContactContent,
+  SocialSettings,
+  AnalyticsSettings,
+  NotFoundContent
 } from '../types';
 
 import settingsData from '../content/settings.json';
@@ -15,6 +22,11 @@ import navigationData from '../content/navigation.json';
 import whyChooseUsData from '../content/why-choose-us.json';
 import footerData from '../content/footer.json';
 import seoData from '../content/seo.json';
+import aboutData from '../content/about.json';
+import contactData from '../content/contact.json';
+import socialData from '../content/social.json';
+import analyticsData from '../content/analytics.json';
+import notFoundData from '../content/not-found.json';
 
 // Eagerly glob all collection JSON files from src/content/
 const serviceFiles = import.meta.glob('../content/services/*.json', { eager: true }) as Record<string, { default?: ServiceCategory } | ServiceCategory>;
@@ -23,6 +35,8 @@ const blogFiles = import.meta.glob('../content/blog/*.json', { eager: true }) as
 const statFiles = import.meta.glob('../content/statistics/*.json', { eager: true }) as Record<string, { default?: StatItem } | StatItem>;
 const testimonialFiles = import.meta.glob('../content/testimonials/*.json', { eager: true }) as Record<string, { default?: TestimonialItem } | TestimonialItem>;
 const processFiles = import.meta.glob('../content/process/*.json', { eager: true }) as Record<string, { default?: ProcessStep } | ProcessStep>;
+const teamFiles = import.meta.glob('../content/team/*.json', { eager: true }) as Record<string, { default?: TeamMember } | TeamMember>;
+const legalFiles = import.meta.glob('../content/legal/*.json', { eager: true }) as Record<string, { default?: LegalPage } | LegalPage>;
 
 // Extract and sort collections
 const loadedServices: ServiceCategory[] = Object.values(serviceFiles)
@@ -49,6 +63,13 @@ const loadedProcess: ProcessStep[] = Object.values(processFiles)
   .map((m: any) => (m.default ? m.default : m) as ProcessStep)
   .sort((a, b) => (a.order || 0) - (b.order || 0));
 
+const loadedTeam: TeamMember[] = Object.values(teamFiles)
+  .map((m: any) => (m.default ? m.default : m) as TeamMember)
+  .sort((a, b) => (a.order || 0) - (b.order || 0));
+
+const loadedLegal: LegalPage[] = Object.values(legalFiles)
+  .map((m: any) => (m.default ? m.default : m) as LegalPage);
+
 export const DEFAULT_CMS_DATA: DecapCMSData = {
   siteSettings: {
     siteName: settingsData.siteName || "Lizzdo Media",
@@ -59,17 +80,25 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
     logoLight: settingsData.logoLight || "/uploads/lizzdo-media-logo-light.svg",
     logoMark: settingsData.logoMark || "/uploads/lizzdo-media-mark.svg",
     favicon: settingsData.favicon || "/uploads/lizzdo-media-mark.svg",
-    contactEmail: settingsData.contactEmail || "contact@media.lizzdo.com",
-    whatsappNumber: settingsData.whatsappNumber || "+1234567890",
+    contactEmail: contactData.contactEmail || settingsData.contactEmail || "contact@media.lizzdo.com",
+    supportEmail: contactData.supportEmail || "support@media.lizzdo.com",
+    businessEmail: contactData.businessEmail || "business@media.lizzdo.com",
+    phone: contactData.phone || "+1234567890",
+    whatsappNumber: contactData.whatsappNumber || settingsData.whatsappNumber || "+1234567890",
+    whatsappPrefilledMessage: contactData.whatsappPrefilledMessage || "Hello Lizzdo, I would like to discuss a project.",
     primaryCtaText: settingsData.primaryCtaText || "Let's Talk",
     primaryCtaUrl: settingsData.primaryCtaUrl || "/contact",
     parentCompanyUrl: settingsData.parentCompanyUrl || "https://lizzdo.com/",
     currentDomain: settingsData.currentDomain || "https://media.lizzdo.com/",
-    instagramUrl: settingsData.instagramUrl || "https://instagram.com/lizzdomedia",
-    facebookUrl: settingsData.facebookUrl || "https://facebook.com/lizzdomedia",
-    linkedinUrl: settingsData.linkedinUrl || "https://linkedin.com/company/lizzdo-media",
-    twitterUrl: settingsData.twitterUrl || "https://twitter.com/lizzdomedia",
-    location: settingsData.location || "Global Digital Agency",
+    instagramUrl: socialData.instagram || settingsData.instagramUrl || "https://instagram.com/lizzdomedia",
+    facebookUrl: socialData.facebook || settingsData.facebookUrl || "https://facebook.com/lizzdomedia",
+    linkedinUrl: socialData.linkedin || settingsData.linkedinUrl || "https://linkedin.com/company/lizzdo-media",
+    twitterUrl: socialData.twitter || settingsData.twitterUrl || "https://twitter.com/lizzdomedia",
+    behanceUrl: socialData.behance || "https://behance.net/lizzdomedia",
+    dribbbleUrl: socialData.dribbble || "https://dribbble.com/lizzdomedia",
+    githubUrl: socialData.github || "https://github.com/medializz",
+    location: contactData.location || settingsData.location || "Global Digital Agency",
+    address: contactData.address || "Global Creative Studio & Digital Innovation Hub",
     footerText: settingsData.footerText || footerData.footerDescription || "We help ambitious brands stand out, captivate audiences, and scale through strategic brand identity, packaging design systems, high-speed web engineering, and digital growth.",
     copyrightText: settingsData.copyrightText || footerData.copyrightText || "© 2026 Lizzdo Media. All rights reserved."
   },
@@ -128,10 +157,28 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
       description: "We grow when you grow",
       order: 4
     }
-  ]
+  ],
+  about: aboutData as AboutContent,
+  contact: contactData as ContactContent,
+  social: socialData as SocialSettings,
+  analytics: analyticsData as AnalyticsSettings,
+  teamMembers: loadedTeam,
+  legalPages: loadedLegal,
+  notFound: notFoundData as NotFoundContent
 };
 
-export { seoData, footerData };
+export { seoData, footerData, aboutData, contactData, socialData, analyticsData, notFoundData };
+
+/**
+ * Utility to generate a clean, secure WhatsApp URL without spaces, +, brackets, or dashes
+ */
+export function getWhatsAppUrl(rawPhone?: string, message?: string, defaultMsg: string = "Hello Lizzdo, I would like to discuss a project."): string {
+  const numberToClean = rawPhone || DEFAULT_CMS_DATA.siteSettings.whatsappNumber || "+1234567890";
+  const cleanNumber = numberToClean.replace(/[^0-9]/g, '');
+  const finalMsg = message || DEFAULT_CMS_DATA.siteSettings.whatsappPrefilledMessage || defaultMsg;
+  const encoded = encodeURIComponent(finalMsg);
+  return `https://wa.me/${cleanNumber}?text=${encoded}`;
+}
 
 const STORAGE_KEY = 'lizzdo_media_cms_data_v1';
 
@@ -155,6 +202,13 @@ export function loadCmsData(): DecapCMSData {
         testimonials: parsed.testimonials?.length ? parsed.testimonials : DEFAULT_CMS_DATA.testimonials,
         bodyCta: { ...DEFAULT_CMS_DATA.bodyCta, ...parsed.bodyCta },
         features: parsed.features || DEFAULT_CMS_DATA.features,
+        about: parsed.about || DEFAULT_CMS_DATA.about,
+        contact: parsed.contact || DEFAULT_CMS_DATA.contact,
+        social: parsed.social || DEFAULT_CMS_DATA.social,
+        analytics: parsed.analytics || DEFAULT_CMS_DATA.analytics,
+        teamMembers: parsed.teamMembers?.length ? parsed.teamMembers : DEFAULT_CMS_DATA.teamMembers,
+        legalPages: parsed.legalPages?.length ? parsed.legalPages : DEFAULT_CMS_DATA.legalPages,
+        notFound: parsed.notFound || DEFAULT_CMS_DATA.notFound
       };
     }
   } catch (e) {

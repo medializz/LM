@@ -1,0 +1,13 @@
+{
+  "id": "team-3",
+  "name": "Marcus Vance",
+  "position": "Head of Web Engineering",
+  "shortBio": "Architecting sub-second React & Vite digital experiences, interactive animations, and robust backend integrations.",
+  "fullBio": "Marcus leads our digital engineering lab, ensuring that every website Lizzdo Media ships achieves perfect Core Web Vitals and seamless user experiences.",
+  "avatar": "/uploads/team-marcus.jpg",
+  "avatarAlt": "Marcus Vance - Head of Web Engineering",
+  "skills": ["React/Vite", "TypeScript", "Performance Tuning", "Modern Architecture"],
+  "github": "https://github.com/medializz",
+  "featured": true,
+  "order": 3
+}

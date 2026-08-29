@@ -74,15 +74,28 @@ export function parseRoute(pathname: string, search: string = window.location.se
 
   // 7. Legal and Policy pages
   if (normalizedPath === '/privacy' || normalizedPath === '/privacy-policy') {
-    return { view: 'privacy', path: '/privacy' };
+    return { view: 'privacy', path: '/privacy-policy' };
+  }
+
+  if (normalizedPath === '/terms-and-conditions') {
+    return { view: 'terms-and-conditions', path: '/terms-and-conditions' };
   }
 
   if (normalizedPath === '/terms' || normalizedPath === '/terms-of-use' || normalizedPath === '/terms-of-service') {
-    return { view: 'terms', path: '/terms' };
+    return { view: 'terms', path: '/terms-of-use' };
+  }
+
+  if (normalizedPath === '/cookie-policy' || normalizedPath === '/cookies') {
+    return { view: 'cookie-policy', path: '/cookie-policy' };
   }
 
   if (normalizedPath === '/legal' || normalizedPath === '/legal-notice' || normalizedPath === '/disclaimer') {
-    return { view: 'legal', path: '/legal' };
+    return { view: 'legal', path: '/legal-notice' };
+  }
+
+  const legalMatch = normalizedPath.match(/^\/legal\/([a-zA-Z0-9_-]+)$/);
+  if (legalMatch) {
+    return { view: 'legal-page', slug: legalMatch[1].toLowerCase(), path: `/legal/${legalMatch[1].toLowerCase()}` };
   }
 
   if (normalizedPath === '/sitemap' || normalizedPath === '/site-map') {

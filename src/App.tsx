@@ -27,8 +27,11 @@ import { TermsOfUsePage } from './components/pages/TermsOfUsePage';
 import { LegalNoticePage } from './components/pages/LegalNoticePage';
 import { SiteMapPage } from './components/pages/SiteMapPage';
 import { NotFoundPage } from './components/pages/NotFoundPage';
+import { LegalPageRenderer } from './components/pages/LegalPageRenderer';
 import { SEOHead } from './components/SEOHead';
 import { MobileQuickBar } from './components/MobileQuickBar';
+import { CookieBanner } from './components/CookieBanner';
+import { AnalyticsTracker } from './components/AnalyticsTracker';
 import { loadCmsData } from './data/cmsContent';
 import { DecapCMSData, ServiceCategory, PortfolioItem } from './types';
 import { useAppRoute, navigateTo } from './utils/router';
@@ -88,6 +91,9 @@ export default function App() {
   return (
     <div className="relative min-h-screen bg-[#07090e] text-slate-100 selection:bg-[#ffbe1a] selection:text-black flex flex-col justify-between overflow-x-hidden">
       
+      {/* Analytics Injection (Server / CMS controlled) */}
+      <AnalyticsTracker analytics={cmsData.analytics} />
+
       {/* Default SEO Header for root/home view */}
       {route.view === 'home' && (
         <SEOHead
@@ -279,37 +285,78 @@ export default function App() {
         )}
 
         {/* ========================================================= */}
-        {/* VIEW 10: PRIVACY POLICY (/privacy) */}
+        {/* VIEW 10: PRIVACY POLICY (/privacy or /privacy-policy) */}
         {/* ========================================================= */}
         {route.view === 'privacy' && (
-          <PrivacyPolicyPage 
+          <LegalPageRenderer 
+            slug="privacy-policy"
+            fallbackTitle="Privacy Policy"
             cmsData={cmsData}
             onOpenContact={handleOpenContactModal}
           />
         )}
 
         {/* ========================================================= */}
-        {/* VIEW 11: TERMS OF USE (/terms) */}
+        {/* VIEW 11: TERMS & CONDITIONS (/terms-and-conditions) */}
+        {/* ========================================================= */}
+        {route.view === 'terms-and-conditions' && (
+          <LegalPageRenderer 
+            slug="terms-and-conditions"
+            fallbackTitle="Terms & Conditions"
+            cmsData={cmsData}
+            onOpenContact={handleOpenContactModal}
+          />
+        )}
+
+        {/* ========================================================= */}
+        {/* VIEW 12: TERMS OF USE (/terms or /terms-of-use) */}
         {/* ========================================================= */}
         {route.view === 'terms' && (
-          <TermsOfUsePage 
+          <LegalPageRenderer 
+            slug="terms-of-use"
+            fallbackTitle="Terms of Use"
             cmsData={cmsData}
             onOpenContact={handleOpenContactModal}
           />
         )}
 
         {/* ========================================================= */}
-        {/* VIEW 12: LEGAL NOTICE (/legal) */}
+        {/* VIEW 13: COOKIE POLICY (/cookie-policy) */}
+        {/* ========================================================= */}
+        {route.view === 'cookie-policy' && (
+          <LegalPageRenderer 
+            slug="cookie-policy"
+            fallbackTitle="Cookie Policy"
+            cmsData={cmsData}
+            onOpenContact={handleOpenContactModal}
+          />
+        )}
+
+        {/* ========================================================= */}
+        {/* VIEW 14: LEGAL NOTICE (/legal or /legal-notice) */}
         {/* ========================================================= */}
         {route.view === 'legal' && (
-          <LegalNoticePage 
+          <LegalPageRenderer 
+            slug="legal-notice"
+            fallbackTitle="Legal Notice & Impressum"
             cmsData={cmsData}
             onOpenContact={handleOpenContactModal}
           />
         )}
 
         {/* ========================================================= */}
-        {/* VIEW 13: INTERACTIVE SITE MAP (/sitemap) */}
+        {/* VIEW 15: DYNAMIC LEGAL PAGE (/legal/:slug) */}
+        {/* ========================================================= */}
+        {route.view === 'legal-page' && route.slug && (
+          <LegalPageRenderer 
+            slug={route.slug}
+            cmsData={cmsData}
+            onOpenContact={handleOpenContactModal}
+          />
+        )}
+
+        {/* ========================================================= */}
+        {/* VIEW 16: INTERACTIVE SITE MAP (/sitemap) */}
         {/* ========================================================= */}
         {route.view === 'sitemap' && (
           <SiteMapPage 
@@ -319,7 +366,7 @@ export default function App() {
         )}
 
         {/* ========================================================= */}
-        {/* VIEW 14: 404 NOT FOUND */}
+        {/* VIEW 17: 404 NOT FOUND */}
         {/* ========================================================= */}
         {route.view === '404' && (
           <NotFoundPage attemptedPath={route.path} />
@@ -333,6 +380,9 @@ export default function App() {
         navigation={cmsData.navigation}
         onOpenContact={() => handleOpenContactModal()}
       />
+
+      {/* COOKIE CONSENT BANNER */}
+      <CookieBanner enabled={cmsData.analytics?.cookieConsentEnabled !== false} />
 
       {/* OPTIONAL QUICK MODAL */}
       <ServiceDetailModal 

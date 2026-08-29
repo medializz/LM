@@ -1,0 +1,13 @@
+{
+  "id": "team-4",
+  "name": "Sophia Bennett",
+  "position": "Digital Growth & Marketing Strategist",
+  "shortBio": "Data-informed marketer specializing in paid acquisition, high-converting social creatives, and audience retention.",
+  "fullBio": "Sophia bridges creative design with quantitative conversion metrics, scaling digital marketing campaigns and organic social ecosystems.",
+  "avatar": "/uploads/team-sophia.jpg",
+  "avatarAlt": "Sophia Bennett - Growth Strategist",
+  "skills": ["Paid Advertising", "Content Strategy", "Conversion Rate Optimization", "Growth Funnels"],
+  "linkedin": "https://linkedin.com/in/sophiabennett-lizzdo",
+  "featured": true,
+  "order": 4
+}

@@ -1,0 +1,21 @@
+{
+  "instagram": "https://instagram.com/lizzdomedia",
+  "facebook": "https://facebook.com/lizzdomedia",
+  "linkedin": "https://linkedin.com/company/lizzdo-media",
+  "twitter": "https://twitter.com/lizzdomedia",
+  "youtube": "https://youtube.com/@lizzdomedia",
+  "tiktok": "https://tiktok.com/@lizzdomedia",
+  "pinterest": "https://pinterest.com/lizzdomedia",
+  "behance": "https://behance.net/lizzdomedia",
+  "dribbble": "https://dribbble.com/lizzdomedia",
+  "github": "https://github.com/medializz",
+  "platforms": [
+    { "name": "Instagram", "url": "https://instagram.com/lizzdomedia", "enabled": true, "handle": "@lizzdomedia" },
+    { "name": "LinkedIn", "url": "https://linkedin.com/company/lizzdo-media", "enabled": true, "handle": "Lizzdo Media" },
+    { "name": "X / Twitter", "url": "https://twitter.com/lizzdomedia", "enabled": true, "handle": "@lizzdomedia" },
+    { "name": "Facebook", "url": "https://facebook.com/lizzdomedia", "enabled": true, "handle": "Lizzdo Media" },
+    { "name": "Behance", "url": "https://behance.net/lizzdomedia", "enabled": true, "handle": "lizzdomedia" },
+    { "name": "Dribbble", "url": "https://dribbble.com/lizzdomedia", "enabled": true, "handle": "lizzdomedia" },
+    { "name": "GitHub", "url": "https://github.com/medializz", "enabled": true, "handle": "medializz" }
+  ]
+}

@@ -246,6 +246,106 @@ export interface SocialLink {
   icon?: string;
 }
 
+export interface SocialPlatformItem {
+  name: string;
+  url: string;
+  enabled: boolean;
+  handle?: string;
+  icon?: string;
+}
+
+export interface SocialSettings {
+  instagram?: string;
+  facebook?: string;
+  linkedin?: string;
+  twitter?: string;
+  youtube?: string;
+  tiktok?: string;
+  pinterest?: string;
+  behance?: string;
+  dribbble?: string;
+  github?: string;
+  platforms?: SocialPlatformItem[];
+}
+
+export interface AnalyticsSettings {
+  googleAnalyticsEnabled: boolean;
+  measurementId: string; // e.g. "G-XXXXXXXXXX"
+  googleTagManagerId?: string;
+  cookieConsentEnabled: boolean;
+}
+
+export interface TeamMember {
+  id: string;
+  name: string;
+  position: string;
+  shortBio: string;
+  fullBio?: string;
+  avatar?: string;
+  avatarAlt?: string;
+  skills?: string[];
+  linkedin?: string;
+  instagram?: string;
+  portfolioUrl?: string;
+  featured?: boolean;
+  order: number;
+}
+
+export interface LegalPage {
+  id: string;
+  title: string;
+  slug: string;
+  lastUpdated: string;
+  seoTitle?: string;
+  metaDescription?: string;
+  canonicalUrl?: string;
+  published: boolean;
+  content: string; // Markdown or rich text
+}
+
+export interface AboutContent {
+  eyebrow: string;
+  headlineLine1: string;
+  headlineHighlight: string;
+  introDescription: string;
+  missionTitle: string;
+  missionDescription: string;
+  visionTitle: string;
+  visionDescription: string;
+  storyTitle: string;
+  storyDescription: string;
+  ctaTitle: string;
+  ctaDescription: string;
+  ctaButtonText: string;
+  ctaButtonUrl: string;
+  seoTitle?: string;
+  seoDescription?: string;
+}
+
+export interface ContactContent {
+  heading: string;
+  description: string;
+  contactEmail: string;
+  supportEmail?: string;
+  businessEmail?: string;
+  phone?: string;
+  whatsappNumber?: string;
+  whatsappPrefilledMessage?: string;
+  address?: string;
+  location?: string;
+  availability?: string;
+  ctaHeading?: string;
+  ctaText?: string;
+}
+
+export interface NotFoundContent {
+  title: string;
+  subtitle: string;
+  description: string;
+  ctaText: string;
+  ctaUrl: string;
+}
+
 export interface SiteSettings {
   siteName: string;
   tagline: string;
@@ -256,16 +356,24 @@ export interface SiteSettings {
   logoMark?: string;
   favicon?: string;
   contactEmail: string;
+  supportEmail?: string;
+  businessEmail?: string;
+  phone?: string;
   primaryCtaText: string;
   primaryCtaUrl: string;
   parentCompanyUrl: string;
   currentDomain: string;
   whatsappNumber?: string;
+  whatsappPrefilledMessage?: string;
   instagramUrl?: string;
   facebookUrl?: string;
   linkedinUrl?: string;
   twitterUrl?: string;
+  behanceUrl?: string;
+  dribbbleUrl?: string;
+  githubUrl?: string;
   location?: string;
+  address?: string;
   formEndpoint?: string;
   footerText?: string;
   copyrightText?: string;
@@ -299,6 +407,13 @@ export interface DecapCMSData {
   testimonials: TestimonialItem[];
   bodyCta: BodyCtaContent;
   features: FeatureItem[];
+  about?: AboutContent;
+  contact?: ContactContent;
+  social?: SocialSettings;
+  analytics?: AnalyticsSettings;
+  teamMembers?: TeamMember[];
+  legalPages?: LegalPage[];
+  notFound?: NotFoundContent;
 }
 
 export type AppRoute = 
@@ -313,6 +428,9 @@ export type AppRoute =
   | { view: 'contact'; path: string; slug?: undefined }
   | { view: 'privacy'; path: string; slug?: undefined }
   | { view: 'terms'; path: string; slug?: undefined }
+  | { view: 'terms-and-conditions'; path: string; slug?: undefined }
   | { view: 'legal'; path: string; slug?: undefined }
+  | { view: 'cookie-policy'; path: string; slug?: undefined }
+  | { view: 'legal-page'; path: string; slug: string }
   | { view: 'sitemap'; path: string; slug?: undefined }
   | { view: '404'; path: string; slug?: undefined };

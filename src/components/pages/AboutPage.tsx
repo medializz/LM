@@ -254,6 +254,59 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cmsData, onOpenContact }) 
         </div>
       </section>
 
+      {/* Team / Leadership Section (from CMS) */}
+      {cmsData.teamMembers && cmsData.teamMembers.length > 0 && (
+        <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Leadership & Craft</span>
+            <h2 className="text-2xl sm:text-4xl font-bold font-['Outfit'] text-white">
+              The Minds Behind the Work
+            </h2>
+            <p className="text-slate-400 text-sm">
+              Multidisciplinary specialists uniting creative direction, digital brand strategy, packaging craft, and full-stack engineering.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {cmsData.teamMembers.map((member) => (
+              <div 
+                key={member.id}
+                className="p-6 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/40 transition-all duration-300 group space-y-4"
+              >
+                <div className="aspect-square rounded-xl overflow-hidden bg-white/[0.04] border border-white/10 relative">
+                  {member.photo ? (
+                    <img 
+                      src={member.photo} 
+                      alt={member.name}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center font-['Outfit'] text-3xl font-black text-white/20">
+                      {member.name.charAt(0)}
+                    </div>
+                  )}
+                </div>
+
+                <div className="space-y-1">
+                  <h3 className="text-lg font-bold font-['Outfit'] text-white group-hover:text-[#ffbe1a] transition-colors">
+                    {member.name}
+                  </h3>
+                  <div className="text-xs font-mono text-[#ffbe1a] font-semibold">
+                    {member.role}
+                  </div>
+                  {member.bio && (
+                    <p className="text-xs text-slate-400 line-clamp-3 pt-1 leading-relaxed">
+                      {member.bio}
+                    </p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Services Directory Strip */}
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
