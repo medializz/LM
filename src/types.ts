@@ -82,6 +82,8 @@ export interface ServiceCategory {
   heroDescription?: string;
   overview?: string;
   visualType?: string;
+  capabilities?: string[];
+  whatWeOffer?: string[];
   deliverables?: string[];
   processSteps?: ServiceProcessStep[];
   gallery?: GalleryItem[];
@@ -149,6 +151,7 @@ export interface PortfolioItem {
   processSteps?: WorkProcessStep[];
   gallery?: GalleryItem[];
   faqs?: FAQItem[];
+  relatedService?: string;
   relatedServices?: string[];
   relatedProjects?: string[];
   seoTitle?: string;

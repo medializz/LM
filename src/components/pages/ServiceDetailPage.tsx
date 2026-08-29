@@ -59,6 +59,18 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
     ? service.processSteps
     : defaultProcess;
 
+  // Dynamic capabilities
+  const capabilities = service.capabilities && service.capabilities.length > 0
+    ? service.capabilities
+    : [
+        "Strategic Concept & Visual Direction",
+        "High-Fidelity Production Assets",
+        "Brand Consistency & System Architecture",
+        "Responsive Digital & Print Formats",
+        "Dedicated Creative Director Support",
+        "Master Source Files with Full Commercial Ownership"
+      ];
+
   // Dynamic Deliverables
   const deliverables = service.deliverables || [
     "Full Vector Source Files (AI, SVG, PDF)",
@@ -85,7 +97,13 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
 
   // Related work projects
   const relatedWorkList = portfolio
-    .filter(p => (service.relatedProjects && service.relatedProjects.includes(p.slug)) || p.category === service.category || p.category === 'Branding')
+    .filter(p => 
+      (service.relatedProjects && service.relatedProjects.includes(p.slug)) ||
+      (p.relatedServices && p.relatedServices.includes(service.slug)) ||
+      (p.relatedService && p.relatedService === service.slug) ||
+      p.category.toLowerCase().includes(service.category.toLowerCase()) ||
+      (p.services && p.services.some(s => s.toLowerCase().includes(service.title.toLowerCase())))
+    )
     .slice(0, 2);
 
   const openLightboxAt = (idx: number) => {
@@ -96,7 +114,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
   const handleWhatsApp = () => {
     const rawNumber = siteSettings.whatsappNumber || "+1234567890";
     const cleanNumber = rawNumber.replace(/[^0-9]/g, '');
-    const message = encodeURIComponent(`Hello Lizzdo Media, I'm interested in ${service.title} services and would like to discuss my project.`);
+    const message = encodeURIComponent(`Hello Lizzdo Media, I'm interested in your ${service.title} service and would like to discuss a project.`);
     window.open(`https://wa.me/${cleanNumber}?text=${message}`, '_blank', 'noopener,noreferrer');
   };
 
@@ -245,22 +263,68 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
 
           {/* Right Column: Hero Visual Showcase */}
           <div className="lg:col-span-5">
-            <div className="relative rounded-3xl overflow-hidden border border-white/[0.1] bg-[#10131d] p-6 sm:p-8 shadow-2xl">
+            <div className="relative rounded-3xl overflow-hidden border border-white/[0.1] bg-[#10131d] p-6 sm:p-8 shadow-2xl group">
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#ffbe1a]/10 rounded-full blur-3xl pointer-events-none" />
-              <ServiceHeroVisual visualType={service.slug} title={service.title} />
+              {service.previewImage ? (
+                <div className="flex flex-col items-center justify-center">
+                  <div className="relative w-full max-w-sm rounded-2xl overflow-hidden bg-black/40 border border-white/[0.08] p-4 sm:p-6 flex items-center justify-center min-h-[220px]">
+                    <img 
+                      src={service.previewImage} 
+                      alt={service.previewImageAlt || `${service.title} visual preview`}
+                      className="w-auto max-h-48 sm:max-h-56 object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] transform group-hover:scale-105 transition-transform duration-300"
+                      loading="eager"
+                    />
+                  </div>
+                  <div className="mt-4 flex items-center gap-2 text-xs font-mono text-slate-400">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#ffbe1a]" />
+                    <span>{service.previewImageAlt || `${service.title} Visual Specification`}</span>
+                  </div>
+                </div>
+              ) : (
+                <ServiceHeroVisual visualType={service.slug} title={service.title} />
+              )}
             </div>
           </div>
 
         </section>
 
         {/* ========================================================================= */}
-        {/* 2. DELIVERABLES & WHAT'S INCLUDED */}
+        {/* 2. WHAT WE OFFER / KEY CAPABILITIES */}
         {/* ========================================================================= */}
         <section className="space-y-6">
           <div className="space-y-2">
-            <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Scope & Specifications</span>
+            <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Core Capabilities</span>
             <h2 className="text-2xl sm:text-4xl font-bold font-['Outfit'] text-white">
-              What's Included in This Discipline
+              What We Offer in {service.title}
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {capabilities.map((item, idx) => (
+              <div 
+                key={idx}
+                className="p-5 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/50 transition-all flex items-start gap-3.5 group"
+              >
+                <div className="w-7 h-7 rounded-xl bg-[#ffbe1a]/10 border border-[#ffbe1a]/30 flex items-center justify-center shrink-0 mt-0.5 text-[#ffbe1a] group-hover:bg-[#ffbe1a] group-hover:text-black transition-colors">
+                  <Sparkles className="w-3.5 h-3.5" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-white group-hover:text-[#ffbe1a] transition-colors">{item}</h3>
+                  <p className="text-xs text-slate-400 mt-1">Bespoke execution tailored to your specific brand goals.</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ========================================================================= */}
+        {/* 3. DELIVERABLES & WHAT'S INCLUDED */}
+        {/* ========================================================================= */}
+        <section className="space-y-6">
+          <div className="space-y-2">
+            <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Deliverables & Scope</span>
+            <h2 className="text-2xl sm:text-4xl font-bold font-['Outfit'] text-white">
+              Tangible Assets You Receive
             </h2>
           </div>
 

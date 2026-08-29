@@ -17,7 +17,7 @@ export const HeroGraphicComposition: React.FC<HeroGraphicCompositionProps> = ({ 
   return (
     <div 
       id="hero-creative-composition"
-      className="relative w-full max-w-[560px] sm:max-w-[620px] lg:max-w-[680px] xl:max-w-[720px] h-[320px] xs:h-[360px] sm:h-[460px] md:h-[500px] lg:h-[530px] mx-auto select-none overflow-hidden sm:overflow-visible gpu-layer"
+      className="relative w-full max-w-[560px] sm:max-w-[620px] lg:max-w-[680px] xl:max-w-[720px] h-[340px] xs:h-[380px] sm:h-[460px] md:h-[500px] lg:h-[530px] mx-auto select-none overflow-visible gpu-layer"
       role="img"
       aria-label="Lizzdo Media Creative Design Ecosystem showing brand identity presentation, full laptop mockup, smartphone social feed, designer tablet, coffee cup, and brand assets"
     >
@@ -141,7 +141,7 @@ export const HeroGraphicComposition: React.FC<HeroGraphicCompositionProps> = ({ 
       />
 
       {/* 9. FULL LAPTOP MOCKUP - CREATIVE DIGITAL SOLUTIONS (Mid-Right Foreground) */}
-      <div className="absolute top-[22%] right-[0%] w-[58%] sm:w-[56%] z-22 gpu-layer">
+      <div className="absolute top-[20%] xs:top-[22%] right-[0%] w-[58%] sm:w-[56%] z-22 gpu-layer">
         <LaptopBrandPresentation 
           siteSettings={siteSettings}
           className="w-full"
@@ -151,7 +151,7 @@ export const HeroGraphicComposition: React.FC<HeroGraphicCompositionProps> = ({ 
       {/* 10. RESTORED BRANDED COFFEE CUP - PLACED NATURALLY NEAR THE LAPTOP */}
       <div 
         id="hero-coffee-cup-container"
-        className="block absolute bottom-[0%] xs:bottom-[1%] sm:bottom-[2%] right-[1%] xs:right-[1.5%] sm:right-[2%] w-[14.5%] xs:w-[14%] sm:w-[13.5%] md:w-[13%] lg:w-[14%] z-28 gpu-layer"
+        className="block absolute bottom-[2%] xs:bottom-[3%] sm:bottom-[2%] right-[1%] xs:right-[1.5%] sm:right-[2%] w-[15%] xs:w-[14%] sm:w-[13.5%] md:w-[13%] lg:w-[14%] z-28 gpu-layer"
       >
         <CoffeeMug 
           siteSettings={siteSettings}

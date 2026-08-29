@@ -78,6 +78,7 @@ collections:
       - { label: "Hero Image Alt Text", name: "hero_image_alt", widget: "string", required: false }
       - { label: "Service Overview", name: "overview", widget: "markdown", required: false }
       - { label: "What We Offer", name: "what_we_offer", widget: "markdown", required: false }
+      - { label: "Key Capabilities", name: "capabilities", widget: "list", required: false }
       - { label: "Deliverables List", name: "deliverables", widget: "list", required: false }
       - { label: "Process & Steps", name: "process", widget: "list", required: false }
       - { label: "Key Benefits", name: "benefits", widget: "list", required: false }

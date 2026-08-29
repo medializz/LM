@@ -68,6 +68,15 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
       heroHighlight: "That Defines You.",
       heroDescription: "From strategic visual direction and custom typography to luxury stationery and digital design systems, we build cohesive brand identities engineered to captivate and endure.",
       ctaButtonText: "Build My Brand →",
+      capabilities: [
+        "Logo Systems, Monograms & Secondary Marks",
+        "Strategic Color Direction & Pantone Calibration",
+        "Custom Typography & Hierarchy Rules",
+        "Comprehensive Brand Guidelines Manual",
+        "Luxury Stationery, Foil Stamping & Business Cards",
+        "Packaging Visual Direction & Finishes",
+        "Digital Brand Assets & Presentation Kits"
+      ],
       deliverables: [
         "Primary & Secondary Logo Marks",
         "Comprehensive Brand Manual & Rules",
@@ -127,6 +136,14 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
       heroHighlight: "Made to Be Remembered.",
       heroDescription: "We create distinctive, mathematically balanced, and timeless logo systems that anchor your brand across digital screens and physical mediums.",
       ctaButtonText: "Start a Logo Project →",
+      capabilities: [
+        "Primary Logo, Secondary Mark, & Favicon",
+        "Mathematical Vector Construction Grids",
+        "Light & Dark Monochromatic Adaptations",
+        "Scalable App Icon & Favicon Matrix",
+        "Clearance & Minimum Sizing Guidelines",
+        "Scalable Master Vectors (AI, EPS, SVG, PDF, PNG)"
+      ],
       deliverables: [
         "Primary Logo, Secondary Mark, & Favicon",
         "Mathematical Vector Construction Grids",
@@ -182,6 +199,14 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
       heroHighlight: "Visuals That Speak.",
       heroDescription: "From editorial lookbooks and packaging dielines to marketing brochures and corporate collateral, our design team produces stunning visual communication.",
       ctaButtonText: "Request Graphic Design →",
+      capabilities: [
+        "Editorial Lookbooks & Catalog Layouts",
+        "Packaging & Custom Dieline Engineering",
+        "Corporate Brochures & Annual Reports",
+        "Exhibition Booth Displays & Large Signage",
+        "Print-Ready CMYK Pre-Flight Files (300 DPI)",
+        "High-Impact Marketing Pitch Decks & Decks"
+      ],
       deliverables: [
         "High-Impact Posters, Flyers, & Banners",
         "Corporate Brochures & Annual Reports",
@@ -237,6 +262,14 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
       heroHighlight: "Built for Performance.",
       heroDescription: "High-speed, SEO-optimized, and responsive web applications built with modern frontend frameworks, sub-second loading speeds, and fluid animations.",
       ctaButtonText: "Build My Website →",
+      capabilities: [
+        "Custom Responsive Frontend (React/TypeScript)",
+        "Mobile-First Touch Optimized Experiences",
+        "Lighthouse 100 Core Web Vitals Performance",
+        "Decap CMS & Content Management Integration",
+        "Semantic SEO & OpenGraph Meta Automation",
+        "Edge CDN Caching & Zero-Downtime Deployment"
+      ],
       deliverables: [
         "Custom Responsive Frontend (React/TypeScript/Vite)",
         "Mobile-First Touch Optimized Experiences",
@@ -292,6 +325,14 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
       heroHighlight: "That Stops the Scroll.",
       heroDescription: "We design high-converting Instagram grids, storytelling carousels, TikTok/Reels graphics, and cohesive social branding that commands attention.",
       ctaButtonText: "Upgrade Social Creatives →",
+      capabilities: [
+        "Multi-Slide High-Converting Carousels",
+        "Curated 9-Grid Aesthetic Feeds",
+        "Reels & TikTok Video Cover Artworks",
+        "Story & Interactive Poll Templates",
+        "Brand Highlight Icon Suites",
+        "Editable Figma & Canva Master Kits"
+      ],
       deliverables: [
         "Multi-Slide Educational Carousels",
         "Instagram 9-Grid Aesthetic Design Kits",
@@ -343,6 +384,14 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
       heroHighlight: "Consistency That Builds Trust.",
       heroDescription: "Eliminate the stress of manual posting with strategic scheduling, engaging copywriting, hashtag research, and consistent brand presence.",
       ctaButtonText: "Schedule a Strategy Call →",
+      capabilities: [
+        "Monthly Content Calendar & Matrix Planning",
+        "Strategic Brand-Aligned Copywriting & Captions",
+        "Niche Hashtag Research & Discoverability Tags",
+        "Automated Multi-Platform Publishing Queue",
+        "Peak Audience Timing Optimization",
+        "Monthly Cadence & Growth Analytics Reports"
+      ],
       deliverables: [
         "Monthly Content Calendar & Editorial Matrix",
         "Engaging Copywriting & Strategic Captions",
@@ -394,6 +443,14 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
       heroHighlight: "Growth Driven by Data.",
       heroDescription: "We combine precision audience targeting, compelling ad creatives, conversion rate optimization, and transparent reporting to scale your brand profitably.",
       ctaButtonText: "Scale Your Marketing →",
+      capabilities: [
+        "Full-Funnel Paid Advertising (Meta, Google, LinkedIn)",
+        "Conversion Rate Optimization (CRO) Audits",
+        "Custom Retargeting & Audience Segmentation",
+        "A/B Multivariate Split-Testing Frameworks",
+        "Real-Time Telemetry & Return On Ad Spend (ROAS) Tracking",
+        "Transparent Monthly Performance Dashboards"
+      ],
       deliverables: [
         "Full-Funnel Paid Advertising (Meta, Google, LinkedIn)",
         "Conversion Rate Optimization (CRO) Audits",
@@ -445,6 +502,14 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
       heroHighlight: "Total Brand Care.",
       heroDescription: "Full-service management including content creation, community engagement, influencer outreach, profile optimization, and monthly strategic reporting.",
       ctaButtonText: "Get Social Management →",
+      capabilities: [
+        "Dedicated Account Strategist & Community Manager",
+        "End-to-End Visual Content Creation & Copy",
+        "Daily DM & Comment Moderation Protocol",
+        "Influencer & Brand Collaboration Outreach",
+        "Brand Tone & FAQ Playbook Management",
+        "Comprehensive Monthly Sentiment & Reach Reports"
+      ],
       deliverables: [
         "Dedicated Creative & Community Account Lead",
         "End-to-End Visual Content Creation & Copy",
@@ -496,6 +561,14 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
       heroHighlight: "Designed to Convert.",
       heroDescription: "We design high-impact banner ads, social sponsored creatives, display network units, and landing page visual hooks engineered for maximum click-through rates.",
       ctaButtonText: "Create Ad Creatives →",
+      capabilities: [
+        "Multi-Format Static & Motion Ad Units",
+        "High-CTR 3-Second Visual Hook Frameworks",
+        "A/B Tested Hook, Palette, & Copy Variants",
+        "Standard IAB Display & Programmatic Formats",
+        "Vertical Stories & Feed Ad Dimension Kits (1:1, 4:5, 9:16)",
+        "High-Conversion Landing Page Visual Assets"
+      ],
       deliverables: [
         "Multi-Format Static & Motion Ad Units",
         "High-CTR Visual Hook Frameworks",
@@ -547,6 +620,14 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
       heroHighlight: "Next-Gen Visual Craft.",
       heroDescription: "Leveraging cutting-edge generative tools and skilled creative direction to produce impossible brand scenes, hyper-realistic product visuals, and rapid creative concepts.",
       ctaButtonText: "Explore AI Visuals →",
+      capabilities: [
+        "Hyper-Realistic 3D & Cinematic Product Mockups",
+        "Bespoke Generative Backgrounds & Concept Scenes",
+        "Rapid Moodboard & Visual Prototyping Assets",
+        "Ultra-High-Resolution 8K Upscaled Master Files",
+        "Custom Trained Aesthetic Prompt Workflows",
+        "Commercial Royalty-Free Usage Rights"
+      ],
       deliverables: [
         "Hyper-Realistic 3D & Cinematic Product Mockups",
         "Bespoke Generative Backgrounds & Concept Scenes",
@@ -598,6 +679,14 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
       heroHighlight: "Designed for Growth.",
       heroDescription: "We build bespoke corporate websites, brand landing pages, and interactive digital experiences tailored to convert visitors into loyal clients.",
       ctaButtonText: "Build My Website →",
+      capabilities: [
+        "Custom Tailored Corporate Websites (2–10+ Pages)",
+        "Zero-Maintenance Serverless Architecture",
+        "Seamless Decap CMS Content Management",
+        "Comprehensive Technical SEO & Schema Automation",
+        "Lightning-Fast Sub-Second Load Times",
+        "Cross-Device & Browser Responsive Assurance"
+      ],
       deliverables: [
         "Custom Tailored Corporate Website (2–10+ Pages)",
         "Zero-Maintenance Serverless Architecture",
