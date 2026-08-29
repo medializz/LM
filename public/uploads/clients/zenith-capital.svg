@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="none" class="client-logo">
+  <!-- Zenith Capital Peak & Wordmark -->
+  <g transform="translate(10, 10)">
+    <path d="M6 32 L20 8 L34 32 L26 32 L20 20 L14 32 Z" fill="#ffbe1a"/>
+  </g>
+  <text x="60" y="32" font-family="'Outfit', sans-serif" font-size="16" font-weight="800" letter-spacing="2.5" fill="#ffffff">ZENITH</text>
+  <text x="60" y="44" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="600" letter-spacing="3" fill="#94a3b8">CAPITAL</text>
+</svg>

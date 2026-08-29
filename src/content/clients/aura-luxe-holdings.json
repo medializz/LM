@@ -1,0 +1,26 @@
+{
+  "id": "client-1",
+  "name": "Aura Luxe Holdings",
+  "slug": "aura-luxe-holdings",
+  "logo": "/uploads/clients/aura-luxe.svg",
+  "logoAlt": "Aura Luxe Holdings logo",
+  "websiteUrl": "https://auraluxe.example.com",
+  "services": [
+    "Brand Identity",
+    "Logo Design",
+    "Graphic Design",
+    "Packaging Design"
+  ],
+  "shortDescription": "Lizzdo developed a luxury brand identity system, custom typographic guidelines, and bespoke hot-stamped stationery.",
+  "relatedWork": "brand-identity-design",
+  "relatedWorkTitle": "Aura Luxe Brand Identity Case Study",
+  "reviewEnabled": true,
+  "reviewText": "Lizzdo Media redefined our market presence. Their meticulous attention to typographic hierarchy and packaging detail elevated our entire brand launch.",
+  "reviewerName": "Elena Vance",
+  "reviewerPosition": "Managing Director, Aura Luxe",
+  "reviewerPhoto": "",
+  "rating": 5,
+  "featured": true,
+  "published": true,
+  "order": 1
+}

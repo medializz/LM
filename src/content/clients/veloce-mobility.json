@@ -1,0 +1,26 @@
+{
+  "id": "client-5",
+  "name": "Veloce Mobility",
+  "slug": "veloce-mobility",
+  "logo": "/uploads/clients/veloce-mobility.svg",
+  "logoAlt": "Veloce Mobility logo",
+  "websiteUrl": "https://velocemobility.example.com",
+  "services": [
+    "Web Development",
+    "Website Development",
+    "Brand Identity",
+    "Graphic Design"
+  ],
+  "shortDescription": "Engineered an ultrafast next-generation EV telemetry interface and global fleet booking portal with 100/100 Lighthouse performance.",
+  "relatedWork": "web-development",
+  "relatedWorkTitle": "Veloce Fleet Telemetry Platform",
+  "reviewEnabled": false,
+  "reviewText": "",
+  "reviewerName": "",
+  "reviewerPosition": "",
+  "reviewerPhoto": "",
+  "rating": 5,
+  "featured": true,
+  "published": true,
+  "order": 5
+}

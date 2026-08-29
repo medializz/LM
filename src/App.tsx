@@ -10,6 +10,7 @@ import { FeatureStrip } from './components/FeatureStrip';
 import { ServicesSection } from './components/body/ServicesSection';
 import { ProcessSection } from './components/body/ProcessSection';
 import { FeaturedWorkSection } from './components/body/FeaturedWorkSection';
+import { ClientsSection } from './components/body/ClientsSection';
 import { WhyChooseUsSection } from './components/body/WhyChooseUsSection';
 import { Footer } from './components/Footer';
 import { ServiceDetailModal } from './components/ServiceDetailModal';
@@ -179,6 +180,14 @@ export default function App() {
               siteSettings={cmsData.siteSettings}
               onSelectProject={handleSelectProject}
               onViewAll={() => navigateTo('/work')}
+            />
+
+            <ClientsSection 
+              clients={cmsData.clients || []}
+              content={cmsData.clientsSection}
+              siteSettings={cmsData.siteSettings}
+              portfolio={cmsData.portfolio || []}
+              onSelectProject={handleSelectProject}
             />
 
             <WhyChooseUsSection 

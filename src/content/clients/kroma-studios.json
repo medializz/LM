@@ -1,0 +1,27 @@
+{
+  "id": "client-4",
+  "name": "Kroma Studios",
+  "slug": "kroma-studios",
+  "logo": "/uploads/clients/kroma-studios.svg",
+  "logoAlt": "Kroma Studios logo",
+  "websiteUrl": "https://kromastudios.example.com",
+  "services": [
+    "Social Media Management",
+    "Social Media Content",
+    "Content Posting",
+    "Advertising Creatives",
+    "AI Visual Content"
+  ],
+  "shortDescription": "Produced multi-channel high-engagement motion reels, promotional graphic suites, and curated daily social distribution.",
+  "relatedWork": "social-media-campaign",
+  "relatedWorkTitle": "Kroma Studios Omni-Channel Campaign",
+  "reviewEnabled": true,
+  "reviewText": "Lizzdo's social creatives increased our qualified inbound leads by over 300% within the first 60 days of our campaign.",
+  "reviewerName": "Julian Ross",
+  "reviewerPosition": "Marketing Director",
+  "reviewerPhoto": "",
+  "rating": 5,
+  "featured": true,
+  "published": true,
+  "order": 4
+}

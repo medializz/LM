@@ -155,8 +155,47 @@ collections:
           - { label: "CTA Button Text", name: "ctaText", widget: "string", default: "Let's Work Together" }
           - { label: "CTA Button URL", name: "ctaUrl", widget: "string", default: "/contact" }
 
+      - name: "clientsSection"
+        label: "Companies We've Worked With Section"
+        file: "src/content/clients-section.json"
+        fields:
+          - { label: "Section Eyebrow", name: "eyebrow", widget: "string", default: "BRANDS WE'VE WORKED WITH" }
+          - { label: "Heading Prefix", name: "headingPrefix", widget: "string", default: "Companies We've " }
+          - { label: "Heading Highlight Word", name: "headingHighlight", widget: "string", default: "Worked With" }
+          - { label: "Introductory Description", name: "description", widget: "text", default: "From brand identity and social content to websites and digital campaigns, we've partnered with forward-thinking businesses across diverse industries." }
+
   # =========================================================================
-  # 2. SERVICES COLLECTION
+  # 2. CLIENTS / COMPANIES WE'VE WORKED WITH COLLECTION
+  # =========================================================================
+  - name: "clients"
+    label: "Clients / Companies"
+    folder: "src/content/clients"
+    format: "json"
+    extension: "json"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Company Name", name: "name", widget: "string", required: true }
+      - { label: "Slug Identifier", name: "slug", widget: "string", required: true }
+      - { label: "Client Logo (SVG, WebP, PNG)", name: "logo", widget: "image", required: true }
+      - { label: "Logo Alt Text", name: "logoAlt", widget: "string", required: false, default: "Company logo" }
+      - { label: "Company Website URL (Optional)", name: "websiteUrl", widget: "string", required: false }
+      - { label: "Services Provided", name: "services", widget: "list", required: false }
+      - { label: "Short Project Description", name: "shortDescription", widget: "text", required: false }
+      - { label: "Related Work Case Study Slug (Optional)", name: "relatedWork", widget: "string", required: false }
+      - { label: "Related Work Title", name: "relatedWorkTitle", widget: "string", required: false }
+      - { label: "Enable Client Review", name: "reviewEnabled", widget: "boolean", default: false }
+      - { label: "Client Review / Testimonial Text", name: "reviewText", widget: "text", required: false }
+      - { label: "Reviewer Name", name: "reviewerName", widget: "string", required: false }
+      - { label: "Reviewer Position / Title", name: "reviewerPosition", widget: "string", required: false }
+      - { label: "Reviewer Photo (Optional)", name: "reviewerPhoto", widget: "image", required: false }
+      - { label: "Rating (1 to 5 - Optional)", name: "rating", widget: "number", value_type: "int", required: false }
+      - { label: "Featured Client", name: "featured", widget: "boolean", default: true }
+      - { label: "Published", name: "published", widget: "boolean", default: true }
+      - { label: "Sort Order", name: "order", widget: "number", value_type: "int", default: 1 }
+
+  # =========================================================================
+  # 3. SERVICES COLLECTION
   # =========================================================================
   - name: "services"
     label: "Services"

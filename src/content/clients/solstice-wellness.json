@@ -1,0 +1,26 @@
+{
+  "id": "client-6",
+  "name": "Solstice Wellness",
+  "slug": "solstice-wellness",
+  "logo": "/uploads/clients/solstice-wellness.svg",
+  "logoAlt": "Solstice Wellness logo",
+  "websiteUrl": "https://solsticewellness.example.com",
+  "services": [
+    "Digital Marketing",
+    "Social Media Content",
+    "Brand Identity",
+    "Advertising Creatives"
+  ],
+  "shortDescription": "Orchestrated omni-channel growth campaigns, paid advertising creative suites, and aesthetic lifestyle visual assets.",
+  "relatedWork": "",
+  "relatedWorkTitle": "",
+  "reviewEnabled": true,
+  "reviewText": "The creative team at Lizzdo understood our wellness philosophy instantly. Their ad creatives delivered our lowest customer acquisition cost to date.",
+  "reviewerName": "Camilla Dupont",
+  "reviewerPosition": "Founder & Creative Director",
+  "reviewerPhoto": "",
+  "rating": 5,
+  "featured": false,
+  "published": true,
+  "order": 6
+}

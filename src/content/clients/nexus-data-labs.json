@@ -1,0 +1,26 @@
+{
+  "id": "client-3",
+  "name": "Nexus Data Labs",
+  "slug": "nexus-data-labs",
+  "logo": "/uploads/clients/nexus-data-labs.svg",
+  "logoAlt": "Nexus Data Labs logo",
+  "websiteUrl": "https://nexusdatalabs.example.com",
+  "services": [
+    "Website Development",
+    "Web Design",
+    "Digital Marketing",
+    "Brand Identity"
+  ],
+  "shortDescription": "Built a high-performance enterprise analytics SaaS platform, responsive dashboard system, and product marketing site.",
+  "relatedWork": "saas-website-design",
+  "relatedWorkTitle": "Nexus Data SaaS Platform",
+  "reviewEnabled": true,
+  "reviewText": "From interactive web engineering to converting product landing pages, Lizzdo consistently delivered world-class digital execution.",
+  "reviewerName": "Dr. Sarah Lin",
+  "reviewerPosition": "Chief Technology Officer",
+  "reviewerPhoto": "",
+  "rating": 5,
+  "featured": true,
+  "published": true,
+  "order": 3
+}

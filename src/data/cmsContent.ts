@@ -9,6 +9,8 @@ import {
   NavigationItem,
   LegalPage,
   TeamMember,
+  ClientItem,
+  ClientsSectionContent,
   AboutContent,
   ContactContent,
   SocialSettings,
@@ -27,6 +29,7 @@ import contactData from '../content/contact.json';
 import socialData from '../content/social.json';
 import analyticsData from '../content/analytics.json';
 import notFoundData from '../content/not-found.json';
+import clientsSectionData from '../content/clients-section.json';
 
 // Eagerly glob all collection JSON files from src/content/
 const serviceFiles = import.meta.glob('../content/services/*.json', { eager: true }) as Record<string, { default?: ServiceCategory } | ServiceCategory>;
@@ -37,6 +40,7 @@ const testimonialFiles = import.meta.glob('../content/testimonials/*.json', { ea
 const processFiles = import.meta.glob('../content/process/*.json', { eager: true }) as Record<string, { default?: ProcessStep } | ProcessStep>;
 const teamFiles = import.meta.glob('../content/team/*.json', { eager: true }) as Record<string, { default?: TeamMember } | TeamMember>;
 const legalFiles = import.meta.glob('../content/legal/*.json', { eager: true }) as Record<string, { default?: LegalPage } | LegalPage>;
+const clientFiles = import.meta.glob('../content/clients/*.json', { eager: true }) as Record<string, { default?: ClientItem } | ClientItem>;
 
 // Extract and sort collections
 const loadedServices: ServiceCategory[] = Object.values(serviceFiles)
@@ -69,6 +73,10 @@ const loadedTeam: TeamMember[] = Object.values(teamFiles)
 
 const loadedLegal: LegalPage[] = Object.values(legalFiles)
   .map((m: any) => (m.default ? m.default : m) as LegalPage);
+
+const loadedClients: ClientItem[] = Object.values(clientFiles)
+  .map((m: any) => (m.default ? m.default : m) as ClientItem)
+  .sort((a, b) => (a.order || 0) - (b.order || 0));
 
 export const DEFAULT_CMS_DATA: DecapCMSData = {
   siteSettings: {
@@ -164,10 +172,12 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
   analytics: analyticsData as AnalyticsSettings,
   teamMembers: loadedTeam,
   legalPages: loadedLegal,
+  clients: loadedClients,
+  clientsSection: clientsSectionData as ClientsSectionContent,
   notFound: notFoundData as NotFoundContent
 };
 
-export { seoData, footerData, aboutData, contactData, socialData, analyticsData, notFoundData };
+export { seoData, footerData, aboutData, contactData, socialData, analyticsData, notFoundData, clientsSectionData };
 
 /**
  * Utility to generate a clean, secure WhatsApp URL without spaces, +, brackets, or dashes
@@ -208,6 +218,8 @@ export function loadCmsData(): DecapCMSData {
         analytics: parsed.analytics || DEFAULT_CMS_DATA.analytics,
         teamMembers: parsed.teamMembers?.length ? parsed.teamMembers : DEFAULT_CMS_DATA.teamMembers,
         legalPages: parsed.legalPages?.length ? parsed.legalPages : DEFAULT_CMS_DATA.legalPages,
+        clients: parsed.clients?.length ? parsed.clients : DEFAULT_CMS_DATA.clients,
+        clientsSection: parsed.clientsSection ? { ...DEFAULT_CMS_DATA.clientsSection, ...parsed.clientsSection } : DEFAULT_CMS_DATA.clientsSection,
         notFound: parsed.notFound || DEFAULT_CMS_DATA.notFound
       };
     }

@@ -246,6 +246,35 @@ export interface SocialLink {
   icon?: string;
 }
 
+export interface ClientItem {
+  id: string;
+  name: string;
+  slug?: string;
+  logo: string;
+  logoAlt?: string;
+  websiteUrl?: string;
+  services?: string[];
+  shortDescription?: string;
+  relatedWork?: string;
+  relatedWorkTitle?: string;
+  reviewEnabled?: boolean;
+  reviewText?: string;
+  reviewerName?: string;
+  reviewerPosition?: string;
+  reviewerPhoto?: string;
+  rating?: number;
+  featured?: boolean;
+  published?: boolean;
+  order: number;
+}
+
+export interface ClientsSectionContent {
+  eyebrow?: string;
+  headingPrefix?: string;
+  headingHighlight?: string;
+  description?: string;
+}
+
 export interface SocialPlatformItem {
   name: string;
   url: string;
@@ -413,6 +442,8 @@ export interface DecapCMSData {
   analytics?: AnalyticsSettings;
   teamMembers?: TeamMember[];
   legalPages?: LegalPage[];
+  clients?: ClientItem[];
+  clientsSection?: ClientsSectionContent;
   notFound?: NotFoundContent;
 }
 

@@ -1,0 +1,26 @@
+{
+  "id": "client-2",
+  "name": "Vesper Botanicals",
+  "slug": "vesper-botanicals",
+  "logo": "/uploads/clients/vesper-botanicals.svg",
+  "logoAlt": "Vesper Botanicals logo",
+  "websiteUrl": "https://vesperbotanicals.example.com",
+  "services": [
+    "Packaging Design",
+    "Brand Identity",
+    "E-commerce",
+    "Advertising Creatives"
+  ],
+  "shortDescription": "Engineered full retail structural packaging dielines, luxury barrier pouch finishes, and digital e-commerce visuals.",
+  "relatedWork": "packaging-design",
+  "relatedWorkTitle": "Vesper Botanicals Packaging System",
+  "reviewEnabled": true,
+  "reviewText": "The structural packaging and 3D assets delivered by Lizzdo helped us secure placements in premier retail boutiques nationwide.",
+  "reviewerName": "Marcus Thorne",
+  "reviewerPosition": "Head of Product & Retail Operations",
+  "reviewerPhoto": "",
+  "rating": 5,
+  "featured": true,
+  "published": true,
+  "order": 2
+}

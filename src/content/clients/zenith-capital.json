@@ -1,0 +1,26 @@
+{
+  "id": "client-7",
+  "name": "Zenith Capital",
+  "slug": "zenith-capital",
+  "logo": "/uploads/clients/zenith-capital.svg",
+  "logoAlt": "Zenith Capital logo",
+  "websiteUrl": "https://zenithcapital.example.com",
+  "services": [
+    "Brand Identity",
+    "Logo Design",
+    "Web Design",
+    "Website Development"
+  ],
+  "shortDescription": "Crafted an authoritative fintech visual language, investor pitch presentations, and institutional web portal.",
+  "relatedWork": "",
+  "relatedWorkTitle": "",
+  "reviewEnabled": false,
+  "reviewText": "",
+  "reviewerName": "",
+  "reviewerPosition": "",
+  "reviewerPhoto": "",
+  "rating": 5,
+  "featured": false,
+  "published": true,
+  "order": 7
+}

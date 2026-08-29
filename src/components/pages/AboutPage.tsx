@@ -15,7 +15,8 @@ interface AboutPageProps {
 }
 
 export const AboutPage: React.FC<AboutPageProps> = ({ cmsData, onOpenContact }) => {
-  const { siteSettings, services = [] } = cmsData;
+  const { siteSettings, services = [], clients = [] } = cmsData;
+  const publishedClients = clients.filter(c => c.published !== false);
 
   const handleWhatsApp = () => {
     const rawNumber = siteSettings.whatsappNumber || "+1234567890";
@@ -348,6 +349,49 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cmsData, onOpenContact }) 
           ))}
         </div>
       </section>
+
+      {/* Client Brands Showcase */}
+      {publishedClients.length > 0 && (
+        <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 border-t border-white/[0.06]">
+          <div className="text-center space-y-2 max-w-2xl mx-auto">
+            <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">
+              Trusted Partnerships
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold font-['Outfit'] text-white">
+              Brands &amp; Companies We've Worked With
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-400">
+              Delivering high-impact identity, packaging, digital engineering, and marketing creatives for world-class businesses.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 pt-4">
+            {publishedClients.map((client) => (
+              <div
+                key={client.id}
+                className="p-5 rounded-xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/40 transition-all flex flex-col items-center justify-center text-center space-y-3 group"
+              >
+                <div className="h-9 flex items-center justify-center">
+                  <img
+                    src={client.logo}
+                    alt={client.logoAlt || `${client.name} logo`}
+                    loading="lazy"
+                    className="max-h-8 max-w-full object-contain filter grayscale group-hover:grayscale-0 group-hover:brightness-110 transition-all duration-300"
+                  />
+                </div>
+                <div className="text-xs font-bold text-white group-hover:text-[#ffbe1a] transition-colors">
+                  {client.name}
+                </div>
+                {client.services && client.services.length > 0 && (
+                  <div className="text-[10px] text-slate-400 font-mono">
+                    {client.services.slice(0, 2).join(' • ')}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Final Call to Action */}
       <section className="py-16 sm:py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">

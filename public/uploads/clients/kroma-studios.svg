@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="none" class="client-logo">
+  <!-- Kroma Studios Prism & Wordmark -->
+  <g transform="translate(10, 10)">
+    <circle cx="20" cy="20" r="17" stroke="#ffffff" stroke-opacity="0.3" stroke-width="1.5"/>
+    <path d="M12 26 L20 10 L28 26 Z" fill="none" stroke="#ffbe1a" stroke-width="2" stroke-linejoin="round"/>
+    <line x1="16" y1="22" x2="24" y2="22" stroke="#ffbe1a" stroke-width="1.5"/>
+  </g>
+  <text x="60" y="32" font-family="'Outfit', sans-serif" font-size="16" font-weight="800" letter-spacing="2.5" fill="#ffffff">KROMA</text>
+  <text x="60" y="44" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="600" letter-spacing="3" fill="#ffbe1a">STUDIOS</text>
+</svg>
