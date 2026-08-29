@@ -1,0 +1,53 @@
+{
+  "id": "ai-visuals-content",
+  "title": "AI Visuals Content",
+  "slug": "ai-visuals-content",
+  "iconKey": "ai-visuals-content",
+  "previewImage": "/uploads/services/ai-visuals-content.svg",
+  "image": "/uploads/services/ai-visuals-content.svg",
+  "previewImageAlt": "AI visual content and futuristic neural concept illustration",
+  "shortDescription": "Cutting-edge AI-generated visuals for modern digital branding.",
+  "category": "AI Visual Content",
+  "order": 11,
+  "published": true,
+  "heroHeadline": "AI Visuals Content",
+  "heroHighlight": "The Next Creative Frontier.",
+  "heroDescription": "We combine state-of-the-art neural generative models with seasoned art direction to produce impossible brand imagery, hyper-realistic product concepts, and futuristic visual worlds.",
+  "ctaButtonText": "Explore AI Visuals →",
+  "capabilities": [
+    "Custom Neural Style Training & LoRA Model Tuning",
+    "Hyper-Realistic Product Concept Photography",
+    "Surreal Editorial & Cinematic World Building",
+    "High-Resolution Upscaling & Texture Restoration (8K)",
+    "Post-Processing Photoshop Compositing & Retouching",
+    "Rapid Visual Prototyping for Pitch Decks & Campaigns"
+  ],
+  "deliverables": [
+    "Ultra-High-Resolution Imagery (Up to 8K Print Quality)",
+    "Layered Photoshop PSD Files with Manual Composites",
+    "Custom Prompt Archetypes & Negative Embeddings",
+    "Commercial Usage Clearance & Copyright Documentation",
+    "Multi-Platform Crop Formats for Web, Print & Social"
+  ],
+  "processSteps": [
+    { "stepNumber": "01", "title": "Creative Concept", "description": "Defining the visual metaphor, moodboard, lighting, and palette." },
+    { "stepNumber": "02", "title": "Model Prompting", "description": "Engineering precise multi-stage neural prompts and seed variations." },
+    { "stepNumber": "03", "title": "Iterative Curation", "description": "Generating hundreds of candidates to isolate the most striking compositions." },
+    { "stepNumber": "04", "title": "8K Upscaling", "description": "Neural super-resolution upscaling with fine detail injection." },
+    { "stepNumber": "05", "title": "Artistic Retouching", "description": "Manual color grading, artifact removal, and composite polish in Photoshop." },
+    { "stepNumber": "06", "title": "Final Delivery", "description": "Delivering production-ready digital and print-scale master files." }
+  ],
+  "gallery": [
+    { "id": "aiv-g1", "title": "Futuristic AI Studio Concept", "caption": "Hyper-detailed raytraced lighting and surreal studio architecture", "visualType": "brand-identity", "layout": "large" },
+    { "id": "aiv-g2", "title": "Product Photography Simulation", "caption": "Impossible material physics and liquid glass shaders", "visualType": "packaging-hero", "layout": "half" },
+    { "id": "aiv-g3", "title": "Cinematic Visual World", "caption": "Atmospheric depth and cinematic lighting compositing", "visualType": "brand-guidelines", "layout": "half" }
+  ],
+  "faqs": [
+    { "question": "Can AI visuals be used commercially for our brand?", "answer": "Yes, we blend neural generation with human composite design and deliver commercial clearance documentation for your advertising and packaging needs." }
+  ],
+  "relatedProjects": ["packaging-design", "saas-website-design"],
+  "relatedServices": ["graphic-design", "packaging-design", "social-media-design"],
+  "seoTitle": "AI Visual Content & Next-Gen Imagery | Lizzdo Media",
+  "seoDescription": "Cutting-edge AI-generated visual content and generative art direction by Lizzdo Media. Hyper-realistic imagery and rapid creative prototyping.",
+  "ogImage": "/uploads/services/ai-visuals-content.svg"
+}

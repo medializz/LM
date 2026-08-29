@@ -1,0 +1,53 @@
+{
+  "id": "advertising-creatives",
+  "title": "Advertising Creatives",
+  "slug": "advertising-creatives",
+  "iconKey": "advertising-creatives",
+  "previewImage": "/uploads/services/advertising-creatives.svg",
+  "image": "/uploads/services/advertising-creatives.svg",
+  "previewImageAlt": "High-converting advertising creative banners and visual hooks mockup",
+  "shortDescription": "High-converting ad designs built to drive clicks and lower acquisition costs.",
+  "category": "Advertising Creatives",
+  "order": 10,
+  "published": true,
+  "heroHeadline": "Advertising Creatives",
+  "heroHighlight": "Built to Convert.",
+  "heroDescription": "We design high-converting visual advertising suites engineered specifically for Meta, Google Display, LinkedIn, and TikTok ad algorithms to drop your customer acquisition costs.",
+  "ctaButtonText": "Get Ad Creatives →",
+  "capabilities": [
+    "High-CTR Static Display Banners (All IAB Sizes)",
+    "Meta & TikTok 9:16 Vertical Video Motion Hooks",
+    "Product Feature Breakdown & Comparison Ads",
+    "Testimonial & Social Proof Visual Cards",
+    "UGC-Style High-Authenticity Ad Frameworks",
+    "Rapid Creative Iteration & Hook Variation Slices"
+  ],
+  "deliverables": [
+    "Multi-Format Ad Packages (1:1, 4:5, 9:16, 16:9, 1.91:1)",
+    "Animated MP4 Video Hooks (3–15 seconds)",
+    "High-Resolution PNG & JPG Static Creatives",
+    "Figma Source Files with Modular Hook Layers",
+    "A/B Creative Testing Matrix & Strategy Guide"
+  ],
+  "processSteps": [
+    { "stepNumber": "01", "title": "Creative Brief", "description": "Defining value proposition, customer friction points, and competitor ads." },
+    { "stepNumber": "02", "title": "Angle Ideation", "description": "Developing 5 distinct psychological hooks (logic, emotion, proof, fear-of-missing-out, speed)." },
+    { "stepNumber": "03", "title": "Design & Motion", "description": "Composing high-contrast graphics and kinetic text animations." },
+    { "stepNumber": "04", "title": "Multi-Format Export", "description": "Adapting every winning concept into all required ad specs." },
+    { "stepNumber": "05", "title": "Testing & QA", "description": "Verifying text ratio compliance and mobile readability." },
+    { "stepNumber": "06", "title": "Performance Iteration", "description": "Refining top-converting creative variations." }
+  ],
+  "gallery": [
+    { "id": "ac-g1", "title": "Acoustix Sound Ad Campaign Suite", "caption": "4.2x ROAS high-conversion audio product creatives", "visualType": "social-campaign", "layout": "large" },
+    { "id": "ac-g2", "title": "Multi-Format Display Banners", "caption": "Complete IAB responsive banner matrix", "visualType": "brand-identity", "layout": "half" },
+    { "id": "ac-g3", "title": "Vertical Motion Ad Hooks", "caption": "9:16 TikTok and Reels thumb-stopping intro frames", "visualType": "social-stories", "layout": "half" }
+  ],
+  "faqs": [
+    { "question": "What ad sizes do you include in creative packages?", "answer": "We provide all standard sizes: 1080x1080 (Square), 1080x1350 (Portrait), 1080x1920 (Vertical Story/Reel), 1200x628 (Horizontal Landscape), and standard Google Display banners." }
+  ],
+  "relatedProjects": ["social-media-campaign"],
+  "relatedServices": ["digital-marketing", "social-media-design", "graphic-design"],
+  "seoTitle": "Advertising Creatives & High-CTR Ad Design | Lizzdo Media",
+  "seoDescription": "High-converting advertising creatives for Meta, Google, and TikTok ads designed to increase CTR and lower acquisition costs.",
+  "ogImage": "/uploads/services/advertising-creatives.svg"
+}

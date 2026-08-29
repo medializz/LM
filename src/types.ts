@@ -199,8 +199,9 @@ export interface StatItem {
   id: string;
   value: string;
   label: string;
-  sublabel: string;
-  iconKey: string;
+  sublabel?: string;
+  description?: string;
+  iconKey?: string;
   order: number;
 }
 
@@ -211,6 +212,8 @@ export interface TestimonialItem {
   role: string;
   company: string;
   avatar?: string;
+  rating?: number;
+  order?: number;
 }
 
 export interface WhyChooseUsContent {

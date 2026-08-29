@@ -1,0 +1,55 @@
+{
+  "id": "website-development",
+  "title": "Website Development",
+  "slug": "website-development",
+  "iconKey": "website-development",
+  "previewImage": "/uploads/services/website-development.svg",
+  "image": "/uploads/services/website-development.svg",
+  "previewImageAlt": "Corporate web development and bespoke UI engineering preview mockup",
+  "shortDescription": "Custom websites built for growth, speed, and seamless user experience.",
+  "category": "Website Development",
+  "order": 12,
+  "published": true,
+  "heroHeadline": "Website Development",
+  "heroHighlight": "Engineered for Growth.",
+  "heroDescription": "We create bespoke corporate websites, marketing platforms, and web experiences that establish authority, captivate visitors, and convert leads with sub-second performance.",
+  "ctaButtonText": "Build My Website →",
+  "capabilities": [
+    "Custom Corporate & Brand Website Architecture",
+    "High-Conversion Marketing & Landing Page Systems",
+    "Headless Decap CMS Integration for Zero-Code Updates",
+    "Sub-100ms Page Loads & Flawless Mobile UX",
+    "Enterprise-Grade Cloudflare Edge Security & SSL",
+    "Complete Technical SEO & JSON-LD Structured Data"
+  ],
+  "deliverables": [
+    "Custom React & Vite Production Build",
+    "Decap CMS Client Admin Panel with GitHub OAuth",
+    "Full Responsive Layouts for Mobile, Tablet & Desktop",
+    "Automated Google XML Sitemap & Robots.txt",
+    "Analytics, Tag Manager & Pixel Tracking Integration",
+    "Comprehensive Admin CMS Video Walkthrough Guide"
+  ],
+  "processSteps": [
+    { "stepNumber": "01", "title": "Discovery", "description": "Defining site objectives, target user personas, and technical scope." },
+    { "stepNumber": "02", "title": "Wireframes", "description": "Structuring page layouts for optimal visual flow and readability." },
+    { "stepNumber": "03", "title": "UI Design", "description": "Applying refined typography, dark mode luxury aesthetics, and motion." },
+    { "stepNumber": "04", "title": "Development", "description": "Engineering fast, modern React components with Tailwind CSS." },
+    { "stepNumber": "05", "title": "Content Integration", "description": "Hooking up Decap CMS for frictionless ongoing updates." },
+    { "stepNumber": "06", "title": "Launch & Support", "description": "Conducting final quality assurance and deploying to production." }
+  ],
+  "gallery": [
+    { "id": "wsd-g1", "title": "Corporate Agency Web Experience", "caption": "High-performance responsive agency platform", "visualType": "saas-dashboard", "layout": "large" },
+    { "id": "wsd-g2", "title": "Mobile UI Excellence", "caption": "Thumb-friendly navigation and lightning-fast loading", "visualType": "saas-mobile", "layout": "half" },
+    { "id": "wsd-g3", "title": "Decap CMS Integration", "caption": "Intuitive markdown content editing interface", "visualType": "brand-guidelines", "layout": "half" }
+  ],
+  "faqs": [
+    { "question": "How long does a full corporate website build take?", "answer": "Most corporate website projects take between 3 and 6 weeks from initial architecture and Figma prototyping to final QA and edge deployment." },
+    { "question": "Is ongoing website hosting and maintenance included?", "answer": "We deploy on scalable edge infrastructure (Cloudflare, GitHub Pages, or Vercel) which offers zero server maintenance, automated SSL certificates, and 99.99% uptime." }
+  ],
+  "relatedProjects": ["saas-website-design", "web-development"],
+  "relatedServices": ["web-development", "brand-identity", "digital-marketing"],
+  "seoTitle": "Website Development & UI Engineering Services | Lizzdo Media",
+  "seoDescription": "Bespoke corporate websites and digital platforms by Lizzdo Media. Engineered for speed, high conversion, responsive UX, and effortless CMS updates.",
+  "ogImage": "/uploads/services/website-development.svg"
+}

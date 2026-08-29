@@ -1,0 +1,40 @@
+{
+  "id": "work-1",
+  "title": "Brand Identity Design",
+  "slug": "brand-identity-design",
+  "category": "Brand Identity",
+  "shortCategory": "Branding",
+  "shortDescription": "Complete obsidian visual identity, bespoke typographic system, and gold foil stationery for an elite luxury brand.",
+  "description": "Complete obsidian visual identity, bespoke typographic system, and gold foil stationery for an elite luxury brand.",
+  "visualType": "brand-identity",
+  "featured": true,
+  "order": 1,
+  "published": true,
+  "date": "2026-03-01",
+  "year": "2026",
+  "client": "Aura Luxe Holdings",
+  "services": ["Brand Strategy", "Logo System", "Stationery", "Brand Guidelines"],
+  "tools": ["Adobe Illustrator", "Figma", "Photoshop"],
+  "challenge": "The client needed a timeless, international luxury identity that communicated prestige without feeling archaic or cluttered.",
+  "strategy": "We engineered an obsidian-and-gold visual system rooted in clean geometry, generous negative space, and custom letterform tracking.",
+  "design": "Every vector mark, color formula, and stationery substrate was chosen to ensure a tactile, premium impression across both physical and digital mediums.",
+  "execution": "Delivered a complete 48-page brand manual, embossed foil business cards, letterheads, and a digital social asset kit.",
+  "result": "Positioned the brand for an ultra-successful launch, generating immediate high-tier client acquisition and establishing a recognizable mark.",
+  "processSteps": [
+    { "stepNumber": "01", "title": "Audit", "description": "Auditing luxury market competitors and positioning" },
+    { "stepNumber": "02", "title": "Concept", "description": "Hand-drawn monogram and symbol iterations" },
+    { "stepNumber": "03", "title": "Vector Craft", "description": "Precision golden-ratio bezier plotting" },
+    { "stepNumber": "04", "title": "Substrates", "description": "Sampling tactile 600gsm cotton papers and foil stamps" },
+    { "stepNumber": "05", "title": "Handoff", "description": "Comprehensive master guidelines and vector package" }
+  ],
+  "gallery": [
+    { "id": "w1-g1", "title": "Complete Obsidian Stationery Suite", "caption": "600gsm matte black card with hot-stamped gold foil", "visualType": "brand-identity", "layout": "large" },
+    { "id": "w1-g2", "title": "Palette & Typographic Hierarchy", "caption": "Primary obsidian, secondary warm gold, and refined serifs", "visualType": "brand-guidelines", "layout": "half" },
+    { "id": "w1-g3", "title": "Digital Brand Presence", "caption": "Cross-device responsive social guidelines and assets", "visualType": "stationery", "layout": "half" }
+  ],
+  "relatedServices": ["brand-identity", "logo-design", "graphic-design"],
+  "relatedProjects": ["packaging-design", "saas-website-design"],
+  "seoTitle": "Brand Identity Design Case Study | Lizzdo Media",
+  "seoDescription": "Case study for Aura Luxe luxury brand identity design, custom typography, stationery, and guidelines by Lizzdo Media.",
+  "ogImage": "/uploads/services/brand-identity.svg"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "work-4",
+  "title": "Social Media Campaign",
+  "slug": "social-media-campaign",
+  "category": "Social Media Design",
+  "shortCategory": "Social Media Design",
+  "shortDescription": "High-converting multi-platform social advertising campaign showcasing audio tech products with vibrant art direction.",
+  "description": "High-converting multi-platform social advertising campaign showcasing audio tech products with vibrant art direction.",
+  "visualType": "social-campaign",
+  "featured": true,
+  "order": 4,
+  "published": true,
+  "date": "2026-03-22",
+  "year": "2026",
+  "client": "Acoustix Sound Labs",
+  "services": ["Social Strategy", "Creative Direction", "Ad Creatives", "Carousel Design"],
+  "tools": ["Photoshop", "After Effects", "Figma"],
+  "challenge": "Launching a new wireless headphone series in an oversaturated market without relying on generic tech ad templates.",
+  "strategy": "Created bold yellow-and-black typographic posters and carousel teardowns focusing on sound purity and acoustic science.",
+  "design": "Combined dynamic product angles with rhythmic bold typography, vibrant gradient pills, and high-CTR CTA cards.",
+  "execution": "Produced over 40 formatted assets spanning Instagram feed, Stories, TikTok 9:16 ads, and LinkedIn executive posts.",
+  "result": "The campaign achieved a 4.2x ROAS and generated over 1.8M organic impressions across social channels in month one.",
+  "processSteps": [
+    { "stepNumber": "01", "title": "Visual Angles", "description": "Brainstorming 5 distinct visual creative angles" },
+    { "stepNumber": "02", "title": "Batch Design", "description": "Designing 40+ multi-format creatives" },
+    { "stepNumber": "03", "title": "Motion Hooks", "description": "Adding subtle 3-second animated hooks" },
+    { "stepNumber": "04", "title": "A/B Testing", "description": "Testing creative variants against live target segments" },
+    { "stepNumber": "05", "title": "Scaling", "description": "Doubling down on highest-performing creative layouts" }
+  ],
+  "gallery": [
+    { "id": "w4-g1", "title": "Launch Hero Social Suite", "caption": "Multi-platform social campaign visual kit", "visualType": "social-campaign", "layout": "large" },
+    { "id": "w4-g2", "title": "Educational Carousel Sequence", "caption": "Step-by-step sound engineering teardown", "visualType": "social-grid", "layout": "half" },
+    { "id": "w4-g3", "title": "Story & Reel Cover Set", "caption": "9:16 vertical motion hooks for TikTok & Instagram", "visualType": "social-stories", "layout": "half" }
+  ],
+  "relatedServices": ["social-media-design", "advertising-creatives", "digital-marketing"],
+  "relatedProjects": ["saas-website-design", "packaging-design"],
+  "seoTitle": "Social Media Campaign Case Study | Lizzdo Media",
+  "seoDescription": "Case study for Acoustix high-conversion social media campaign and advertising creatives by Lizzdo Media.",
+  "ogImage": "/uploads/services/social-media-design.svg"
+}

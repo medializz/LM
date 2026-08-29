@@ -1,0 +1,55 @@
+{
+  "id": "social-media-design",
+  "title": "Social Media Design",
+  "slug": "social-media-design",
+  "iconKey": "social-media-design",
+  "previewImage": "/uploads/services/social-media-design.svg",
+  "image": "/uploads/services/social-media-design.svg",
+  "previewImageAlt": "Social media carousel and multi-slide design layout mockup",
+  "shortDescription": "Scroll-stopping graphics designed to engage your audience.",
+  "category": "Social Media Design",
+  "order": 6,
+  "published": true,
+  "heroHeadline": "Social Media Design",
+  "heroHighlight": "Stop the Scroll.",
+  "heroDescription": "Transform your social profiles into visual powerhouses with custom carousel suites, high-CTR story templates, and cohesive grid aesthetics that drive engagement.",
+  "ctaButtonText": "Elevate My Socials →",
+  "capabilities": [
+    "Multi-Slide Educational & Promotional Carousels",
+    "Instagram, LinkedIn & X Custom Post Kits",
+    "Story & Reel Cover Art & Vertical Layouts (9:16)",
+    "Branded Profile Avatars, Banners & Headers",
+    "Animated GIF & Short MP4 Visual Hooks",
+    "Editable Figma & Adobe Social Design Systems"
+  ],
+  "deliverables": [
+    "High-Resolution Post Graphics (1:1, 4:5, 9:16)",
+    "Multi-Slide Carousel Templates & Vectors",
+    "Profile Banners for LinkedIn, X & YouTube",
+    "Story Highlight Icons & Background Assets",
+    "Branded Typography & Color Spec Guidelines",
+    "Editable Master Figma Design Kits"
+  ],
+  "processSteps": [
+    { "stepNumber": "01", "title": "Social Audit", "description": "Auditing existing feeds and benchmarking niche top performers." },
+    { "stepNumber": "02", "title": "Visual System", "description": "Defining fonts, badge styles, CTA buttons, and color schemes." },
+    { "stepNumber": "03", "title": "Template Craft", "description": "Building modular layouts for quotes, carousels, and promos." },
+    { "stepNumber": "04", "title": "Asset Production", "description": "Batch-designing monthly social visual packages." },
+    { "stepNumber": "05", "title": "Review & Polish", "description": "Refining typography hierarchies and visual hooks." },
+    { "stepNumber": "06", "title": "Handoff", "description": "Exporting ready-to-post assets and organized Figma files." }
+  ],
+  "gallery": [
+    { "id": "smd-g1", "title": "Multi-Slide Educational Carousel", "caption": "High-engagement typography and slide progression", "visualType": "social-grid", "layout": "large" },
+    { "id": "smd-g2", "title": "Social Campaign Visual Suite", "caption": "Launch campaign banners and product highlights", "visualType": "social-campaign", "layout": "half" },
+    { "id": "smd-g3", "title": "Story & Reel Cover Collection", "caption": "9:16 vertical motion hooks and visual anchors", "visualType": "social-stories", "layout": "half" }
+  ],
+  "faqs": [
+    { "question": "What formats do you deliver for social media posts?", "answer": "We deliver square (1:1), portrait feed (4:5), and full-screen vertical stories/reels (9:16) in high-resolution PNG, JPG, MP4, and master Figma files." },
+    { "question": "Can you design templates our internal team can edit?", "answer": "Yes, we create fully organized, locked-layer Figma templates with text styles and auto-layout so your team can easily update copy." }
+  ],
+  "relatedProjects": ["social-media-campaign"],
+  "relatedServices": ["content-posting", "social-media-management", "advertising-creatives"],
+  "seoTitle": "Social Media Design Services | Lizzdo Media",
+  "seoDescription": "Stand out on social media with custom carousels, post kits, and scroll-stopping visuals by Lizzdo Media.",
+  "ogImage": "/uploads/services/social-media-design.svg"
+}

@@ -1,0 +1,58 @@
+{
+  "id": "brand-identity",
+  "title": "Brand Identity",
+  "slug": "brand-identity",
+  "iconKey": "brand-identity",
+  "previewImage": "/uploads/services/brand-identity.svg",
+  "image": "/uploads/services/brand-identity.svg",
+  "previewImageAlt": "Brand identity stationery and gold foil vector design system",
+  "shortDescription": "Strategic brand identity design that defines and distinguishes your business.",
+  "category": "Brand Identity",
+  "order": 1,
+  "published": true,
+  "heroHeadline": "Brand Identity",
+  "heroHighlight": "That Defines You.",
+  "heroDescription": "From strategic visual direction and custom typography to luxury stationery and digital design systems, we build cohesive brand identities engineered to captivate and endure.",
+  "ctaButtonText": "Build My Brand →",
+  "capabilities": [
+    "Logo Systems, Monograms & Secondary Marks",
+    "Strategic Color Direction & Pantone Calibration",
+    "Custom Typography & Hierarchy Rules",
+    "Comprehensive Brand Guidelines Manual",
+    "Luxury Stationery, Foil Stamping & Business Cards",
+    "Packaging Visual Direction & Finishes",
+    "Digital Brand Assets & Presentation Kits"
+  ],
+  "deliverables": [
+    "Primary & Secondary Logo Marks",
+    "Comprehensive Brand Manual & Rules",
+    "Custom Typography & Font Pairing Matrix",
+    "Color Palette System (Pantone, CMYK, RGB, Hex)",
+    "Luxury Stationery & Business Cards",
+    "Digital Social & Presentation Kits"
+  ],
+  "processSteps": [
+    { "stepNumber": "01", "title": "Brand Discovery", "description": "In-depth audit of your core values, mission, target personas, and industry competitive landscape." },
+    { "stepNumber": "02", "title": "Visual Direction", "description": "Creating moodboards, tonal concepts, and creative vectors aligned with your strategic aesthetic goals." },
+    { "stepNumber": "03", "title": "Logo System", "description": "Crafting mathematical vector logo marks, monograms, badges, and responsive variations." },
+    { "stepNumber": "04", "title": "Brand Guidelines", "description": "Documenting clear rules for spacing, minimum sizing, typography hierarchies, and do's/don'ts." },
+    { "stepNumber": "05", "title": "Brand Applications", "description": "Applying the visual identity across stationery, packaging, merchandise, and digital mockups." },
+    { "stepNumber": "06", "title": "Final Delivery", "description": "Handing over fully organized vector source files, export archives, and commercial usage licenses." }
+  ],
+  "gallery": [
+    { "id": "bi-g1", "title": "Obsidian Luxury Stationery Suite", "caption": "300 DPI vector stationery with gold foiling", "visualType": "brand-identity", "layout": "large" },
+    { "id": "bi-g2", "title": "Color & Typography Guidelines", "caption": "Precision hierarchy and contrast ratios", "visualType": "brand-guidelines", "layout": "half" },
+    { "id": "bi-g3", "title": "Embossed Substrate Mockup", "caption": "Premium tactile physical production spec", "visualType": "stationery", "layout": "half" }
+  ],
+  "faqs": [
+    { "question": "What is included in a complete brand identity package?", "answer": "Our brand identity package includes primary and secondary logo variations, responsive icon marks, color palette specifications (Pantone, CMYK, RGB, Hex), typography pairing rules, stationery design (business cards, letterheads, envelopes), social media brand templates, and a comprehensive PDF Brand Guidelines manual." },
+    { "question": "How long does a brand identity project usually take?", "answer": "A standard brand identity project typically takes 2 to 4 weeks depending on the complexity of deliverables, feedback cycles, and the breadth of collateral required." },
+    { "question": "Do you provide editable vector source files?", "answer": "Yes, upon project completion you receive 100% full commercial ownership and master vector source files (AI, EPS, SVG, PDF, and high-resolution transparent PNGs)." },
+    { "question": "Can you rebrand an existing business without losing recognition?", "answer": "Absolutely. We specialize in both brand evolutions (refining and modernizing your existing brand equity) and full strategic transformations." }
+  ],
+  "relatedProjects": ["brand-identity-design", "packaging-design"],
+  "relatedServices": ["logo-design", "graphic-design", "website-development"],
+  "seoTitle": "Brand Identity Design Services | Lizzdo Media",
+  "seoDescription": "Strategic brand identity design services by Lizzdo Media. Full vector logo systems, comprehensive brand guidelines, luxury stationery, and collateral.",
+  "ogImage": "/uploads/services/brand-identity.svg"
+}

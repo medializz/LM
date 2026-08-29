@@ -1,0 +1,56 @@
+{
+  "id": "graphic-design",
+  "title": "Graphic Design",
+  "slug": "graphic-design",
+  "iconKey": "graphic-design",
+  "previewImage": "/uploads/services/graphic-design.svg",
+  "image": "/uploads/services/graphic-design.svg",
+  "previewImageAlt": "Editorial print layout and vector graphic design composition",
+  "shortDescription": "Eye-catching visuals for print and digital communication.",
+  "category": "Graphic Design",
+  "order": 3,
+  "published": true,
+  "heroHeadline": "Graphic Design",
+  "heroHighlight": "Visuals That Speak.",
+  "heroDescription": "From editorial lookbooks and packaging dielines to marketing brochures and corporate collateral, our design team produces stunning visual communication.",
+  "ctaButtonText": "Request Graphic Design →",
+  "capabilities": [
+    "Editorial Lookbooks & Catalog Layouts",
+    "Packaging & Custom Dieline Engineering",
+    "Corporate Brochures & Annual Reports",
+    "Exhibition Booth Displays & Large Signage",
+    "Print-Ready CMYK Pre-Flight Files (300 DPI)",
+    "High-Impact Marketing Pitch Decks & Decks"
+  ],
+  "deliverables": [
+    "High-Impact Posters, Flyers, & Banners",
+    "Corporate Brochures & Annual Reports",
+    "Packaging & Label Dieline Layouts",
+    "Exhibition Displays & Signage Graphics",
+    "Marketing Pitch Decks & Presentations",
+    "Print-Ready CMYK Files with Bleed Marks"
+  ],
+  "processSteps": [
+    { "stepNumber": "01", "title": "Briefing", "description": "Understanding the communication objective, audience, and media format." },
+    { "stepNumber": "02", "title": "Layout Grid", "description": "Establishing typographic hierarchy and geometric balance." },
+    { "stepNumber": "03", "title": "Visual Craft", "description": "Composing custom vector artwork, photography, and colors." },
+    { "stepNumber": "04", "title": "Proofing", "description": "Rigorous review of copy, color calibration, and bleed margins." },
+    { "stepNumber": "05", "title": "Pre-Flight", "description": "Verifying printer color profiles and digital DPI settings." },
+    { "stepNumber": "06", "title": "Handoff", "description": "Delivering print-ready files and digital presentation packs." }
+  ],
+  "gallery": [
+    { "id": "gd-g1", "title": "Exhibition Poster Series", "caption": "High-contrast typographic and geometric posters", "visualType": "brand-identity", "layout": "large" },
+    { "id": "gd-g2", "title": "Marketing Collateral Suite", "caption": "Brochures and corporate lookbooks", "visualType": "stationery", "layout": "half" },
+    { "id": "gd-g3", "title": "Custom Packaging Dieline", "caption": "Vector dielines and foil finishes", "visualType": "packaging", "layout": "half" }
+  ],
+  "faqs": [
+    { "question": "What graphic design services do you provide?", "answer": "We design marketing collateral, brochures, flyers, pitch decks, product packaging, dielines, exhibition displays, banners, and digital marketing graphics." },
+    { "question": "Do you prepare print-ready files with bleeds and crop marks?", "answer": "Yes, all print collateral is pre-flighted with precise 300 DPI resolution, CMYK color profiles, bleed margins, and crop marks ready for your print vendor." },
+    { "question": "Can you design materials aligned with our existing brand guidelines?", "answer": "Yes, we strictly adhere to your existing brand book, typography, and palette guidelines to ensure seamless visual harmony." }
+  ],
+  "relatedProjects": ["packaging-design", "social-media-campaign"],
+  "relatedServices": ["brand-identity", "social-media-design", "advertising-creatives"],
+  "seoTitle": "Graphic Design Services | Lizzdo Media",
+  "seoDescription": "High-impact graphic design services by Lizzdo Media. Brochures, posters, packaging dielines, corporate collateral, and visual communication craft.",
+  "ogImage": "/uploads/services/graphic-design.svg"
+}

@@ -1,0 +1,58 @@
+{
+  "id": "packaging-design",
+  "title": "Packaging Design",
+  "slug": "packaging-design",
+  "iconKey": "packaging-design",
+  "previewImage": "/uploads/services/packaging-design.svg",
+  "image": "/uploads/services/packaging-design.svg",
+  "previewImageAlt": "Structural luxury rigid box packaging and gold foil dieline mockup",
+  "shortDescription": "Packaging that turns products into memorable, tactile brand experiences.",
+  "category": "Packaging Design",
+  "order": 4,
+  "published": true,
+  "heroHeadline": "Packaging Design",
+  "heroHighlight": "Engineered for the Shelf.",
+  "heroDescription": "Transform your physical products with custom structural dielines, 3D photorealistic renderings, luxury embossed foils, and sustainable unboxing architectures that command premium retail placement.",
+  "ctaButtonText": "Start Packaging Project →",
+  "capabilities": [
+    "Structural Packaging & Custom Dieline Engineering",
+    "3D Photorealistic Product & Packaging Renders",
+    "Luxury Foil Stamping, Embossing & Spot UV Finishes",
+    "Stand-Up Barrier Pouches & Flexible Food Packaging",
+    "Rigid Magnetic Unboxing & E-Commerce Shipping Mailers",
+    "Sustainable FSC-Certified Substrate Selection",
+    "Pre-Flight Print Production & Color Calibration"
+  ],
+  "deliverables": [
+    "Millimeter-Accurate Vector Dielines (AI, PDF)",
+    "Raytraced 3D Photorealistic Renders & Mockups",
+    "Spot UV, Foil Stamping & Emboss Mask Layers",
+    "Print-Ready CMYK Files with Bleed Clearances",
+    "Substrate & Paper Stock Specification Sheets",
+    "Barcode Clearance & Regulatory Compliance Layouts"
+  ],
+  "processSteps": [
+    { "stepNumber": "01", "title": "Discovery & Substrates", "description": "Analyzing product dimensions, weight distribution, shelf space requirements, and sustainable substrate options." },
+    { "stepNumber": "02", "title": "Dieline Engineering", "description": "Drafting millimeter-precise structural dieline templates with calibrated fold lines and glue flaps." },
+    { "stepNumber": "03", "title": "Visual Artwork", "description": "Composing distinctive surface graphics, custom typography, luxury color palettes, and finishing masks." },
+    { "stepNumber": "04", "title": "3D Raytracing", "description": "Generating realistic 3D lighting, material shaders, and unboxing angles for stakeholder approval." },
+    { "stepNumber": "05", "title": "Press Proofing", "description": "Pre-flighting files with Pantone metallic specs, varnish masks, and printer alignment marks." },
+    { "stepNumber": "06", "title": "Production Delivery", "description": "Delivering print-ready production files directly to your manufacturing and print partners." }
+  ],
+  "gallery": [
+    { "id": "pd-g1", "title": "Luxury Rigid Box & Elixir Dropper Suite", "caption": "3D Structural packaging with magnetic lid and 24K gold foil stamping", "visualType": "packaging-hero", "layout": "large" },
+    { "id": "pd-g2", "title": "2D Dieline Net Template & Folded Box", "caption": "Unfolded dieline blueprint with fold lines, glue tabs, and folded 3D carton", "visualType": "packaging-dieline", "layout": "large" },
+    { "id": "pd-g3", "title": "Stand-Up Zipper Barrier Pouch", "caption": "Botanical surface artwork and realistic 3D standing pouch mockup", "visualType": "packaging-pouch", "layout": "half" },
+    { "id": "pd-g4", "title": "Corrugated Delivery & E-Commerce Suite", "caption": "Cardboard delivery box with inner lid typography and security tape", "visualType": "packaging-delivery", "layout": "half" }
+  ],
+  "faqs": [
+    { "question": "Do you provide actual dieline blueprints for manufacturing?", "answer": "Yes, we engineer millimeter-accurate vector dielines including fold lines, bleed allowances, glue tabs, and finish masks ready for direct manufacturer production." },
+    { "question": "Can you design for sustainable and eco-friendly substrates?", "answer": "Absolutely. We specialize in FSC-certified duplex boards, recyclable corrugated flutes, compostable barrier films, and soy-based ink systems." },
+    { "question": "Do you create 3D renders before print production?", "answer": "Yes, we produce photorealistic 3D renders with realistic studio reflections and foil shaders so you can inspect every angle prior to committing to print runs." }
+  ],
+  "relatedProjects": ["packaging-design", "brand-identity-design"],
+  "relatedServices": ["brand-identity", "graphic-design", "ai-visual-content"],
+  "seoTitle": "Packaging Design & Structural Dielines | Lizzdo Media",
+  "seoDescription": "Luxury packaging design, structural dielines, 3D product renders, and sustainable unboxing solutions by Lizzdo Media.",
+  "ogImage": "/uploads/services/packaging-design.svg"
+}

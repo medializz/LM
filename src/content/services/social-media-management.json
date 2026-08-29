@@ -1,0 +1,53 @@
+{
+  "id": "social-media-management",
+  "title": "Social Media Management",
+  "slug": "social-media-management",
+  "iconKey": "social-media-management",
+  "previewImage": "/uploads/services/social-media-management.svg",
+  "image": "/uploads/services/social-media-management.svg",
+  "previewImageAlt": "Social media community management and engagement analytics illustration",
+  "shortDescription": "End-to-end management that turns followers into passionate brand advocates.",
+  "category": "Social Media Management",
+  "order": 9,
+  "published": true,
+  "heroHeadline": "Social Media Management",
+  "heroHighlight": "Build an Engaged Community.",
+  "heroDescription": "We take full ownership of your social media ecosystem—from strategic creative direction and content scheduling to active community engagement and growth analytics.",
+  "ctaButtonText": "Manage My Channels →",
+  "capabilities": [
+    "Full-Service Channel Management (IG, LinkedIn, X, FB, TikTok)",
+    "Community Moderation & Direct Message Triage",
+    "Proactive Audience Engagement & Comment Nurturing",
+    "Influencer & Creator Collaboration Coordination",
+    "Social Listening & Brand Sentiment Monitoring",
+    "Monthly Executive Growth & Performance Reports"
+  ],
+  "deliverables": [
+    "Dedicated Social Media Account Manager",
+    "Daily Comment & Direct Message Response Coverage",
+    "Weekly Trend Analysis & Content Pivots",
+    "Monthly Comprehensive Engagement Reports",
+    "Monthly Strategy & Planning Review Sessions"
+  ],
+  "processSteps": [
+    { "stepNumber": "01", "title": "Channel Audit", "description": "Analyzing past performance, follower demographics, and brand tone." },
+    { "stepNumber": "02", "title": "Playbook", "description": "Defining engagement guidelines, FAQ response protocols, and tone." },
+    { "stepNumber": "03", "title": "Publishing", "description": "Executing seamless daily publishing according to approved schedules." },
+    { "stepNumber": "04", "title": "Community Care", "description": "Replying to comments, engaging with industry leaders, and triaging DMs." },
+    { "stepNumber": "05", "title": "Analytics", "description": "Extracting key engagement metrics and identifying growth trends." },
+    { "stepNumber": "06", "title": "Optimization", "description": "Iterating strategies to continually grow qualified follower reach." }
+  ],
+  "gallery": [
+    { "id": "smm-g1", "title": "Community Engagement Dashboard", "caption": "Response time tracking and community sentiment analysis", "visualType": "saas-dashboard", "layout": "large" },
+    { "id": "smm-g2", "title": "Audience Growth Trajectory", "caption": "Organic follower acquisition and reach metrics", "visualType": "social-grid", "layout": "half" },
+    { "id": "smm-g3", "title": "Tone of Voice Playbook", "caption": "Documented community response standards", "visualType": "brand-guidelines", "layout": "half" }
+  ],
+  "faqs": [
+    { "question": "Do you respond to customer inquiries in our DMs and comments?", "answer": "Yes, we work with you to establish a custom FAQ and response matrix so we can handle routine inquiries and escalate VIP requests to your team." }
+  ],
+  "relatedProjects": ["social-media-campaign"],
+  "relatedServices": ["social-media-design", "content-posting", "digital-marketing"],
+  "seoTitle": "Social Media Management Services | Lizzdo Media",
+  "seoDescription": "Full-service social media management by Lizzdo Media. Daily community engagement, content scheduling, and audience growth.",
+  "ogImage": "/uploads/services/social-media-management.svg"
+}

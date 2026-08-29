@@ -1,0 +1,40 @@
+{
+  "id": "work-5",
+  "title": "Web Development",
+  "slug": "web-development",
+  "category": "Website Development",
+  "shortCategory": "Web Development",
+  "shortDescription": "High-speed modern web applications and responsive multi-device digital platforms built with React, Vite, and sub-20ms edge performance.",
+  "description": "High-speed modern web applications and responsive multi-device digital platforms built with React, Vite, and sub-20ms edge performance.",
+  "visualType": "web-development",
+  "featured": true,
+  "order": 5,
+  "published": true,
+  "date": "2026-03-28",
+  "year": "2026",
+  "client": "Nexus Core Technologies",
+  "services": ["Full-Stack Frontend", "Responsive UI/UX", "Core Web Vitals", "Decap CMS Integration"],
+  "tools": ["React", "TypeScript", "Tailwind CSS", "Vite"],
+  "challenge": "Building an ultra-responsive, accessible corporate ecosystem that loads in under 0.5s globally and provides effortless CMS content workflows.",
+  "strategy": "Engineered a componentized design system with instant SPA client-side routing, automated image compression, and zero cumulative layout shift.",
+  "design": "Crafted sleek dark mode aesthetics paired with clean typographic rhythm and smooth GPU-accelerated motion micro-interactions.",
+  "execution": "Integrated Decap CMS for seamless marketing page edits, implemented global CDN edge caching, and automated SEO schema generation.",
+  "result": "Achieved a flawless 100/100 Google Lighthouse score across Performance, Accessibility, and SEO with a 54% boost in session duration.",
+  "processSteps": [
+    { "stepNumber": "01", "title": "Architecture", "description": "Route maps, component architecture, and API design" },
+    { "stepNumber": "02", "title": "Prototyping", "description": "Figma interactive responsive device mockups" },
+    { "stepNumber": "03", "title": "Engineering", "description": "Modular TypeScript and Tailwind CSS development" },
+    { "stepNumber": "04", "title": "Optimization", "description": "Lighthouse 100 Core Web Vitals performance tuning" },
+    { "stepNumber": "05", "title": "Handoff", "description": "Decap CMS client onboarding and global CDN deployment" }
+  ],
+  "gallery": [
+    { "id": "w5-g1", "title": "Responsive Web Engineering Ecosystem", "caption": "MacBook Pro & smartphone multi-device responsive cascade", "visualType": "web-development", "layout": "large" },
+    { "id": "w5-g2", "title": "Core Web Vitals 100/100 Audit", "caption": "Flawless performance, accessibility, and SEO metrics", "visualType": "web-development", "layout": "half" },
+    { "id": "w5-g3", "title": "TypeScript & Tailwind Architecture", "caption": "Modular component tokens and sub-20ms edge delivery", "visualType": "web-development", "layout": "half" }
+  ],
+  "relatedServices": ["web-development", "website-development", "brand-identity"],
+  "relatedProjects": ["saas-website-design", "brand-identity-design"],
+  "seoTitle": "Web Development Case Study | Lizzdo Media",
+  "seoDescription": "Case study for Nexus Core Technologies high-performance web development, 100 Core Web Vitals, and responsive UI by Lizzdo Media.",
+  "ogImage": "/uploads/services/web-development.svg"
+}

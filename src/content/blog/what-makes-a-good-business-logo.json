@@ -1,0 +1,37 @@
+{
+  "id": "blog-3",
+  "title": "What Makes a Truly Memorable Business Logo?",
+  "slug": "what-makes-a-good-business-logo",
+  "summary": "Deconstructing the mathematical principles, scalability rules, and visual metaphors behind world-class logo designs.",
+  "category": "Branding",
+  "author": {
+    "name": "Lizzdo Design Studio",
+    "role": "Senior Visual Designer",
+    "bio": "Specializing in vector identity marks, brand geometry, and iconic brand signatures.",
+    "avatar": "/uploads/lizzdo-media-mark.svg"
+  },
+  "publishedDate": "2026-05-18",
+  "readTime": "5 min read",
+  "visualType": "brand-identity",
+  "published": true,
+  "tags": ["Logo Design", "Branding", "Vector Art", "Simplicity"],
+  "keyTakeaways": [
+    "Simplicity is the ultimate sophistication in logo craft.",
+    "A great logo must remain instantly legible at 16x16 pixel favicon scale.",
+    "Monochromatic black and white testing reveals true structural strength.",
+    "Avoid short-lived visual fads in favor of geometric timelessness."
+  ],
+  "content": "## 1. The Myth of the Complicated Logo\n\nWhen inexperienced founders commission a logo, there is a common temptation to cram every aspect of the company's story into a single visual emblem. The result is often an over-cluttered illustration that turns into a muddy smudge when scaled down on a mobile screen.\n\nThe world's most enduring marks—from iconic technology companies to heritage fashion houses—are astonishingly simple. Their strength lies not in decorative excess, but in distinctive geometry, memorability, and effortless adaptability.\n\n---\n\n## 2. The Four Tests of a World-Class Logo\n\n### Test 1: The 16-Pixel Favicon Test\nIf you scale the logo down to a 16x16 pixel browser favicon or a tiny smartwatch screen, can a viewer still identify the silhouette? If fine lines vanish or merge, the design must be simplified.\n\n### Test 2: The Single-Color Silhouette Test\nStrip away all gradients, shadows, and colors. Can the mark be rendered in 100% solid black on a white background, or reverse white on black? If a logo relies solely on colors or gradients to hold its shape, its underlying geometry is weak.\n\n### Test 3: The Embroidery & Substrate Test\nCan this mark be embroidered on a polo shirt, laser-etched onto metal, stamped in hot gold foil, or 3D embossed on leather? High-end brands demand cross-medium versatility.\n\n### Test 4: The 5-Second Memory Recall Test\nIf someone glances at your logo for five seconds, can they sketch its general form from memory on a napkin? High recall value is the hallmark of great brand design.\n\n---\n\n## 3. Ready to Build Your Brand Signature?\n\nExplore our dedicated [Logo Design Services](/services/logo-design) and [Brand Identity Design](/services/brand-identity) to discover how Lizzdo Media crafts mathematical, enduring brand marks.",
+  "faqs": [
+    {
+      "question": "Should my logo include my business name (wordmark) or a standalone symbol?",
+      "answer": "Most growing businesses benefit from a combination mark: an iconic symbol paired with a custom typographic wordmark that can be separated as brand recognition expands."
+    }
+  ],
+  "relatedServices": ["logo-design", "brand-identity"],
+  "relatedProjects": ["brand-identity-design"],
+  "relatedArticles": ["how-to-build-a-powerful-brand-identity"],
+  "seoTitle": "What Makes a Good Business Logo? | Lizzdo Media Blog",
+  "seoDescription": "Explore the core principles of memorable logo design. Learn about scalability, monochromatic testing, and timeless vector craft.",
+  "ogImage": "/uploads/services/logo-design.svg"
+}

@@ -1,0 +1,53 @@
+{
+  "id": "content-posting",
+  "title": "Content Posting",
+  "slug": "content-posting",
+  "iconKey": "content-posting",
+  "previewImage": "/uploads/services/content-posting.svg",
+  "image": "/uploads/services/content-posting.svg",
+  "previewImageAlt": "Content calendar and scheduling workflow illustration",
+  "shortDescription": "Consistent, high-quality posting that keeps your brand active and relevant.",
+  "category": "Content Posting",
+  "order": 7,
+  "published": true,
+  "heroHeadline": "Content Posting",
+  "heroHighlight": "Consistency That Builds Authority.",
+  "heroDescription": "Never miss a beat with our strategic content scheduling, compelling copywriting, hashtag research, and multi-channel publication pipelines.",
+  "ctaButtonText": "Automate My Content →",
+  "capabilities": [
+    "Monthly Editorial Content Calendar Planning",
+    "Engaging Caption Copywriting & Storytelling",
+    "Targeted Hashtag & Topic Keyword Research",
+    "Automated Multi-Channel Scheduling & Publishing",
+    "Optimal Posting Time Optimization",
+    "Cross-Platform Distribution (IG, LinkedIn, X, FB)"
+  ],
+  "deliverables": [
+    "Interactive Monthly Content Calendar",
+    "Ready-to-Publish Captions & Visual Assets",
+    "Niche-Specific Hashtag Bundles",
+    "Scheduled Posts Across Designated Platforms",
+    "Monthly Publishing Summary Reports"
+  ],
+  "processSteps": [
+    { "stepNumber": "01", "title": "Topic Strategy", "description": "Brainstorming monthly content themes and key milestones." },
+    { "stepNumber": "02", "title": "Calendar Draft", "description": "Drafting post schedules, dates, and core message hooks." },
+    { "stepNumber": "03", "title": "Copy & Visuals", "description": "Writing punchy captions and pairing with custom graphics." },
+    { "stepNumber": "04", "title": "Client Review", "description": "One-click approval workflow for complete client peace of mind." },
+    { "stepNumber": "05", "title": "Scheduling", "description": "Loading approved content into top-tier publishing queues." },
+    { "stepNumber": "06", "title": "Monitoring", "description": "Verifying successful publishing and tracking early engagement." }
+  ],
+  "gallery": [
+    { "id": "cp-g1", "title": "Monthly Editorial Calendar", "caption": "Clear weekly scheduling and thematic distribution", "visualType": "saas-dashboard", "layout": "large" },
+    { "id": "cp-g2", "title": "Caption & Hashtag Strategy", "caption": "Conversion-focused copywriting and discovery tags", "visualType": "social-grid", "layout": "half" },
+    { "id": "cp-g3", "title": "Multi-Platform Distribution", "caption": "Simultaneous deployment across Instagram and LinkedIn", "visualType": "social-campaign", "layout": "half" }
+  ],
+  "faqs": [
+    { "question": "How far in advance is content planned and scheduled?", "answer": "We plan content in monthly batches, providing your team with full review and approval access at least 7 days before the start of each month." }
+  ],
+  "relatedProjects": ["social-media-campaign"],
+  "relatedServices": ["social-media-design", "social-media-management", "digital-marketing"],
+  "seoTitle": "Content Posting & Scheduling Services | Lizzdo Media",
+  "seoDescription": "Keep your brand consistently active with professional content posting, copywriting, and scheduling services by Lizzdo Media.",
+  "ogImage": "/uploads/services/content-posting.svg"
+}

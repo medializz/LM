@@ -1,0 +1,40 @@
+{
+  "globalTitle": "Lizzdo Media — Creative & Digital Agency | Branding, Web & Marketing",
+  "defaultDescription": "Lizzdo Media is a premier creative and digital agency crafting high-impact brand identities, packaging systems, custom web applications, and digital marketing.",
+  "keywords": "creative agency, digital agency, brand identity, packaging design, logo design, web development, digital marketing, graphic design, social media design, advertising creatives, UI/UX design, custom websites, Decap CMS",
+  "canonicalUrl": "https://media.lizzdo.com/",
+  "ogImage": "/uploads/og-cover.png",
+  "twitterCard": "summary_large_image",
+  "siteName": "Lizzdo Media",
+  "organizationName": "Lizzdo Media",
+  "homeSeo": {
+    "title": "Lizzdo Media | Creative & Digital Agency - Branding, Packaging & Web",
+    "description": "Lizzdo Media is a premier creative and digital agency crafting high-impact brand identities, packaging design systems, web development, and digital marketing.",
+    "ogImage": "/uploads/og-cover.png"
+  },
+  "servicesSeo": {
+    "title": "Our Creative & Digital Services | Lizzdo Media",
+    "description": "Explore Lizzdo Media's full spectrum of strategic services: Brand Identity, Logo Design, Packaging, Web Engineering, and Performance Marketing.",
+    "ogImage": "/uploads/og-cover.png"
+  },
+  "workSeo": {
+    "title": "Selected Work & Case Studies | Lizzdo Media Portfolio",
+    "description": "Explore our portfolio of bespoke brand identity systems, luxury structural packaging, high-speed SaaS web platforms, and social marketing campaigns.",
+    "ogImage": "/uploads/og-cover.png"
+  },
+  "blogSeo": {
+    "title": "Insights & Design Strategy Blog | Lizzdo Media",
+    "description": "Expert insights, design frameworks, packaging engineering teardowns, and modern web development strategies from Lizzdo Media.",
+    "ogImage": "/uploads/og-cover.png"
+  },
+  "aboutSeo": {
+    "title": "About Lizzdo Media | Creative & Digital Agency",
+    "description": "Learn about Lizzdo Media, our design philosophy, creative disciplines, and how we help brands build lasting authority through branding, packaging, web engineering, and digital growth.",
+    "ogImage": "/uploads/og-cover.png"
+  },
+  "contactSeo": {
+    "title": "Contact Us | Start Your Project with Lizzdo Media",
+    "description": "Ready to elevate your brand? Get in touch with Lizzdo Media for brand identity, packaging design, web development, or marketing solutions.",
+    "ogImage": "/uploads/og-cover.png"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "logo-design",
+  "title": "Logo Design",
+  "slug": "logo-design",
+  "iconKey": "logo-design",
+  "previewImage": "/uploads/services/logo-design.svg",
+  "image": "/uploads/services/logo-design.svg",
+  "previewImageAlt": "Mathematical vector logo construction and geometry mockup",
+  "shortDescription": "Memorable logo designs that create a strong and lasting impression.",
+  "category": "Logo Design",
+  "order": 2,
+  "published": true,
+  "heroHeadline": "Logo Design",
+  "heroHighlight": "Made to Be Remembered.",
+  "heroDescription": "We create distinctive, mathematically balanced, and timeless logo systems that anchor your brand across digital screens and physical mediums.",
+  "ctaButtonText": "Start a Logo Project →",
+  "capabilities": [
+    "Primary Logo, Secondary Mark, & Favicon",
+    "Mathematical Vector Construction Grids",
+    "Light & Dark Monochromatic Adaptations",
+    "Scalable App Icon & Favicon Matrix",
+    "Clearance & Minimum Sizing Guidelines",
+    "Scalable Master Vectors (AI, EPS, SVG, PDF, PNG)"
+  ],
+  "deliverables": [
+    "Primary Logo, Secondary Mark, & Favicon",
+    "Mathematical Vector Construction Grids",
+    "Light & Dark Monochromatic Variations",
+    "Scalable Master Formats (SVG, AI, EPS, PNG, PDF)",
+    "Color Space Specifications (Hex, CMYK, PMS)",
+    "Clearance & Sizing Usage Cheat Sheet"
+  ],
+  "processSteps": [
+    { "stepNumber": "01", "title": "Logo Concept", "description": "Initial brief analysis and strategic symbol brainstorming." },
+    { "stepNumber": "02", "title": "Sketching", "description": "Hand-drawn geometric ideations exploring dozens of visual metaphors." },
+    { "stepNumber": "03", "title": "Vectorization", "description": "Precise bezier curve plotting with mathematical optical balance." },
+    { "stepNumber": "04", "title": "Refinement", "description": "Testing legibility at 16px favicon scale and massive billboard formats." },
+    { "stepNumber": "05", "title": "Substrate Testing", "description": "Verifying single-color reproduction, embroidery, and screen printability." },
+    { "stepNumber": "06", "title": "Final Identity", "description": "Exporting organized master vector packages in every required format." }
+  ],
+  "gallery": [
+    { "id": "ld-g1", "title": "Geometric Vector Construction", "caption": "Golden-ratio bezier curves and geometric alignment", "visualType": "brand-identity", "layout": "large" },
+    { "id": "ld-g2", "title": "Monochrome Versatility", "caption": "High-contrast reproduction on light and dark surfaces", "visualType": "brand-guidelines", "layout": "half" },
+    { "id": "ld-g3", "title": "Embossed Foil Application", "caption": "Gold stamped insignia on black cotton paper", "visualType": "stationery", "layout": "half" }
+  ],
+  "faqs": [
+    { "question": "How many initial logo concepts do you present?", "answer": "We typically present 2 to 3 distinct, thoughtfully crafted creative directions rooted in strategy, each showing real-world application mockups." },
+    { "question": "Will the logo work in a single color or on dark backgrounds?", "answer": "Yes, every logo is engineered and rigorously tested for light backgrounds, dark mode, single-color black, white inverse, and monochromatic stamping." },
+    { "question": "Will I own the full copyright to the final logo?", "answer": "Yes. Once final sign-off is complete, full intellectual property and commercial copyright are transferred to you." }
+  ],
+  "relatedProjects": ["brand-identity-design"],
+  "relatedServices": ["brand-identity", "graphic-design", "social-media-design"],
+  "seoTitle": "Logo Design Services | Lizzdo Media",
+  "seoDescription": "Distinctive, mathematically balanced logo design services by Lizzdo Media. Custom vector marks, monograms, and versatile symbol systems.",
+  "ogImage": "/uploads/services/logo-design.svg"
+}

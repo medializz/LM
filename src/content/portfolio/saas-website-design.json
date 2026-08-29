@@ -1,0 +1,40 @@
+{
+  "id": "work-3",
+  "title": "SaaS Website Design",
+  "slug": "saas-website-design",
+  "category": "Website Development",
+  "shortCategory": "Web Development",
+  "shortDescription": "High-performance dark SaaS web dashboard with real-time data analytics, intuitive UX, and responsive layouts.",
+  "description": "High-performance dark SaaS web dashboard with real-time data analytics, intuitive UX, and responsive layouts.",
+  "visualType": "saas-dashboard",
+  "featured": true,
+  "order": 3,
+  "published": true,
+  "date": "2026-03-18",
+  "year": "2026",
+  "client": "PulseMetrics AI",
+  "services": ["UX/UI Design", "Frontend Engineering", "Design System", "Performance Optimization"],
+  "tools": ["React", "TypeScript", "Tailwind CSS", "Figma"],
+  "challenge": "Simplifying complex real-time telemetry into a clean, intuitive, and visually stunning web application.",
+  "strategy": "Adopted a high-contrast dark theme with glowing yellow and emerald status indicators to reduce cognitive strain.",
+  "design": "Created an extensive component library with micro-interactions, responsive data tables, and fluid chart visualizers.",
+  "execution": "Engineered using React 18 and Vite for sub-100ms client-side page transitions and 100 Lighthouse performance scores.",
+  "result": "Reduced user churn by 32% and increased product trial-to-paid conversions by 48% within 90 days of release.",
+  "processSteps": [
+    { "stepNumber": "01", "title": "UX Flows", "description": "Mapping data hierarchies and user analytics workflows" },
+    { "stepNumber": "02", "title": "Wireframes", "description": "Prototyping responsive dashboard grids" },
+    { "stepNumber": "03", "title": "UI Craft", "description": "Dark mode color palette and custom vector chart assets" },
+    { "stepNumber": "04", "title": "Frontend Build", "description": "Writing modular TypeScript components with Tailwind" },
+    { "stepNumber": "05", "title": "Deployment", "description": "Deploying on global edge CDN with instant cache warming" }
+  ],
+  "gallery": [
+    { "id": "w3-g1", "title": "Live Real-Time SaaS Dashboard", "caption": "Dark mode analytics overview with telemetry widgets", "visualType": "saas-dashboard", "layout": "large" },
+    { "id": "w3-g2", "title": "Mobile Responsive App View", "caption": "Touch-optimized metrics and fluid swipe drawer", "visualType": "saas-mobile", "layout": "half" },
+    { "id": "w3-g3", "title": "Design System Tokens", "caption": "Reusable UI components, buttons, and badges", "visualType": "saas-analytics", "layout": "half" }
+  ],
+  "relatedServices": ["web-development", "website-development", "digital-marketing"],
+  "relatedProjects": ["web-development", "brand-identity-design"],
+  "seoTitle": "SaaS Website Design Case Study | Lizzdo Media",
+  "seoDescription": "Case study for PulseMetrics AI SaaS dashboard UI design and high-performance frontend engineering by Lizzdo Media.",
+  "ogImage": "/uploads/services/web-development.svg"
+}

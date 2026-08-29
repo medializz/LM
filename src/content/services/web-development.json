@@ -1,0 +1,57 @@
+{
+  "id": "web-development",
+  "title": "Web Development",
+  "slug": "web-development",
+  "iconKey": "web-development",
+  "previewImage": "/uploads/services/web-development.svg",
+  "image": "/uploads/services/web-development.svg",
+  "previewImageAlt": "Responsive web development and code dashboard architecture mockup",
+  "shortDescription": "Fast, modern web engineering that turns visitors into loyal clients.",
+  "category": "Website Development",
+  "order": 5,
+  "published": true,
+  "heroHeadline": "Web Development",
+  "heroHighlight": "Engineered for Conversion.",
+  "heroDescription": "We build lightning-fast, secure, and responsive web applications with modern frontend architectures, intuitive UX design, and effortless Decap CMS management.",
+  "ctaButtonText": "Build My Website →",
+  "capabilities": [
+    "Modern React 18, TypeScript, & Vite Architectures",
+    "Lightning-Fast Sub-100ms Client-Side Routing",
+    "Tailwind CSS Responsive Design Systems",
+    "Headless Decap CMS Content Workflows",
+    "Core Web Vitals 100/100 Lighthouse Optimization",
+    "Global Cloudflare Edge CDN Caching & Security",
+    "Dynamic JSON-LD SEO Structured Data"
+  ],
+  "deliverables": [
+    "Production-Ready TypeScript & React Codebase",
+    "Decap CMS Git-Based Content Management System",
+    "Responsive Multi-Device UI (Mobile, Tablet, Desktop)",
+    "Google Analytics 4 & Meta Pixel Tracking Hooks",
+    "Sub-100ms Page Transitions & Asset Bundling",
+    "Automated GitHub Actions CI/CD Deployment Pipeline"
+  ],
+  "processSteps": [
+    { "stepNumber": "01", "title": "Information Architecture", "description": "Mapping user flows, sitemaps, and core conversion paths." },
+    { "stepNumber": "02", "title": "UI/UX Prototyping", "description": "Designing high-fidelity Figma components with interactive states." },
+    { "stepNumber": "03", "title": "Frontend Engineering", "description": "Writing modular TypeScript components with Tailwind utility architecture." },
+    { "stepNumber": "04", "title": "CMS Integration", "description": "Setting up Decap CMS collections and automated Git publishing." },
+    { "stepNumber": "05", "title": "Performance Audit", "description": "Tuning Core Web Vitals, caching rules, and asset payloads." },
+    { "stepNumber": "06", "title": "Production Deployment", "description": "Launching on global edge CDN with automated SSL certificates." }
+  ],
+  "gallery": [
+    { "id": "wd-g1", "title": "Responsive SaaS Web Platform", "caption": "Cross-device responsive desktop and mobile dashboards", "visualType": "saas-dashboard", "layout": "large" },
+    { "id": "wd-g2", "title": "Mobile UX Interface", "caption": "Thumb-friendly mobile navigation and micro-interactions", "visualType": "saas-mobile", "layout": "half" },
+    { "id": "wd-g3", "title": "Performance & Lighthouse 100", "caption": "Sub-100ms TTFB and perfect Core Web Vitals score", "visualType": "web-development", "layout": "half" }
+  ],
+  "faqs": [
+    { "question": "What technologies do you use for web development?", "answer": "We engineer with React, TypeScript, Vite, Tailwind CSS, and Decap CMS deployed on Cloudflare or GitHub Pages for maximum speed, security, and zero server maintenance." },
+    { "question": "Can I edit text, images, and blog posts myself?", "answer": "Yes, we integrate Decap CMS so your team can log in via GitHub OAuth, update text, upload images, and publish pages without writing code." },
+    { "question": "Is the website optimized for mobile phones and tablets?", "answer": "Every layout is built mobile-first and tested rigorously across smartphones, tablets, laptops, and ultra-wide desktop monitors." }
+  ],
+  "relatedProjects": ["web-development", "saas-website-design"],
+  "relatedServices": ["website-development", "brand-identity", "digital-marketing"],
+  "seoTitle": "Web Development Services | Lizzdo Media",
+  "seoDescription": "High-performance web development services by Lizzdo Media. Modern React, TypeScript, Vite, Decap CMS, and sub-100ms edge speed.",
+  "ogImage": "/uploads/services/web-development.svg"
+}

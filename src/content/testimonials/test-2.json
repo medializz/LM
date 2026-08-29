@@ -1,0 +1,10 @@
+{
+  "id": "test-2",
+  "quote": "The new React website and Decap CMS integration delivered sub-100ms loading speeds and empowered our marketing team to publish campaigns autonomously without relying on developers.",
+  "author": "Marcus Vance",
+  "role": "Chief Technology Officer",
+  "company": "Nexus Core Technologies",
+  "avatar": "/uploads/testimonials/marcus.jpg",
+  "rating": 5,
+  "order": 2
+}

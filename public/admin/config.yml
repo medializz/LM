@@ -6,18 +6,15 @@ backend:
   auth_endpoint: auth # OAuth auth endpoint (GET /auth)
   site_domain: media.lizzdo.com
 
-# Optional Decap local backend (active only when running npx decap-server locally)
-# local_backend: true
-
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
 collections:
   # =========================================================================
-  # 1. SITE SETTINGS (GLOBAL BRAND, LOGO, CONTACT, SOCIAL, SEO)
+  # 1. SITE SETTINGS & PAGES
   # =========================================================================
   - name: "settings"
-    label: "Site Settings"
+    label: "Site Settings & Configuration"
     delete: false
     editor:
       preview: false
@@ -28,25 +25,44 @@ collections:
         fields:
           - { label: "Site Name", name: "siteName", widget: "string", default: "Lizzdo Media" }
           - { label: "Tagline", name: "tagline", widget: "string", default: "Creative & Digital Agency" }
-          - { label: "Master Logo (SVG/PNG)", name: "logo", widget: "image", default: "/uploads/lizzdo-media-logo.svg", required: false }
-          - { label: "Logo for Dark Background", name: "logoDark", widget: "image", default: "/uploads/lizzdo-media-logo.svg", required: false }
-          - { label: "Logo for Light Background", name: "logoLight", widget: "image", default: "/uploads/lizzdo-media-logo-light.svg", required: false }
-          - { label: "Logo Mark / Icon", name: "logoMark", widget: "image", default: "/uploads/lizzdo-media-mark.svg", required: false }
+          - { label: "Logo Text", name: "logoText", widget: "string", default: "LIZZDO MEDIA" }
+          - { label: "Master Logo (Dark SVG/PNG)", name: "logo", widget: "image", default: "/uploads/lizzdo-media-logo.svg", required: false }
+          - { label: "Logo Dark", name: "logoDark", widget: "image", default: "/uploads/lizzdo-media-logo.svg", required: false }
+          - { label: "Logo Light", name: "logoLight", widget: "image", default: "/uploads/lizzdo-media-logo-light.svg", required: false }
+          - { label: "Logo Mark / Favicon Icon", name: "logoMark", widget: "image", default: "/uploads/lizzdo-media-mark.svg", required: false }
           - { label: "Favicon", name: "favicon", widget: "image", default: "/uploads/lizzdo-media-mark.svg", required: false }
           - { label: "Contact Email", name: "contactEmail", widget: "string", default: "contact@media.lizzdo.com" }
-          - { label: "WhatsApp / Phone", name: "whatsappNumber", widget: "string", default: "+1234567890" }
-          - { label: "Instagram Link", name: "instagramUrl", widget: "string", required: false }
-          - { label: "Facebook Link", name: "facebookUrl", widget: "string", required: false }
-          - { label: "LinkedIn Link", name: "linkedinUrl", widget: "string", required: false }
-          - { label: "X / Twitter Link", name: "twitterUrl", widget: "string", required: false }
-          - { label: "Business Location", name: "location", widget: "string", default: "Global Digital Agency", required: false }
-          - { label: "Inquiry Form Endpoint (e.g. Formspree / Webhook URL)", name: "formEndpoint", widget: "string", required: false }
-          - { label: "Footer Text", name: "footerText", widget: "text", required: false }
-          - { label: "Copyright Text", name: "copyrightText", widget: "string", default: "© 2026 Lizzdo Media. All rights reserved." }
+          - { label: "WhatsApp Number", name: "whatsappNumber", widget: "string", default: "+1234567890" }
+          - { label: "Phone", name: "phone", widget: "string", default: "+1234567890", required: false }
+          - { label: "Location", name: "location", widget: "string", default: "Global Digital Agency", required: false }
+          - { label: "Address", name: "address", widget: "string", default: "Global Creative Studio & Digital Innovation Hub", required: false }
+          - { label: "Instagram URL", name: "instagramUrl", widget: "string", required: false }
+          - { label: "Facebook URL", name: "facebookUrl", widget: "string", required: false }
+          - { label: "LinkedIn URL", name: "linkedinUrl", widget: "string", required: false }
+          - { label: "Twitter / X URL", name: "twitterUrl", widget: "string", required: false }
+          - { label: "Behance URL", name: "behanceUrl", widget: "string", required: false }
+          - { label: "Dribbble URL", name: "dribbbleUrl", widget: "string", required: false }
+          - { label: "GitHub URL", name: "githubUrl", widget: "string", required: false }
           - { label: "Header CTA Text", name: "primaryCtaText", widget: "string", default: "Let's Talk" }
           - { label: "Header CTA URL", name: "primaryCtaUrl", widget: "string", default: "/contact" }
           - { label: "Parent Company URL", name: "parentCompanyUrl", widget: "string", default: "https://lizzdo.com/" }
           - { label: "Current Domain", name: "currentDomain", widget: "string", default: "https://media.lizzdo.com/" }
+          - { label: "Inquiry Form Webhook URL", name: "formEndpoint", widget: "string", required: false }
+          - { label: "Contact Page Text", name: "contactPageText", widget: "text", required: false }
+          - { label: "Contact CTA Text", name: "contactCtaText", widget: "string", default: "Schedule a Discovery Call" }
+          - { label: "Footer Description", name: "footerText", widget: "text", required: false }
+          - { label: "Copyright Text", name: "copyrightText", widget: "string", default: "© 2026 Lizzdo Media. All rights reserved." }
+
+      - name: "seo"
+        label: "Global SEO & Meta Configuration"
+        file: "src/content/seo.json"
+        fields:
+          - { label: "Global SEO Title", name: "globalTitle", widget: "string" }
+          - { label: "Default Meta Description", name: "defaultDescription", widget: "text" }
+          - { label: "Global Keywords", name: "keywords", widget: "string" }
+          - { label: "Canonical Base URL", name: "canonicalUrl", widget: "string", default: "https://media.lizzdo.com/" }
+          - { label: "Default OG Image", name: "ogImage", widget: "image", default: "/uploads/og-cover.png" }
+          - { label: "Twitter Card Format", name: "twitterCard", widget: "string", default: "summary_large_image" }
 
       - name: "hero"
         label: "Homepage Hero Section"
@@ -59,6 +75,33 @@ collections:
           - { label: "Hero Description", name: "description", widget: "text", default: "We help brands stand out and grow with creative design, powerful websites, and result-driven digital solutions." }
           - { label: "Primary CTA Label", name: "primaryCtaText", widget: "string", default: "Explore Our Work" }
           - { label: "Primary CTA URL", name: "primaryCtaUrl", widget: "string", default: "/work" }
+          - { label: "Secondary CTA Label", name: "secondaryCtaText", widget: "string", default: "Get in Touch" }
+          - { label: "Secondary CTA URL", name: "secondaryCtaUrl", widget: "string", default: "/contact" }
+
+      - name: "footer"
+        label: "Footer Section & CTA"
+        file: "src/content/footer.json"
+        fields:
+          - { label: "Footer CTA Headline", name: "ctaHeadline", widget: "string" }
+          - { label: "Footer CTA Description", name: "ctaDescription", widget: "text" }
+          - { label: "Primary CTA Text", name: "ctaPrimaryText", widget: "string" }
+          - { label: "Primary CTA URL", name: "ctaPrimaryUrl", widget: "string" }
+          - { label: "WhatsApp Button Text", name: "ctaWhatsAppText", widget: "string" }
+          - { label: "Footer Description", name: "footerDescription", widget: "text" }
+          - { label: "Copyright Notice", name: "copyrightText", widget: "string" }
+          - { label: "Parent Company Label", name: "parentCompanyLabel", widget: "string" }
+          - { label: "Parent Company URL", name: "parentCompanyUrl", widget: "string" }
+
+      - name: "whyChooseUs"
+        label: "Why Choose Us Section"
+        file: "src/content/why-choose-us.json"
+        fields:
+          - { label: "Eyebrow", name: "eyebrow", widget: "string", default: "WHY CHOOSE US" }
+          - { label: "Heading Prefix", name: "headingPrefix", widget: "string", default: "Why Brands Choose " }
+          - { label: "Heading Highlight", name: "headingHighlight", widget: "string", default: "Lizzdo Media" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "CTA Button Text", name: "ctaText", widget: "string", default: "Let's Work Together" }
+          - { label: "CTA Button URL", name: "ctaUrl", widget: "string", default: "/contact" }
 
   # =========================================================================
   # 2. SERVICES COLLECTION
@@ -66,110 +109,156 @@ collections:
   - name: "services"
     label: "Services"
     folder: "src/content/services"
+    format: "json"
+    extension: "json"
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "Service Title", name: "title", widget: "string", required: true }
       - { label: "Slug", name: "slug", widget: "string", required: true }
-      - { label: "Category", name: "category", widget: "select", options: ["Brand Identity", "Logo Design", "Graphic Design", "Packaging Design", "Social Media Design", "Social Media Content", "Social Media Management", "Digital Marketing", "Advertising Creatives", "AI Visual Content", "Website Development", "Simple Business Websites", "Content Posting", "Marketing Campaigns"], required: true }
+      - { label: "Category", name: "category", widget: "string", required: true }
       - { label: "Icon Identifier", name: "iconKey", widget: "string", default: "brand-identity" }
-      - { label: "Service Preview Image", name: "previewImage", widget: "image", required: false, hint: "Upload a transparent PNG, WebP, or SVG thumbnail/mockup visual for the service card." }
-      - { label: "Preview Image Alt Text", name: "previewImageAlt", widget: "string", required: false, hint: "Descriptive alt text for the service visual preview." }
-      - { label: "Short Description", name: "short_description", widget: "text", required: true }
-      - { label: "Hero Image", name: "hero_image", widget: "image", required: false }
-      - { label: "Hero Image Alt Text", name: "hero_image_alt", widget: "string", required: false }
-      - { label: "Service Overview", name: "overview", widget: "markdown", required: false }
-      - { label: "What We Offer", name: "what_we_offer", widget: "markdown", required: false }
+      - { label: "Service Preview Image", name: "previewImage", widget: "image", required: false }
+      - { label: "Preview Image Alt Text", name: "previewImageAlt", widget: "string", required: false }
+      - { label: "Short Description", name: "shortDescription", widget: "text", required: true }
+      - { label: "Hero Headline", name: "heroHeadline", widget: "string", required: false }
+      - { label: "Hero Highlight Phrase", name: "heroHighlight", widget: "string", required: false }
+      - { label: "Hero Description", name: "heroDescription", widget: "text", required: false }
+      - { label: "CTA Button Text", name: "ctaButtonText", widget: "string", default: "Build My Brand →" }
       - { label: "Key Capabilities", name: "capabilities", widget: "list", required: false }
       - { label: "Deliverables List", name: "deliverables", widget: "list", required: false }
-      - { label: "Process & Steps", name: "process", widget: "list", required: false }
-      - { label: "Key Benefits", name: "benefits", widget: "list", required: false }
-      - { label: "Display Order", name: "order", widget: "number", value_type: "int", default: 1 }
-      - { label: "Published", name: "published", widget: "boolean", default: true }
+      - label: "Process Steps"
+        name: "processSteps"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Step Number (e.g. 01)", name: "stepNumber", widget: "string" }
+          - { label: "Step Title", name: "title", widget: "string" }
+          - { label: "Step Description", name: "description", widget: "text" }
+      - label: "Gallery Mockups"
+        name: "gallery"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "ID", name: "id", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Caption", name: "caption", widget: "string", required: false }
+          - { label: "Visual Type Identifier", name: "visualType", widget: "string", required: false }
+          - { label: "Layout Span", name: "layout", widget: "select", options: ["large", "half"], default: "half" }
       - label: "Frequently Asked Questions (FAQ)"
-        name: "faq"
+        name: "faqs"
         widget: "list"
         required: false
         fields:
           - { label: "Question", name: "question", widget: "string" }
           - { label: "Answer", name: "answer", widget: "text" }
-      - { label: "Related Work Projects (slugs)", name: "related_work", widget: "list", required: false }
-      - { label: "SEO Meta Title", name: "seo_title", widget: "string", required: false }
-      - { label: "SEO Meta Description", name: "seo_description", widget: "text", required: false }
-      - { label: "Open Graph Image", name: "og_image", widget: "image", required: false }
+      - { label: "Related Project Slugs", name: "relatedProjects", widget: "list", required: false }
+      - { label: "Related Service Slugs", name: "relatedServices", widget: "list", required: false }
+      - { label: "Display Order", name: "order", widget: "number", value_type: "int", default: 1 }
+      - { label: "Published", name: "published", widget: "boolean", default: true }
+      - { label: "SEO Meta Title", name: "seoTitle", widget: "string", required: false }
+      - { label: "SEO Meta Description", name: "seoDescription", widget: "text", required: false }
+      - { label: "Open Graph Image", name: "ogImage", widget: "image", required: false }
 
   # =========================================================================
   # 3. WORK & CASE STUDIES COLLECTION
   # =========================================================================
   - name: "portfolio"
-    label: "Work"
+    label: "Work & Case Studies"
     folder: "src/content/portfolio"
+    format: "json"
+    extension: "json"
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "Project Title", name: "title", widget: "string", required: true }
       - { label: "Slug", name: "slug", widget: "string", required: true }
       - { label: "Category", name: "category", widget: "string", required: true }
+      - { label: "Short Category Label", name: "shortCategory", widget: "string", required: false }
+      - { label: "Short Description", name: "shortDescription", widget: "text", required: false }
+      - { label: "Full Description", name: "description", widget: "text", required: false }
+      - { label: "Visual Mockup Type", name: "visualType", widget: "string", default: "brand-identity" }
       - { label: "Featured on Homepage", name: "featured", widget: "boolean", default: true }
       - { label: "Published", name: "published", widget: "boolean", default: true }
       - { label: "Date", name: "date", widget: "date", required: false }
       - { label: "Year", name: "year", widget: "string", default: "2026", required: false }
       - { label: "Client Name", name: "client", widget: "string", required: false }
-      - { label: "Short Description", name: "short_description", widget: "text", required: false }
-      - { label: "Hero Image", name: "hero_image", widget: "image", required: false }
-      - { label: "Hero Image Alt Text", name: "hero_image_alt", widget: "string", required: false }
-      - { label: "Project Overview", name: "project_overview", widget: "markdown", required: false }
-      - { label: "01 Challenge", name: "challenge", widget: "text", required: false }
-      - { label: "02 Strategy / Solution", name: "solution", widget: "text", required: false }
-      - { label: "03 Creative Direction", name: "creative_direction", widget: "text", required: false }
-      - { label: "04 Deliverables", name: "deliverables", widget: "list", required: false }
+      - { label: "Services Provided", name: "services", widget: "list", required: false }
       - { label: "Tools Used", name: "tools", widget: "list", required: false }
-      - { label: "05 Results & Outcomes", name: "results", widget: "text", required: false }
-      - label: "Gallery Images"
+      - { label: "01 Challenge", name: "challenge", widget: "text", required: false }
+      - { label: "02 Strategy / Approach", name: "strategy", widget: "text", required: false }
+      - { label: "03 Design Craft", name: "design", widget: "text", required: false }
+      - { label: "04 Execution", name: "execution", widget: "text", required: false }
+      - { label: "05 Results & Outcomes", name: "result", widget: "text", required: false }
+      - label: "Process Steps"
+        name: "processSteps"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Step Number", name: "stepNumber", widget: "string" }
+          - { label: "Step Title", name: "title", widget: "string" }
+          - { label: "Step Description", name: "description", widget: "text" }
+      - label: "Gallery Showcase"
         name: "gallery"
         widget: "list"
         required: false
         fields:
-          - { label: "Image File", name: "image", widget: "image", required: true }
-          - { label: "Alt Text", name: "alt", widget: "string", required: false }
+          - { label: "ID", name: "id", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
           - { label: "Caption", name: "caption", widget: "string", required: false }
-          - { label: "Display Order", name: "order", widget: "number", value_type: "int", required: false }
+          - { label: "Visual Type", name: "visualType", widget: "string", required: false }
           - { label: "Layout Span", name: "layout", widget: "select", options: ["large", "half"], default: "half" }
-      - { label: "Related Projects (slugs)", name: "related_projects", widget: "list", required: false }
-      - { label: "Related Services (slugs)", name: "related_services", widget: "list", required: false }
-      - { label: "SEO Meta Title", name: "seo_title", widget: "string", required: false }
-      - { label: "SEO Meta Description", name: "seo_description", widget: "text", required: false }
-      - { label: "Open Graph Image", name: "og_image", widget: "image", required: false }
+      - { label: "Related Services (slugs)", name: "relatedServices", widget: "list", required: false }
+      - { label: "Related Projects (slugs)", name: "relatedProjects", widget: "list", required: false }
+      - { label: "Display Order", name: "order", widget: "number", value_type: "int", default: 1 }
+      - { label: "SEO Meta Title", name: "seoTitle", widget: "string", required: false }
+      - { label: "SEO Meta Description", name: "seoDescription", widget: "text", required: false }
+      - { label: "Open Graph Image", name: "ogImage", widget: "image", required: false }
 
   # =========================================================================
-  # 4. BLOG & ARTICLES COLLECTION
+  # 4. BLOG ARTICLES COLLECTION
   # =========================================================================
   - name: "blog"
-    label: "Blog"
+    label: "Blog Articles"
     folder: "src/content/blog"
+    format: "json"
+    extension: "json"
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "Article Title", name: "title", widget: "string", required: true }
       - { label: "Slug", name: "slug", widget: "string", required: true }
-      - { label: "Featured Image", name: "featured_image", widget: "image", required: false }
-      - { label: "Image Alt Text", name: "image_alt", widget: "string", required: false }
-      - { label: "Excerpt / Summary", name: "excerpt", widget: "text", required: true }
-      - { label: "Body (Markdown)", name: "body", widget: "markdown", required: true }
-      - label: "Author"
+      - { label: "Summary / Excerpt", name: "summary", widget: "text", required: true }
+      - { label: "Category", name: "category", widget: "string", default: "Branding" }
+      - label: "Author Info"
         name: "author"
         widget: "object"
         fields:
-          - { label: "Author Name", name: "name", widget: "string", default: "Lizzdo Creative Team" }
-          - { label: "Role / Job Title", name: "role", widget: "string", default: "Brand Strategist" }
+          - { label: "Author Name", name: "name", widget: "string", default: "Lizzdo Design Studio" }
+          - { label: "Role / Title", name: "role", widget: "string", default: "Brand Strategy Lead" }
+          - { label: "Bio", name: "bio", widget: "string", required: false }
           - { label: "Avatar Image", name: "avatar", widget: "image", required: false }
-      - { label: "Publish Date", name: "publish_date", widget: "date", required: true }
-      - { label: "Category", name: "category", widget: "string", default: "Design Strategy" }
+      - { label: "Published Date", name: "publishedDate", widget: "date", required: true }
+      - { label: "Updated Date", name: "updatedDate", widget: "date", required: false }
+      - { label: "Read Time", name: "readTime", widget: "string", default: "5 min read" }
+      - { label: "Visual Type", name: "visualType", widget: "string", default: "brand-identity" }
       - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Key Takeaways", name: "keyTakeaways", widget: "list", required: false }
+      - { label: "Article Content (Markdown)", name: "content", widget: "markdown", required: true }
+      - label: "Article FAQs"
+        name: "faqs"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Question", name: "question", widget: "string" }
+          - { label: "Answer", name: "answer", widget: "text" }
+      - { label: "Related Services (slugs)", name: "relatedServices", widget: "list", required: false }
+      - { label: "Related Projects (slugs)", name: "relatedProjects", widget: "list", required: false }
+      - { label: "Related Articles (slugs)", name: "relatedArticles", widget: "list", required: false }
       - { label: "Published", name: "published", widget: "boolean", default: true }
-      - { label: "SEO Meta Title", name: "seo_title", widget: "string", required: false }
-      - { label: "SEO Meta Description", name: "seo_description", widget: "text", required: false }
-      - { label: "Open Graph Image", name: "og_image", widget: "image", required: false }
+      - { label: "SEO Meta Title", name: "seoTitle", widget: "string", required: false }
+      - { label: "SEO Meta Description", name: "seoDescription", widget: "text", required: false }
+      - { label: "Open Graph Image", name: "ogImage", widget: "image", required: false }
 
   # =========================================================================
   # 5. GLOBAL FAQS COLLECTION
@@ -177,76 +266,63 @@ collections:
   - name: "faqs"
     label: "FAQs"
     folder: "src/content/faqs"
+    format: "json"
+    extension: "json"
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "Question", name: "question", widget: "string", required: true }
       - { label: "Answer", name: "answer", widget: "text", required: true }
+      - { label: "Category", name: "category", widget: "string", default: "General" }
       - { label: "Display Order", name: "order", widget: "number", value_type: "int", default: 1 }
-      - { label: "Published", name: "published", widget: "boolean", default: true }
-      - { label: "Category / Location", name: "category", widget: "select", options: ["General", "Services", "Work", "Pricing", "Process"], default: "General" }
 
   # =========================================================================
-  # 6. OUR PROCESS COLLECTION
+  # 6. OUR 6-STEP PROCESS COLLECTION
   # =========================================================================
   - name: "process"
     label: "Our Process"
     folder: "src/content/process"
+    format: "json"
+    extension: "json"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Step Number (e.g. 01)", name: "stepNumber", widget: "string" }
-      - { label: "Step Title", name: "title", widget: "string" }
-      - { label: "Icon Identifier", name: "iconKey", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Order", name: "order", widget: "number", value_type: "int" }
+      - { label: "Step Number (e.g. 01)", name: "stepNumber", widget: "string", required: true }
+      - { label: "Step Title", name: "title", widget: "string", required: true }
+      - { label: "Description", name: "description", widget: "text", required: true }
+      - { label: "Display Order", name: "order", widget: "number", value_type: "int", default: 1 }
 
   # =========================================================================
-  # 7. WHY CHOOSE US
-  # =========================================================================
-  - name: "whyChooseUs"
-    label: "Why Choose Us"
-    delete: false
-    editor:
-      preview: false
-    files:
-      - name: "content"
-        label: "Section Copy & CTA"
-        file: "src/content/why-choose-us.json"
-        fields:
-          - { label: "Eyebrow", name: "eyebrow", widget: "string", default: "WHY CHOOSE US" }
-          - { label: "Heading Prefix", name: "headingPrefix", widget: "string", default: "Why Brands Choose " }
-          - { label: "Heading Highlight", name: "headingHighlight", widget: "string", default: "Lizzdo Media" }
-          - { label: "Description", name: "description", widget: "text", default: "We combine creativity, strategy, and technology to deliver exceptional results that help brands grow faster and stronger." }
-          - { label: "CTA Button Text", name: "ctaText", widget: "string", default: "Let's Work Together" }
-          - { label: "CTA Button URL", name: "ctaUrl", widget: "string", default: "/contact" }
-
-  # =========================================================================
-  # 8. STATISTICS COLLECTION
+  # 7. STATISTICS COLLECTION
   # =========================================================================
   - name: "statistics"
-    label: "Statistics"
+    label: "Statistics & Milestones"
     folder: "src/content/statistics"
+    format: "json"
+    extension: "json"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Value (e.g. 250+)", name: "value", widget: "string" }
-      - { label: "Label (e.g. Happy Clients)", name: "label", widget: "string" }
-      - { label: "Sublabel", name: "sublabel", widget: "string" }
-      - { label: "Icon Identifier", name: "iconKey", widget: "string" }
-      - { label: "Order", name: "order", widget: "number", value_type: "int" }
+      - { label: "Value (e.g. 500+)", name: "value", widget: "string", required: true }
+      - { label: "Label", name: "label", widget: "string", required: true }
+      - { label: "Description", name: "description", widget: "string", required: false }
+      - { label: "Display Order", name: "order", widget: "number", value_type: "int", default: 1 }
 
   # =========================================================================
-  # 9. TESTIMONIALS COLLECTION
+  # 8. TESTIMONIALS COLLECTION
   # =========================================================================
   - name: "testimonials"
     label: "Testimonials"
     folder: "src/content/testimonials"
+    format: "json"
+    extension: "json"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Quote", name: "quote", widget: "text" }
-      - { label: "Author Name", name: "author", widget: "string" }
-      - { label: "Role / Position", name: "role", widget: "string" }
-      - { label: "Company", name: "company", widget: "string" }
+      - { label: "Quote", name: "quote", widget: "text", required: true }
+      - { label: "Author Name", name: "author", widget: "string", required: true }
+      - { label: "Role / Position", name: "role", widget: "string", required: true }
+      - { label: "Company", name: "company", widget: "string", required: true }
       - { label: "Avatar Image", name: "avatar", widget: "image", required: false }
+      - { label: "Rating (1 to 5)", name: "rating", widget: "number", value_type: "int", default: 5 }
+      - { label: "Display Order", name: "order", widget: "number", value_type: "int", default: 1 }

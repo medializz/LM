@@ -1,0 +1,34 @@
+{
+  "eyebrow": "WHY CHOOSE US",
+  "headingPrefix": "Why Brands Choose ",
+  "headingHighlight": "Lizzdo Media",
+  "description": "We combine creativity, strategy, and technology to deliver exceptional results that help brands grow faster and stronger.",
+  "ctaText": "Let's Work Together",
+  "ctaUrl": "/contact",
+  "features": [
+    {
+      "id": "feat-1",
+      "title": "Creative & Unique Designs",
+      "description": "Designs that represent your brand perfectly",
+      "order": 1
+    },
+    {
+      "id": "feat-2",
+      "title": "Strategy-Driven Approach",
+      "description": "Data-backed strategy for real results",
+      "order": 2
+    },
+    {
+      "id": "feat-3",
+      "title": "On-Time Delivery",
+      "description": "We respect your time & deadlines",
+      "order": 3
+    },
+    {
+      "id": "feat-4",
+      "title": "Long-Term Partnership",
+      "description": "We grow when you grow",
+      "order": 4
+    }
+  ]
+}

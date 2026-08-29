@@ -1,0 +1,53 @@
+{
+  "id": "digital-marketing",
+  "title": "Digital Marketing",
+  "slug": "digital-marketing",
+  "iconKey": "digital-marketing",
+  "previewImage": "/uploads/services/digital-marketing.svg",
+  "image": "/uploads/services/digital-marketing.svg",
+  "previewImageAlt": "Digital marketing metrics and ROI growth analytics dashboard",
+  "shortDescription": "Data-driven marketing strategies that deliver measurable growth.",
+  "category": "Digital Marketing",
+  "order": 8,
+  "published": true,
+  "heroHeadline": "Digital Marketing",
+  "heroHighlight": "Growth Driven by Data.",
+  "heroDescription": "Maximize your return on ad spend with full-funnel digital marketing campaigns, conversion rate optimization, search marketing, and analytical precision.",
+  "ctaButtonText": "Grow My Business →",
+  "capabilities": [
+    "Full-Funnel Paid Advertising (Meta, Google, LinkedIn)",
+    "Conversion Rate Optimization (CRO) & A/B Testing",
+    "Search Engine Optimization (SEO) & Keyword Strategy",
+    "Lead Generation & High-Converting Landing Pages",
+    "Email Marketing Automations & Drip Sequences",
+    "Real-Time Analytics & ROI Attribution Reporting"
+  ],
+  "deliverables": [
+    "Custom Growth Strategy & Channel Roadmap",
+    "High-Converting Ad Copy & Visual Creatives",
+    "Conversion-Optimized Landing Page Frameworks",
+    "Automated Email Lead Nurturing Flows",
+    "Live Performance Dashboard & Monthly Strategy Calls"
+  ],
+  "processSteps": [
+    { "stepNumber": "01", "title": "Audit & Research", "description": "Analyzing past marketing data, competitor funnels, and CAC benchmarks." },
+    { "stepNumber": "02", "title": "Funnel Design", "description": "Structuring top, middle, and bottom-of-funnel conversion journeys." },
+    { "stepNumber": "03", "title": "Campaign Launch", "description": "Deploying audience-targeted ad sets with multiple creative variants." },
+    { "stepNumber": "04", "title": "A/B Testing", "description": "Testing hooks, copy, landing pages, and bid strategies." },
+    { "stepNumber": "05", "title": "Optimization", "description": "Cutting underperforming ad sets and scaling winning combinations." },
+    { "stepNumber": "06", "title": "Scale", "description": "Expanding budget profitably while maintaining target ROAS." }
+  ],
+  "gallery": [
+    { "id": "dm-g1", "title": "Real-Time Growth Dashboard", "caption": "Multi-channel ROAS and CAC performance telemetry", "visualType": "saas-dashboard", "layout": "large" },
+    { "id": "dm-g2", "title": "Ad Creative Split Testing", "caption": "Multivariate visual angle and copy testing", "visualType": "social-campaign", "layout": "half" },
+    { "id": "dm-g3", "title": "Conversion Funnel Architecture", "caption": "End-to-end lead journey and automated retargeting", "visualType": "saas-analytics", "layout": "half" }
+  ],
+  "faqs": [
+    { "question": "What ad platforms do you specialize in?", "answer": "We manage campaigns across Meta (Facebook & Instagram), Google Search & Performance Max, LinkedIn Ads, and TikTok Ads." }
+  ],
+  "relatedProjects": ["saas-website-design", "social-media-campaign"],
+  "relatedServices": ["advertising-creatives", "web-development", "content-posting"],
+  "seoTitle": "Digital Marketing & Performance Growth | Lizzdo Media",
+  "seoDescription": "Data-driven digital marketing and paid advertising campaigns that maximize ROAS and customer acquisition for ambitious brands.",
+  "ogImage": "/uploads/services/digital-marketing.svg"
+}
