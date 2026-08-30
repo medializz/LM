@@ -105,23 +105,23 @@ const loadedLegal: LegalPage[] = Object.values(legalFiles)
  * All data is loaded directly from bundled JSON modules without stale localStorage caching.
  */
 
-// Helper to normalize phone numbers (especially Pakistani mobile numbers)
-export function normalizeWhatsAppNumber(rawPhone?: string): string {
-  if (!rawPhone || typeof rawPhone !== 'string') return '';
-  // Strip everything except digits
-  let digits = rawPhone.replace(/\D/g, '');
-  if (!digits) return '';
+import { 
+  normalizeWhatsAppNumber, 
+  createWhatsAppUrl, 
+  createServiceWhatsAppUrl, 
+  createWorkWhatsAppUrl,
+  createTelUrl,
+  createMailtoUrl
+} from '../utils/whatsapp';
 
-  // If it starts with 00 (e.g. 00923001234567), strip leading 00
-  if (digits.startsWith('00')) {
-    digits = digits.substring(2);
-  }
-  // If it starts with single 0 and is 11 digits (e.g. 03001234567), replace leading 0 with 92
-  if (digits.startsWith('0') && digits.length === 11) {
-    digits = '92' + digits.substring(1);
-  }
-  return digits;
-}
+export { 
+  normalizeWhatsAppNumber, 
+  createWhatsAppUrl, 
+  createServiceWhatsAppUrl, 
+  createWorkWhatsAppUrl,
+  createTelUrl,
+  createMailtoUrl
+};
 
 export interface ValidatedSocialLink {
   id: string;
@@ -278,22 +278,17 @@ export { seoData, footerData, aboutData, contactData, socialData, analyticsData,
 export function getWhatsAppUrl(
   rawPhone?: string, 
   message?: string, 
-  defaultMsg: string = "Hello, I would like to discuss a project with your team."
+  defaultMsg?: string
 ): string {
   const phone = rawPhone || 
     DEFAULT_CMS_DATA.contact?.whatsappNumber || 
     DEFAULT_CMS_DATA.siteSettings?.whatsappNumber || 
     "";
-  const cleanNumber = normalizeWhatsAppNumber(phone);
-  if (!cleanNumber) {
-    return '#';
-  }
-  const finalMsg = message || 
+  const finalDefault = defaultMsg || 
     DEFAULT_CMS_DATA.contact?.whatsappPrefilledMessage || 
     DEFAULT_CMS_DATA.siteSettings?.whatsappPrefilledMessage || 
-    defaultMsg;
-  const encoded = encodeURIComponent(finalMsg);
-  return `https://wa.me/${cleanNumber}?text=${encoded}`;
+    "Hello Lizzdo, I would like to discuss a project.";
+  return createWhatsAppUrl(phone, message, finalDefault);
 }
 
 /**

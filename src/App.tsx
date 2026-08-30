@@ -396,6 +396,7 @@ export default function App() {
       {/* FOOTER */}
       <Footer 
         siteSettings={cmsData.siteSettings}
+        social={cmsData.social}
         navigation={cmsData.navigation}
         onOpenContact={() => handleOpenContactModal()}
       />

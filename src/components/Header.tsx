@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { LizzdoLogo } from './LizzdoLogo';
 import { NavigationItem, SiteSettings } from '../types';
-import { Send, ChevronDown, Menu, X, ArrowUpRight } from 'lucide-react';
+import { MessageCircle, Send, ChevronDown, Menu, X, ArrowUpRight } from 'lucide-react';
 import { navigateTo } from '../utils/router';
+import { createWhatsAppUrl } from '../utils/whatsapp';
 
 interface HeaderProps {
   siteSettings: SiteSettings;
@@ -264,19 +265,38 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* RIGHT: CTA Button ("Let's Talk") */}
         <div className="hidden md:flex items-center">
-          <a
-            id="header-cta-button"
-            href="/contact"
-            onClick={(e) => {
-              e.preventDefault();
-              navigateTo('/contact');
-            }}
-            className="group relative inline-flex items-center gap-2 px-4.5 py-2 rounded-full border border-[#ffbe1a] bg-transparent text-[#ffbe1a] text-sm font-semibold tracking-wide hover:bg-[#ffbe1a] hover:text-black transition-all duration-300 shadow-[0_0_12px_-2px_rgba(255,190,26,0.25)] hover:shadow-[0_0_18px_rgba(255,190,26,0.55)] cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#ffbe1a]"
-            aria-label="Let's Talk - Contact Lizzdo Media"
-          >
-            <Send className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
-            <span>{siteSettings.primaryCtaText || "Let's Talk"}</span>
-          </a>
+          {(() => {
+            const waUrl = createWhatsAppUrl(
+              siteSettings.whatsappNumber,
+              siteSettings.whatsappPrefilledMessage || `Hello ${siteSettings.siteName || 'Lizzdo Media'}, I would like to discuss a project with your team.`
+            );
+            const isWhatsApp = waUrl && waUrl !== '#';
+            const ctaHref = isWhatsApp ? waUrl : (siteSettings.primaryCtaUrl || '/contact');
+
+            return (
+              <a
+                id="header-cta-button"
+                href={ctaHref}
+                target={isWhatsApp ? "_blank" : undefined}
+                rel={isWhatsApp ? "noopener noreferrer" : undefined}
+                onClick={(e) => {
+                  if (!isWhatsApp) {
+                    e.preventDefault();
+                    navigateTo('/contact');
+                  }
+                }}
+                className="group relative inline-flex items-center gap-2 px-4.5 py-2 rounded-full border border-[#ffbe1a] bg-transparent text-[#ffbe1a] text-sm font-semibold tracking-wide hover:bg-[#ffbe1a] hover:text-black transition-all duration-300 shadow-[0_0_12px_-2px_rgba(255,190,26,0.25)] hover:shadow-[0_0_18px_rgba(255,190,26,0.55)] cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#ffbe1a]"
+                aria-label="Let's Talk on WhatsApp - Contact Lizzdo Media"
+              >
+                {isWhatsApp ? (
+                  <MessageCircle className="w-3.5 h-3.5 transform group-hover:scale-110 transition-transform duration-200" />
+                ) : (
+                  <Send className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+                )}
+                <span>{siteSettings.primaryCtaText || "Let's Talk"}</span>
+              </a>
+            );
+          })()}
         </div>
 
         {/* MOBILE MENU TOGGLE BUTTON (Touch target >= 44px) */}
@@ -384,18 +404,38 @@ export const Header: React.FC<HeaderProps> = ({
               })}
 
               {/* Mobile CTA Button (Min 48px touch target) */}
-              <a
-                href="/contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsMobileMenuOpen(false);
-                  navigateTo('/contact');
-                }}
-                className="mt-4 w-full min-h-[48px] py-3.5 px-6 rounded-full bg-[#ffbe1a] text-black font-bold text-base flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(255,190,26,0.4)] active:scale-[0.98] transition-transform cursor-pointer"
-              >
-                <Send className="w-4 h-4" />
-                <span>{siteSettings.primaryCtaText || "Let's Talk"}</span>
-              </a>
+              {(() => {
+                const waUrl = createWhatsAppUrl(
+                  siteSettings.whatsappNumber,
+                  siteSettings.whatsappPrefilledMessage || `Hello ${siteSettings.siteName || 'Lizzdo Media'}, I would like to discuss a project with your team.`
+                );
+                const isWhatsApp = waUrl && waUrl !== '#';
+                const ctaHref = isWhatsApp ? waUrl : (siteSettings.primaryCtaUrl || '/contact');
+
+                return (
+                  <a
+                    href={ctaHref}
+                    target={isWhatsApp ? "_blank" : undefined}
+                    rel={isWhatsApp ? "noopener noreferrer" : undefined}
+                    onClick={(e) => {
+                      setIsMobileMenuOpen(false);
+                      if (!isWhatsApp) {
+                        e.preventDefault();
+                        navigateTo('/contact');
+                      }
+                    }}
+                    className="mt-4 w-full min-h-[48px] py-3.5 px-6 rounded-full bg-[#ffbe1a] text-black font-bold text-base flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(255,190,26,0.4)] active:scale-[0.98] transition-transform cursor-pointer"
+                    aria-label="Let's Talk on WhatsApp - Contact Lizzdo Media"
+                  >
+                    {isWhatsApp ? (
+                      <MessageCircle className="w-5 h-5" />
+                    ) : (
+                      <Send className="w-5 h-5" />
+                    )}
+                    <span>{siteSettings.primaryCtaText || "Let's Talk"}</span>
+                  </a>
+                );
+              })()}
             </div>
           </div>
         </>

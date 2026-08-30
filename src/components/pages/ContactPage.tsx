@@ -7,7 +7,7 @@ import {
 import { DecapCMSData, ProjectInquiryData } from '../../types';
 import { Breadcrumb } from '../Breadcrumb';
 import { SEOHead } from '../SEOHead';
-import { getWhatsAppUrl } from '../../data/cmsContent';
+import { createWhatsAppUrl, createTelUrl, createMailtoUrl } from '../../utils/whatsapp';
 import { SocialLinks } from '../SocialLinks';
 
 interface ContactPageProps {
@@ -78,6 +78,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
   const businessEmail = contact?.businessEmail || (siteSettings as any)?.businessEmail;
   const supportEmail = contact?.supportEmail || (siteSettings as any)?.supportEmail;
   const phone = contact?.phone || siteSettings.phone;
+  const whatsappNumber = contact?.whatsappNumber || siteSettings.whatsappNumber;
   const address = contact?.address || siteSettings.address;
   const whatsappDesc = contact?.whatsappDescription || (siteSettings as any)?.whatsappDescription || "Chat directly with our creative team on WhatsApp for expedited project scoping and immediate consultations.";
   const whatsappCta = contact?.whatsappCtaText || (siteSettings as any)?.whatsappCtaText || "Chat on WhatsApp Now";
@@ -181,11 +182,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
   };
 
   const handleWhatsAppClick = () => {
-    const url = getWhatsAppUrl(
-      contact?.whatsappNumber || siteSettings.whatsappNumber,
-      getWhatsAppMessage()
-    );
-    window.open(url, '_blank', 'noopener,noreferrer');
+    const url = createWhatsAppUrl(whatsappNumber, getWhatsAppMessage());
+    if (url && url !== '#') {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
   };
 
   // Form Validation & Submission Handler
@@ -429,7 +429,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
             <div className="space-y-4">
               
               {/* WhatsApp Live Chat Card */}
-              <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-[#121820] to-[#0e121a] border border-[#25D366]/30 hover:border-[#25D366]/60 transition-all shadow-lg space-y-3">
+              <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-[#121820] to-[#0e121a] border border-[#25D366]/30 hover:border-[#25D366]/60 transition-all shadow-lg space-y-3.5">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl bg-[#25D366]/15 border border-[#25D366]/30 text-[#25D366] flex items-center justify-center shrink-0">
@@ -450,6 +450,13 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
                   {whatsappDesc}
                 </p>
 
+                {whatsappNumber && (
+                  <div className="text-xs font-mono text-emerald-400 flex items-center justify-between bg-[#25D366]/5 px-3.5 py-2 rounded-xl border border-[#25D366]/20">
+                    <span className="text-slate-400">Direct Number:</span>
+                    <span className="font-bold text-white">{whatsappNumber}</span>
+                  </div>
+                )}
+
                 <button
                   onClick={handleWhatsAppClick}
                   className="w-full py-3 px-4 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] active:scale-[0.98] text-black font-extrabold text-xs sm:text-sm font-['Outfit'] transition-all flex items-center justify-center gap-2 shadow-md cursor-pointer"
@@ -462,7 +469,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
 
               {/* Direct Inquiries Email Card */}
               <a
-                href={`mailto:${mainEmail}`}
+                href={createMailtoUrl(mainEmail, `Project Inquiry - ${siteSettings.siteName}`)}
                 className="p-5 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/50 transition-all flex items-start gap-4 group block shadow-md"
               >
                 <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 text-[#ffbe1a] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
@@ -480,7 +487,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
               {/* Business / Partnerships Email (Conditional) */}
               {businessEmail && businessEmail !== mainEmail && (
                 <a
-                  href={`mailto:${businessEmail}`}
+                  href={createMailtoUrl(businessEmail, `Partnership Inquiry - ${siteSettings.siteName}`)}
                   className="p-5 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/50 transition-all flex items-start gap-4 group block shadow-md"
                 >
                   <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 text-cyan-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
@@ -499,7 +506,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
               {/* Support Email (Conditional) */}
               {supportEmail && supportEmail !== mainEmail && (
                 <a
-                  href={`mailto:${supportEmail}`}
+                  href={createMailtoUrl(supportEmail, `Support Request - ${siteSettings.siteName}`)}
                   className="p-5 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/50 transition-all flex items-start gap-4 group block shadow-md"
                 >
                   <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
@@ -518,7 +525,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
               {/* Phone / Office (Conditional) */}
               {phone && (
                 <a
-                  href={`tel:${phone.replace(/[^0-9+]/g, '')}`}
+                  href={createTelUrl(phone)}
                   className="p-5 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/50 transition-all flex items-start gap-4 group block shadow-md"
                 >
                   <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 text-amber-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
@@ -678,8 +685,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
                         <button
                           onClick={() => {
                             const directMsg = `Hi ${siteSettings.siteName}, I just submitted an inquiry for ${formData.service} (Name: ${formData.fullName}). Looking forward to connecting!`;
-                            const url = getWhatsAppUrl(contact?.whatsappNumber || siteSettings.whatsappNumber, directMsg);
-                            window.open(url, '_blank', 'noopener,noreferrer');
+                            const url = createWhatsAppUrl(whatsappNumber, directMsg);
+                            if (url && url !== '#') {
+                              window.open(url, '_blank', 'noopener,noreferrer');
+                            }
                           }}
                           className="w-full sm:w-auto py-3 px-6 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-black font-extrabold text-xs sm:text-sm font-['Outfit'] transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
                         >

@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
-import { SiteSettings, NavigationItem } from '../types';
+import { SiteSettings, NavigationItem, SocialSettings } from '../types';
 import { LizzdoLogo } from './LizzdoLogo';
 import { SuccessStoryIllustration3D } from './visuals/SuccessStoryIllustration3D';
 import { Mail, ArrowRight, Sparkles, ExternalLink, MessageCircle } from 'lucide-react';
 import { navigateTo } from '../utils/router';
-import { getWhatsAppUrl } from '../data/cmsContent';
-import { SocialLinks } from './SocialLinks';
+import { createWhatsAppUrl } from '../utils/whatsapp';
+import { SocialMediaDropdown } from './SocialMediaDropdown';
 
 interface FooterProps {
   siteSettings: SiteSettings;
+  social?: SocialSettings;
   navigation?: NavigationItem[];
   onOpenContact?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   siteSettings,
+  social,
   navigation = [],
   onOpenContact
 }) => {
@@ -41,7 +43,10 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   const handleWhatsApp = () => {
-    const url = getWhatsAppUrl(siteSettings.whatsappNumber, siteSettings.whatsappPrefilledMessage);
+    const url = createWhatsAppUrl(
+      siteSettings.whatsappNumber,
+      siteSettings.whatsappPrefilledMessage || `Hello ${siteSettings.siteName || 'Lizzdo Media'}, I would like to discuss a project with your team.`
+    );
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
@@ -146,10 +151,15 @@ export const Footer: React.FC<FooterProps> = ({
                 {siteSettings.footerText || "A premier creative and digital agency crafting high-impact brand identities, structural packaging, web applications, and strategic marketing campaigns."}
               </p>
 
-              {/* Dynamic Social Profiles */}
+              {/* Dynamic Social Channels Popover */}
               <div className="pt-2">
                 <div className="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-2">Connect With Us</div>
-                <SocialLinks siteSettings={siteSettings} size="sm" variant="circles" />
+                <SocialMediaDropdown 
+                  social={social} 
+                  siteSettings={siteSettings} 
+                  placement="top" 
+                  buttonLabel="SOCIAL MEDIA" 
+                />
               </div>
 
               <div className="pt-1 flex items-center gap-3">
