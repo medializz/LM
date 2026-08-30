@@ -1,6 +1,18 @@
 # Lizzdo Media Website
 
-Production website for **Lizzdo Media** — Creative & Digital Agency.
+Production website for **Lizzdo Media** — Creative & Digital Agency (`https://media.lizzdo.com/`).
+
+---
+
+## 🧠 Project Documentation & Memory
+
+For complete technical architecture, Decap CMS field mappings, data flow diagrams, route maps, historical bug fixes, and AI agent operational guidelines, refer to:
+
+- **[BRAIN.md](./BRAIN.md)**: Master persistent engineering knowledge base and source of truth.
+- **[CHANGELOG.md](./CHANGELOG.md)**: Full project version history and change records.
+- **[docs/](./docs/)**: Detailed setup and security guides for Cloudflare OAuth Worker and Decap CMS.
+
+---
 
 ## 🚀 Deployment Guide
 
