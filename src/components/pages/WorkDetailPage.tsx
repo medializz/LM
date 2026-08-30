@@ -11,6 +11,7 @@ import { ImageLightbox } from '../ImageLightbox';
 import { SEOHead } from '../SEOHead';
 import { navigateTo } from '../../utils/router';
 import { ServiceIcon } from '../ServiceIcons';
+import { getWhatsAppUrl } from '../../data/cmsContent';
 
 interface WorkDetailPageProps {
   project: PortfolioItem;
@@ -72,10 +73,9 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
   };
 
   const handleWhatsApp = () => {
-    const rawNumber = siteSettings.whatsappNumber || "+1234567890";
-    const cleanNumber = rawNumber.replace(/[^0-9]/g, '');
-    const message = encodeURIComponent(`Hello ${siteSettings.siteName}, I saw your "${project.title}" work and would like to discuss a similar project.`);
-    window.open(`https://wa.me/${cleanNumber}?text=${message}`, '_blank', 'noopener,noreferrer');
+    const message = `Hello ${siteSettings.siteName || 'Lizzdo Media'}, I saw your "${project.title}" work and would like to discuss a similar project.`;
+    const url = getWhatsAppUrl(siteSettings.whatsappNumber, message);
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   const canonicalUrl = `https://media.lizzdo.com/work/${project.slug}`;

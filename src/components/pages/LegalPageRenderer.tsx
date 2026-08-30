@@ -4,6 +4,7 @@ import { Breadcrumb } from '../Breadcrumb';
 import { SEOHead } from '../SEOHead';
 import { ShieldCheck, Calendar, ArrowRight, MessageCircle } from 'lucide-react';
 import { navigateTo } from '../../utils/router';
+import { getWhatsAppUrl } from '../../data/cmsContent';
 
 interface LegalPageRendererProps {
   slug: string;
@@ -71,10 +72,9 @@ export const LegalPageRenderer: React.FC<LegalPageRendererProps> = ({
   ];
 
   const handleWhatsApp = () => {
-    const rawNumber = siteSettings.whatsappNumber || "+1234567890";
-    const cleanNumber = rawNumber.replace(/[^0-9]/g, '');
-    const message = encodeURIComponent(`Hi ${siteSettings.siteName}, I have a question regarding your ${pageTitle}.`);
-    window.open(`https://wa.me/${cleanNumber}?text=${message}`, '_blank', 'noopener,noreferrer');
+    const message = `Hi ${siteSettings.siteName || 'Lizzdo Media'}, I have a question regarding your ${pageTitle}.`;
+    const url = getWhatsAppUrl(siteSettings.whatsappNumber, message);
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (

@@ -10,6 +10,7 @@ import { Breadcrumb } from '../Breadcrumb';
 import { SEOHead } from '../SEOHead';
 import { navigateTo } from '../../utils/router';
 import { ServiceIcon } from '../ServiceIcons';
+import { getWhatsAppUrl } from '../../data/cmsContent';
 
 interface BlogDetailPageProps {
   article: BlogArticle;
@@ -30,10 +31,9 @@ export const BlogDetailPage: React.FC<BlogDetailPageProps> = ({
   };
 
   const handleWhatsApp = () => {
-    const rawNumber = siteSettings.whatsappNumber || "+1234567890";
-    const cleanNumber = rawNumber.replace(/[^0-9]/g, '');
-    const message = encodeURIComponent(`Hi ${siteSettings.siteName}, I just read your article "${article.title}" and would like to discuss working together.`);
-    window.open(`https://wa.me/${cleanNumber}?text=${message}`, '_blank', 'noopener,noreferrer');
+    const message = `Hi ${siteSettings.siteName || 'Lizzdo Media'}, I just read your article "${article.title}" and would like to discuss working together.`;
+    const url = getWhatsAppUrl(siteSettings.whatsappNumber, message);
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   // Find related services & portfolio items

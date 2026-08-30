@@ -631,6 +631,7 @@ When a visitor accesses a direct deep link (e.g. `https://media.lizzdo.com/servi
 | **BUG-004** | Missing import `SiteSettings` caused TypeScript build error in `cmsContent.ts` | `src/data/cmsContent.ts` | High | **FIXED** | Added `SiteSettings` to named imports from `../types`. |
 | **BUG-005** | Deep links on GitHub Pages resulted in 404 error on page refresh | `public/404.html` | High | **FIXED** | Added SPA redirection script in `404.html` with query string handler in `router.ts`. |
 | **BUG-006** | Social media links rendered blank items when CMS fields were empty | `src/components/SocialLinks.tsx` | Low | **FIXED** | Added filter to strip out empty string URLs before rendering. |
+| **BUG-007** | Hard-coded fallback strings in `DEFAULT_CMS_DATA` and components shadowed CMS content | `src/data/cmsContent.ts`, page components | Medium | **FIXED** | Removed hardcoded dummy strings; all components now strictly consume dynamic CMS JSON content via unified `getWhatsAppUrl` helper. |
 
 ---
 

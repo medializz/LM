@@ -107,10 +107,10 @@ const loadedLegal: LegalPage[] = Object.values(legalFiles)
 
 // Helper to normalize phone numbers (especially Pakistani mobile numbers)
 export function normalizeWhatsAppNumber(rawPhone?: string): string {
-  if (!rawPhone) return '923001234567';
+  if (!rawPhone || typeof rawPhone !== 'string') return '';
   // Strip everything except digits
   let digits = rawPhone.replace(/\D/g, '');
-  if (!digits) return '923001234567';
+  if (!digits) return '';
 
   // If it starts with 00 (e.g. 00923001234567), strip leading 00
   if (digits.startsWith('00')) {
@@ -166,41 +166,41 @@ export function getValidSocialLinks(social?: SocialSettings, siteSettings?: Site
 
 export const DEFAULT_CMS_DATA: DecapCMSData = {
   siteSettings: {
-    siteName: settingsData.siteName || "Lizzdo Media",
-    tagline: settingsData.tagline || "Creative & Digital Agency",
-    logoText: settingsData.logoText || "LIZZDO MEDIA",
-    logo: settingsData.logo || "/uploads/lizzdo-media-logo.svg",
-    logoDark: settingsData.logoDark || "/uploads/lizzdo-media-logo.svg",
-    logoLight: settingsData.logoLight || "/uploads/lizzdo-media-logo-light.svg",
-    logoMark: settingsData.logoMark || "/uploads/lizzdo-media-mark.svg",
-    favicon: settingsData.favicon || "/uploads/lizzdo-media-mark.svg",
-    contactEmail: contactData.contactEmail || settingsData.contactEmail || "contact@media.lizzdo.com",
-    businessEmail: contactData.businessEmail || (settingsData as any).businessEmail || "business@media.lizzdo.com",
-    supportEmail: contactData.supportEmail || (settingsData as any).supportEmail || "support@media.lizzdo.com",
-    phone: contactData.phone || settingsData.phone || "+92 300 1234567",
-    whatsappNumber: contactData.whatsappNumber || settingsData.whatsappNumber || "+92 300 1234567",
-    whatsappDescription: contactData.whatsappDescription || (settingsData as any).whatsappDescription || "Chat directly with our creative team on WhatsApp for expedited project scoping and immediate consultations.",
-    whatsappPrefilledMessage: contactData.whatsappPrefilledMessage || settingsData.whatsappPrefilledMessage || "Hello Lizzdo Media, I would like to discuss a project with your team.",
-    whatsappCtaText: contactData.whatsappCtaText || (settingsData as any).whatsappCtaText || "Chat on WhatsApp Now",
-    primaryCtaText: settingsData.primaryCtaText || "Let's Talk",
-    primaryCtaUrl: settingsData.primaryCtaUrl || "/contact",
-    parentCompanyUrl: settingsData.parentCompanyUrl || "https://lizzdo.com/",
-    currentDomain: settingsData.currentDomain || "https://media.lizzdo.com/",
-    instagramUrl: socialData.instagram || settingsData.instagramUrl || "https://instagram.com/lizzdomedia",
-    facebookUrl: socialData.facebook || settingsData.facebookUrl || "https://facebook.com/lizzdomedia",
-    linkedinUrl: socialData.linkedin || settingsData.linkedinUrl || "https://linkedin.com/company/lizzdo-media",
-    twitterUrl: socialData.twitter || settingsData.twitterUrl || "https://twitter.com/lizzdomedia",
-    youtubeUrl: socialData.youtube || (settingsData as any).youtubeUrl || "https://youtube.com/@lizzdomedia",
-    tiktokUrl: socialData.tiktok || (settingsData as any).tiktokUrl || "https://tiktok.com/@lizzdomedia",
-    pinterestUrl: socialData.pinterest || (settingsData as any).pinterestUrl || "https://pinterest.com/lizzdomedia",
-    behanceUrl: socialData.behance || settingsData.behanceUrl || "https://behance.net/lizzdomedia",
-    dribbbleUrl: socialData.dribbble || settingsData.dribbbleUrl || "https://dribbble.com/lizzdomedia",
-    githubUrl: socialData.github || settingsData.githubUrl || "https://github.com/medializz",
-    location: contactData.location || settingsData.location || "Global Digital Agency",
-    address: contactData.address || settingsData.address || "Global Creative Studio & Digital Innovation Hub",
+    siteName: settingsData.siteName ?? "",
+    tagline: settingsData.tagline ?? "",
+    logoText: settingsData.logoText ?? "",
+    logo: settingsData.logo ?? "",
+    logoDark: settingsData.logoDark ?? "",
+    logoLight: settingsData.logoLight ?? "",
+    logoMark: settingsData.logoMark ?? "",
+    favicon: settingsData.favicon ?? "",
+    contactEmail: contactData.contactEmail || settingsData.contactEmail || "",
+    businessEmail: contactData.businessEmail || (settingsData as any).businessEmail || "",
+    supportEmail: contactData.supportEmail || (settingsData as any).supportEmail || "",
+    phone: contactData.phone || settingsData.phone || "",
+    whatsappNumber: contactData.whatsappNumber || settingsData.whatsappNumber || "",
+    whatsappDescription: contactData.whatsappDescription || (settingsData as any).whatsappDescription || "",
+    whatsappPrefilledMessage: contactData.whatsappPrefilledMessage || settingsData.whatsappPrefilledMessage || "",
+    whatsappCtaText: contactData.whatsappCtaText || (settingsData as any).whatsappCtaText || "",
+    primaryCtaText: settingsData.primaryCtaText ?? "",
+    primaryCtaUrl: settingsData.primaryCtaUrl ?? "",
+    parentCompanyUrl: settingsData.parentCompanyUrl ?? "",
+    currentDomain: settingsData.currentDomain ?? "",
+    instagramUrl: socialData.instagram || settingsData.instagramUrl || "",
+    facebookUrl: socialData.facebook || settingsData.facebookUrl || "",
+    linkedinUrl: socialData.linkedin || settingsData.linkedinUrl || "",
+    twitterUrl: socialData.twitter || settingsData.twitterUrl || "",
+    youtubeUrl: socialData.youtube || (settingsData as any).youtubeUrl || "",
+    tiktokUrl: socialData.tiktok || (settingsData as any).tiktokUrl || "",
+    pinterestUrl: socialData.pinterest || (settingsData as any).pinterestUrl || "",
+    behanceUrl: socialData.behance || settingsData.behanceUrl || "",
+    dribbbleUrl: socialData.dribbble || settingsData.dribbbleUrl || "",
+    githubUrl: socialData.github || settingsData.githubUrl || "",
+    location: contactData.location || settingsData.location || "",
+    address: contactData.address || settingsData.address || "",
     formEndpoint: settingsData.formEndpoint || "",
-    footerText: settingsData.footerText || footerData.footerDescription || "We help ambitious brands stand out, captivate audiences, and scale through strategic brand identity, packaging design systems, high-speed web engineering, and digital growth.",
-    copyrightText: settingsData.copyrightText || footerData.copyrightText || "© 2026 Lizzdo Media. All rights reserved."
+    footerText: settingsData.footerText || footerData.footerDescription || "",
+    copyrightText: settingsData.copyrightText || footerData.copyrightText || ""
   },
   navigation: navigationData as NavigationItem[],
   hero: {
@@ -278,14 +278,16 @@ export { seoData, footerData, aboutData, contactData, socialData, analyticsData,
 export function getWhatsAppUrl(
   rawPhone?: string, 
   message?: string, 
-  defaultMsg: string = "Hello Lizzdo Media, I would like to discuss a project with your team."
+  defaultMsg: string = "Hello, I would like to discuss a project with your team."
 ): string {
-  const cleanNumber = normalizeWhatsAppNumber(
-    rawPhone || 
+  const phone = rawPhone || 
     DEFAULT_CMS_DATA.contact?.whatsappNumber || 
     DEFAULT_CMS_DATA.siteSettings?.whatsappNumber || 
-    "+923001234567"
-  );
+    "";
+  const cleanNumber = normalizeWhatsAppNumber(phone);
+  if (!cleanNumber) {
+    return '#';
+  }
   const finalMsg = message || 
     DEFAULT_CMS_DATA.contact?.whatsappPrefilledMessage || 
     DEFAULT_CMS_DATA.siteSettings?.whatsappPrefilledMessage || 

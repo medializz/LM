@@ -9,6 +9,7 @@ import { Breadcrumb } from '../Breadcrumb';
 import { SEOHead } from '../SEOHead';
 import { navigateTo } from '../../utils/router';
 import { TeamSection } from '../body/TeamSection';
+import { getWhatsAppUrl } from '../../data/cmsContent';
 
 interface AboutPageProps {
   cmsData: DecapCMSData;
@@ -20,10 +21,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cmsData, onOpenContact }) 
   const publishedClients = clients.filter(c => c.published !== false);
 
   const handleWhatsApp = () => {
-    const rawNumber = siteSettings.whatsappNumber || "+1234567890";
-    const cleanNumber = rawNumber.replace(/[^0-9]/g, '');
-    const message = encodeURIComponent(`Hi ${siteSettings.siteName}, I visited your About page and would like to connect about an upcoming project.`);
-    window.open(`https://wa.me/${cleanNumber}?text=${message}`, '_blank', 'noopener,noreferrer');
+    const message = `Hi ${siteSettings.siteName || 'Lizzdo Media'}, I visited your About page and would like to connect about an upcoming project.`;
+    const url = getWhatsAppUrl(siteSettings.whatsappNumber, message);
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   const canonicalUrl = "https://media.lizzdo.com/about";

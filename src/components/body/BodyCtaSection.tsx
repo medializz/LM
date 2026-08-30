@@ -2,6 +2,7 @@ import React from 'react';
 import { BodyCtaContent } from '../../types';
 import { motion } from 'motion/react';
 import { ArrowRight, MessageCircle } from 'lucide-react';
+import { getWhatsAppUrl } from '../../data/cmsContent';
 
 interface BodyCtaSectionProps {
   content?: Partial<BodyCtaContent>;
@@ -14,6 +15,8 @@ export const BodyCtaSection: React.FC<BodyCtaSectionProps> = ({
   whatsappNumber,
   onOpenContact
 }) => {
+  const whatsappUrl = getWhatsAppUrl(whatsappNumber, "Hi! I'm interested in starting a project.");
+
   return (
     <section 
       id="contact" 
@@ -57,9 +60,9 @@ export const BodyCtaSection: React.FC<BodyCtaSectionProps> = ({
               <ArrowRight className="w-4 h-4" />
             </button>
 
-            {whatsappNumber && (
+            {whatsappUrl && whatsappUrl !== '#' && (
               <a
-                href={`https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent("Hi Lizzdo Media! I'm interested in starting a project.")}`}
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#171b26] hover:bg-[#202533] border border-white/10 hover:border-emerald-500/50 text-white hover:text-emerald-300 font-bold text-sm font-['Outfit'] transition-all shadow-md"

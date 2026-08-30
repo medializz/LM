@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { X, Send, Mail, CheckCircle2, MessageCircle, RefreshCw, AlertCircle } from 'lucide-react';
 import { SiteSettings } from '../types';
 import { LizzdoLogo } from './LizzdoLogo';
+import { getWhatsAppUrl } from '../data/cmsContent';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -77,12 +78,10 @@ export const ContactModal: React.FC<ContactModalProps> = ({
 
   if (!isOpen) return null;
 
-  const rawWhatsApp = siteSettings.whatsappNumber || "+1234567890";
-  const cleanWhatsApp = rawWhatsApp.replace(/[^0-9]/g, '');
-
   const handleWhatsAppQuickChat = () => {
-    const msg = encodeURIComponent(`Hi Lizzdo Media, I would like to discuss a ${service} project.`);
-    window.open(`https://wa.me/${cleanWhatsApp}?text=${msg}`, '_blank', 'noopener,noreferrer');
+    const msg = `Hi ${siteSettings.siteName || 'Lizzdo Media'}, I would like to discuss a ${service} project.`;
+    const url = getWhatsAppUrl(siteSettings.whatsappNumber, msg);
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -370,8 +369,9 @@ export const ContactModal: React.FC<ContactModalProps> = ({
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
               <button
                 onClick={() => {
-                  const directMsg = encodeURIComponent(`Hi Lizzdo Media, I just submitted an inquiry for ${service} (Name: ${name}). Looking forward to connecting!`);
-                  window.open(`https://wa.me/${cleanWhatsApp}?text=${directMsg}`, '_blank', 'noopener,noreferrer');
+                  const directMsg = `Hi ${siteSettings.siteName || 'Lizzdo Media'}, I just submitted an inquiry for ${service} (Name: ${name}). Looking forward to connecting!`;
+                  const url = getWhatsAppUrl(siteSettings.whatsappNumber, directMsg);
+                  window.open(url, '_blank', 'noopener,noreferrer');
                 }}
                 className="w-full sm:w-auto py-2.5 px-6 rounded-full bg-[#25D366] text-black font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 cursor-pointer shadow-md"
               >

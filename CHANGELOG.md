@@ -18,6 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Cloudflare OAuth Worker (`worker/src/index.ts`)**: Serverless GitHub OAuth exchange proxy for secure Decap CMS administration.
 
 ### Changed
+- **Strict CMS-Driven State Initialization**: Removed hard-coded fallback strings from `DEFAULT_CMS_DATA` in `src/data/cmsContent.ts`. All site identity, WhatsApp numbers, descriptions, emails, and social links are now strictly bound to CMS JSON content.
+- **Centralized WhatsApp Deep Links**: Replaced ad-hoc regex handling and dummy fallback numbers (`+1234567890`) across `ContactModal`, `AboutPage`, `ServiceDetailPage`, `WorkDetailPage`, `BlogDetailPage`, `LegalPageRenderer`, and `BodyCtaSection` with the unified `getWhatsAppUrl` helper.
 - **Zero-Stale CMS Content Pipeline**: Switched data loader in `src/data/cmsContent.ts` to direct bundled JSON imports via Vite (`import.meta.glob`), eliminating outdated `localStorage` caches.
 - **Header & Mobile Drawer Navigation**: Updated all "Let's Talk" and Contact triggers to navigate seamlessly to `/contact` instead of opening popup modals.
 - **Sitemap XML & Robots**: Synchronized `/public/sitemap.xml` and `/public/robots.txt` with all 30+ production routes.

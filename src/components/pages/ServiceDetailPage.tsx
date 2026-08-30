@@ -12,6 +12,7 @@ import { ImageLightbox } from '../ImageLightbox';
 import { SEOHead } from '../SEOHead';
 import { navigateTo } from '../../utils/router';
 import { ServiceIcon } from '../ServiceIcons';
+import { getWhatsAppUrl } from '../../data/cmsContent';
 
 interface ServiceDetailPageProps {
   service: ServiceCategory;
@@ -112,10 +113,9 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
   };
 
   const handleWhatsApp = () => {
-    const rawNumber = siteSettings.whatsappNumber || "+1234567890";
-    const cleanNumber = rawNumber.replace(/[^0-9]/g, '');
-    const message = encodeURIComponent(`Hello Lizzdo Media, I'm interested in your ${service.title} service and would like to discuss a project.`);
-    window.open(`https://wa.me/${cleanNumber}?text=${message}`, '_blank', 'noopener,noreferrer');
+    const message = `Hello ${siteSettings.siteName || 'Lizzdo Media'}, I'm interested in your ${service.title} service and would like to discuss a project.`;
+    const url = getWhatsAppUrl(siteSettings.whatsappNumber, message);
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   const canonicalUrl = `https://media.lizzdo.com/services/${service.slug}`;
