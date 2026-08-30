@@ -1,5 +1,6 @@
 import { 
   DecapCMSData, 
+  SiteSettings,
   ServiceCategory, 
   PortfolioItem, 
   BlogArticle, 
@@ -97,6 +98,72 @@ const loadedTeam: TeamMember[] = Object.values(teamFiles)
 const loadedLegal: LegalPage[] = Object.values(legalFiles)
   .map((m: any) => (m.default ? m.default : m) as LegalPage);
 
+/**
+ * Central CMS Data Management & Static Pipeline
+ * 
+ * Source of Truth: Static JSON files written by Decap CMS in `src/content/`.
+ * All data is loaded directly from bundled JSON modules without stale localStorage caching.
+ */
+
+// Helper to normalize phone numbers (especially Pakistani mobile numbers)
+export function normalizeWhatsAppNumber(rawPhone?: string): string {
+  if (!rawPhone) return '923001234567';
+  // Strip everything except digits
+  let digits = rawPhone.replace(/\D/g, '');
+  if (!digits) return '923001234567';
+
+  // If it starts with 00 (e.g. 00923001234567), strip leading 00
+  if (digits.startsWith('00')) {
+    digits = digits.substring(2);
+  }
+  // If it starts with single 0 and is 11 digits (e.g. 03001234567), replace leading 0 with 92
+  if (digits.startsWith('0') && digits.length === 11) {
+    digits = '92' + digits.substring(1);
+  }
+  return digits;
+}
+
+export interface ValidatedSocialLink {
+  id: string;
+  name: string;
+  url: string;
+  handle?: string;
+}
+
+export function getValidSocialLinks(social?: SocialSettings, siteSettings?: SiteSettings): ValidatedSocialLink[] {
+  const links: ValidatedSocialLink[] = [];
+  const s = social || DEFAULT_CMS_DATA.social;
+  const set = siteSettings || DEFAULT_CMS_DATA.siteSettings;
+
+  const candidateMap: { id: string; name: string; url?: string }[] = [
+    { id: 'instagram', name: 'Instagram', url: s?.instagram || set?.instagramUrl },
+    { id: 'linkedin', name: 'LinkedIn', url: s?.linkedin || set?.linkedinUrl },
+    { id: 'twitter', name: 'Twitter / X', url: s?.twitter || set?.twitterUrl },
+    { id: 'facebook', name: 'Facebook', url: s?.facebook || set?.facebookUrl },
+    { id: 'youtube', name: 'YouTube', url: s?.youtube || set?.youtubeUrl },
+    { id: 'tiktok', name: 'TikTok', url: s?.tiktok || set?.tiktokUrl },
+    { id: 'pinterest', name: 'Pinterest', url: s?.pinterest || set?.pinterestUrl },
+    { id: 'behance', name: 'Behance', url: s?.behance || set?.behanceUrl },
+    { id: 'dribbble', name: 'Dribbble', url: s?.dribbble || set?.dribbbleUrl },
+    { id: 'github', name: 'GitHub', url: s?.github || set?.githubUrl },
+  ];
+
+  for (const item of candidateMap) {
+    if (item.url && typeof item.url === 'string') {
+      const trimmed = item.url.trim();
+      if (trimmed !== '' && trimmed !== '#' && (trimmed.startsWith('https://') || trimmed.startsWith('http://'))) {
+        links.push({
+          id: item.id,
+          name: item.name,
+          url: trimmed
+        });
+      }
+    }
+  }
+
+  return links;
+}
+
 export const DEFAULT_CMS_DATA: DecapCMSData = {
   siteSettings: {
     siteName: settingsData.siteName || "Lizzdo Media",
@@ -108,11 +175,13 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
     logoMark: settingsData.logoMark || "/uploads/lizzdo-media-mark.svg",
     favicon: settingsData.favicon || "/uploads/lizzdo-media-mark.svg",
     contactEmail: contactData.contactEmail || settingsData.contactEmail || "contact@media.lizzdo.com",
-    supportEmail: contactData.supportEmail || "support@media.lizzdo.com",
-    businessEmail: contactData.businessEmail || "business@media.lizzdo.com",
-    phone: contactData.phone || "+1234567890",
-    whatsappNumber: contactData.whatsappNumber || settingsData.whatsappNumber || "+1234567890",
-    whatsappPrefilledMessage: contactData.whatsappPrefilledMessage || "Hello Lizzdo, I would like to discuss a project.",
+    businessEmail: contactData.businessEmail || (settingsData as any).businessEmail || "business@media.lizzdo.com",
+    supportEmail: contactData.supportEmail || (settingsData as any).supportEmail || "support@media.lizzdo.com",
+    phone: contactData.phone || settingsData.phone || "+92 300 1234567",
+    whatsappNumber: contactData.whatsappNumber || settingsData.whatsappNumber || "+92 300 1234567",
+    whatsappDescription: contactData.whatsappDescription || (settingsData as any).whatsappDescription || "Chat directly with our creative team on WhatsApp for expedited project scoping and immediate consultations.",
+    whatsappPrefilledMessage: contactData.whatsappPrefilledMessage || settingsData.whatsappPrefilledMessage || "Hello Lizzdo Media, I would like to discuss a project with your team.",
+    whatsappCtaText: contactData.whatsappCtaText || (settingsData as any).whatsappCtaText || "Chat on WhatsApp Now",
     primaryCtaText: settingsData.primaryCtaText || "Let's Talk",
     primaryCtaUrl: settingsData.primaryCtaUrl || "/contact",
     parentCompanyUrl: settingsData.parentCompanyUrl || "https://lizzdo.com/",
@@ -121,11 +190,15 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
     facebookUrl: socialData.facebook || settingsData.facebookUrl || "https://facebook.com/lizzdomedia",
     linkedinUrl: socialData.linkedin || settingsData.linkedinUrl || "https://linkedin.com/company/lizzdo-media",
     twitterUrl: socialData.twitter || settingsData.twitterUrl || "https://twitter.com/lizzdomedia",
-    behanceUrl: socialData.behance || "https://behance.net/lizzdomedia",
-    dribbbleUrl: socialData.dribbble || "https://dribbble.com/lizzdomedia",
-    githubUrl: socialData.github || "https://github.com/medializz",
+    youtubeUrl: socialData.youtube || (settingsData as any).youtubeUrl || "https://youtube.com/@lizzdomedia",
+    tiktokUrl: socialData.tiktok || (settingsData as any).tiktokUrl || "https://tiktok.com/@lizzdomedia",
+    pinterestUrl: socialData.pinterest || (settingsData as any).pinterestUrl || "https://pinterest.com/lizzdomedia",
+    behanceUrl: socialData.behance || settingsData.behanceUrl || "https://behance.net/lizzdomedia",
+    dribbbleUrl: socialData.dribbble || settingsData.dribbbleUrl || "https://dribbble.com/lizzdomedia",
+    githubUrl: socialData.github || settingsData.githubUrl || "https://github.com/medializz",
     location: contactData.location || settingsData.location || "Global Digital Agency",
-    address: contactData.address || "Global Creative Studio & Digital Innovation Hub",
+    address: contactData.address || settingsData.address || "Global Creative Studio & Digital Innovation Hub",
+    formEndpoint: settingsData.formEndpoint || "",
     footerText: settingsData.footerText || footerData.footerDescription || "We help ambitious brands stand out, captivate audiences, and scale through strategic brand identity, packaging design systems, high-speed web engineering, and digital growth.",
     copyrightText: settingsData.copyrightText || footerData.copyrightText || "© 2026 Lizzdo Media. All rights reserved."
   },
@@ -200,60 +273,43 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
 export { seoData, footerData, aboutData, contactData, socialData, analyticsData, notFoundData, clientsSectionData, testimonialsSectionData };
 
 /**
- * Utility to generate a clean, secure WhatsApp URL without spaces, +, brackets, or dashes
+ * Generates a clean, standardized WhatsApp direct message URL with Pakistan & international number formatting
  */
-export function getWhatsAppUrl(rawPhone?: string, message?: string, defaultMsg: string = "Hello Lizzdo, I would like to discuss a project."): string {
-  const numberToClean = rawPhone || DEFAULT_CMS_DATA.siteSettings.whatsappNumber || "+1234567890";
-  const cleanNumber = numberToClean.replace(/[^0-9]/g, '');
-  const finalMsg = message || DEFAULT_CMS_DATA.siteSettings.whatsappPrefilledMessage || defaultMsg;
+export function getWhatsAppUrl(
+  rawPhone?: string, 
+  message?: string, 
+  defaultMsg: string = "Hello Lizzdo Media, I would like to discuss a project with your team."
+): string {
+  const cleanNumber = normalizeWhatsAppNumber(
+    rawPhone || 
+    DEFAULT_CMS_DATA.contact?.whatsappNumber || 
+    DEFAULT_CMS_DATA.siteSettings?.whatsappNumber || 
+    "+923001234567"
+  );
+  const finalMsg = message || 
+    DEFAULT_CMS_DATA.contact?.whatsappPrefilledMessage || 
+    DEFAULT_CMS_DATA.siteSettings?.whatsappPrefilledMessage || 
+    defaultMsg;
   const encoded = encodeURIComponent(finalMsg);
   return `https://wa.me/${cleanNumber}?text=${encoded}`;
 }
 
-const STORAGE_KEY = 'lizzdo_media_cms_data_v1';
-
+/**
+ * Loads CMS data directly from the bundled content.
+ * Cleans up any stale local storage cache from previous sessions so that all git/CMS updates render instantly.
+ */
 export function loadCmsData(): DecapCMSData {
   try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      return {
-        ...DEFAULT_CMS_DATA,
-        ...parsed,
-        siteSettings: { ...DEFAULT_CMS_DATA.siteSettings, ...parsed.siteSettings },
-        hero: { ...DEFAULT_CMS_DATA.hero, ...parsed.hero },
-        navigation: DEFAULT_CMS_DATA.navigation,
-        services: parsed.services?.length ? parsed.services : DEFAULT_CMS_DATA.services,
-        processSteps: parsed.processSteps?.length ? parsed.processSteps : DEFAULT_CMS_DATA.processSteps,
-        portfolio: parsed.portfolio?.length ? parsed.portfolio : DEFAULT_CMS_DATA.portfolio,
-        blog: parsed.blog?.length ? parsed.blog : DEFAULT_CMS_DATA.blog,
-        whyChooseUs: { ...DEFAULT_CMS_DATA.whyChooseUs, ...parsed.whyChooseUs },
-        statistics: parsed.statistics?.length ? parsed.statistics : DEFAULT_CMS_DATA.statistics,
-        testimonials: parsed.testimonials?.length ? parsed.testimonials : DEFAULT_CMS_DATA.testimonials,
-        testimonialsSection: parsed.testimonialsSection ? { ...DEFAULT_CMS_DATA.testimonialsSection, ...parsed.testimonialsSection } : DEFAULT_CMS_DATA.testimonialsSection,
-        bodyCta: { ...DEFAULT_CMS_DATA.bodyCta, ...parsed.bodyCta },
-        features: parsed.features || DEFAULT_CMS_DATA.features,
-        about: parsed.about || DEFAULT_CMS_DATA.about,
-        contact: parsed.contact || DEFAULT_CMS_DATA.contact,
-        social: parsed.social || DEFAULT_CMS_DATA.social,
-        analytics: parsed.analytics || DEFAULT_CMS_DATA.analytics,
-        teamMembers: parsed.teamMembers?.length ? parsed.teamMembers : DEFAULT_CMS_DATA.teamMembers,
-        legalPages: parsed.legalPages?.length ? parsed.legalPages : DEFAULT_CMS_DATA.legalPages,
-        clients: parsed.clients?.length ? parsed.clients : DEFAULT_CMS_DATA.clients,
-        clientsSection: parsed.clientsSection ? { ...DEFAULT_CMS_DATA.clientsSection, ...parsed.clientsSection } : DEFAULT_CMS_DATA.clientsSection,
-        notFound: parsed.notFound || DEFAULT_CMS_DATA.notFound
-      };
+    // Clear any obsolete localStorage cache that might shadow fresh CMS deployments
+    if (typeof window !== 'undefined' && window.localStorage) {
+      window.localStorage.removeItem('lizzdo_media_cms_data_v1');
     }
   } catch (e) {
-    console.warn("Could not load stored CMS data, using default", e);
+    // Silent fail for storage access in restricted iframes
   }
   return DEFAULT_CMS_DATA;
 }
 
-export function saveCmsData(data: DecapCMSData): void {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  } catch (e) {
-    console.error("Failed to save CMS data to localStorage", e);
-  }
+export function saveCmsData(_data: DecapCMSData): void {
+  // No-op for static Decap CMS site; commits write to Git
 }

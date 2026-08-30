@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { SiteSettings, NavigationItem } from '../types';
 import { LizzdoLogo } from './LizzdoLogo';
 import { SuccessStoryIllustration3D } from './visuals/SuccessStoryIllustration3D';
-import { Phone, Mail, ArrowRight, Sparkles, ExternalLink, MessageCircle } from 'lucide-react';
+import { Mail, ArrowRight, Sparkles, ExternalLink, MessageCircle } from 'lucide-react';
 import { navigateTo } from '../utils/router';
+import { getWhatsAppUrl } from '../data/cmsContent';
+import { SocialLinks } from './SocialLinks';
 
 interface FooterProps {
   siteSettings: SiteSettings;
@@ -39,10 +41,8 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   const handleWhatsApp = () => {
-    const rawNumber = siteSettings.whatsappNumber || "+1234567890";
-    const cleanNumber = rawNumber.replace(/[^0-9]/g, '');
-    const message = encodeURIComponent(`Hello ${siteSettings.siteName}, I'd like to discuss a project with your team.`);
-    window.open(`https://wa.me/${cleanNumber}?text=${message}`, '_blank', 'noopener,noreferrer');
+    const url = getWhatsAppUrl(siteSettings.whatsappNumber, siteSettings.whatsappPrefilledMessage);
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -143,10 +143,16 @@ export const Footer: React.FC<FooterProps> = ({
               </div>
 
               <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-sm">
-                A premier creative and digital agency crafting high-impact brand identities, structural packaging, web applications, and strategic marketing campaigns.
+                {siteSettings.footerText || "A premier creative and digital agency crafting high-impact brand identities, structural packaging, web applications, and strategic marketing campaigns."}
               </p>
 
-              <div className="pt-2 flex items-center gap-3">
+              {/* Dynamic Social Profiles */}
+              <div className="pt-2">
+                <div className="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-2">Connect With Us</div>
+                <SocialLinks siteSettings={siteSettings} size="sm" variant="circles" />
+              </div>
+
+              <div className="pt-1 flex items-center gap-3">
                 <a 
                   href={siteSettings.parentCompanyUrl || "https://lizzdo.com"}
                   target="_blank"
@@ -183,7 +189,7 @@ export const Footer: React.FC<FooterProps> = ({
                       onClick={(e) => handleLinkClick(e, '/services')}
                       className="hover:text-[#ffbe1a] transition-colors block"
                     >
-                      All Services (11)
+                      All Services
                     </a>
                   </li>
                   <li>
@@ -220,6 +226,15 @@ export const Footer: React.FC<FooterProps> = ({
                       className="hover:text-[#ffbe1a] transition-colors block"
                     >
                       Blog & Insights
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                      href="/contact" 
+                      onClick={(e) => handleLinkClick(e, '/contact')}
+                      className="hover:text-[#ffbe1a] transition-colors block font-bold text-white"
+                    >
+                      Contact Us
                     </a>
                   </li>
                 </ul>
@@ -264,7 +279,7 @@ export const Footer: React.FC<FooterProps> = ({
                       onClick={(e) => handleLinkClick(e, '/services/logo-design')} 
                       className="hover:text-[#ffbe1a] transition-colors block"
                     >
-                      Logo &amp; Brand Systems
+                      Logo &amp; Systems
                     </a>
                   </li>
                   <li>
@@ -327,7 +342,7 @@ export const Footer: React.FC<FooterProps> = ({
               {/* Column 4: Contact & Inquiries */}
               <div>
                 <h4 className="text-xs font-bold text-white font-['Outfit'] tracking-wide mb-3 sm:mb-4 uppercase">
-                  Connect
+                  Direct Inquiries
                 </h4>
                 <ul className="space-y-3 text-xs text-slate-300 font-medium">
                   <li>
@@ -342,6 +357,17 @@ export const Footer: React.FC<FooterProps> = ({
                     </a>
                   </li>
                   <li>
+                    <button
+                      onClick={handleWhatsApp}
+                      className="flex items-center gap-2 hover:text-[#25D366] transition-colors group cursor-pointer text-left"
+                    >
+                      <div className="w-6 h-6 rounded-full bg-white/[0.06] group-hover:bg-[#25D366] group-hover:text-black text-[#25D366] flex items-center justify-center shrink-0 transition-colors">
+                        <MessageCircle className="w-3 h-3" />
+                      </div>
+                      <span className="text-[11px] sm:text-xs truncate">WhatsApp Chat</span>
+                    </button>
+                  </li>
+                  <li>
                     <a 
                       href="/contact"
                       onClick={(e) => {
@@ -351,7 +377,7 @@ export const Footer: React.FC<FooterProps> = ({
                       className="w-full mt-2 py-2 px-3 rounded-lg bg-[#ffbe1a]/10 hover:bg-[#ffbe1a] text-[#ffbe1a] hover:text-black border border-[#ffbe1a]/30 font-bold text-[11px] font-['Outfit'] transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-sm block text-center"
                     >
                       <Sparkles className="w-3 h-3 inline mr-1" />
-                      <span>Request Estimate</span>
+                      <span>Contact Studio</span>
                     </a>
                   </li>
                 </ul>
@@ -410,3 +436,4 @@ export const Footer: React.FC<FooterProps> = ({
     </footer>
   );
 };
+

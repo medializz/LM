@@ -81,9 +81,9 @@ export const Header: React.FC<HeaderProps> = ({
       return;
     } 
     
-    if (item.id === 'contact' && onOpenContactModal) {
+    if (item.id === 'contact' || item.href === '/contact' || item.href === '/contact/') {
       e.preventDefault();
-      onOpenContactModal();
+      navigateTo('/contact');
       setIsMobileMenuOpen(false);
       return;
     }
@@ -111,9 +111,9 @@ export const Header: React.FC<HeaderProps> = ({
     if (item.hasDropdown) {
       e.preventDefault();
       setIsMobileServicesOpen(!isMobileServicesOpen);
-    } else if (item.id === 'contact' && onOpenContactModal) {
+    } else if (item.id === 'contact' || item.href === '/contact' || item.href === '/contact/') {
       e.preventDefault();
-      onOpenContactModal();
+      navigateTo('/contact');
       setIsMobileMenuOpen(false);
     } else if (item.href.startsWith('/')) {
       e.preventDefault();
@@ -264,15 +264,19 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* RIGHT: CTA Button ("Let's Talk") */}
         <div className="hidden md:flex items-center">
-          <button
+          <a
             id="header-cta-button"
-            onClick={onOpenContactModal}
+            href="/contact"
+            onClick={(e) => {
+              e.preventDefault();
+              navigateTo('/contact');
+            }}
             className="group relative inline-flex items-center gap-2 px-4.5 py-2 rounded-full border border-[#ffbe1a] bg-transparent text-[#ffbe1a] text-sm font-semibold tracking-wide hover:bg-[#ffbe1a] hover:text-black transition-all duration-300 shadow-[0_0_12px_-2px_rgba(255,190,26,0.25)] hover:shadow-[0_0_18px_rgba(255,190,26,0.55)] cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#ffbe1a]"
             aria-label="Let's Talk - Contact Lizzdo Media"
           >
             <Send className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
             <span>{siteSettings.primaryCtaText || "Let's Talk"}</span>
-          </button>
+          </a>
         </div>
 
         {/* MOBILE MENU TOGGLE BUTTON (Touch target >= 44px) */}
@@ -380,16 +384,18 @@ export const Header: React.FC<HeaderProps> = ({
               })}
 
               {/* Mobile CTA Button (Min 48px touch target) */}
-              <button
-                onClick={() => {
+              <a
+                href="/contact"
+                onClick={(e) => {
+                  e.preventDefault();
                   setIsMobileMenuOpen(false);
-                  if (onOpenContactModal) onOpenContactModal();
+                  navigateTo('/contact');
                 }}
                 className="mt-4 w-full min-h-[48px] py-3.5 px-6 rounded-full bg-[#ffbe1a] text-black font-bold text-base flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(255,190,26,0.4)] active:scale-[0.98] transition-transform cursor-pointer"
               >
                 <Send className="w-4 h-4" />
                 <span>{siteSettings.primaryCtaText || "Let's Talk"}</span>
-              </button>
+              </a>
             </div>
           </div>
         </>

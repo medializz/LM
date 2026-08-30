@@ -31,10 +31,14 @@ collections:
           - { label: "Logo Light", name: "logoLight", widget: "image", default: "/uploads/lizzdo-media-logo-light.svg", required: false }
           - { label: "Logo Mark / Favicon Icon", name: "logoMark", widget: "image", default: "/uploads/lizzdo-media-mark.svg", required: false }
           - { label: "Favicon", name: "favicon", widget: "image", default: "/uploads/lizzdo-media-mark.svg", required: false }
-          - { label: "Contact Email", name: "contactEmail", widget: "string", default: "contact@media.lizzdo.com" }
-          - { label: "WhatsApp Number", name: "whatsappNumber", widget: "string", default: "+1234567890" }
-          - { label: "WhatsApp Prefilled Message", name: "whatsappPrefilledMessage", widget: "string", default: "Hello Lizzdo, I would like to discuss a project." }
-          - { label: "Phone", name: "phone", widget: "string", default: "+1234567890", required: false }
+          - { label: "Primary Contact Email", name: "contactEmail", widget: "string", default: "contact@media.lizzdo.com" }
+          - { label: "Business Email", name: "businessEmail", widget: "string", default: "business@media.lizzdo.com", required: false }
+          - { label: "Support Email", name: "supportEmail", widget: "string", default: "support@media.lizzdo.com", required: false }
+          - { label: "Phone Number", name: "phone", widget: "string", default: "+92 300 1234567", required: false }
+          - { label: "WhatsApp Number", name: "whatsappNumber", widget: "string", default: "+92 300 1234567" }
+          - { label: "WhatsApp Description", name: "whatsappDescription", widget: "string", default: "Chat directly with our creative team on WhatsApp for expedited project scoping and immediate consultations.", required: false }
+          - { label: "WhatsApp Prefilled Message", name: "whatsappPrefilledMessage", widget: "string", default: "Hello Lizzdo Media, I would like to discuss a project with your team." }
+          - { label: "WhatsApp CTA Text", name: "whatsappCtaText", widget: "string", default: "Chat on WhatsApp Now", required: false }
           - { label: "Location", name: "location", widget: "string", default: "Global Digital Agency", required: false }
           - { label: "Address", name: "address", widget: "string", default: "Global Creative Studio & Digital Innovation Hub", required: false }
           - { label: "Header CTA Text", name: "primaryCtaText", widget: "string", default: "Let's Talk" }
@@ -50,9 +54,9 @@ collections:
         file: "src/content/social.json"
         fields:
           - { label: "Instagram URL", name: "instagram", widget: "string", required: false }
-          - { label: "Facebook URL", name: "facebook", widget: "string", required: false }
           - { label: "LinkedIn URL", name: "linkedin", widget: "string", required: false }
           - { label: "Twitter / X URL", name: "twitter", widget: "string", required: false }
+          - { label: "Facebook URL", name: "facebook", widget: "string", required: false }
           - { label: "YouTube URL", name: "youtube", widget: "string", required: false }
           - { label: "TikTok URL", name: "tiktok", widget: "string", required: false }
           - { label: "Pinterest URL", name: "pinterest", widget: "string", required: false }
@@ -85,18 +89,31 @@ collections:
         label: "Contact Page Content"
         file: "src/content/contact.json"
         fields:
-          - { label: "Contact Heading", name: "heading", widget: "string", default: "Let's Start Your Project" }
+          - { label: "Contact Heading", name: "heading", widget: "string", default: "Start a Project or Request an Estimate" }
+          - { label: "Contact Subtitle", name: "subtitle", widget: "string", default: "Direct Studio Inquiry & Estimated Budget", required: false }
+          - { label: "Contact Tagline", name: "tagline", widget: "string", default: "Direct Studio Inquiry", required: false }
           - { label: "Contact Description", name: "description", widget: "text" }
           - { label: "Primary Contact Email", name: "contactEmail", widget: "string", default: "contact@media.lizzdo.com" }
-          - { label: "Support Email", name: "supportEmail", widget: "string", default: "support@media.lizzdo.com", required: false }
           - { label: "Business Email", name: "businessEmail", widget: "string", default: "business@media.lizzdo.com", required: false }
-          - { label: "Phone", name: "phone", widget: "string", default: "+1234567890", required: false }
-          - { label: "WhatsApp Number", name: "whatsappNumber", widget: "string", default: "+1234567890" }
-          - { label: "WhatsApp Prefilled Message", name: "whatsappPrefilledMessage", widget: "string", default: "Hello Lizzdo, I would like to discuss a project with your team." }
+          - { label: "Support Email", name: "supportEmail", widget: "string", default: "support@media.lizzdo.com", required: false }
+          - { label: "Phone Number", name: "phone", widget: "string", default: "+92 300 1234567", required: false }
+          - { label: "WhatsApp Number", name: "whatsappNumber", widget: "string", default: "+92 300 1234567" }
+          - { label: "WhatsApp Description", name: "whatsappDescription", widget: "string", default: "Chat directly with our creative team on WhatsApp for expedited project scoping and immediate consultations.", required: false }
+          - { label: "WhatsApp Prefilled Message", name: "whatsappPrefilledMessage", widget: "string", default: "Hello Lizzdo Media, I would like to discuss a project with your team." }
+          - { label: "WhatsApp Button CTA Text", name: "whatsappCtaText", widget: "string", default: "Chat on WhatsApp Now", required: false }
+          - { label: "Email Button CTA Text", name: "emailCtaText", widget: "string", default: "Send an Email", required: false }
           - { label: "Address / Studio Location", name: "address", widget: "string", required: false }
+          - { label: "Location Tag", name: "location", widget: "string", default: "Global Digital Agency", required: false }
           - { label: "Office Availability", name: "availability", widget: "string", default: "Monday – Friday: 9:00 AM – 6:00 PM (EST)", required: false }
-          - { label: "Direct WhatsApp Heading", name: "ctaHeading", widget: "string", default: "Prefer instant messaging?" }
-          - { label: "Direct WhatsApp Subtext", name: "ctaText", widget: "text", default: "Chat directly on WhatsApp for expedited project scoping and immediate consultations." }
+          - { label: "Direct WhatsApp Heading", name: "ctaHeading", widget: "string", default: "Prefer Instant Messaging?" }
+          - { label: "Direct WhatsApp Subtext", name: "ctaText", widget: "text", default: "Chat directly on WhatsApp for expedited project scoping, quick questions, and immediate consultations." }
+          - { label: "Enable Embedded / External Form", name: "contactFormEnabled", widget: "boolean", default: true }
+          - { label: "Form Integration Type", name: "contactFormType", widget: "select", options: ["native", "embed"], default: "native" }
+          - { label: "Form Embed URL (Tally / Google Forms / Typeform / etc.)", name: "contactFormUrl", widget: "string", required: false }
+          - { label: "Form Iframe Title", name: "contactFormTitle", widget: "string", default: "Project Inquiry Form", required: false }
+          - { label: "SEO Meta Title", name: "seoTitle", widget: "string", required: false }
+          - { label: "SEO Meta Description", name: "seoDescription", widget: "text", required: false }
+          - { label: "OG Share Image", name: "ogImage", widget: "image", default: "/uploads/og-cover.png", required: false }
 
       - name: "analytics"
         label: "Analytics & Tracking"

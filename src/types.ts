@@ -398,18 +398,30 @@ export interface AboutContent {
 
 export interface ContactContent {
   heading: string;
+  subtitle?: string;
+  tagline?: string;
   description: string;
   contactEmail: string;
   supportEmail?: string;
   businessEmail?: string;
   phone?: string;
   whatsappNumber?: string;
+  whatsappDescription?: string;
   whatsappPrefilledMessage?: string;
+  whatsappCtaText?: string;
+  emailCtaText?: string;
   address?: string;
   location?: string;
   availability?: string;
   ctaHeading?: string;
   ctaText?: string;
+  contactFormEnabled?: boolean;
+  contactFormType?: 'native' | 'embed';
+  contactFormUrl?: string;
+  contactFormTitle?: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  ogImage?: string;
 }
 
 export interface NotFoundContent {
@@ -433,16 +445,21 @@ export interface SiteSettings {
   supportEmail?: string;
   businessEmail?: string;
   phone?: string;
+  whatsappNumber?: string;
+  whatsappDescription?: string;
+  whatsappPrefilledMessage?: string;
+  whatsappCtaText?: string;
   primaryCtaText: string;
   primaryCtaUrl: string;
   parentCompanyUrl: string;
   currentDomain: string;
-  whatsappNumber?: string;
-  whatsappPrefilledMessage?: string;
   instagramUrl?: string;
   facebookUrl?: string;
   linkedinUrl?: string;
   twitterUrl?: string;
+  youtubeUrl?: string;
+  tiktokUrl?: string;
+  pinterestUrl?: string;
   behanceUrl?: string;
   dribbbleUrl?: string;
   githubUrl?: string;
