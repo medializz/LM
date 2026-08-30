@@ -11,6 +11,7 @@ import { ServicesSection } from './components/body/ServicesSection';
 import { ProcessSection } from './components/body/ProcessSection';
 import { FeaturedWorkSection } from './components/body/FeaturedWorkSection';
 import { ClientsSection } from './components/body/ClientsSection';
+import { TestimonialsSection } from './components/body/TestimonialsSection';
 import { WhyChooseUsSection } from './components/body/WhyChooseUsSection';
 import { Footer } from './components/Footer';
 import { ServiceDetailModal } from './components/ServiceDetailModal';
@@ -186,6 +187,15 @@ export default function App() {
               clients={cmsData.clients || []}
               content={cmsData.clientsSection}
               siteSettings={cmsData.siteSettings}
+              portfolio={cmsData.portfolio || []}
+              onSelectProject={handleSelectProject}
+            />
+
+            <TestimonialsSection 
+              testimonials={cmsData.testimonials || []}
+              content={cmsData.testimonialsSection}
+              siteSettings={cmsData.siteSettings}
+              clients={cmsData.clients || []}
               portfolio={cmsData.portfolio || []}
               onSelectProject={handleSelectProject}
             />

@@ -207,13 +207,33 @@ export interface StatItem {
 
 export interface TestimonialItem {
   id: string;
-  quote: string;
-  author: string;
-  role: string;
-  company: string;
+  slug?: string;
+  reviewText?: string;
+  quote?: string;
+  reviewerName?: string;
+  author?: string;
+  reviewerPosition?: string;
+  role?: string;
+  companyName?: string;
+  company?: string;
+  companyLogo?: string;
+  reviewerPhoto?: string;
   avatar?: string;
   rating?: number;
-  order?: number;
+  relatedCompany?: string;
+  relatedService?: string;
+  relatedWork?: string;
+  relatedWorkTitle?: string;
+  featured?: boolean;
+  published?: boolean;
+  order: number;
+}
+
+export interface TestimonialsSectionContent {
+  eyebrow?: string;
+  headingPrefix?: string;
+  headingHighlight?: string;
+  description?: string;
 }
 
 export interface WhyChooseUsContent {
@@ -304,18 +324,43 @@ export interface AnalyticsSettings {
   cookieConsentEnabled: boolean;
 }
 
+export interface TeamSocialItem {
+  platform: 'instagram' | 'facebook' | 'linkedin' | 'twitter' | 'youtube' | 'tiktok' | 'github' | 'behance' | 'dribbble' | 'website' | string;
+  url: string;
+  enabled?: boolean;
+}
+
 export interface TeamMember {
   id: string;
   name: string;
-  position: string;
-  shortBio: string;
+  slug?: string;
+  jobTitle?: string;
+  position?: string; // backward-compatibility alias
+  role?: string; // backward-compatibility alias
+  shortDescription?: string;
+  shortBio?: string; // backward-compatibility alias
+  bio?: string; // backward-compatibility alias
   fullBio?: string;
-  avatar?: string;
-  avatarAlt?: string;
+  profilePhoto?: string;
+  avatar?: string; // backward-compatibility alias
+  photo?: string; // backward-compatibility alias
+  photoAlt?: string;
+  avatarAlt?: string; // backward-compatibility alias
   skills?: string[];
   linkedin?: string;
   instagram?: string;
+  facebook?: string;
+  twitter?: string;
+  x?: string;
+  youtube?: string;
+  tiktok?: string;
+  github?: string;
+  behance?: string;
+  dribbble?: string;
+  website?: string;
   portfolioUrl?: string;
+  socialLinks?: TeamSocialItem[];
+  published?: boolean;
   featured?: boolean;
   order: number;
 }
@@ -444,6 +489,7 @@ export interface DecapCMSData {
   legalPages?: LegalPage[];
   clients?: ClientItem[];
   clientsSection?: ClientsSectionContent;
+  testimonialsSection?: TestimonialsSectionContent;
   notFound?: NotFoundContent;
 }
 

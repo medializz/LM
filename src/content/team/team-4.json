@@ -1,13 +1,21 @@
 {
-  "id": "team-4",
+  "id": "team-sophia",
+  "slug": "sophia-bennett",
   "name": "Sophia Bennett",
+  "jobTitle": "Digital Growth & Marketing Strategist",
   "position": "Digital Growth & Marketing Strategist",
+  "shortDescription": "Data-informed marketer specializing in paid acquisition, high-converting social creatives, and audience retention.",
   "shortBio": "Data-informed marketer specializing in paid acquisition, high-converting social creatives, and audience retention.",
   "fullBio": "Sophia bridges creative design with quantitative conversion metrics, scaling digital marketing campaigns and organic social ecosystems.",
+  "profilePhoto": "/uploads/team-sophia.jpg",
   "avatar": "/uploads/team-sophia.jpg",
-  "avatarAlt": "Sophia Bennett - Growth Strategist",
+  "photoAlt": "Sophia Bennett, Digital Growth & Marketing Strategist",
+  "avatarAlt": "Sophia Bennett, Digital Growth & Marketing Strategist",
   "skills": ["Paid Advertising", "Content Strategy", "Conversion Rate Optimization", "Growth Funnels"],
   "linkedin": "https://linkedin.com/in/sophiabennett-lizzdo",
+  "twitter": "https://x.com/sophiagrowth",
+  "instagram": "https://instagram.com/sophia.growth",
+  "published": true,
   "featured": true,
   "order": 4
 }

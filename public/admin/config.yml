@@ -164,6 +164,15 @@ collections:
           - { label: "Heading Highlight Word", name: "headingHighlight", widget: "string", default: "Worked With" }
           - { label: "Introductory Description", name: "description", widget: "text", default: "From brand identity and social content to websites and digital campaigns, we've partnered with forward-thinking businesses across diverse industries." }
 
+      - name: "testimonialsSection"
+        label: "Testimonials / Client Reviews Section"
+        file: "src/content/testimonials-section.json"
+        fields:
+          - { label: "Section Eyebrow", name: "eyebrow", widget: "string", default: "CLIENT TESTIMONIALS" }
+          - { label: "Heading Prefix", name: "headingPrefix", widget: "string", default: "Trusted by " }
+          - { label: "Heading Highlight Word", name: "headingHighlight", widget: "string", default: "Industry Leaders" }
+          - { label: "Introductory Description", name: "description", widget: "text", default: "What founders, marketing directors, and product teams say about partnering with Lizzdo Media." }
+
   # =========================================================================
   # 2. CLIENTS / COMPANIES WE'VE WORKED WITH COLLECTION
   # =========================================================================
@@ -362,18 +371,27 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Member Name", name: "name", widget: "string", required: true }
-      - { label: "Position / Role", name: "position", widget: "string", required: true }
-      - { label: "Short Bio", name: "shortBio", widget: "text", required: true }
-      - { label: "Full Bio", name: "fullBio", widget: "text", required: false }
-      - { label: "Avatar Image", name: "avatar", widget: "image", required: false }
-      - { label: "Avatar Alt Text", name: "avatarAlt", widget: "string", required: false }
-      - { label: "Skills", name: "skills", widget: "list", required: false }
+      - { label: "Full Name", name: "name", widget: "string", required: true }
+      - { label: "Slug", name: "slug", widget: "string", required: true }
+      - { label: "Job Title / Role", name: "jobTitle", widget: "string", required: true }
+      - { label: "Short Description", name: "shortDescription", widget: "text", required: true }
+      - { label: "Profile Photo", name: "profilePhoto", widget: "image", required: false }
+      - { label: "Photo Alt Text", name: "photoAlt", widget: "string", required: false }
+      - { label: "Skills / Specialties", name: "skills", widget: "list", required: false }
       - { label: "LinkedIn URL", name: "linkedin", widget: "string", required: false }
       - { label: "Instagram URL", name: "instagram", widget: "string", required: false }
-      - { label: "GitHub / Portfolio URL", name: "portfolioUrl", widget: "string", required: false }
+      - { label: "X / Twitter URL", name: "twitter", widget: "string", required: false }
+      - { label: "GitHub URL", name: "github", widget: "string", required: false }
+      - { label: "Facebook URL", name: "facebook", widget: "string", required: false }
+      - { label: "YouTube URL", name: "youtube", widget: "string", required: false }
+      - { label: "TikTok URL", name: "tiktok", widget: "string", required: false }
+      - { label: "Behance URL", name: "behance", widget: "string", required: false }
+      - { label: "Dribbble URL", name: "dribbble", widget: "string", required: false }
+      - { label: "Personal Website URL", name: "website", widget: "string", required: false }
+      - { label: "Full Biography (Optional)", name: "fullBio", widget: "text", required: false }
+      - { label: "Published", name: "published", widget: "boolean", default: true }
       - { label: "Featured", name: "featured", widget: "boolean", default: true }
-      - { label: "Display Order", name: "order", widget: "number", value_type: "int", default: 1 }
+      - { label: "Sort Order", name: "order", widget: "number", value_type: "int", default: 1 }
 
   # =========================================================================
   # 6. LEGAL & POLICY PAGES COLLECTION
@@ -444,20 +462,27 @@ collections:
       - { label: "Display Order", name: "order", widget: "number", value_type: "int", default: 1 }
 
   # =========================================================================
-  # 10. TESTIMONIALS COLLECTION
+  # 10. TESTIMONIALS / CLIENT REVIEWS COLLECTION
   # =========================================================================
   - name: "testimonials"
-    label: "Testimonials"
+    label: "Client Testimonials"
     folder: "src/content/testimonials"
     format: "json"
     extension: "json"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Quote", name: "quote", widget: "text", required: true }
-      - { label: "Author Name", name: "author", widget: "string", required: true }
-      - { label: "Role / Position", name: "role", widget: "string", required: true }
-      - { label: "Company", name: "company", widget: "string", required: true }
-      - { label: "Avatar Image", name: "avatar", widget: "image", required: false }
-      - { label: "Rating (1 to 5)", name: "rating", widget: "number", value_type: "int", default: 5 }
-      - { label: "Display Order", name: "order", widget: "number", value_type: "int", default: 1 }
+      - { label: "Review Text / Quote", name: "reviewText", widget: "text", required: true }
+      - { label: "Reviewer Name", name: "reviewerName", widget: "string", required: true }
+      - { label: "Reviewer Position / Role", name: "reviewerPosition", widget: "string", required: false }
+      - { label: "Company Name", name: "companyName", widget: "string", required: false }
+      - { label: "Company Logo", name: "companyLogo", widget: "image", required: false }
+      - { label: "Reviewer Photo (Optional)", name: "reviewerPhoto", widget: "image", required: false }
+      - { label: "Rating (1 to 5 - Optional)", name: "rating", widget: "number", value_type: "int", required: false }
+      - { label: "Related Company Slug (Optional)", name: "relatedCompany", widget: "string", required: false }
+      - { label: "Related Service Slug (Optional)", name: "relatedService", widget: "string", required: false }
+      - { label: "Related Work Slug (Optional)", name: "relatedWork", widget: "string", required: false }
+      - { label: "Related Work Case Study Title (Optional)", name: "relatedWorkTitle", widget: "string", required: false }
+      - { label: "Featured Testimonial", name: "featured", widget: "boolean", default: true }
+      - { label: "Published", name: "published", widget: "boolean", default: true }
+      - { label: "Sort Order", name: "order", widget: "number", value_type: "int", default: 1 }

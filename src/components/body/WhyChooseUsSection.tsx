@@ -22,10 +22,11 @@ export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({
   const defaultTestimonials: TestimonialItem[] = [
     {
       id: "test-default",
-      quote: "Lizzdo Media transformed our brand completely. Their creativity, communication, and dedication are truly outstanding!",
-      author: "Ravi Sharma",
-      role: "Founder",
-      company: "Urban Mart"
+      reviewText: "Lizzdo Media transformed our brand completely. Their creativity, communication, and dedication are truly outstanding!",
+      reviewerName: "Ravi Sharma",
+      reviewerPosition: "Founder",
+      companyName: "Urban Mart",
+      order: 1
     }
   ];
 
@@ -189,31 +190,32 @@ export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({
                     transition={{ duration: 0.25 }}
                     className="text-xs sm:text-[13px] text-slate-300 font-['Plus_Jakarta_Sans'] leading-relaxed italic"
                   >
-                    "{currentTestimonial.quote}"
+                    "{currentTestimonial.reviewText || currentTestimonial.quote}"
                   </motion.p>
                 </AnimatePresence>
               </div>
 
               {/* Author Info */}
               <div className="pt-3 border-t border-white/[0.06] flex items-center gap-3">
-                {currentTestimonial.avatar ? (
+                {(currentTestimonial.reviewerPhoto || currentTestimonial.avatar) ? (
                   <img 
-                    src={currentTestimonial.avatar} 
-                    alt={currentTestimonial.author}
+                    src={currentTestimonial.reviewerPhoto || currentTestimonial.avatar} 
+                    alt={currentTestimonial.reviewerName || currentTestimonial.author || "Client"}
                     referrerPolicy="no-referrer"
                     className="w-9 h-9 rounded-full object-cover border border-[#ffbe1a]/50" 
                   />
                 ) : (
                   <div className="w-9 h-9 rounded-full bg-[#ffbe1a]/20 border border-[#ffbe1a] flex items-center justify-center text-[#ffbe1a] font-bold text-xs">
-                    {currentTestimonial.author.charAt(0)}
+                    {(currentTestimonial.reviewerName || currentTestimonial.author || currentTestimonial.companyName || currentTestimonial.company || "C").charAt(0)}
                   </div>
                 )}
-                <div>
-                  <h4 className="text-xs font-bold text-white font-['Outfit']">
-                    {currentTestimonial.author}
+                <div className="min-w-0">
+                  <h4 className="text-xs font-bold text-white font-['Outfit'] truncate">
+                    {currentTestimonial.reviewerName || currentTestimonial.author}
                   </h4>
-                  <p className="text-[10.5px] text-slate-400 font-['Plus_Jakarta_Sans']">
-                    {currentTestimonial.role}{currentTestimonial.company ? `, ${currentTestimonial.company}` : ''}
+                  <p className="text-[10.5px] text-slate-400 font-['Plus_Jakarta_Sans'] truncate">
+                    {currentTestimonial.reviewerPosition || currentTestimonial.role}
+                    {(currentTestimonial.reviewerPosition || currentTestimonial.role) && (currentTestimonial.companyName || currentTestimonial.company) ? ` • ${currentTestimonial.companyName || currentTestimonial.company}` : (currentTestimonial.companyName || currentTestimonial.company)}
                   </p>
                 </div>
               </div>

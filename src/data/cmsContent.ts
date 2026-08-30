@@ -11,6 +11,7 @@ import {
   TeamMember,
   ClientItem,
   ClientsSectionContent,
+  TestimonialsSectionContent,
   AboutContent,
   ContactContent,
   SocialSettings,
@@ -30,6 +31,7 @@ import socialData from '../content/social.json';
 import analyticsData from '../content/analytics.json';
 import notFoundData from '../content/not-found.json';
 import clientsSectionData from '../content/clients-section.json';
+import testimonialsSectionData from '../content/testimonials-section.json';
 
 // Eagerly glob all collection JSON files from src/content/
 const serviceFiles = import.meta.glob('../content/services/*.json', { eager: true }) as Record<string, { default?: ServiceCategory } | ServiceCategory>;
@@ -59,8 +61,29 @@ const loadedStats: StatItem[] = Object.values(statFiles)
   .map((m: any) => (m.default ? m.default : m) as StatItem)
   .sort((a, b) => (a.order || 0) - (b.order || 0));
 
+const loadedClients: ClientItem[] = Object.values(clientFiles)
+  .map((m: any) => (m.default ? m.default : m) as ClientItem)
+  .sort((a, b) => (a.order || 0) - (b.order || 0));
+
 const loadedTestimonials: TestimonialItem[] = Object.values(testimonialFiles)
   .map((m: any) => (m.default ? m.default : m) as TestimonialItem)
+  .map((t: TestimonialItem) => {
+    // If relatedCompany is set, automatically populate company details if missing
+    if (t.relatedCompany) {
+      const matchedClient = loadedClients.find(c => c.slug === t.relatedCompany || c.id === t.relatedCompany);
+      if (matchedClient) {
+        return {
+          ...t,
+          companyName: t.companyName || t.company || matchedClient.name,
+          company: t.company || t.companyName || matchedClient.name,
+          companyLogo: t.companyLogo || matchedClient.logo,
+          relatedWork: t.relatedWork || matchedClient.relatedWork,
+          relatedWorkTitle: t.relatedWorkTitle || matchedClient.relatedWorkTitle
+        };
+      }
+    }
+    return t;
+  })
   .sort((a, b) => (a.order || 0) - (b.order || 0));
 
 const loadedProcess: ProcessStep[] = Object.values(processFiles)
@@ -73,10 +96,6 @@ const loadedTeam: TeamMember[] = Object.values(teamFiles)
 
 const loadedLegal: LegalPage[] = Object.values(legalFiles)
   .map((m: any) => (m.default ? m.default : m) as LegalPage);
-
-const loadedClients: ClientItem[] = Object.values(clientFiles)
-  .map((m: any) => (m.default ? m.default : m) as ClientItem)
-  .sort((a, b) => (a.order || 0) - (b.order || 0));
 
 export const DEFAULT_CMS_DATA: DecapCMSData = {
   siteSettings: {
@@ -174,10 +193,11 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
   legalPages: loadedLegal,
   clients: loadedClients,
   clientsSection: clientsSectionData as ClientsSectionContent,
+  testimonialsSection: testimonialsSectionData as TestimonialsSectionContent,
   notFound: notFoundData as NotFoundContent
 };
 
-export { seoData, footerData, aboutData, contactData, socialData, analyticsData, notFoundData, clientsSectionData };
+export { seoData, footerData, aboutData, contactData, socialData, analyticsData, notFoundData, clientsSectionData, testimonialsSectionData };
 
 /**
  * Utility to generate a clean, secure WhatsApp URL without spaces, +, brackets, or dashes
@@ -210,6 +230,7 @@ export function loadCmsData(): DecapCMSData {
         whyChooseUs: { ...DEFAULT_CMS_DATA.whyChooseUs, ...parsed.whyChooseUs },
         statistics: parsed.statistics?.length ? parsed.statistics : DEFAULT_CMS_DATA.statistics,
         testimonials: parsed.testimonials?.length ? parsed.testimonials : DEFAULT_CMS_DATA.testimonials,
+        testimonialsSection: parsed.testimonialsSection ? { ...DEFAULT_CMS_DATA.testimonialsSection, ...parsed.testimonialsSection } : DEFAULT_CMS_DATA.testimonialsSection,
         bodyCta: { ...DEFAULT_CMS_DATA.bodyCta, ...parsed.bodyCta },
         features: parsed.features || DEFAULT_CMS_DATA.features,
         about: parsed.about || DEFAULT_CMS_DATA.about,

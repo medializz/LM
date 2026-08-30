@@ -1,13 +1,21 @@
 {
-  "id": "team-2",
+  "id": "team-elena",
+  "slug": "elena-rostova",
   "name": "Elena Rostova",
+  "jobTitle": "Design Director & Packaging Lead",
   "position": "Design Director & Packaging Lead",
+  "shortDescription": "Specialist in structural packaging, substrate finishing, tactile dielines, and unboxing customer experiences.",
   "shortBio": "Specialist in structural packaging, substrate finishing, tactile dielines, and unboxing customer experiences.",
   "fullBio": "Elena oversees our packaging systems, combining sustainable materials with luxury finishes and precision print production dielines.",
+  "profilePhoto": "/uploads/team-elena.jpg",
   "avatar": "/uploads/team-elena.jpg",
-  "avatarAlt": "Elena Rostova - Packaging Lead",
+  "photoAlt": "Elena Rostova, Design Director & Packaging Lead",
+  "avatarAlt": "Elena Rostova, Design Director & Packaging Lead",
   "skills": ["Packaging Dielines", "3D Visualization", "Material Sourcing", "Print Production"],
   "linkedin": "https://linkedin.com/in/elenarostova-lizzdo",
+  "dribbble": "https://dribbble.com/elenarostova",
+  "instagram": "https://instagram.com/elena.packaging",
+  "published": true,
   "featured": true,
   "order": 2
 }
