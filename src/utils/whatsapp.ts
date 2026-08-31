@@ -11,7 +11,7 @@
  * Rules:
  * - Strips all non-digit characters (spaces, hyphens, parentheses, plus signs).
  * - Strips leading international access double zeroes ("0092..." -> "92...").
- * - Normalizes local Pakistani mobile format ("03001234567" -> "923001234567").
+ * - Normalizes local Pakistani mobile format ("0300..." -> "92300...").
  * - Returns clean digit-only string (no "+" prefix, no "00" prefix).
  */
 export function normalizeWhatsAppNumber(rawPhone?: string): string {
@@ -21,12 +21,12 @@ export function normalizeWhatsAppNumber(rawPhone?: string): string {
   let digits = rawPhone.replace(/\D/g, '');
   if (!digits) return '';
 
-  // Remove leading 00 (e.g. 00923001234567 -> 923001234567)
+  // Remove leading 00 (e.g. 0092300... -> 92300...)
   if (digits.startsWith('00')) {
     digits = digits.substring(2);
   }
 
-  // Handle local Pakistani 11-digit numbers starting with 0 (e.g. 03001234567 -> 923001234567)
+  // Handle local Pakistani 11-digit numbers starting with 0 (e.g. 0300... -> 92300...)
   if (digits.startsWith('0') && digits.length === 11) {
     digits = '92' + digits.substring(1);
   }
@@ -37,15 +37,15 @@ export function normalizeWhatsAppNumber(rawPhone?: string): string {
 /**
  * Creates a standard WhatsApp deep link URL.
  * 
- * @param rawPhone The raw phone number from CMS (e.g. "+92 300 1234567" or "03001234567")
+ * @param rawPhone The raw phone number from CMS
  * @param message The prefilled text message to encode
  * @param defaultMessage Safe fallback message if message is empty
- * @returns Fully formed WhatsApp URL (e.g. "https://wa.me/923001234567?text=Hello...") or "#" if invalid
+ * @returns Fully formed WhatsApp URL (e.g. "https://wa.me/923000000000?text=Hello...") or "#" if invalid
  */
 export function createWhatsAppUrl(
   rawPhone?: string,
   message?: string,
-  defaultMessage: string = "Hello Lizzdo, I would like to discuss a project."
+  defaultMessage: string = "Hello Lizzdo Media, I would like to discuss a project with your team."
 ): string {
   const normalizedNumber = normalizeWhatsAppNumber(rawPhone);
   if (!normalizedNumber) {
@@ -61,23 +61,28 @@ export function createWhatsAppUrl(
 /**
  * Generates a service-specific contextual WhatsApp link.
  * 
- * Example output message:
- * "Hello Lizzdo, I am interested in your Brand Identity service."
+ * Example output messages:
+ * - "Hello Lizzdo Media, I am interested in your Brand Identity service. I would like to discuss a project with your team."
+ * - "Hello Lizzdo Media, I am interested in Web Development. I would like to discuss a website project with your team."
  */
 export function createServiceWhatsAppUrl(
   rawPhone?: string,
   serviceTitle?: string,
-  siteName: string = "Lizzdo"
+  siteName: string = "Lizzdo Media"
 ): string {
-  const brandName = siteName ? siteName.replace(/ Media$/i, '') : 'Lizzdo';
-  const cleanTitle = serviceTitle && serviceTitle.trim() ? serviceTitle.trim() : 'creative';
+  const brandName = siteName || "Lizzdo Media";
+  const cleanTitle = serviceTitle && serviceTitle.trim() ? serviceTitle.trim() : 'creative services';
   
-  // Ensure we don't duplicate the word "service" if title already ends with service
-  const serviceSuffix = cleanTitle.toLowerCase().endsWith('service') || cleanTitle.toLowerCase().endsWith('services')
-    ? ''
-    : ' service';
+  let message = `Hello ${brandName}, I am interested in your ${cleanTitle} service. I would like to discuss a project with your team.`;
+  
+  if (cleanTitle.toLowerCase().includes('web development') || cleanTitle.toLowerCase().includes('website')) {
+    message = `Hello ${brandName}, I am interested in Web Development. I would like to discuss a website project with your team.`;
+  } else if (cleanTitle.toLowerCase().includes('social media')) {
+    message = `Hello ${brandName}, I am interested in your Social Media services. I would like to discuss a project with your team.`;
+  } else if (cleanTitle.toLowerCase().endsWith('service') || cleanTitle.toLowerCase().endsWith('services')) {
+    message = `Hello ${brandName}, I am interested in your ${cleanTitle}. I would like to discuss a project with your team.`;
+  }
 
-  const message = `Hello ${brandName}, I am interested in your ${cleanTitle}${serviceSuffix}.`;
   return createWhatsAppUrl(rawPhone, message);
 }
 
@@ -85,15 +90,15 @@ export function createServiceWhatsAppUrl(
  * Generates a work/portfolio contextual WhatsApp link.
  * 
  * Example output message:
- * "Hello Lizzdo, I am interested in the Apex Brand Identity project."
+ * "Hello Lizzdo Media, I am interested in the Apex Brand Identity project. I would like to discuss a project with your team."
  */
 export function createWorkWhatsAppUrl(
   rawPhone?: string,
   projectTitle?: string,
   clientOrBrand?: string,
-  siteName: string = "Lizzdo"
+  siteName: string = "Lizzdo Media"
 ): string {
-  const brandName = siteName ? siteName.replace(/ Media$/i, '') : 'Lizzdo';
+  const brandName = siteName || "Lizzdo Media";
   const projectLabel = clientOrBrand && projectTitle && !projectTitle.includes(clientOrBrand)
     ? `${clientOrBrand} ${projectTitle}`
     : projectTitle || 'featured portfolio';
@@ -101,7 +106,7 @@ export function createWorkWhatsAppUrl(
   // Avoid repeating "project" if already present
   const projectSuffix = projectLabel.toLowerCase().endsWith('project') ? '' : ' project';
 
-  const message = `Hello ${brandName}, I am interested in the ${projectLabel}${projectSuffix}.`;
+  const message = `Hello ${brandName}, I am interested in the ${projectLabel}${projectSuffix}. I would like to discuss a project with your team.`;
   return createWhatsAppUrl(rawPhone, message);
 }
 

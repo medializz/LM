@@ -47,7 +47,11 @@ export const Footer: React.FC<FooterProps> = ({
       siteSettings.whatsappNumber,
       siteSettings.whatsappPrefilledMessage || `Hello ${siteSettings.siteName || 'Lizzdo Media'}, I would like to discuss a project with your team.`
     );
-    window.open(url, '_blank', 'noopener,noreferrer');
+    if (url && url !== '#') {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    } else {
+      navigateTo('/contact');
+    }
   };
 
   return (

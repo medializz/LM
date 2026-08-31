@@ -23,7 +23,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cmsData, onOpenContact }) 
   const handleWhatsApp = () => {
     const message = `Hi ${siteSettings.siteName || 'Lizzdo Media'}, I visited your About page and would like to connect about an upcoming project.`;
     const url = getWhatsAppUrl(siteSettings.whatsappNumber, message);
-    window.open(url, '_blank', 'noopener,noreferrer');
+    if (url && url !== '#') {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
   };
 
   const canonicalUrl = "https://media.lizzdo.com/about";

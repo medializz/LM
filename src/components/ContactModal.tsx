@@ -81,7 +81,9 @@ export const ContactModal: React.FC<ContactModalProps> = ({
   const handleWhatsAppQuickChat = () => {
     const msg = `Hi ${siteSettings.siteName || 'Lizzdo Media'}, I would like to discuss a ${service} project.`;
     const url = getWhatsAppUrl(siteSettings.whatsappNumber, msg);
-    window.open(url, '_blank', 'noopener,noreferrer');
+    if (url && url !== '#') {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -371,7 +373,9 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                 onClick={() => {
                   const directMsg = `Hi ${siteSettings.siteName || 'Lizzdo Media'}, I just submitted an inquiry for ${service} (Name: ${name}). Looking forward to connecting!`;
                   const url = getWhatsAppUrl(siteSettings.whatsappNumber, directMsg);
-                  window.open(url, '_blank', 'noopener,noreferrer');
+                  if (url && url !== '#') {
+                    window.open(url, '_blank', 'noopener,noreferrer');
+                  }
                 }}
                 className="w-full sm:w-auto py-2.5 px-6 rounded-full bg-[#25D366] text-black font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 cursor-pointer shadow-md"
               >

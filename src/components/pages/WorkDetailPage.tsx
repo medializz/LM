@@ -11,7 +11,8 @@ import { ImageLightbox } from '../ImageLightbox';
 import { SEOHead } from '../SEOHead';
 import { navigateTo } from '../../utils/router';
 import { ServiceIcon } from '../ServiceIcons';
-import { getWhatsAppUrl } from '../../data/cmsContent';
+import { createWorkWhatsAppUrl } from '../../utils/whatsapp';
+import { getServicesForWork, getRelatedProjects } from '../../data/cmsContent';
 
 interface WorkDetailPageProps {
   project: PortfolioItem;
@@ -61,11 +62,12 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
     { stepNumber: "05", title: "Final", description: "Asset packaging & system handoff" },
   ];
 
-  // Related Services
-  const relatedServicesList = services.slice(0, 3);
+  // Related Services (using centralized bidirectional helper)
+  const servicesUsed = getServicesForWork(project, services, portfolio);
+  const relatedServicesList = servicesUsed.length > 0 ? servicesUsed : services.slice(0, 3);
 
-  // Related Projects (excluding current)
-  const relatedProjectsList = portfolio.filter(p => p.slug !== project.slug).slice(0, 2);
+  // Related Projects (excluding current, resolved via relationship helper)
+  const relatedProjectsList = getRelatedProjects(project, portfolio, 2);
 
   const openLightboxAt = (idx: number) => {
     setActiveGalleryIndex(idx);
@@ -73,9 +75,15 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
   };
 
   const handleWhatsApp = () => {
-    const message = `Hello ${siteSettings.siteName || 'Lizzdo Media'}, I saw your "${project.title}" work and would like to discuss a similar project.`;
-    const url = getWhatsAppUrl(siteSettings.whatsappNumber, message);
-    window.open(url, '_blank', 'noopener,noreferrer');
+    const url = createWorkWhatsAppUrl(
+      siteSettings.whatsappNumber,
+      project.title,
+      project.client,
+      siteSettings.siteName
+    );
+    if (url && url !== '#') {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
   };
 
   const canonicalUrl = `https://media.lizzdo.com/work/${project.slug}`;
@@ -258,13 +266,36 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
 
                 {((project.tools && project.tools.length > 0) || (project.services && project.services.length > 0)) && (
                   <div>
-                    <span className="text-slate-400 font-mono block text-xs mb-1.5">Deliverables & Tools</span>
+                    <span className="text-slate-400 font-mono block text-xs mb-1.5">Services & Deliverables</span>
                     <div className="flex flex-wrap gap-1.5">
-                      {(project.tools || project.services || []).map((t, idx) => (
-                        <span key={idx} className="px-2 py-0.5 rounded bg-white/[0.05] border border-white/[0.08] text-[11px] text-slate-300 font-mono">
-                          {t}
-                        </span>
-                      ))}
+                      {(project.services || project.tools || []).map((t, idx) => {
+                        const matchedService = services.find(s => 
+                          s.slug === t || 
+                          s.title.toLowerCase() === t.toLowerCase() ||
+                          s.category.toLowerCase() === t.toLowerCase()
+                        );
+                        if (matchedService) {
+                          return (
+                            <a
+                              key={idx}
+                              href={`/services/${matchedService.slug}`}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                navigateTo(`/services/${matchedService.slug}`);
+                              }}
+                              className="px-2.5 py-1 rounded bg-[#ffbe1a]/10 hover:bg-[#ffbe1a]/20 border border-[#ffbe1a]/30 text-[11px] text-[#ffbe1a] font-mono transition-colors flex items-center gap-1 group"
+                            >
+                              <span>{t}</span>
+                              <ArrowRight className="w-2.5 h-2.5 group-hover:translate-x-0.5 transition-transform" />
+                            </a>
+                          );
+                        }
+                        return (
+                          <span key={idx} className="px-2 py-0.5 rounded bg-white/[0.05] border border-white/[0.08] text-[11px] text-slate-300 font-mono">
+                            {t}
+                          </span>
+                        );
+                      })}
                     </div>
                   </div>
                 )}
@@ -361,11 +392,29 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
         </section>
 
         {/* ========================================================================= */}
-        {/* 5. RELATED SERVICES */}
+        {/* 5. SERVICES USED / CAPABILITIES */}
         {/* ========================================================================= */}
         <section className="space-y-6 pt-4 border-t border-white/[0.08]">
-          <span className="text-xs uppercase font-mono tracking-widest text-slate-400">Related Capabilities</span>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Expertise & Disciplines</span>
+              <h2 className="text-2xl sm:text-3xl font-bold font-['Outfit'] text-white">
+                Services Deployed in This Project
+              </h2>
+            </div>
+            <a
+              href="/services"
+              onClick={(e) => {
+                e.preventDefault();
+                navigateTo('/services');
+              }}
+              className="text-xs sm:text-sm text-slate-400 hover:text-[#ffbe1a] flex items-center gap-1 font-mono transition-colors"
+            >
+              All Services <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {relatedServicesList.map((relService) => (
               <a
                 key={relService.id}
@@ -374,18 +423,32 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
                   e.preventDefault();
                   navigateTo(`/services/${relService.slug}`);
                 }}
-                className="text-left p-4 rounded-xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/50 transition-all group flex items-center justify-between block"
+                className="text-left p-5 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/60 transition-all group flex flex-col justify-between block shadow-lg hover:-translate-y-1"
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-white/[0.05] flex items-center justify-center text-[#ffbe1a]">
-                    <ServiceIcon iconKey={relService.iconKey} size={16} />
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div className="w-9 h-9 rounded-xl bg-white/[0.05] border border-white/[0.08] group-hover:border-[#ffbe1a]/40 flex items-center justify-center text-[#ffbe1a] group-hover:bg-[#ffbe1a] group-hover:text-black transition-all">
+                      <ServiceIcon iconKey={relService.iconKey} size={18} />
+                    </div>
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400 bg-[#07090e] px-2 py-0.5 rounded border border-white/[0.08]">
+                      {relService.category}
+                    </span>
                   </div>
+
                   <div>
-                    <h4 className="text-sm font-semibold text-white group-hover:text-[#ffbe1a] transition-colors">{relService.title}</h4>
-                    <span className="text-[10px] text-slate-400 font-mono">{relService.category}</span>
+                    <h4 className="text-base font-bold text-white group-hover:text-[#ffbe1a] transition-colors">
+                      {relService.title}
+                    </h4>
+                    <p className="text-xs text-slate-300 line-clamp-2 mt-1 leading-relaxed">
+                      {relService.shortDescription}
+                    </p>
                   </div>
                 </div>
-                <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-[#ffbe1a] group-hover:translate-x-0.5 transition-all" />
+
+                <div className="pt-4 mt-3 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono text-[#ffbe1a] font-semibold">
+                  <span>Explore Service</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
               </a>
             ))}
           </div>

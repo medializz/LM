@@ -12,7 +12,8 @@ import { ImageLightbox } from '../ImageLightbox';
 import { SEOHead } from '../SEOHead';
 import { navigateTo } from '../../utils/router';
 import { ServiceIcon } from '../ServiceIcons';
-import { getWhatsAppUrl } from '../../data/cmsContent';
+import { createServiceWhatsAppUrl } from '../../utils/whatsapp';
+import { getWorksForService, getRelatedServices } from '../../data/cmsContent';
 
 interface ServiceDetailPageProps {
   service: ServiceCategory;
@@ -91,21 +92,11 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
         { id: `${service.slug}-g3`, title: `${service.title} - Digital Application`, caption: "Responsive multi-platform asset", visualType: 'saas-dashboard', layout: 'half' },
       ];
 
-  // Related services
-  const relatedServicesList = services
-    .filter(s => s.slug !== service.slug)
-    .slice(0, 3);
+  // Related services (using centralized helper)
+  const relatedServicesList = getRelatedServices(service, services, 3);
 
-  // Related work projects
-  const relatedWorkList = portfolio
-    .filter(p => 
-      (service.relatedProjects && service.relatedProjects.includes(p.slug)) ||
-      (p.relatedServices && p.relatedServices.includes(service.slug)) ||
-      (p.relatedService && p.relatedService === service.slug) ||
-      p.category.toLowerCase().includes(service.category.toLowerCase()) ||
-      (p.services && p.services.some(s => s.toLowerCase().includes(service.title.toLowerCase())))
-    )
-    .slice(0, 2);
+  // Related work projects (using centralized bidirectional helper)
+  const relatedWorkList = getWorksForService(service, portfolio, services);
 
   const openLightboxAt = (idx: number) => {
     setActiveGalleryIndex(idx);
@@ -113,9 +104,14 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
   };
 
   const handleWhatsApp = () => {
-    const message = `Hello ${siteSettings.siteName || 'Lizzdo Media'}, I'm interested in your ${service.title} service and would like to discuss a project.`;
-    const url = getWhatsAppUrl(siteSettings.whatsappNumber, message);
-    window.open(url, '_blank', 'noopener,noreferrer');
+    const url = createServiceWhatsAppUrl(
+      siteSettings.whatsappNumber,
+      service.title,
+      siteSettings.siteName
+    );
+    if (url && url !== '#') {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
   };
 
   const canonicalUrl = `https://media.lizzdo.com/services/${service.slug}`;
@@ -460,9 +456,9 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
           <section className="space-y-6 pt-4 border-t border-white/[0.08]">
             <div className="flex items-center justify-between">
               <div>
-                <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Case Studies</span>
+                <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Proven Results</span>
                 <h2 className="text-2xl sm:text-3xl font-bold font-['Outfit'] text-white">
-                  Related Projects
+                  Related Projects for {service.title}
                 </h2>
               </div>
               <a
@@ -486,22 +482,48 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
                     e.preventDefault();
                     navigateTo(`/work/${project.slug}`);
                   }}
-                  className="group bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/60 rounded-2xl overflow-hidden p-6 transition-all duration-300 hover:-translate-y-1 block flex flex-col justify-between"
+                  className="group bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/60 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 block flex flex-col justify-between shadow-xl"
                 >
-                  <div className="space-y-3">
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#ffbe1a] bg-[#ffbe1a]/10 px-2 py-0.5 rounded border border-[#ffbe1a]/30">
-                      {project.category}
-                    </span>
-                    <h3 className="text-xl font-bold text-white group-hover:text-[#ffbe1a] transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-sm text-slate-300 line-clamp-2">
-                      {project.description}
-                    </p>
+                  <div className="h-44 sm:h-52 w-full overflow-hidden relative bg-black/40">
+                    {project.image ? (
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <ProjectGalleryVisual
+                        visualType={project.visualType || 'brand-identity'}
+                        title={project.title}
+                        siteSettings={siteSettings}
+                      />
+                    )}
+                    <div className="absolute top-3 left-3 z-10">
+                      <span className="text-[10px] font-mono uppercase tracking-widest text-[#ffbe1a] bg-[#07090e]/90 px-2.5 py-0.5 rounded border border-[#ffbe1a]/30 shadow">
+                        {project.category}
+                      </span>
+                    </div>
                   </div>
-                  <div className="pt-6 flex items-center gap-2 text-xs font-mono text-[#ffbe1a] font-medium">
-                    <span>Read Case Study</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+
+                  <div className="p-5 sm:p-6 space-y-3 flex-1 flex flex-col justify-between">
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between text-xs text-slate-400 font-mono">
+                        <span>{project.client || 'Client Case Study'}</span>
+                        <span>{project.year || '2024'}</span>
+                      </div>
+                      <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-[#ffbe1a] transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-300 line-clamp-2 leading-relaxed">
+                        {project.description}
+                      </p>
+                    </div>
+
+                    <div className="pt-4 mt-2 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono text-[#ffbe1a] font-semibold">
+                      <span>Explore Case Study</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </div>
                 </a>
               ))}

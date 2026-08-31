@@ -174,18 +174,18 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
     logoLight: settingsData.logoLight ?? "",
     logoMark: settingsData.logoMark ?? "",
     favicon: settingsData.favicon ?? "",
-    contactEmail: contactData.contactEmail || settingsData.contactEmail || "",
-    businessEmail: contactData.businessEmail || (settingsData as any).businessEmail || "",
-    supportEmail: contactData.supportEmail || (settingsData as any).supportEmail || "",
-    phone: contactData.phone || settingsData.phone || "",
-    whatsappNumber: contactData.whatsappNumber || settingsData.whatsappNumber || "",
-    whatsappDescription: contactData.whatsappDescription || (settingsData as any).whatsappDescription || "",
-    whatsappPrefilledMessage: contactData.whatsappPrefilledMessage || settingsData.whatsappPrefilledMessage || "",
-    whatsappCtaText: contactData.whatsappCtaText || (settingsData as any).whatsappCtaText || "",
-    primaryCtaText: settingsData.primaryCtaText ?? "",
-    primaryCtaUrl: settingsData.primaryCtaUrl ?? "",
-    parentCompanyUrl: settingsData.parentCompanyUrl ?? "",
-    currentDomain: settingsData.currentDomain ?? "",
+    contactEmail: settingsData.contactEmail || "contact@media.lizzdo.com",
+    businessEmail: settingsData.businessEmail || "",
+    supportEmail: settingsData.supportEmail || "",
+    phone: settingsData.phone || "",
+    whatsappNumber: settingsData.whatsappNumber || "",
+    whatsappDescription: settingsData.whatsappDescription || "Chat directly with our creative team on WhatsApp for expedited project scoping and immediate consultations.",
+    whatsappPrefilledMessage: settingsData.whatsappPrefilledMessage || "Hello Lizzdo Media, I would like to discuss a project with your team.",
+    whatsappCtaText: settingsData.whatsappCtaText || "Chat on WhatsApp Now",
+    primaryCtaText: settingsData.primaryCtaText ?? "Let's Talk",
+    primaryCtaUrl: settingsData.primaryCtaUrl ?? "/contact",
+    parentCompanyUrl: settingsData.parentCompanyUrl ?? "https://lizzdo.com/",
+    currentDomain: settingsData.currentDomain ?? "https://media.lizzdo.com/",
     instagramUrl: socialData.instagram || settingsData.instagramUrl || "",
     facebookUrl: socialData.facebook || settingsData.facebookUrl || "",
     linkedinUrl: socialData.linkedin || settingsData.linkedinUrl || "",
@@ -196,8 +196,8 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
     behanceUrl: socialData.behance || settingsData.behanceUrl || "",
     dribbbleUrl: socialData.dribbble || settingsData.dribbbleUrl || "",
     githubUrl: socialData.github || settingsData.githubUrl || "",
-    location: contactData.location || settingsData.location || "",
-    address: contactData.address || settingsData.address || "",
+    location: settingsData.location || "Global Digital Agency",
+    address: settingsData.address || "Global Creative Studio & Digital Innovation Hub",
     formEndpoint: settingsData.formEndpoint || "",
     footerText: settingsData.footerText || footerData.footerDescription || "",
     copyrightText: settingsData.copyrightText || footerData.copyrightText || ""
@@ -259,7 +259,19 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
     }
   ],
   about: aboutData as AboutContent,
-  contact: contactData as ContactContent,
+  contact: {
+    ...contactData,
+    contactEmail: settingsData.contactEmail || "contact@media.lizzdo.com",
+    businessEmail: settingsData.businessEmail || "",
+    supportEmail: settingsData.supportEmail || "",
+    phone: settingsData.phone || "",
+    whatsappNumber: settingsData.whatsappNumber || "",
+    whatsappDescription: settingsData.whatsappDescription || "Chat directly with our creative team on WhatsApp for expedited project scoping and immediate consultations.",
+    whatsappPrefilledMessage: settingsData.whatsappPrefilledMessage || "Hello Lizzdo Media, I would like to discuss a project with your team.",
+    whatsappCtaText: settingsData.whatsappCtaText || "Chat on WhatsApp Now",
+    location: settingsData.location || "Global Digital Agency",
+    address: settingsData.address || "Global Creative Studio & Digital Innovation Hub",
+  } as ContactContent,
   social: socialData as SocialSettings,
   analytics: analyticsData as AnalyticsSettings,
   teamMembers: loadedTeam,
@@ -310,3 +322,291 @@ export function loadCmsData(): DecapCMSData {
 export function saveCmsData(_data: DecapCMSData): void {
   // No-op for static Decap CMS site; commits write to Git
 }
+
+/**
+ * Resolves related portfolio projects for a given service.
+ * Supports explicit CMS `relatedProjects` array, inverse `relatedServices` references,
+ * service tag matches, and intelligent category fallbacks.
+ */
+export function getWorksForService(
+  serviceInput: ServiceCategory | string,
+  allPortfolio?: PortfolioItem[],
+  allServices?: ServiceCategory[]
+): PortfolioItem[] {
+  const portfolioList = allPortfolio || DEFAULT_CMS_DATA.portfolio || [];
+  const servicesList = allServices || DEFAULT_CMS_DATA.services || [];
+  
+  const serviceObj = typeof serviceInput === 'string'
+    ? servicesList.find(s => s.slug === serviceInput || s.id === serviceInput)
+    : serviceInput;
+  
+  const serviceSlug = typeof serviceInput === 'string' ? serviceInput : serviceInput.slug;
+  const serviceId = serviceObj?.id || serviceSlug;
+  const serviceTitle = serviceObj?.title || '';
+  const serviceCat = serviceObj?.category || '';
+  const explicitProjectSlugs = serviceObj?.relatedProjects || [];
+
+  const matchedProjects: PortfolioItem[] = [];
+  const seenSlugs = new Set<string>();
+
+  // 1. Explicitly configured relatedProjects in CMS
+  for (const pSlug of explicitProjectSlugs) {
+    const proj = portfolioList.find(p => p.slug === pSlug || p.id === pSlug);
+    if (proj && !seenSlugs.has(proj.slug)) {
+      matchedProjects.push(proj);
+      seenSlugs.add(proj.slug);
+    }
+  }
+
+  // 2. Portfolio items referencing this service via relatedServices or relatedService
+  for (const proj of portfolioList) {
+    if (seenSlugs.has(proj.slug)) continue;
+
+    const hasInverseRef = (proj.relatedServices && proj.relatedServices.some(s => s === serviceSlug || s === serviceId)) ||
+      (proj.relatedService && (proj.relatedService === serviceSlug || proj.relatedService === serviceId));
+
+    if (hasInverseRef) {
+      matchedProjects.push(proj);
+      seenSlugs.add(proj.slug);
+    }
+  }
+
+  // 3. Match by services list string keywords
+  for (const proj of portfolioList) {
+    if (seenSlugs.has(proj.slug)) continue;
+
+    const hasServiceKeyword = proj.services && proj.services.some(str => {
+      const lower = str.toLowerCase();
+      return lower === serviceTitle.toLowerCase() ||
+        lower === serviceSlug.toLowerCase() ||
+        (serviceTitle && lower.includes(serviceTitle.toLowerCase())) ||
+        (serviceCat && lower.includes(serviceCat.toLowerCase()));
+    });
+
+    if (hasServiceKeyword) {
+      matchedProjects.push(proj);
+      seenSlugs.add(proj.slug);
+    }
+  }
+
+  // 4. Match by category / shortCategory similarity
+  for (const proj of portfolioList) {
+    if (seenSlugs.has(proj.slug)) continue;
+
+    const catMatch = (serviceCat && (
+      proj.category?.toLowerCase().includes(serviceCat.toLowerCase()) ||
+      proj.shortCategory?.toLowerCase().includes(serviceCat.toLowerCase()) ||
+      serviceCat.toLowerCase().includes(proj.category?.toLowerCase() || '')
+    ));
+
+    if (catMatch) {
+      matchedProjects.push(proj);
+      seenSlugs.add(proj.slug);
+    }
+  }
+
+  // 5. Fallback fill if fewer than 2 items to ensure rich visual layout
+  if (matchedProjects.length < 2) {
+    for (const proj of portfolioList) {
+      if (!seenSlugs.has(proj.slug)) {
+        matchedProjects.push(proj);
+        seenSlugs.add(proj.slug);
+        if (matchedProjects.length >= 2) break;
+      }
+    }
+  }
+
+  return matchedProjects;
+}
+
+/**
+ * Resolves services used or related to a portfolio project.
+ * Supports explicit CMS `relatedServices`, inverse `relatedProjects` references,
+ * service title matches, and category fallbacks.
+ */
+export function getServicesForWork(
+  workInput: PortfolioItem | string,
+  allServices?: ServiceCategory[],
+  allPortfolio?: PortfolioItem[]
+): ServiceCategory[] {
+  const servicesList = allServices || DEFAULT_CMS_DATA.services || [];
+  const portfolioList = allPortfolio || DEFAULT_CMS_DATA.portfolio || [];
+
+  const workObj = typeof workInput === 'string'
+    ? portfolioList.find(p => p.slug === workInput || p.id === workInput)
+    : workInput;
+
+  const workSlug = typeof workInput === 'string' ? workInput : workInput.slug;
+  const workId = workObj?.id || workSlug;
+  const workCat = workObj?.category || '';
+  const workShortCat = workObj?.shortCategory || '';
+  const explicitServiceSlugs = workObj?.relatedServices || (workObj?.relatedService ? [workObj.relatedService] : []);
+
+  const matchedServices: ServiceCategory[] = [];
+  const seenSlugs = new Set<string>();
+
+  // 1. Explicitly configured relatedServices in CMS
+  for (const sSlug of explicitServiceSlugs) {
+    const srv = servicesList.find(s => s.slug === sSlug || s.id === sSlug);
+    if (srv && !seenSlugs.has(srv.slug)) {
+      matchedServices.push(srv);
+      seenSlugs.add(srv.slug);
+    }
+  }
+
+  // 2. Services that reference this project in their relatedProjects
+  for (const srv of servicesList) {
+    if (seenSlugs.has(srv.slug)) continue;
+
+    const hasInverseRef = srv.relatedProjects && srv.relatedProjects.some(p => p === workSlug || p === workId);
+    if (hasInverseRef) {
+      matchedServices.push(srv);
+      seenSlugs.add(srv.slug);
+    }
+  }
+
+  // 3. Match from work.services string tags
+  if (workObj?.services && workObj.services.length > 0) {
+    for (const tag of workObj.services) {
+      const tagLower = tag.toLowerCase();
+      for (const srv of servicesList) {
+        if (seenSlugs.has(srv.slug)) continue;
+        if (
+          srv.title.toLowerCase() === tagLower ||
+          srv.slug.toLowerCase() === tagLower ||
+          srv.title.toLowerCase().includes(tagLower) ||
+          tagLower.includes(srv.title.toLowerCase())
+        ) {
+          matchedServices.push(srv);
+          seenSlugs.add(srv.slug);
+        }
+      }
+    }
+  }
+
+  // 4. Match by category similarity
+  for (const srv of servicesList) {
+    if (seenSlugs.has(srv.slug)) continue;
+
+    const catMatch = (workCat && (
+      srv.category?.toLowerCase().includes(workCat.toLowerCase()) ||
+      workCat.toLowerCase().includes(srv.category?.toLowerCase() || '') ||
+      (workShortCat && srv.category?.toLowerCase().includes(workShortCat.toLowerCase()))
+    ));
+
+    if (catMatch) {
+      matchedServices.push(srv);
+      seenSlugs.add(srv.slug);
+    }
+  }
+
+  // 5. Fallback fill if fewer than 3 items
+  if (matchedServices.length < 3) {
+    for (const srv of servicesList) {
+      if (!seenSlugs.has(srv.slug)) {
+        matchedServices.push(srv);
+        seenSlugs.add(srv.slug);
+        if (matchedServices.length >= 3) break;
+      }
+    }
+  }
+
+  return matchedServices;
+}
+
+/**
+ * Resolves other related services for a given service (excluding itself)
+ */
+export function getRelatedServices(
+  serviceInput: ServiceCategory | string,
+  allServices?: ServiceCategory[],
+  limit: number = 3
+): ServiceCategory[] {
+  const servicesList = allServices || DEFAULT_CMS_DATA.services || [];
+  const currentSlug = typeof serviceInput === 'string' ? serviceInput : serviceInput.slug;
+  const currentObj = typeof serviceInput === 'string'
+    ? servicesList.find(s => s.slug === serviceInput)
+    : serviceInput;
+
+  const matched: ServiceCategory[] = [];
+  const seen = new Set<string>([currentSlug]);
+
+  // 1. Explicit related services
+  if (currentObj?.relatedServices && currentObj.relatedServices.length > 0) {
+    for (const slug of currentObj.relatedServices) {
+      const srv = servicesList.find(s => s.slug === slug && !seen.has(s.slug));
+      if (srv) {
+        matched.push(srv);
+        seen.add(srv.slug);
+      }
+    }
+  }
+
+  // 2. Same or related category services
+  for (const srv of servicesList) {
+    if (!seen.has(srv.slug) && currentObj?.category && srv.category === currentObj.category) {
+      matched.push(srv);
+      seen.add(srv.slug);
+    }
+  }
+
+  // 3. Fallback fill up to limit services
+  for (const srv of servicesList) {
+    if (!seen.has(srv.slug)) {
+      matched.push(srv);
+      seen.add(srv.slug);
+      if (matched.length >= limit) break;
+    }
+  }
+
+  return matched.slice(0, limit);
+}
+
+/**
+ * Resolves other related projects for a given project (excluding itself)
+ */
+export function getRelatedProjects(
+  workInput: PortfolioItem | string,
+  allPortfolio?: PortfolioItem[],
+  limit: number = 2
+): PortfolioItem[] {
+  const portfolioList = allPortfolio || DEFAULT_CMS_DATA.portfolio || [];
+  const currentSlug = typeof workInput === 'string' ? workInput : workInput.slug;
+  const currentObj = typeof workInput === 'string'
+    ? portfolioList.find(p => p.slug === workInput)
+    : workInput;
+
+  const matched: PortfolioItem[] = [];
+  const seen = new Set<string>([currentSlug]);
+
+  // 1. Explicit related projects
+  if (currentObj?.relatedProjects && currentObj.relatedProjects.length > 0) {
+    for (const slug of currentObj.relatedProjects) {
+      const proj = portfolioList.find(p => p.slug === slug && !seen.has(p.slug));
+      if (proj) {
+        matched.push(proj);
+        seen.add(proj.slug);
+      }
+    }
+  }
+
+  // 2. Same or related category projects
+  for (const proj of portfolioList) {
+    if (!seen.has(proj.slug) && currentObj?.category && proj.category === currentObj.category) {
+      matched.push(proj);
+      seen.add(proj.slug);
+    }
+  }
+
+  // 3. Fallback fill up to limit projects
+  for (const proj of portfolioList) {
+    if (!seen.has(proj.slug)) {
+      matched.push(proj);
+      seen.add(proj.slug);
+      if (matched.length >= limit) break;
+    }
+  }
+
+  return matched.slice(0, limit);
+}
+

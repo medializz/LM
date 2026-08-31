@@ -25,6 +25,8 @@
 | **Content Pipeline** | 🟢 **WORKING** | Direct JSON import (`import.meta.glob`), zero stale client caching |
 | **Client Routing (SPA)** | 🟢 **WORKING** | Custom zero-dependency History API router with GitHub Pages 404 fallback |
 | **Dedicated Contact Page** | 🟢 **WORKING** | `/contact` route active with direct studio channels, form & WhatsApp |
+| **Bidirectional Services ↔ Work** | 🟢 **WORKING** | Robust bidirectional linking between Services & Work/Case Studies via centralized helpers |
+| **Nested Active Navigation** | 🟢 **WORKING** | Active state persists accurately across nested routes in Header (desktop & mobile) |
 | **Dynamic WhatsApp** | 🟢 **WORKING** | Phone normalizer (`0300...` → `92300...`) & contextual prefilled text |
 | **Dynamic Social Media** | 🟢 **WORKING** | Universal `SocialLinks` component rendering enabled CMS channels |
 | **Service Detail Pages** | 🟢 **WORKING** | 12 dedicated service routes (`/services/:slug`) with rich mockups |
@@ -632,6 +634,12 @@ When a visitor accesses a direct deep link (e.g. `https://media.lizzdo.com/servi
 | **BUG-005** | Deep links on GitHub Pages resulted in 404 error on page refresh | `public/404.html` | High | **FIXED** | Added SPA redirection script in `404.html` with query string handler in `router.ts`. |
 | **BUG-006** | Social media links rendered blank items when CMS fields were empty | `src/components/SocialLinks.tsx` | Low | **FIXED** | Added filter to strip out empty string URLs before rendering. |
 | **BUG-007** | Hard-coded fallback strings in `DEFAULT_CMS_DATA` and components shadowed CMS content | `src/data/cmsContent.ts`, page components | Medium | **FIXED** | Removed hardcoded dummy strings; all components now strictly consume dynamic CMS JSON content via unified `getWhatsAppUrl` helper. |
+| **BUG-008** | Inconsistent phone number formatting across different page touchpoints broke WhatsApp deep links | `src/utils/whatsapp.ts` | High | **FIXED** | Centralized WhatsApp URL normalization in dedicated utility with support for international dialing, `tel:`, and `mailto:` builders. |
+| **BUG-009** | Footer social media links occupied excessive vertical height on mobile viewports | `src/components/SocialMediaDropdown.tsx` | Medium | **FIXED** | Replaced rigid inline list with an interactive popover dropdown modal featuring official brand icons and auto-dismiss. |
+| **BUG-010** | Service and Portfolio detail pages lacked contextual prefilled WhatsApp messages | `ServiceDetailPage.tsx`, `WorkDetailPage.tsx` | Medium | **FIXED** | Integrated `createServiceWhatsAppUrl` and `createWorkWhatsAppUrl` to auto-populate the exact service or project name in chats. |
+| **BUG-011** | Header navigation lost active visual state when viewing nested routes (e.g. `/services/brand-identity` or `/work/packaging-design`) | `src/components/Header.tsx` | Medium | **FIXED** | Implemented prefix-based path checks (`startsWith`) in desktop and mobile navigation logic to maintain active parent highlighting. |
+| **BUG-012** | Services and Work case studies lacked dynamic bidirectional relationships and reciprocal links | `cmsContent.ts`, `ServiceDetailPage.tsx`, `WorkDetailPage.tsx` | High | **FIXED** | Created `getWorksForService`, `getServicesForWork`, `getRelatedServices`, and `getRelatedProjects` helpers to automatically resolve cross-collection connections. |
+| **BUG-013** | Hardcoded placeholder WhatsApp/phone number persisted across CMS sync due to default fields in config and duplicated contact file | `public/admin/config.yml`, `src/content/settings.json`, `src/content/contact.json`, `src/data/cmsContent.ts` | Critical | **FIXED** | Removed placeholder defaults from `config.yml`, cleaned JSON files, and unified master settings (`settingsData`) as the single source of truth for all contact and WhatsApp deep-links. |
 
 ---
 
@@ -648,6 +656,10 @@ When a visitor accesses a direct deep link (e.g. `https://media.lizzdo.com/servi
 ### ADR-003: Zero-Dependency Client Router
 - **Decision:** Implement a custom History API router in `src/utils/router.ts` instead of importing heavy routing libraries.
 - **Reason:** Reduces bundle size, eliminates routing version incompatibilities in React 19, and provides precise control over GitHub Pages SPA redirection.
+
+### ADR-004: Centralized Contact & Deep-Linking Engine
+- **Decision:** Implement `src/utils/whatsapp.ts` as the single source of truth for phone number sanitization, WhatsApp wa.me generation, `tel:` normalization, and `mailto:` links.
+- **Reason:** Ensures consistent formatting, eliminates broken deep-links across different regions/browsers, and provides context-aware customer messaging for high lead conversion.
 
 ---
 

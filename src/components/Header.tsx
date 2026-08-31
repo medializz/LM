@@ -177,10 +177,13 @@ export const Header: React.FC<HeaderProps> = ({
           aria-label="Primary Navigation"
         >
           {navigation.map((item) => {
-            const isServicesActive = currentPath.startsWith('/services') && item.id === 'services';
-            const isWorkActive = currentPath.startsWith('/work') && item.id === 'work';
-            const isHomeActive = currentPath === '/' && item.id === 'home';
-            const isActive = isHomeActive || isServicesActive || isWorkActive || item.active;
+            const isServicesActive = (currentPath === '/services' || currentPath.startsWith('/services/')) && (item.id === 'services' || item.href.startsWith('/services'));
+            const isWorkActive = (currentPath === '/work' || currentPath.startsWith('/work/') || currentPath === '/projects' || currentPath.startsWith('/projects/') || currentPath === '/portfolio' || currentPath.startsWith('/portfolio/')) && (item.id === 'work' || item.href.startsWith('/work'));
+            const isHomeActive = (currentPath === '/' || currentPath === '' || currentPath === '/home') && (item.id === 'home' || item.href === '/');
+            const isAboutActive = (currentPath === '/about' || currentPath.startsWith('/about/')) && (item.id === 'about' || item.href.startsWith('/about'));
+            const isBlogActive = (currentPath === '/blog' || currentPath.startsWith('/blog/') || currentPath === '/articles' || currentPath.startsWith('/articles/') || currentPath === '/insights' || currentPath.startsWith('/insights/')) && (item.id === 'blog' || item.href.startsWith('/blog'));
+            const isContactActive = (currentPath === '/contact' || currentPath.startsWith('/contact/')) && (item.id === 'contact' || item.href.startsWith('/contact'));
+            const isActive = isHomeActive || isServicesActive || isWorkActive || isAboutActive || isBlogActive || isContactActive || Boolean(item.active);
 
             return (
               <div 
@@ -238,22 +241,31 @@ export const Header: React.FC<HeaderProps> = ({
                         </button>
                       </div>
                       <div className="max-h-[340px] overflow-y-auto space-y-0.5 no-scrollbar">
-                        {item.dropdownItems.map((subItem) => (
-                          <button
-                            key={subItem.slug}
-                            onClick={() => handleDropdownServiceClick(subItem.slug)}
-                            className="w-full text-left px-3 py-2 rounded-lg hover:bg-white/5 text-slate-300 hover:text-[#ffbe1a] transition-colors flex items-center justify-between text-xs font-medium group cursor-pointer"
-                            role="menuitem"
-                          >
-                            <div>
-                              <div className="font-semibold text-white group-hover:text-[#ffbe1a]">{subItem.title}</div>
-                              {subItem.description && (
-                                <div className="text-[11px] text-slate-400">{subItem.description}</div>
-                              )}
-                            </div>
-                            <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-[#ffbe1a]" />
-                          </button>
-                        ))}
+                        {item.dropdownItems.map((subItem) => {
+                          const isSubActive = currentPath === `/services/${subItem.slug}`;
+                          return (
+                            <button
+                              key={subItem.slug}
+                              onClick={() => handleDropdownServiceClick(subItem.slug)}
+                              className={`w-full text-left px-3 py-2 rounded-lg transition-colors flex items-center justify-between text-xs font-medium group cursor-pointer ${
+                                isSubActive
+                                  ? 'bg-[#ffbe1a]/15 text-[#ffbe1a] font-semibold border-l-2 border-[#ffbe1a]'
+                                  : 'text-slate-300 hover:bg-white/5 hover:text-[#ffbe1a]'
+                              }`}
+                              role="menuitem"
+                            >
+                              <div>
+                                <div className={`font-semibold ${isSubActive ? 'text-[#ffbe1a]' : 'text-white group-hover:text-[#ffbe1a]'}`}>
+                                  {subItem.title}
+                                </div>
+                                {subItem.description && (
+                                  <div className="text-[11px] text-slate-400">{subItem.description}</div>
+                                )}
+                              </div>
+                              <ArrowUpRight className={`w-3.5 h-3.5 transition-opacity text-[#ffbe1a] ${isSubActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
+                            </button>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>
@@ -334,10 +346,13 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <div className="flex flex-col gap-2">
               {navigation.map((item) => {
-                const isServicesActive = currentPath.startsWith('/services') && item.id === 'services';
-                const isWorkActive = currentPath.startsWith('/work') && item.id === 'work';
-                const isHomeActive = currentPath === '/' && item.id === 'home';
-                const isActive = isHomeActive || isServicesActive || isWorkActive || item.active;
+                const isServicesActive = (currentPath === '/services' || currentPath.startsWith('/services/')) && (item.id === 'services' || item.href.startsWith('/services'));
+                const isWorkActive = (currentPath === '/work' || currentPath.startsWith('/work/') || currentPath === '/projects' || currentPath.startsWith('/projects/') || currentPath === '/portfolio' || currentPath.startsWith('/portfolio/')) && (item.id === 'work' || item.href.startsWith('/work'));
+                const isHomeActive = (currentPath === '/' || currentPath === '' || currentPath === '/home') && (item.id === 'home' || item.href === '/');
+                const isAboutActive = (currentPath === '/about' || currentPath.startsWith('/about/')) && (item.id === 'about' || item.href.startsWith('/about'));
+                const isBlogActive = (currentPath === '/blog' || currentPath.startsWith('/blog/') || currentPath === '/articles' || currentPath.startsWith('/articles/') || currentPath === '/insights' || currentPath.startsWith('/insights/')) && (item.id === 'blog' || item.href.startsWith('/blog'));
+                const isContactActive = (currentPath === '/contact' || currentPath.startsWith('/contact/')) && (item.id === 'contact' || item.href.startsWith('/contact'));
+                const isActive = isHomeActive || isServicesActive || isWorkActive || isAboutActive || isBlogActive || isContactActive || Boolean(item.active);
                 
                 if (item.hasDropdown) {
                   return (
@@ -371,16 +386,23 @@ export const Header: React.FC<HeaderProps> = ({
                           >
                             Explore All Services →
                           </button>
-                          {item.dropdownItems.map((subItem) => (
-                            <button
-                              key={subItem.slug}
-                              onClick={() => handleDropdownServiceClick(subItem.slug)}
-                              className="w-full text-left min-h-[44px] py-2 px-3 rounded-lg hover:bg-white/5 text-slate-300 hover:text-[#ffbe1a] active:bg-[#ffbe1a]/10 flex items-center justify-between text-xs font-medium transition-colors"
-                            >
-                              <span>{subItem.title}</span>
-                              <ArrowUpRight className="w-3.5 h-3.5 text-[#ffbe1a]" />
-                            </button>
-                          ))}
+                          {item.dropdownItems.map((subItem) => {
+                            const isSubActive = currentPath === `/services/${subItem.slug}`;
+                            return (
+                              <button
+                                key={subItem.slug}
+                                onClick={() => handleDropdownServiceClick(subItem.slug)}
+                                className={`w-full text-left min-h-[44px] py-2 px-3 rounded-lg flex items-center justify-between text-xs font-medium transition-colors ${
+                                  isSubActive
+                                    ? 'bg-[#ffbe1a]/15 text-[#ffbe1a] font-semibold border border-[#ffbe1a]/30'
+                                    : 'text-slate-300 hover:bg-white/5 hover:text-[#ffbe1a] active:bg-[#ffbe1a]/10'
+                                }`}
+                              >
+                                <span>{subItem.title}</span>
+                                <ArrowUpRight className="w-3.5 h-3.5 text-[#ffbe1a]" />
+                              </button>
+                            );
+                          })}
                         </div>
                       )}
                     </div>

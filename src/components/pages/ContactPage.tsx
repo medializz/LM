@@ -764,7 +764,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
                           <input
                             id="inquiry-phone"
                             type="tel"
-                            placeholder="+92 300 1234567"
+                            placeholder="e.g. +1 (555) 000-0000"
                             value={formData.phone || ''}
                             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                             className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] focus:border-[#ffbe1a] focus:ring-1 focus:ring-[#ffbe1a] focus:outline-none text-sm text-white placeholder-slate-500 transition-colors"

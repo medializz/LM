@@ -74,7 +74,9 @@ export const LegalPageRenderer: React.FC<LegalPageRendererProps> = ({
   const handleWhatsApp = () => {
     const message = `Hi ${siteSettings.siteName || 'Lizzdo Media'}, I have a question regarding your ${pageTitle}.`;
     const url = getWhatsAppUrl(siteSettings.whatsappNumber, message);
-    window.open(url, '_blank', 'noopener,noreferrer');
+    if (url && url !== '#') {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
   };
 
   return (

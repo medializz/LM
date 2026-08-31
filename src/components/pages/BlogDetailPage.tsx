@@ -33,7 +33,9 @@ export const BlogDetailPage: React.FC<BlogDetailPageProps> = ({
   const handleWhatsApp = () => {
     const message = `Hi ${siteSettings.siteName || 'Lizzdo Media'}, I just read your article "${article.title}" and would like to discuss working together.`;
     const url = getWhatsAppUrl(siteSettings.whatsappNumber, message);
-    window.open(url, '_blank', 'noopener,noreferrer');
+    if (url && url !== '#') {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
   };
 
   // Find related services & portfolio items
