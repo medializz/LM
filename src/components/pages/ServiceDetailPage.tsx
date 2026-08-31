@@ -376,33 +376,82 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
         {/* ========================================================================= */}
         {/* 4. SERVICE GALLERY */}
         {/* ========================================================================= */}
-        <section className="space-y-6">
+        <section id="service-gallery-section" className="space-y-6" aria-label="Visual Gallery">
           <div className="flex items-center justify-between">
             <div>
-              <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Visual Gallery</span>
+              <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a] font-bold">Visual Gallery</span>
               <h2 className="text-2xl sm:text-4xl font-bold font-['Outfit'] text-white">
                 Execution Artifacts
               </h2>
             </div>
-            <span className="text-xs text-slate-400 font-mono">Click to expand</span>
+            <span className="text-xs text-slate-400 font-mono hidden sm:inline-block bg-white/[0.04] px-3 py-1 rounded-full border border-white/10">
+              Click any artifact to view full screen ({galleryItems.length} items)
+            </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {galleryItems.map((item, idx) => (
-              <div 
-                key={item.id || idx}
-                onClick={() => openLightboxAt(idx)}
-                className="group relative rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/60 p-4 transition-all duration-300 cursor-pointer overflow-hidden"
-              >
-                <div className="h-48 sm:h-56 rounded-xl overflow-hidden bg-black/40 flex items-center justify-center">
-                  <ProjectGalleryVisual visualType={item.visualType} title={item.title} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {galleryItems.map((item, idx) => {
+              const isLarge = item.layout === 'large' || item.layout === 'full';
+              return (
+                <div 
+                  key={item.id || `service-gallery-${idx}`}
+                  onClick={() => openLightboxAt(idx)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightboxAt(idx); } }}
+                  aria-label={`Open lightbox for ${item.title}`}
+                  className={`group relative rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/60 p-4 transition-all duration-300 cursor-pointer overflow-hidden shadow-lg hover:shadow-[0_12px_36px_rgba(0,0,0,0.7)] ${
+                    isLarge ? 'md:col-span-2 lg:col-span-2' : ''
+                  }`}
+                >
+                  <div className="h-52 sm:h-64 rounded-xl overflow-hidden bg-black/50 flex items-center justify-center relative">
+                    {item.image ? (
+                      <img 
+                        src={item.image} 
+                        alt={item.alt || item.title || `${service.title} artifact ${idx + 1}`}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter contrast-[1.02]"
+                        loading="lazy"
+                        referrerPolicy="no-referrer"
+                      />
+                    ) : (
+                      <ProjectGalleryVisual 
+                        visualType={item.visualType || (service.slug === 'brand-identity' ? 'brand-identity' : 'saas-dashboard')} 
+                        title={item.title} 
+                        siteSettings={siteSettings}
+                      />
+                    )}
+
+                    {/* Hover Overlay with View Full pill */}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <span className="px-4 py-2 rounded-full bg-[#ffbe1a] text-black font-extrabold text-xs font-['Outfit'] shadow-xl transform scale-90 group-hover:scale-100 transition-transform duration-200 flex items-center gap-1.5">
+                        <Sparkles className="w-3.5 h-3.5 fill-black" />
+                        <span>Click to View Full</span>
+                      </span>
+                    </div>
+
+                    <span className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-md bg-black/70 backdrop-blur-md text-[10px] font-mono text-slate-300 border border-white/10">
+                      {idx + 1} / {galleryItems.length}
+                    </span>
+                  </div>
+
+                  <div className="mt-3.5 space-y-1">
+                    <div className="flex items-center justify-between">
+                      <h4 className="text-sm sm:text-base font-bold text-white group-hover:text-[#ffbe1a] transition-colors font-['Outfit']">
+                        {item.title}
+                      </h4>
+                      <span className="text-[11px] text-[#ffbe1a] font-mono opacity-0 group-hover:opacity-100 transition-opacity shrink-0 ml-2">
+                        View Full →
+                      </span>
+                    </div>
+                    {item.caption && (
+                      <p className="text-xs text-slate-400 font-['Plus_Jakarta_Sans'] line-clamp-2">
+                        {item.caption}
+                      </p>
+                    )}
+                  </div>
                 </div>
-                <div className="mt-3 space-y-1">
-                  <h4 className="text-sm font-bold text-white group-hover:text-[#ffbe1a] transition-colors">{item.title}</h4>
-                  <p className="text-xs text-slate-400">{item.caption}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 

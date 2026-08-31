@@ -249,6 +249,8 @@ collections:
         fields:
           - { label: "ID", name: "id", widget: "string" }
           - { label: "Title", name: "title", widget: "string" }
+          - { label: "Image (Upload or Select)", name: "image", widget: "image", required: false }
+          - { label: "Image Alt Text", name: "alt", widget: "string", required: false }
           - { label: "Caption", name: "caption", widget: "string", required: false }
           - { label: "Visual Type Identifier", name: "visualType", widget: "string", required: false }
           - { label: "Layout Span", name: "layout", widget: "select", options: ["large", "half"], default: "half" }
@@ -284,6 +286,9 @@ collections:
       - { label: "Short Category Label", name: "shortCategory", widget: "string", required: false }
       - { label: "Short Description", name: "shortDescription", widget: "text", required: false }
       - { label: "Full Description", name: "description", widget: "text", required: false }
+      - { label: "Primary Project Image / Mockup", name: "image", widget: "image", required: false }
+      - { label: "Header Hero Mockup / Image (Optional)", name: "headerImage", widget: "image", required: false }
+      - { label: "Featured Image (Thumbnail)", name: "featuredImage", widget: "image", required: false }
       - { label: "Visual Mockup Type", name: "visualType", widget: "string", default: "brand-identity" }
       - { label: "Featured on Homepage", name: "featured", widget: "boolean", default: true }
       - { label: "Published", name: "published", widget: "boolean", default: true }
@@ -312,6 +317,8 @@ collections:
         fields:
           - { label: "ID", name: "id", widget: "string" }
           - { label: "Title", name: "title", widget: "string" }
+          - { label: "Image (Upload or Select)", name: "image", widget: "image", required: false }
+          - { label: "Image Alt Text", name: "alt", widget: "string", required: false }
           - { label: "Caption", name: "caption", widget: "string", required: false }
           - { label: "Visual Type", name: "visualType", widget: "string", required: false }
           - { label: "Layout Span", name: "layout", widget: "select", options: ["large", "half"], default: "half" }

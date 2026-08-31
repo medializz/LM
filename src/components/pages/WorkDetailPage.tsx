@@ -172,26 +172,37 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
 
           {/* Large Hero Showcase Asset */}
           <div 
+            id="work-hero-showcase-asset"
             onClick={() => openLightboxAt(0)}
             className="w-full h-80 sm:h-[480px] rounded-2xl sm:rounded-3xl overflow-hidden border border-white/[0.1] bg-[#10131d] hover:border-[#ffbe1a]/50 transition-all cursor-pointer shadow-2xl relative group"
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightboxAt(0); } }}
+            aria-label={`Open full gallery preview for ${project.title}`}
           >
-            {project.image ? (
+            {project.headerImage || project.headerMockup || project.heroImage || project.image || project.featuredImage ? (
               <img 
-                src={project.image} 
+                src={project.headerImage || project.headerMockup || project.heroImage || project.image || project.featuredImage} 
                 alt={project.title} 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter contrast-[1.02]"
+                loading="eager"
+                referrerPolicy="no-referrer"
               />
             ) : (
               <ProjectGalleryVisual 
                 visualType={project.visualType || 'brand-identity'} 
                 title={project.title} 
+                siteSettings={siteSettings}
               />
             )}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6 sm:p-8">
-              <div className="text-xs text-[#ffbe1a] font-mono flex items-center gap-1.5">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end justify-between p-6 sm:p-8">
+              <div className="text-xs text-[#ffbe1a] font-mono flex items-center gap-1.5 bg-black/60 px-3 py-1.5 rounded-full backdrop-blur-md border border-white/10">
                 <span>Click image to open high-resolution gallery preview</span>
                 <ChevronRight className="w-3.5 h-3.5" />
               </div>
+              <span className="text-xs text-slate-300 font-mono bg-black/60 px-2.5 py-1 rounded-md backdrop-blur-md border border-white/10 hidden sm:inline-block">
+                1 / {galleryItems.length}
+              </span>
             </div>
           </div>
         </section>
@@ -322,33 +333,82 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
         {/* ========================================================================= */}
         {/* 3. CASE STUDY GALLERY */}
         {/* ========================================================================= */}
-        <section className="space-y-6">
+        <section id="project-gallery-section" className="space-y-6" aria-label="Project Gallery">
           <div className="flex items-center justify-between">
             <div>
-              <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Deliverables</span>
+              <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a] font-bold">Deliverables &amp; Visuals</span>
               <h2 className="text-2xl sm:text-4xl font-bold font-['Outfit'] text-white">
                 Project Gallery
               </h2>
             </div>
-            <span className="text-xs text-slate-400 font-mono">Click to view full</span>
+            <span className="text-xs text-slate-400 font-mono hidden sm:inline-block bg-white/[0.04] px-3 py-1 rounded-full border border-white/10">
+              Click any asset to view full screen ({galleryItems.length} items)
+            </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {galleryItems.map((item, idx) => (
-              <div 
-                key={item.id || idx}
-                onClick={() => openLightboxAt(idx)}
-                className="group relative rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/60 p-4 transition-all duration-300 cursor-pointer overflow-hidden"
-              >
-                <div className="h-48 sm:h-56 rounded-xl overflow-hidden bg-black/40 flex items-center justify-center">
-                  <ProjectGalleryVisual visualType={item.visualType} title={item.title} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {galleryItems.map((item, idx) => {
+              const isLarge = item.layout === 'large' || item.layout === 'full';
+              return (
+                <div 
+                  key={item.id || `gallery-item-${idx}`}
+                  onClick={() => openLightboxAt(idx)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightboxAt(idx); } }}
+                  aria-label={`Open lightbox for ${item.title}`}
+                  className={`group relative rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/60 p-4 transition-all duration-300 cursor-pointer overflow-hidden shadow-lg hover:shadow-[0_12px_36px_rgba(0,0,0,0.7)] ${
+                    isLarge ? 'md:col-span-2 lg:col-span-2' : ''
+                  }`}
+                >
+                  <div className="h-52 sm:h-64 rounded-xl overflow-hidden bg-black/50 flex items-center justify-center relative">
+                    {item.image ? (
+                      <img 
+                        src={item.image} 
+                        alt={item.alt || item.title || `${project.title} asset ${idx + 1}`}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter contrast-[1.02]"
+                        loading="lazy"
+                        referrerPolicy="no-referrer"
+                      />
+                    ) : (
+                      <ProjectGalleryVisual 
+                        visualType={item.visualType || project.visualType || 'brand-identity'} 
+                        title={item.title} 
+                        siteSettings={siteSettings}
+                      />
+                    )}
+                    
+                    {/* Hover Overlay with View Full pill */}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <span className="px-4 py-2 rounded-full bg-[#ffbe1a] text-black font-extrabold text-xs font-['Outfit'] shadow-xl transform scale-90 group-hover:scale-100 transition-transform duration-200 flex items-center gap-1.5">
+                        <Sparkles className="w-3.5 h-3.5 fill-black" />
+                        <span>Click to View Full</span>
+                      </span>
+                    </div>
+
+                    <span className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-md bg-black/70 backdrop-blur-md text-[10px] font-mono text-slate-300 border border-white/10">
+                      {idx + 1} / {galleryItems.length}
+                    </span>
+                  </div>
+
+                  <div className="mt-3.5 space-y-1">
+                    <div className="flex items-center justify-between">
+                      <h4 className="text-sm sm:text-base font-bold text-white group-hover:text-[#ffbe1a] transition-colors font-['Outfit']">
+                        {item.title}
+                      </h4>
+                      <span className="text-[11px] text-[#ffbe1a] font-mono opacity-0 group-hover:opacity-100 transition-opacity shrink-0 ml-2">
+                        View Full →
+                      </span>
+                    </div>
+                    {item.caption && (
+                      <p className="text-xs text-slate-400 font-['Plus_Jakarta_Sans'] line-clamp-2">
+                        {item.caption}
+                      </p>
+                    )}
+                  </div>
                 </div>
-                <div className="mt-3 space-y-1">
-                  <h4 className="text-sm font-bold text-white group-hover:text-[#ffbe1a] transition-colors">{item.title}</h4>
-                  <p className="text-xs text-slate-400">{item.caption}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
