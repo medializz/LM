@@ -2,6 +2,7 @@
   "id": "step-5",
   "stepNumber": "05",
   "title": "Refinement & Testing",
+  "iconKey": "testing",
   "description": "Rigorous quality assurance, cross-device responsiveness verification, print color proofing, and performance testing.",
   "order": 5
 }

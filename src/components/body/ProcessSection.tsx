@@ -1,6 +1,6 @@
 import React from 'react';
 import { ProcessStep } from '../../types';
-import { ServiceIcon } from '../ServiceIcons';
+import { WorkflowIcon } from '../visuals/WorkflowIcons';
 import { motion } from 'motion/react';
 
 interface ProcessSectionProps {
@@ -75,10 +75,12 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ steps }) => {
                 {/* Purple Circular Icon Container with golden accent touch */}
                 <div className="relative mb-4">
                   <div className="w-[68px] h-[68px] rounded-full bg-[#120f1e] border-2 border-purple-500/40 group-hover:border-[#ffbe1a] flex items-center justify-center shadow-[0_0_20px_rgba(168,85,247,0.2)] group-hover:shadow-[0_0_25px_rgba(255,190,26,0.35)] transition-all duration-300 group-hover:scale-110">
-                    <ServiceIcon 
+                    <WorkflowIcon 
                       name={step.iconKey} 
+                      stepNumber={step.stepNumber}
+                      id={step.id}
                       size={28} 
-                      className="text-purple-400 group-hover:text-[#ffbe1a] transition-colors duration-300"
+                      className="text-purple-300 group-hover:text-[#ffbe1a] transition-colors duration-300"
                     />
                   </div>
 
@@ -116,7 +118,13 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ steps }) => {
             >
               {/* Purple Circle */}
               <div className="shrink-0 w-12 h-12 rounded-full bg-[#120f1e] border-2 border-purple-500/40 flex items-center justify-center shadow-[0_0_15px_rgba(168,85,247,0.25)]">
-                <ServiceIcon name={step.iconKey} size={22} className="text-purple-400" />
+                <WorkflowIcon 
+                  name={step.iconKey} 
+                  stepNumber={step.stepNumber}
+                  id={step.id}
+                  size={22} 
+                  className="text-purple-300" 
+                />
               </div>
 
               {/* Text Container */}

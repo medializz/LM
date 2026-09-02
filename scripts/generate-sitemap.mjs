@@ -6,109 +6,211 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 
-const BASE_URL = 'https://media.lizzdo.com';
-const TODAY = new Date().toISOString().split('T')[0];
-
-function readJsonFiles(dirPath) {
-  if (!fs.existsSync(dirPath)) return [];
-  const files = fs.readdirSync(dirPath).filter(f => f.endsWith('.json'));
-  return files.map(file => {
+// Read base URL dynamically from settings or SEO configuration
+function getBaseUrl() {
+  const seoConfigPath = path.join(rootDir, 'src/content/seo.json');
+  if (fs.existsSync(seoConfigPath)) {
     try {
-      const content = fs.readFileSync(path.join(dirPath, file), 'utf-8');
-      return JSON.parse(content);
-    } catch (e) {
-      console.warn(`Could not parse JSON file: ${file}`, e.message);
-      return null;
+      const seo = JSON.parse(fs.readFileSync(seoConfigPath, 'utf-8'));
+      if (seo.canonicalUrl) {
+        return seo.canonicalUrl.replace(/\/+$/, '');
+      }
+    } catch {
+      // Fallback below
     }
-  }).filter(Boolean);
+  }
+  return 'https://media.lizzdo.com';
 }
 
-function generateSitemapXml() {
-  const urls = [];
+const BASE_URL = getBaseUrl();
+const TODAY = new Date().toISOString().split('T')[0];
 
-  // Core Static Pages
-  const corePages = [
-    { loc: `${BASE_URL}/`, priority: '1.0', changefreq: 'weekly' },
-    { loc: `${BASE_URL}/services`, priority: '0.9', changefreq: 'weekly' },
-    { loc: `${BASE_URL}/work`, priority: '0.9', changefreq: 'weekly' },
-    { loc: `${BASE_URL}/about`, priority: '0.8', changefreq: 'monthly' },
-    { loc: `${BASE_URL}/blog`, priority: '0.8', changefreq: 'weekly' },
-    { loc: `${BASE_URL}/contact`, priority: '0.8', changefreq: 'monthly' },
-    { loc: `${BASE_URL}/sitemap`, priority: '0.5', changefreq: 'weekly' },
-  ];
+/**
+ * Safely cleans and normalizes URLs:
+ * 1. Strips hash fragments/anchors (#section, #contact, etc.)
+ * 2. Strips query parameters (?p=..., etc.)
+ * 3. Strips trailing slashes (except root)
+ * 4. Ensures well-formed absolute URL string
+ */
+function cleanUrl(rawPath) {
+  if (!rawPath) return null;
 
-  urls.push(...corePages);
+  // If path contains a hash anchor, remove it
+  const noHash = String(rawPath).split('#')[0].split('?')[0].trim();
+  if (!noHash) return null;
 
-  // 1. Services
-  const services = readJsonFiles(path.join(rootDir, 'src/content/services'));
+  // Clean slashes
+  const cleanSegment = noHash.replace(/^\/+/, '').replace(/\/+$/, '');
+  if (!cleanSegment) {
+    return `${BASE_URL}/`;
+  }
+  return `${BASE_URL}/${cleanSegment}`;
+}
+
+/**
+ * Reads all JSON files from a given directory
+ */
+function readJsonDirectory(dirPath) {
+  if (!fs.existsSync(dirPath)) return [];
+  const entries = fs.readdirSync(dirPath, { withFileTypes: true });
+  const results = [];
+
+  for (const entry of entries) {
+    if (entry.isFile() && entry.name.endsWith('.json')) {
+      try {
+        const filePath = path.join(dirPath, entry.name);
+        const fileContent = fs.readFileSync(filePath, 'utf-8');
+        const parsed = JSON.parse(fileContent);
+        results.push(parsed);
+      } catch (err) {
+        console.warn(`[Sitemap] Warning: Could not parse JSON in ${entry.name}:`, err.message);
+      }
+    }
+  }
+
+  return results;
+}
+
+/**
+ * Generates the clean dynamic sitemap.xml
+ */
+function generateDynamicSitemap() {
+  const urlMap = new Map();
+
+  function addUrl(rawPath, options = {}) {
+    const canonical = cleanUrl(rawPath);
+    if (!canonical) return;
+
+    // Disallow hash anchors, admin routes, or API endpoints
+    if (canonical.includes('#') || canonical.includes('/admin') || canonical.includes('/api/')) {
+      return;
+    }
+
+    if (!urlMap.has(canonical)) {
+      urlMap.set(canonical, {
+        loc: canonical,
+        priority: options.priority || '0.7',
+        changefreq: options.changefreq || 'monthly',
+        lastmod: options.lastmod || TODAY
+      });
+    }
+  }
+
+  // 1. Core Primary Static Pages (Highest Priority)
+  addUrl('/', { priority: '1.0', changefreq: 'weekly', lastmod: TODAY });
+  addUrl('/services', { priority: '0.9', changefreq: 'weekly', lastmod: TODAY });
+  addUrl('/work', { priority: '0.9', changefreq: 'weekly', lastmod: TODAY });
+  addUrl('/about', { priority: '0.85', changefreq: 'monthly', lastmod: TODAY });
+  addUrl('/blog', { priority: '0.85', changefreq: 'weekly', lastmod: TODAY });
+  addUrl('/contact', { priority: '0.85', changefreq: 'monthly', lastmod: TODAY });
+  addUrl('/sitemap', { priority: '0.5', changefreq: 'weekly', lastmod: TODAY });
+
+  // 2. Dynamic Service Slugs from CMS
+  const servicesDir = path.join(rootDir, 'src/content/services');
+  const services = readJsonDirectory(servicesDir);
+  console.log(`[Sitemap] Discovered ${services.length} service records in CMS`);
+
   services
-    .filter(s => s.published !== false && s.slug)
+    .filter(item => item.published !== false && item.slug)
     .sort((a, b) => (a.order || 0) - (b.order || 0))
     .forEach(service => {
-      urls.push({
-        loc: `${BASE_URL}/services/${service.slug}`,
+      // Clean slug to ensure no anchors or unwanted characters
+      const cleanSlug = service.slug.split('#')[0].replace(/^\/+|\/+$/g, '');
+      addUrl(`/services/${cleanSlug}`, {
         priority: '0.85',
-        changefreq: 'monthly'
+        changefreq: 'weekly',
+        lastmod: TODAY
       });
     });
 
-  // 2. Portfolio / Case Studies
-  const portfolio = readJsonFiles(path.join(rootDir, 'src/content/portfolio'));
+  // 3. Dynamic Portfolio / Case Studies Slugs from CMS
+  const portfolioDir = path.join(rootDir, 'src/content/portfolio');
+  const portfolio = readJsonDirectory(portfolioDir);
+  console.log(`[Sitemap] Discovered ${portfolio.length} portfolio records in CMS`);
+
   portfolio
-    .filter(p => p.published !== false && p.slug)
+    .filter(item => item.published !== false && item.slug)
     .sort((a, b) => (a.order || 0) - (b.order || 0))
     .forEach(project => {
-      urls.push({
-        loc: `${BASE_URL}/work/${project.slug}`,
+      const cleanSlug = project.slug.split('#')[0].replace(/^\/+|\/+$/g, '');
+      addUrl(`/work/${cleanSlug}`, {
         priority: '0.8',
-        changefreq: 'monthly'
+        changefreq: 'monthly',
+        lastmod: project.year ? `${project.year}-01-01` : TODAY
       });
     });
 
-  // 3. Blog Articles
-  const blog = readJsonFiles(path.join(rootDir, 'src/content/blog'));
+  // 4. Dynamic Blog Article Slugs from CMS
+  const blogDir = path.join(rootDir, 'src/content/blog');
+  const blog = readJsonDirectory(blogDir);
+  console.log(`[Sitemap] Discovered ${blog.length} blog records in CMS`);
+
   blog
-    .filter(b => b.published !== false && b.slug)
+    .filter(item => item.published !== false && item.slug)
     .sort((a, b) => new Date(b.publishedDate || 0).getTime() - new Date(a.publishedDate || 0).getTime())
-    .forEach(article => {
-      urls.push({
-        loc: `${BASE_URL}/blog/${article.slug}`,
+    .forEach(post => {
+      const cleanSlug = post.slug.split('#')[0].replace(/^\/+|\/+$/g, '');
+      const lastModifiedDate = post.updatedDate || post.publishedDate || TODAY;
+      addUrl(`/blog/${cleanSlug}`, {
         priority: '0.75',
         changefreq: 'monthly',
-        lastmod: article.updatedDate || article.publishedDate || TODAY
+        lastmod: lastModifiedDate
       });
     });
 
-  // 4. Legal Pages
-  const legal = readJsonFiles(path.join(rootDir, 'src/content/legal'));
+  // 5. Dynamic Legal / Compliance Pages from CMS
+  const legalDir = path.join(rootDir, 'src/content/legal');
+  const legal = readJsonDirectory(legalDir);
+  console.log(`[Sitemap] Discovered ${legal.length} legal records in CMS`);
+
   legal
-    .filter(l => l.slug)
+    .filter(item => item.published !== false && item.slug)
     .forEach(page => {
-      urls.push({
-        loc: `${BASE_URL}/${page.slug}`,
+      const cleanSlug = page.slug.split('#')[0].replace(/^\/+|\/+$/g, '');
+      addUrl(`/${cleanSlug}`, {
         priority: '0.4',
-        changefreq: 'yearly'
+        changefreq: 'yearly',
+        lastmod: TODAY
       });
     });
 
-  // Format XML
-  const xmlEntries = urls.map(item => `  <url>
+  // Convert entries to sorted array
+  const finalUrls = Array.from(urlMap.values());
+
+  // Generate clean, standard XML
+  const xmlItems = finalUrls.map(item => `  <url>
     <loc>${item.loc}</loc>
-    <lastmod>${item.lastmod || TODAY}</lastmod>
+    <lastmod>${item.lastmod}</lastmod>
     <changefreq>${item.changefreq}</changefreq>
     <priority>${item.priority}</priority>
   </url>`).join('\n');
 
-  const xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
+  const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${xmlEntries}
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+${xmlItems}
 </urlset>
 `;
 
-  const outputPath = path.join(rootDir, 'public/sitemap.xml');
-  fs.writeFileSync(outputPath, xmlContent, 'utf-8');
-  console.log(`[SEO] Generated sitemap.xml with ${urls.length} indexable URLs at ${outputPath}`);
+  // Write to public/ directory (and to dist/ if dist exists)
+  const publicOutPath = path.join(rootDir, 'public/sitemap.xml');
+  fs.writeFileSync(publicOutPath, sitemapXml, 'utf-8');
+  console.log(`[Sitemap] Successfully wrote ${finalUrls.length} clean crawlable URLs to ${publicOutPath}`);
+
+  const distDir = path.join(rootDir, 'dist');
+  if (fs.existsSync(distDir)) {
+    const distOutPath = path.join(distDir, 'sitemap.xml');
+    fs.writeFileSync(distOutPath, sitemapXml, 'utf-8');
+    console.log(`[Sitemap] Synchronized sitemap.xml directly into build output: ${distOutPath}`);
+  }
+
+  // Quick verification: verify zero hash anchors exist in output
+  if (sitemapXml.includes('#')) {
+    throw new Error('[Sitemap Error] Detected hash fragment in sitemap.xml! Hash anchors must be excluded.');
+  }
+
+  return finalUrls.length;
 }
 
-generateSitemapXml();
+generateDynamicSitemap();

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>https://media.lizzdo.com/</loc>
     <lastmod>2026-09-02</lastmod>
@@ -23,19 +24,19 @@
     <loc>https://media.lizzdo.com/about</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://media.lizzdo.com/blog</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://media.lizzdo.com/contact</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://media.lizzdo.com/sitemap</loc>
@@ -46,114 +47,114 @@
   <url>
     <loc>https://media.lizzdo.com/services/brand-identity</loc>
     <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://media.lizzdo.com/services/logo-design</loc>
     <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://media.lizzdo.com/services/graphic-design</loc>
     <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://media.lizzdo.com/services/flyer-design</loc>
     <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://media.lizzdo.com/services/packaging-design</loc>
     <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://media.lizzdo.com/services/web-development</loc>
     <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://media.lizzdo.com/services/social-media-design</loc>
     <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://media.lizzdo.com/services/content-posting</loc>
     <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://media.lizzdo.com/services/content-creation</loc>
     <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://media.lizzdo.com/services/digital-marketing</loc>
     <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://media.lizzdo.com/services/social-media-management</loc>
     <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://media.lizzdo.com/services/advertising-creatives</loc>
     <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://media.lizzdo.com/services/ai-visuals-content</loc>
     <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://media.lizzdo.com/services/website-development</loc>
     <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://media.lizzdo.com/work/brand-identity-design</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://media.lizzdo.com/work/packaging-design</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://media.lizzdo.com/work/saas-website-design</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://media.lizzdo.com/work/social-media-campaign</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://media.lizzdo.com/work/web-development</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

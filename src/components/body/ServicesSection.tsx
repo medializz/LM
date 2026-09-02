@@ -61,8 +61,8 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
           </motion.p>
         </div>
 
-        {/* 11 Services Grid (matching the horizontal card aesthetic in the reference) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-11 gap-2.5 sm:gap-3 lg:gap-2.5 mb-10">
+        {/* Services Grid (Symmetrically balanced 7-column layout for 14 services on desktop) */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3 sm:gap-3.5 lg:gap-3 mb-10">
           {sortedServices.map((service, index) => (
             <motion.div
               key={service.id}
@@ -70,9 +70,9 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.35, delay: index * 0.03 }}
+              transition={{ duration: 0.35, delay: index * 0.025 }}
               onClick={() => onSelectService(service)}
-              className="group relative flex flex-col items-center text-center p-3 sm:p-3.5 lg:p-3 rounded-2xl bg-[#0f1118]/90 hover:bg-[#151824] border border-white/[0.08] hover:border-[#ffbe1a]/60 hover:shadow-[0_8px_25px_rgba(0,0,0,0.8),0_0_15px_rgba(255,190,26,0.15)] hover:-translate-y-1 transition-all duration-300 cursor-pointer select-none"
+              className="group relative flex flex-col items-center text-center p-3.5 sm:p-4 lg:p-3.5 rounded-2xl bg-[#0f1118]/90 hover:bg-[#151824] border border-white/[0.08] hover:border-[#ffbe1a]/60 hover:shadow-[0_10px_30px_rgba(0,0,0,0.8),0_0_20px_rgba(255,190,26,0.18)] hover:-translate-y-1.5 transition-all duration-300 cursor-pointer select-none"
               role="button"
               tabIndex={0}
               aria-label={`View details for ${service.title}`}
@@ -83,27 +83,31 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                 }
               }}
             >
-              {/* Gold Icon */}
-              <div className="mb-2.5 p-1 transition-transform duration-300 group-hover:scale-110 flex items-center justify-center">
+              {/* Subtle top inner light highlight */}
+              <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent rounded-t-2xl pointer-events-none" />
+
+              {/* Bespoke Icon Frame */}
+              <div className="mb-3 w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-white/[0.03] border border-white/[0.08] group-hover:border-[#ffbe1a]/50 group-hover:bg-[#ffbe1a]/10 group-hover:shadow-[0_0_18px_rgba(255,190,26,0.25)] transition-all duration-300 flex items-center justify-center shrink-0">
                 <ServiceIcon 
                   name={service.iconKey || service.slug} 
-                  size={32} 
-                  className="text-[#ffbe1a] drop-shadow-[0_2px_10px_rgba(255,190,26,0.3)] transition-colors duration-300 group-hover:text-[#ffe066]"
+                  iconKey={service.iconKey}
+                  size={30} 
+                  className="text-[#ffbe1a] transition-all duration-300 group-hover:scale-110 drop-shadow-[0_2px_8px_rgba(255,190,26,0.3)]"
                 />
               </div>
 
               {/* Title */}
-              <h3 className="text-xs sm:text-xs font-bold text-white font-['Outfit'] mb-1.5 leading-snug group-hover:text-[#ffbe1a] transition-colors">
+              <h3 className="text-xs sm:text-[13px] font-bold text-white font-['Outfit'] mb-1.5 leading-snug group-hover:text-[#ffbe1a] transition-colors">
                 {service.title}
               </h3>
 
               {/* Short Description */}
-              <p className="text-[10px] sm:text-[11px] text-slate-400 group-hover:text-slate-300 font-['Plus_Jakarta_Sans'] leading-tight line-clamp-3">
+              <p className="text-[10px] sm:text-[11px] text-slate-400 group-hover:text-slate-300 font-['Plus_Jakarta_Sans'] leading-relaxed line-clamp-3">
                 {service.shortDescription}
               </p>
 
               {/* Subtle bottom indicator */}
-              <div className="mt-2 w-4 h-0.5 rounded-full bg-transparent group-hover:bg-[#ffbe1a] transition-all duration-300" />
+              <div className="mt-2.5 w-4 h-0.5 rounded-full bg-transparent group-hover:bg-[#ffbe1a] group-hover:w-8 transition-all duration-300" />
             </motion.div>
           ))}
         </div>

@@ -2,6 +2,7 @@
   "id": "step-1",
   "stepNumber": "01",
   "title": "Discovery & Research",
+  "iconKey": "discovery",
   "description": "We dive deep into your brand, target audience, competitors, and strategic business goals to uncover unique market opportunities.",
   "order": 1
 }

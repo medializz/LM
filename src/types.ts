@@ -111,7 +111,7 @@ export interface ProcessStep {
   id: string;
   stepNumber: string; // e.g. "01"
   title: string;
-  iconKey: string;
+  iconKey?: string;
   description: string;
   order: number;
 }
