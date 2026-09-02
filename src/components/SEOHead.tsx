@@ -72,6 +72,9 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     setMetaTag('name', 'geo.position', '51.4816;-3.1791');
     setMetaTag('name', 'ICBM', '51.4816, -3.1791');
 
+    // Search Engine Verification (Bing Webmaster Tools)
+    setMetaTag('name', 'msvalidate.01', '82492AADF58A96682EBFE83F8BA0FA32');
+
     if (type === 'article') {
       if (publishedTime) setMetaTag('property', 'article:published_time', publishedTime);
       if (modifiedTime) setMetaTag('property', 'article:modified_time', modifiedTime);
