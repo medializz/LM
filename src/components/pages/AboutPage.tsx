@@ -17,7 +17,7 @@ interface AboutPageProps {
 }
 
 export const AboutPage: React.FC<AboutPageProps> = ({ cmsData, onOpenContact }) => {
-  const { siteSettings, services = [], clients = [] } = cmsData;
+  const { siteSettings, services = [], clients = [], about } = cmsData;
   const publishedClients = clients.filter(c => c.published !== false);
 
   const handleWhatsApp = () => {
@@ -29,8 +29,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cmsData, onOpenContact }) 
   };
 
   const canonicalUrl = "https://media.lizzdo.com/about";
-  const seoTitle = "About Lizzdo Media | Creative & Digital Agency";
-  const seoDescription = "Learn about Lizzdo Media, our design philosophy, creative disciplines, and how we help brands build lasting authority through branding, packaging, web engineering, and digital growth.";
+  const seoTitle = about?.seoTitle || "About Lizzdo Media | Creative & Digital Agency";
+  const seoDescription = about?.seoDescription || "Learn about Lizzdo Media, our design philosophy, creative disciplines, and how we help brands build lasting authority through branding, packaging, web engineering, and digital growth.";
 
   const publishedTeam = (cmsData.teamMembers || []).filter(m => m.published !== false);
 
@@ -123,15 +123,15 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cmsData, onOpenContact }) 
           <div className="max-w-3xl mx-auto text-center space-y-6 pt-6 sm:pt-8">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#ffbe1a]/10 border border-[#ffbe1a]/30 text-[#ffbe1a] text-xs font-mono tracking-wider uppercase">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Agency Overview & Philosophy</span>
+              <span>{about?.eyebrow || "Agency Overview & Philosophy"}</span>
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black font-['Outfit'] text-white tracking-tight leading-[1.1]">
-              Design. Build. <span className="text-[#ffbe1a]">Grow. Together.</span>
+              {about?.headlineLine1 || "Design. Build."} <span className="text-[#ffbe1a]">{about?.headlineHighlight || "Grow. Together."}</span>
             </h1>
 
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto">
-              {siteSettings.siteName} is a creative and digital studio built for companies that demand distinction. We unite brand identity design, structural packaging, high-speed web engineering, and result-driven marketing into one cohesive execution powerhouse.
+              {about?.introDescription || `${siteSettings.siteName} is a creative and digital studio built for companies that demand distinction. We unite brand identity design, structural packaging, high-speed web engineering, and result-driven marketing into one cohesive execution powerhouse.`}
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
@@ -162,6 +162,37 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cmsData, onOpenContact }) 
         </div>
       </section>
 
+      {/* Mission & Vision Section */}
+      <section className="py-12 sm:py-16 bg-white/[0.015] border-b border-white/[0.08]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            <div className="p-8 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/50 transition-all space-y-4">
+              <div className="w-10 h-10 rounded-xl bg-[#ffbe1a]/10 border border-[#ffbe1a]/30 flex items-center justify-center text-[#ffbe1a]">
+                <Compass className="w-5 h-5" />
+              </div>
+              <h2 className="text-xl sm:text-2xl font-bold font-['Outfit'] text-white">
+                {about?.missionTitle || "Our Mission"}
+              </h2>
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+                {about?.missionDescription || "To empower ambitious businesses with uncompromising design craft and high-performance digital engineering that turn casual visitors into loyal brand advocates."}
+              </p>
+            </div>
+
+            <div className="p-8 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/50 transition-all space-y-4">
+              <div className="w-10 h-10 rounded-xl bg-[#ffbe1a]/10 border border-[#ffbe1a]/30 flex items-center justify-center text-[#ffbe1a]">
+                <Eye className="w-5 h-5" />
+              </div>
+              <h2 className="text-xl sm:text-2xl font-bold font-['Outfit'] text-white">
+                {about?.visionTitle || "Our Vision"}
+              </h2>
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+                {about?.visionDescription || "To set the global standard for modern brand design systems, packaging dielines, and web performance where mathematical precision meets pure creative expression."}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Main Narrative & Story */}
       <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -170,16 +201,16 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cmsData, onOpenContact }) 
             <div className="space-y-2">
               <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Our Story & Purpose</span>
               <h2 className="text-2xl sm:text-4xl font-bold font-['Outfit'] text-white">
-                Eliminating the Gap Between Strategy and Craft
+                {about?.storyTitle || "Built on Strategy, Craft & Speed"}
               </h2>
             </div>
 
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              Too often, businesses find themselves caught between large, sluggish agencies that deliver abstract slide decks with no execution, and isolated freelancers who lack the breadth to build an integrated brand ecosystem.
+              {about?.storyDescription || `Founded with a relentless dedication to craftsmanship, ${siteSettings.siteName} bridges the gap between high-level brand strategy and production execution. We operate as an integrated creative partner for brands seeking to build authority, scale digital revenue, and lead their industries.`}
             </p>
 
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              {siteSettings.siteName} was founded to eliminate that friction. We bridge deep strategic insight with agile, hands-on production. Whether we are crafting a mathematical vector logo mark, engineering millimeter-accurate packaging dielines, or building sub-second loading web applications, our multidisciplinary team handles every detail with pride and ownership.
+              Whether we are crafting a mathematical vector logo mark, engineering millimeter-accurate packaging dielines, or building sub-second loading web applications, our multidisciplinary team handles every detail with pride and ownership.
             </p>
 
             <div className="pt-2 grid grid-cols-2 gap-4">
@@ -368,22 +399,22 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cmsData, onOpenContact }) 
           <div className="relative z-10 space-y-4 max-w-2xl mx-auto">
             <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Ready to Collaborate?</span>
             <h2 className="text-2xl sm:text-4xl font-black font-['Outfit'] text-white">
-              Let's Build Something Exceptional Together.
+              {about?.ctaTitle || "Let's Build Something Exceptional Together."}
             </h2>
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              Reach out with your project requirements to receive a customized creative strategy, timeline estimate, and production plan.
+              {about?.ctaDescription || "Reach out with your project requirements to receive a customized creative strategy, timeline estimate, and production plan."}
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
               <a
-                href="/contact"
+                href={about?.ctaButtonUrl || "/contact"}
                 onClick={(e) => {
                   e.preventDefault();
-                  navigateTo('/contact');
+                  navigateTo(about?.ctaButtonUrl || '/contact');
                 }}
                 className="px-8 py-3.5 rounded-full bg-[#ffbe1a] hover:bg-amber-400 text-black font-extrabold text-base font-['Outfit'] transition-all shadow-xl shadow-[#ffbe1a]/20 hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer"
               >
-                <span>Start a Conversation →</span>
+                <span>{about?.ctaButtonText || "Start a Conversation →"}</span>
               </a>
               <button
                 onClick={handleWhatsApp}

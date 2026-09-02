@@ -4,14 +4,15 @@
   "tagline": "Direct Studio Inquiry",
   "description": "Have an upcoming brand identity, packaging system, custom website, or digital marketing campaign? Tell us about your brand goals, target timeline, and requirements to receive a customized creative plan and project estimate.",
   "emailCtaText": "Send an Email",
-  "availability": "Monday – Friday: 9:00 AM – 6:00 PM (EST)",
+  "availability": "Monday – Friday: 9:00 AM – 6:00 PM (GMT/BST)",
+  "locationContext": "Cardiff Studio: South Wales, UK (Serving UK & Worldwide)",
   "ctaHeading": "Prefer Instant Messaging?",
   "ctaText": "Chat directly on WhatsApp for expedited project scoping, quick questions, and immediate consultations.",
   "contactFormEnabled": true,
   "contactFormType": "native",
   "contactFormUrl": "",
   "contactFormTitle": "Project Inquiry Form",
-  "seoTitle": "Contact Lizzdo Media | Start a Project or Request an Estimated Budget",
-  "seoDescription": "Connect directly with Lizzdo Media. Tell us about your brand goals, target timeline, and requirements to receive a customized creative plan and project estimate.",
+  "seoTitle": "Contact Lizzdo Media | Creative Agency in Cardiff & UK",
+  "seoDescription": "Get in touch with Lizzdo Media in Cardiff, South Wales. Connect with our creative team to discuss your brand identity, packaging, web development, or digital marketing project.",
   "ogImage": "/uploads/og-cover.png"
 }

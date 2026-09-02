@@ -504,6 +504,7 @@ export interface ProjectInquiryData {
   company?: string;
   service: string;
   projectType: string;
+  budget?: string;
   timeline: string;
   preferredContact: 'Email' | 'WhatsApp' | 'Either';
   findUs?: string;

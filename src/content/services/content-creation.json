@@ -1,0 +1,110 @@
+{
+  "id": "content-creation",
+  "title": "Content Creation",
+  "slug": "content-creation",
+  "iconKey": "content-creation",
+  "previewImage": "/uploads/services/content-posting.svg",
+  "image": "/uploads/services/content-posting.svg",
+  "previewImageAlt": "Multichannel creative content creation and social visual asset production",
+  "shortDescription": "Strategic, multi-format content creation across social media, video reels, and brand storytelling that captivates audiences.",
+  "category": "Content Production",
+  "order": 8,
+  "published": true,
+  "heroHeadline": "Content Creation",
+  "heroHighlight": "Crafted to Captivate & Convert.",
+  "heroDescription": "We create distinctive visual assets, thumb-stopping short-form video concepts, carousel infographics, and conversion-focused copy designed to build brand authority and engage modern audiences across Cardiff, the UK, and globally.",
+  "ctaButtonText": "Create My Content →",
+  "capabilities": [
+    "High-Impact Social Media Graphic Kits (Instagram, LinkedIn, X, TikTok)",
+    "Short-Form Video Concepts, Storyboards & Motion Reels",
+    "Educational Multi-Slide Carousel & Infographic Design",
+    "Conversion-Driven Caption Copywriting & Strategic Hooks",
+    "Brand Photography Direction & Digital Asset Styling",
+    "Cross-Platform Editorial Content Calendars & Batching Workflows"
+  ],
+  "deliverables": [
+    "Ready-to-Publish High-Resolution Static Visuals (PNG / JPEG)",
+    "Editable Multi-Layer Design Templates (Figma & Adobe CC)",
+    "Short-Form Video Motion Assets (9:16 Vertical Reels & Stories)",
+    "Structured Content Calendar with Captions, Hooks & Hashtag Strategy",
+    "Monthly Production Deliverables Batch Archive"
+  ],
+  "processSteps": [
+    {
+      "stepNumber": "01",
+      "title": "Content Audit & Creative Direction",
+      "description": "Analyzing your current engagement, competitor landscapes, and defining core content pillars tailored to your brand voice."
+    },
+    {
+      "stepNumber": "02",
+      "title": "Monthly Concept Batching",
+      "description": "Developing 15 to 30 strategic content ideas, headline hooks, visual angles, and engagement-driving questions."
+    },
+    {
+      "stepNumber": "03",
+      "title": "Visual & Motion Asset Production",
+      "description": "Designing on-brand graphics, typographic motion cards, and responsive carousel layouts crafted for thumb-stopping clarity."
+    },
+    {
+      "stepNumber": "04",
+      "title": "Persuasive Copywriting & CTAs",
+      "description": "Writing captions that educate, entertain, and inspire action with clear calls-to-action tailored to each platform."
+    },
+    {
+      "stepNumber": "05",
+      "title": "Collaborative Review & Approval",
+      "description": "Presenting the full monthly batch in an intuitive proofing dashboard for rapid client sign-off before scheduling."
+    },
+    {
+      "stepNumber": "06",
+      "title": "Delivery & Asset Hand-Off",
+      "description": "Delivering organized, export-ready files and scheduling data ready for seamless multi-platform publishing."
+    }
+  ],
+  "gallery": [
+    {
+      "id": "cc-g1",
+      "title": "Multi-Slide Educational Carousel",
+      "caption": "High-retention carousel design structured for maximum saves and shares on Instagram and LinkedIn",
+      "visualType": "social-campaign",
+      "layout": "large"
+    },
+    {
+      "id": "cc-g2",
+      "title": "Vertical Motion Stories & Reels",
+      "caption": "Dynamic 9:16 video visual cards designed for fast mobile scrollers",
+      "visualType": "social-grid",
+      "layout": "half"
+    },
+    {
+      "id": "cc-g3",
+      "title": "Brand Storytelling Infographics",
+      "caption": "Clean typographic data visualization breaking down complex industry insights",
+      "visualType": "saas-dashboard",
+      "layout": "half"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What formats of content do you produce?",
+      "answer": "We produce static graphics, multi-slide educational carousels, vertical motion graphics for Reels/Stories/TikTok, infographic charts, and persuasive caption copywriting."
+    },
+    {
+      "question": "How do you ensure the content aligns with our brand guidelines?",
+      "answer": "Every asset is engineered strictly within your established typography, color schemes, tone of voice, and brand aesthetic so that your profiles look cohesive and professional."
+    },
+    {
+      "question": "Do you also handle content posting and scheduling?",
+      "answer": "Yes. We offer combined packages where we both produce the creative content and handle end-to-end publishing, scheduling, and channel monitoring through our Content Posting and Social Media Management services."
+    },
+    {
+      "question": "Can we request one-off content packages or monthly retainers?",
+      "answer": "Both options are available. We provide one-off campaign asset packs for product launches as well as ongoing monthly content creation retainers for consistent brand growth."
+    }
+  ],
+  "relatedProjects": ["social-media-campaign"],
+  "relatedServices": ["content-posting", "social-media-design", "social-media-management", "advertising-creatives"],
+  "seoTitle": "Content Creation Services | Cardiff & UK | Lizzdo Media",
+  "seoDescription": "Elevate your brand with strategic content creation services by Lizzdo Media in Cardiff, South Wales. Social media graphics, reels, carousels, and copy.",
+  "ogImage": "/uploads/services/social-media-design.svg"
+}

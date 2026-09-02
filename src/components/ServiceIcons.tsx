@@ -47,6 +47,31 @@ export const ServiceIcon: React.FC<{ name: string; size?: number; className?: st
         </svg>
       );
 
+    case 'flyer-design':
+      return (
+        <svg width={size} height={size} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+          {/* Folded paper leaflet / print flyer with folded corner */}
+          <path d="M12 10 C12 8.9 12.9 8 14 8 L28 8 L36 16 L36 38 C36 39.1 35.1 40 34 40 L14 40 C12.9 40 12 39.1 12 38 Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+          <path d="M28 8 L28 16 L36 16" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+          {/* Content lines */}
+          <line x1="17" y1="22" x2="31" y2="22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <line x1="17" y1="28" x2="27" y2="28" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <line x1="17" y1="34" x2="23" y2="34" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      );
+
+    case 'content-creation':
+      return (
+        <svg width={size} height={size} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+          {/* Creative canvas and magic spark */}
+          <rect x="10" y="12" width="28" height="24" rx="3" stroke="currentColor" strokeWidth="2" />
+          <circle cx="18" cy="20" r="3" stroke="currentColor" strokeWidth="1.8" />
+          <path d="M12 30 L20 23 L28 30 L32 26 L36 30" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+          {/* Sparkle badge */}
+          <path d="M36 8 L37.5 12 L41.5 13.5 L37.5 15 L36 19 L34.5 15 L30.5 13.5 L34.5 12 Z" fill="currentColor" />
+        </svg>
+      );
+
     case 'content-posting':
       return (
         <svg width={size} height={size} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
@@ -101,6 +126,7 @@ export const ServiceIcon: React.FC<{ name: string; size?: number; className?: st
       );
 
     case 'ai-visuals-content':
+    case 'ai-visual-content':
       return (
         <svg width={size} height={size} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
           {/* Neural AI Brain with circuit nodes */}

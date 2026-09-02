@@ -5,6 +5,7 @@ import { Breadcrumb } from '../Breadcrumb';
 import { SEOHead } from '../SEOHead';
 import { ServiceIcon } from '../ServiceIcons';
 import { navigateTo } from '../../utils/router';
+import { createWhatsAppUrl } from '../../utils/whatsapp';
 
 interface ServicesIndexPageProps {
   cmsData: DecapCMSData;
@@ -145,12 +146,37 @@ export const ServicesIndexPage: React.FC<ServicesIndexPageProps> = ({
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-              <button
-                onClick={() => onOpenContact()}
-                className="px-8 py-3.5 rounded-full bg-[#ffbe1a] hover:bg-amber-400 text-black font-extrabold text-base transition-all transform hover:scale-105 active:scale-95 shadow-xl shadow-[#ffbe1a]/20 cursor-pointer"
-              >
-                Let's Talk →
-              </button>
+              {(() => {
+                const waUrl = createWhatsAppUrl(
+                  siteSettings?.whatsappNumber,
+                  `Hello ${siteSettings?.siteName || 'Lizzdo Media'}, I am browsing your services and would like to discuss a project.`
+                );
+                return (
+                  <>
+                    {waUrl && waUrl !== '#' && (
+                      <a
+                        href={waUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-8 py-3.5 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-black font-extrabold text-base transition-all transform hover:scale-105 active:scale-95 shadow-xl shadow-[#25D366]/20 flex items-center gap-2 cursor-pointer"
+                      >
+                        <MessageCircle className="w-5 h-5 fill-current" />
+                        <span>Chat on WhatsApp</span>
+                      </a>
+                    )}
+                    <a
+                      href="/contact"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigateTo('/contact');
+                      }}
+                      className="px-8 py-3.5 rounded-full bg-[#ffbe1a] hover:bg-amber-400 text-black font-extrabold text-base transition-all transform hover:scale-105 active:scale-95 shadow-xl shadow-[#ffbe1a]/20 cursor-pointer flex items-center gap-2"
+                    >
+                      <span>Contact Us →</span>
+                    </a>
+                  </>
+                );
+              })()}
             </div>
           </div>
         </section>

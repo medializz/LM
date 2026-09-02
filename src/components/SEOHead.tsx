@@ -64,7 +64,13 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     setMetaTag('property', 'og:url', canonicalUrl);
     setMetaTag('property', 'og:type', type === 'service' ? 'website' : type);
     setMetaTag('property', 'og:image', ogImage);
-    setMetaTag('property', 'og:locale', 'en_US');
+    setMetaTag('property', 'og:locale', 'en_GB');
+
+    // Geo Meta Tags for Cardiff, South Wales, UK
+    setMetaTag('name', 'geo.region', 'GB-CRF');
+    setMetaTag('name', 'geo.placename', 'Cardiff');
+    setMetaTag('name', 'geo.position', '51.4816;-3.1791');
+    setMetaTag('name', 'ICBM', '51.4816, -3.1791');
 
     if (type === 'article') {
       if (publishedTime) setMetaTag('property', 'article:published_time', publishedTime);

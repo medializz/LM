@@ -52,6 +52,16 @@ const TIMELINE_OPTIONS = [
   "Not sure yet"
 ];
 
+const BUDGET_OPTIONS = [
+  "Select a budget range (Optional)",
+  "Under $1,000",
+  "$1,000 – $3,000",
+  "$3,000 – $5,000",
+  "$5,000 – $10,000",
+  "$10,000+",
+  "Not sure yet"
+];
+
 const CONTACT_PREFERENCES = [
   { id: "Either", label: "Either (Email or WhatsApp)" },
   { id: "Email", label: "Email" },
@@ -116,6 +126,12 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
     return "Brand Identity";
   }, [initialService, paramService, services]);
 
+  // Combine CMS services with predefined list, ensuring unique titles
+  const availableServicesList = useMemo(() => {
+    const cmsServiceTitles = services.map(s => s.title);
+    return Array.from(new Set([...cmsServiceTitles, ...AVAILABLE_SERVICES]));
+  }, [services]);
+
   // Resolve matching work title if referenced
   const referencedWorkItem = useMemo(() => {
     if (!paramWork) return null;
@@ -126,6 +142,17 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
     return match ? match.title : paramWork;
   }, [paramWork, portfolio]);
 
+  // Contextual prefilled initial message for visitor to edit
+  const initialDescription = useMemo(() => {
+    if (referencedWorkItem) {
+      return `I’m interested in discussing a project similar to "${referencedWorkItem}".`;
+    }
+    if (paramService) {
+      return `I’m interested in discussing a ${resolvedInitialService} project.`;
+    }
+    return '';
+  }, [referencedWorkItem, paramService, resolvedInitialService]);
+
   // Form State
   const [formData, setFormData] = useState<ProjectInquiryData>({
     fullName: '',
@@ -134,10 +161,11 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
     company: '',
     service: resolvedInitialService,
     projectType: 'New Brand',
+    budget: '',
     timeline: 'Within 1–2 weeks',
     preferredContact: 'Either',
     findUs: 'Google / Search Engine',
-    description: '',
+    description: initialDescription,
     referencedWork: referencedWorkItem || undefined
   });
 
@@ -156,16 +184,17 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
 
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
-  // Sync initial service if changed
+  // Sync initial service and description if changed
   useEffect(() => {
-    if (resolvedInitialService) {
+    if (resolvedInitialService || referencedWorkItem) {
       setFormData(prev => ({
         ...prev,
         service: resolvedInitialService,
-        referencedWork: referencedWorkItem || prev.referencedWork
+        referencedWork: referencedWorkItem || prev.referencedWork,
+        description: prev.description ? prev.description : initialDescription
       }));
     }
-  }, [resolvedInitialService, referencedWorkItem]);
+  }, [resolvedInitialService, referencedWorkItem, initialDescription]);
 
   const toggleFaq = (idx: number) => {
     setOpenFaqIndex(openFaqIndex === idx ? null : idx);
@@ -281,13 +310,14 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
       email: '',
       phone: '',
       company: '',
-      service: 'Brand Identity',
+      service: resolvedInitialService || 'Brand Identity',
       projectType: 'New Brand',
+      budget: '',
       timeline: 'Within 1–2 weeks',
       preferredContact: 'Either',
       findUs: 'Google / Search Engine',
-      description: '',
-      referencedWork: undefined
+      description: initialDescription,
+      referencedWork: referencedWorkItem || undefined
     });
     setActiveContextBadge(null);
     setErrorMessage(null);
@@ -798,7 +828,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
                             onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                             className="w-full px-4 py-3 rounded-xl bg-[#171a24] border border-white/[0.1] focus:border-[#ffbe1a] focus:ring-1 focus:ring-[#ffbe1a] focus:outline-none text-sm text-white transition-colors"
                           >
-                            {AVAILABLE_SERVICES.map((s) => (
+                            {availableServicesList.map((s) => (
                               <option key={s} value={s}>{s}</option>
                             ))}
                           </select>
@@ -821,7 +851,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
                         </div>
                       </div>
 
-                      {/* ROW 4: Estimated Timeline & Preferred Contact Method */}
+                      {/* ROW 4: Target Timeline & Estimated Budget */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div className="space-y-1.5">
                           <label htmlFor="inquiry-timeline" className="text-xs font-mono text-slate-300 block">
@@ -840,6 +870,25 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
                         </div>
 
                         <div className="space-y-1.5">
+                          <label htmlFor="inquiry-budget" className="text-xs font-mono text-slate-300 block">
+                            Estimated Budget <span className="text-slate-500 text-[11px]">(Optional)</span>
+                          </label>
+                          <select
+                            id="inquiry-budget"
+                            value={formData.budget || ''}
+                            onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+                            className="w-full px-4 py-3 rounded-xl bg-[#171a24] border border-white/[0.1] focus:border-[#ffbe1a] focus:ring-1 focus:ring-[#ffbe1a] focus:outline-none text-sm text-white transition-colors"
+                          >
+                            {BUDGET_OPTIONS.map((b) => (
+                              <option key={b} value={b.startsWith('Select') ? '' : b}>{b}</option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+
+                      {/* ROW 5: Preferred Contact Method & How Did You Find Us */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="space-y-1.5">
                           <label htmlFor="inquiry-contact-pref" className="text-xs font-mono text-slate-300 block">
                             Preferred Contact Method
                           </label>
@@ -854,23 +903,22 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
                             ))}
                           </select>
                         </div>
-                      </div>
 
-                      {/* ROW 5: How Did You Find Us */}
-                      <div className="space-y-1.5">
-                        <label htmlFor="inquiry-find-us" className="text-xs font-mono text-slate-300 block">
-                          How Did You Find Lizzdo Media? <span className="text-slate-500 text-[11px]">(Optional)</span>
-                        </label>
-                        <select
-                          id="inquiry-find-us"
-                          value={formData.findUs || 'Google / Search Engine'}
-                          onChange={(e) => setFormData({ ...formData, findUs: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl bg-[#171a24] border border-white/[0.1] focus:border-[#ffbe1a] focus:ring-1 focus:ring-[#ffbe1a] focus:outline-none text-sm text-white transition-colors"
-                        >
-                          {DISCOVERY_SOURCES.map((source) => (
-                            <option key={source} value={source}>{source}</option>
-                          ))}
-                        </select>
+                        <div className="space-y-1.5">
+                          <label htmlFor="inquiry-find-us" className="text-xs font-mono text-slate-300 block">
+                            How Did You Find Us? <span className="text-slate-500 text-[11px]">(Optional)</span>
+                          </label>
+                          <select
+                            id="inquiry-find-us"
+                            value={formData.findUs || 'Google / Search Engine'}
+                            onChange={(e) => setFormData({ ...formData, findUs: e.target.value })}
+                            className="w-full px-4 py-3 rounded-xl bg-[#171a24] border border-white/[0.1] focus:border-[#ffbe1a] focus:ring-1 focus:ring-[#ffbe1a] focus:outline-none text-sm text-white transition-colors"
+                          >
+                            {DISCOVERY_SOURCES.map((source) => (
+                              <option key={source} value={source}>{source}</option>
+                            ))}
+                          </select>
+                        </div>
                       </div>
 
                       {/* ROW 6: Project Description Textarea */}

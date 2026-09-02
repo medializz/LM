@@ -134,9 +134,22 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
         "@type": "Organization",
         "name": siteSettings.siteName,
         "url": "https://media.lizzdo.com/",
-        "logo": "https://media.lizzdo.com/uploads/lizzdo-media-logo.svg"
+        "logo": "https://media.lizzdo.com/uploads/lizzdo-media-logo.svg",
+        "telephone": siteSettings.phone || "+44 7930 862315",
+        "email": siteSettings.contactEmail || "contact@media.lizzdo.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Cardiff",
+          "addressRegion": "South Wales",
+          "addressCountry": "GB"
+        }
       },
-      "areaServed": "Worldwide"
+      "areaServed": [
+        { "@type": "City", "name": "Cardiff" },
+        { "@type": "AdministrativeArea", "name": "South Wales" },
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "Place", "name": "Worldwide" }
+      ]
     },
     {
       "@context": "https://schema.org",
@@ -257,6 +270,12 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
                 <CheckCircle2 className="w-3.5 h-3.5 text-[#ffbe1a]" />
                 <span>Dedicated Director</span>
               </div>
+            </div>
+
+            {/* Studio Location & Service Reach */}
+            <div className="flex items-center gap-2 pt-1 text-xs text-slate-400 font-mono">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#ffbe1a]" />
+              <span>Studio: Cardiff, South Wales • Available across the UK & Worldwide</span>
             </div>
           </div>
 

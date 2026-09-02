@@ -1,0 +1,115 @@
+{
+  "id": "flyer-design",
+  "title": "Flyer & Leaflet Design",
+  "slug": "flyer-design",
+  "iconKey": "flyer-design",
+  "previewImage": "/uploads/services/flyer-design.svg",
+  "image": "/uploads/services/flyer-design.svg",
+  "previewImageAlt": "Bespoke flyer and leaflet print design showcase with crisp typography and vibrant layout",
+  "shortDescription": "High-impact flyers, leaflets, and promotional print collateral engineered to grab attention and drive local response.",
+  "category": "Graphic & Print Design",
+  "order": 4,
+  "published": true,
+  "heroHeadline": "Flyer & Leaflet Design",
+  "heroHighlight": "Engineered for Instant Attention.",
+  "heroDescription": "Whether launching a local campaign in Cardiff, distributing across the UK, or promoting an international event, we craft print-ready flyers and promotional collateral with strategic hierarchy, compelling typography, and razor-sharp print production.",
+  "ctaButtonText": "Design My Flyer →",
+  "capabilities": [
+    "Single & Double-Sided Promotional Flyers (A5, A6, DL)",
+    "Bi-Fold, Tri-Fold & Z-Fold Corporate Leaflets & Brochures",
+    "High-Conversion Direct Mail & Door-to-Door Print Campaigns",
+    "Event, Festival, Concert & Nightlife Promotional Artwork",
+    "Commercial Sales Sheets, Product Inserts & Menus",
+    "CMYK 300+ DPI Print-Ready Prepress with Bleed & Crop Marks",
+    "Specialty Finish Specifications: Spot UV, Emboss & Metallic Foils"
+  ],
+  "deliverables": [
+    "Master Print-Ready PDF Files with Bleed, Slugs & Crop Marks (ISO 300 DPI)",
+    "Editable Vector Source Files (Adobe Illustrator AI & InDesign INDD)",
+    "Web & Social-Optimized Digital PDF and High-Res JPEG/PNG Versions",
+    "Commercial Printer Specification Guide (Paper Stock, Weight & Finishes)",
+    "Full Commercial Intellectual Property & Print Distribution Rights"
+  ],
+  "processSteps": [
+    {
+      "stepNumber": "01",
+      "title": "Campaign Objective & Target Audience",
+      "description": "Defining the core offer, geographic distribution (Cardiff, UK, or global), audience demographics, and desired call to action."
+    },
+    {
+      "stepNumber": "02",
+      "title": "Copy Architecture & Hierarchy",
+      "description": "Structuring the headline hook, scannable value points, pricing, date/venue specifics, and prominent contact details."
+    },
+    {
+      "stepNumber": "03",
+      "title": "Visual Layout & Typographic Styling",
+      "description": "Designing high-contrast visual compositions with balanced negative space, bespoke graphics, and brand-consistent fonts."
+    },
+    {
+      "stepNumber": "04",
+      "title": "Print Prepress & Color Calibration",
+      "description": "Converting all color profiles to CMYK / Pantone standards, verifying 300+ DPI image resolution, and verifying trim margins."
+    },
+    {
+      "stepNumber": "05",
+      "title": "Interactive Client Review & Revisions",
+      "description": "Collaborative digital proofing to fine-tune spacing, typography, and messaging until 100% perfection is achieved."
+    },
+    {
+      "stepNumber": "06",
+      "title": "Printer Hand-Off & Distribution Package",
+      "description": "Delivering press-ready packages directly compatible with UK trade printers or your preferred local print shop."
+    }
+  ],
+  "gallery": [
+    {
+      "id": "flyer-g1",
+      "title": "Corporate Promotional Leaflet",
+      "caption": "A5 double-sided luxury promotional flyer with bold typography and clear call-to-action",
+      "visualType": "graphic-design",
+      "layout": "large"
+    },
+    {
+      "id": "flyer-g2",
+      "title": "Tri-Fold Product Brochure",
+      "caption": "Balanced editorial grid layout designed for high scannability and tactile folding precision",
+      "visualType": "packaging-box",
+      "layout": "half"
+    },
+    {
+      "id": "flyer-g3",
+      "title": "Local Event & Festival Flyer",
+      "caption": "High-impact visual composition optimized for both physical print and digital screen sharing",
+      "visualType": "social-campaign",
+      "layout": "half"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What standard flyer and leaflet sizes do you design for?",
+      "answer": "We design for all standard UK and international print formats including A4, A5, A6, DL (envelope size), square formats, and multi-page folded formats such as bi-fold, tri-fold, and gate-fold brochures."
+    },
+    {
+      "question": "Do you provide print-ready files that any UK printer can use?",
+      "answer": "Yes. You receive press-ready PDF files formatted to rigorous commercial print standards with 3mm bleed, crop marks, CMYK color profiles, and 300+ DPI resolution. These files can be sent directly to any printer in Cardiff, across the UK, or internationally."
+    },
+    {
+      "question": "Can I also use the flyer design digitally on social media or email?",
+      "answer": "Absolutely. Alongside the high-resolution CMYK print files, we provide digital RGB versions (PDF, PNG, JPEG) perfectly sized for WhatsApp broadcasting, email attachments, and social media posting."
+    },
+    {
+      "question": "Do you help with copywriting for the flyer?",
+      "answer": "Yes. We help refine your headlines, promotional hooks, bullet points, and calls to action to ensure the copy is punchy, persuasive, and designed to generate inquiries."
+    },
+    {
+      "question": "How quickly can a flyer design project be delivered?",
+      "answer": "Initial design concepts are typically presented within 2 to 4 business days. Expedited turnaround options are also available for time-sensitive launches or event deadlines."
+    }
+  ],
+  "relatedProjects": ["brand-identity-design", "packaging-design"],
+  "relatedServices": ["graphic-design", "brand-identity", "advertising-creatives", "digital-marketing"],
+  "seoTitle": "Flyer & Leaflet Design Services | Cardiff & UK | Lizzdo Media",
+  "seoDescription": "Professional flyer and leaflet design services by Lizzdo Media in Cardiff, South Wales. High-impact print design, corporate brochures, and event collateral.",
+  "ogImage": "/uploads/services/graphic-design.svg"
+}
