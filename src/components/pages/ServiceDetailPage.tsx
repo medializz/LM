@@ -14,6 +14,7 @@ import { navigateTo } from '../../utils/router';
 import { ServiceIcon } from '../ServiceIcons';
 import { createServiceWhatsAppUrl } from '../../utils/whatsapp';
 import { getWorksForService, getRelatedServices } from '../../data/cmsContent';
+import { ProjectInquiryChoiceModal } from '../ProjectInquiryChoiceModal';
 
 interface ServiceDetailPageProps {
   service: ServiceCategory;
@@ -29,6 +30,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+  const [inquiryChoiceOpen, setInquiryChoiceOpen] = useState(false);
 
   const { siteSettings, services = [], portfolio = [] } = cmsData;
 
@@ -107,16 +109,18 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
     const url = createServiceWhatsAppUrl(
       siteSettings.whatsappNumber,
       service.title,
-      siteSettings.siteName
+      siteSettings.siteName,
+      service.whatsappMessage,
+      service.category
     );
     if (url && url !== '#') {
       window.open(url, '_blank', 'noopener,noreferrer');
     }
   };
 
-  const canonicalUrl = `https://media.lizzdo.com/services/${service.slug}`;
+  const canonicalUrl = service.canonicalUrl || `https://media.lizzdo.com/services/${service.slug}`;
   const seoTitle = service.seoTitle || `${service.title} Services | Lizzdo Media`;
-  const seoDescription = service.seoDescription || service.shortDescription;
+  const seoDescription = service.seoDescription || service.shortDescription || `Professional ${service.title} services by Lizzdo Media.`;
 
   const schemaData: any[] = [
     {
@@ -181,6 +185,8 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
         title={seoTitle}
         description={seoDescription}
         canonicalUrl={canonicalUrl}
+        keywords={service.seoKeywords}
+        ogImage={service.ogImage || service.seoImage || service.heroImage}
         type="service"
         schemaData={schemaData}
       />
@@ -219,17 +225,14 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
             </p>
 
             <div className="pt-2 flex flex-wrap items-center gap-4">
-              <a
-                href="/contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  onOpenContact(service.title);
-                }}
+              <button
+                id="service-hero-inquiry-choice-btn"
+                onClick={() => setInquiryChoiceOpen(true)}
                 className="px-8 py-3.5 rounded-full bg-[#ffbe1a] hover:bg-amber-400 text-black font-extrabold text-sm font-['Outfit'] transition-all shadow-[0_0_20px_rgba(255,190,26,0.3)] hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer"
               >
                 <span>{ctaBtnText}</span>
                 <ArrowRight className="w-4 h-4" />
-              </a>
+              </button>
 
               <button
                 onClick={handleWhatsApp}
@@ -627,16 +630,14 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-              <a
-                href="/contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  onOpenContact(service.title);
-                }}
+              <button
+                id="service-cta-inquiry-choice-btn"
+                onClick={() => setInquiryChoiceOpen(true)}
                 className="px-8 py-3.5 rounded-full bg-[#ffbe1a] hover:bg-amber-400 text-black font-extrabold text-base font-['Outfit'] transition-all shadow-xl shadow-[#ffbe1a]/20 hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer"
               >
-                <span>Let's Talk →</span>
-              </a>
+                <span>Start a Project →</span>
+              </button>
+
               <button
                 onClick={handleWhatsApp}
                 className="px-6 py-3.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-white border border-white/20 font-bold text-base font-['Outfit'] transition-all hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer"
@@ -644,6 +645,17 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
                 <MessageCircle className="w-4 h-4 text-[#25D366]" />
                 <span>WhatsApp →</span>
               </button>
+
+              <a
+                href={`/contact?service=${encodeURIComponent(service.slug)}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigateTo(`/contact?service=${encodeURIComponent(service.slug)}`);
+                }}
+                className="px-6 py-3.5 rounded-full bg-white/[0.03] hover:bg-white/[0.08] text-slate-300 hover:text-white border border-white/10 font-medium text-base font-['Outfit'] transition-all flex items-center gap-2 cursor-pointer"
+              >
+                <span>Contact Form →</span>
+              </a>
             </div>
           </div>
         </section>
@@ -657,6 +669,18 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
           onClose={() => setLightboxOpen(false)}
         />
       )}
+
+      {/* Start Service Project Modal (WhatsApp vs Contact Form clean choice) */}
+      <ProjectInquiryChoiceModal
+        isOpen={inquiryChoiceOpen}
+        onClose={() => setInquiryChoiceOpen(false)}
+        title={service.title}
+        category={service.category}
+        slug={service.slug}
+        type="service"
+        siteSettings={siteSettings}
+        customWhatsAppMessage={service.whatsappMessage}
+      />
     </div>
   );
 };

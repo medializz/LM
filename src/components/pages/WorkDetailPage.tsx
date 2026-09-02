@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { 
   ArrowLeft, ArrowRight, Sparkles, Layers, ExternalLink, 
-  Calendar, User, Wrench, Shield, CheckCircle2, MessageCircle, ChevronRight 
+  Calendar, User, Wrench, Shield, CheckCircle2, MessageCircle, ChevronRight,
+  Maximize2, Clock, Quote, Globe
 } from 'lucide-react';
 import { PortfolioItem, DecapCMSData, GalleryItem } from '../../types';
 import { Breadcrumb } from '../Breadcrumb';
@@ -13,6 +14,7 @@ import { navigateTo } from '../../utils/router';
 import { ServiceIcon } from '../ServiceIcons';
 import { createWorkWhatsAppUrl } from '../../utils/whatsapp';
 import { getServicesForWork, getRelatedProjects } from '../../data/cmsContent';
+import { ProjectInquiryChoiceModal } from '../ProjectInquiryChoiceModal';
 
 interface WorkDetailPageProps {
   project: PortfolioItem;
@@ -27,6 +29,7 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
 }) => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
+  const [inquiryChoiceOpen, setInquiryChoiceOpen] = useState(false);
 
   const { siteSettings, portfolio = [], services = [] } = cmsData;
 
@@ -262,18 +265,43 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
               <div className="space-y-4 text-xs sm:text-sm">
                 <div>
                   <span className="text-slate-400 font-mono block text-xs">Discipline / Category</span>
-                  <span className="text-white font-semibold mt-0.5 block">{project.category}</span>
+                  <span className="text-white font-semibold mt-0.5 block">{project.discipline || project.category}</span>
                 </div>
 
-                <div>
-                  <span className="text-slate-400 font-mono block text-xs">Client Type</span>
-                  <span className="text-white font-semibold mt-0.5 block">{project.client || 'Commercial Enterprise'}</span>
-                </div>
+                {(project.client || project.brand) && (
+                  <div>
+                    <span className="text-slate-400 font-mono block text-xs">Client / Brand</span>
+                    <span className="text-white font-semibold mt-0.5 block">{project.brand || project.client}</span>
+                  </div>
+                )}
 
                 <div>
                   <span className="text-slate-400 font-mono block text-xs">Year & Status</span>
-                  <span className="text-white font-semibold mt-0.5 block">{project.year || '2024'} • Completed</span>
+                  <span className="text-white font-semibold mt-0.5 block">{project.year || '2024'} • {project.status || 'Completed'}</span>
                 </div>
+
+                {(project.duration || project.hours) && (
+                  <div>
+                    <span className="text-slate-400 font-mono block text-xs">Duration</span>
+                    <span className="text-white font-semibold mt-0.5 block">{project.duration || ''} {project.hours ? `(${project.hours})` : ''}</span>
+                  </div>
+                )}
+
+                {(project.projectUrl || project.externalUrl) && (
+                  <div>
+                    <span className="text-slate-400 font-mono block text-xs">Live Link</span>
+                    <a
+                      href={project.projectUrl || project.externalUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#ffbe1a] hover:underline font-mono text-xs mt-0.5 inline-flex items-center gap-1"
+                    >
+                      <Globe className="w-3 h-3" />
+                      <span>Visit Live Website</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
+                )}
 
                 {((project.tools && project.tools.length > 0) || (project.services && project.services.length > 0)) && (
                   <div>
@@ -312,18 +340,24 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
                 )}
               </div>
 
-              <div className="pt-4 border-t border-white/[0.08]">
-                <a
-                  href="/contact"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onOpenContact(project.title);
-                  }}
-                  className="w-full py-3 rounded-xl bg-[#ffbe1a] hover:bg-amber-400 text-black font-extrabold text-xs font-['Outfit'] transition-all flex items-center justify-center gap-2 shadow-lg cursor-pointer"
+              {/* REQUEST SIMILAR PROJECT ACTION */}
+              <div className="pt-4 border-t border-white/[0.08] space-y-2.5">
+                <button
+                  id="sidebar-request-similar-project-btn"
+                  onClick={() => setInquiryChoiceOpen(true)}
+                  className="w-full py-3.5 rounded-xl bg-[#ffbe1a] hover:bg-amber-400 text-black font-extrabold text-xs sm:text-sm font-['Outfit'] transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#ffbe1a]/20 cursor-pointer hover:scale-[1.02] active:scale-98"
                 >
                   <span>Request Similar Project</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </a>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+
+                <button
+                  onClick={handleWhatsApp}
+                  className="w-full py-2.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 hover:text-white border border-white/10 text-xs font-mono transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <MessageCircle className="w-3.5 h-3.5 text-[#25D366]" />
+                  <span>Direct WhatsApp</span>
+                </button>
               </div>
             </div>
           </div>
@@ -515,7 +549,7 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
         </section>
 
         {/* ========================================================================= */}
-        {/* 6. FINAL CTA */}
+        {/* 6. FINAL DUAL CHOICE CTA */}
         {/* ========================================================================= */}
         <section className="bg-gradient-to-br from-[#171a24] via-[#12151e] to-[#0d0f16] border border-[#ffbe1a]/30 rounded-3xl p-8 sm:p-14 text-center relative overflow-hidden shadow-2xl space-y-6">
           <div className="max-w-2xl mx-auto space-y-4 relative z-10">
@@ -524,27 +558,36 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
               Let's Build Something Exceptional for Your Brand.
             </h2>
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              Connect directly with our creative team to plan, design, and launch your next high-impact release.
+              Choose your preferred channel to discuss a similar project, explore pricing, and schedule a discovery consultation.
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-              <a
-                href="/contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  onOpenContact(project.title);
-                }}
+              <button
+                id="cta-start-similar-project-btn"
+                onClick={() => setInquiryChoiceOpen(true)}
                 className="px-8 py-3.5 rounded-full bg-[#ffbe1a] hover:bg-amber-400 text-black font-extrabold text-base font-['Outfit'] transition-all shadow-xl shadow-[#ffbe1a]/20 hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer"
               >
-                <span>Start a Project →</span>
-              </a>
+                <span>Request Similar Project →</span>
+              </button>
+
               <button
                 onClick={handleWhatsApp}
                 className="px-6 py-3.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-white border border-white/20 font-bold text-base font-['Outfit'] transition-all hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4 text-[#25D366]" />
-                <span>WhatsApp →</span>
+                <span>Chat on WhatsApp →</span>
               </button>
+
+              <a
+                href={`/contact?project=${encodeURIComponent(project.slug)}&service=${encodeURIComponent(project.category)}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigateTo(`/contact?project=${encodeURIComponent(project.slug)}&service=${encodeURIComponent(project.category)}`);
+                }}
+                className="px-6 py-3.5 rounded-full bg-white/[0.03] hover:bg-white/[0.08] text-slate-300 hover:text-white border border-white/10 font-medium text-base font-['Outfit'] transition-all flex items-center gap-2 cursor-pointer"
+              >
+                <span>Contact Form →</span>
+              </a>
             </div>
           </div>
         </section>
@@ -558,6 +601,19 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
           onClose={() => setLightboxOpen(false)}
         />
       )}
+
+      {/* Start Similar Project Modal (WhatsApp vs Contact Form clean choice) */}
+      <ProjectInquiryChoiceModal
+        isOpen={inquiryChoiceOpen}
+        onClose={() => setInquiryChoiceOpen(false)}
+        title={project.title}
+        category={project.category}
+        client={project.client || project.brand}
+        slug={project.slug}
+        type="work"
+        siteSettings={siteSettings}
+        customWhatsAppMessage={project.whatsappMessage}
+      />
     </div>
   );
 };

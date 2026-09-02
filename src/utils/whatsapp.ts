@@ -35,6 +35,86 @@ export function normalizeWhatsAppNumber(rawPhone?: string): string {
 }
 
 /**
+ * Generates a dynamic contextual message for WhatsApp and Contact form.
+ */
+export function generateContextualMessage(options: {
+  title?: string;
+  category?: string;
+  client?: string;
+  type?: 'work' | 'service' | 'general';
+  customMessage?: string;
+  siteName?: string;
+}): string {
+  const brandName = options.siteName || "Lizzdo Media";
+
+  // 1. If explicit CMS custom WhatsApp message is provided, use it
+  if (options.customMessage && options.customMessage.trim().length > 0) {
+    return options.customMessage.trim();
+  }
+
+  const rawTitle = (options.title || options.category || 'creative').trim();
+  
+  // Clean up title (remove trailing 'Design' if we are building natural phrases, or preserve it)
+  // Ensure we don't end up with "project project"
+  const cleanTitle = rawTitle.replace(/\s+project$/i, '').trim();
+
+  // Specific contextual styling based on disciplines
+  const lower = cleanTitle.toLowerCase();
+
+  if (lower.includes('brand identity') || lower.includes('branding')) {
+    return `Hello ${brandName}, I’m interested in discussing a Brand Identity Design project. I’d like to learn more about your process, pricing, and timeline.`;
+  }
+
+  if (lower.includes('logo design') || lower === 'logo') {
+    return `Hello ${brandName}, I’m interested in discussing a Logo Design project. I’d like to learn more about your process, pricing, and timeline.`;
+  }
+
+  if (lower.includes('packaging')) {
+    return `Hello ${brandName}, I’m interested in discussing a Packaging Design project.`;
+  }
+
+  if (lower.includes('web development') || lower.includes('website development') || lower.includes('website')) {
+    return `Hello ${brandName}, I’m interested in discussing a Web Development project.`;
+  }
+
+  if (lower.includes('social media campaign') || lower.includes('social campaign')) {
+    return `Hello ${brandName}, I’m interested in discussing a Social Media Campaign project.`;
+  }
+
+  if (lower.includes('saas') || lower.includes('saas design')) {
+    return `Hello ${brandName}, I’m interested in discussing a SaaS Design project.`;
+  }
+
+  if (lower.includes('graphic design')) {
+    return `Hello ${brandName}, I’m interested in discussing a Graphic Design project.`;
+  }
+
+  if (lower.includes('social media design') || lower.includes('social media')) {
+    return `Hello ${brandName}, I’m interested in discussing a Social Media Design project.`;
+  }
+
+  if (lower.includes('advertising') || lower.includes('ad creatives')) {
+    return `Hello ${brandName}, I’m interested in discussing an Advertising Creatives project.`;
+  }
+
+  if (lower.includes('ai visual')) {
+    return `Hello ${brandName}, I’m interested in discussing an AI Visual Content project.`;
+  }
+
+  if (lower.includes('e-commerce') || lower.includes('ecommerce')) {
+    return `Hello ${brandName}, I’m interested in discussing an E-commerce Design project.`;
+  }
+
+  // Dynamic fallback for any custom CMS title / project
+  if (options.type === 'service') {
+    return `Hello ${brandName}, I’m interested in discussing a ${cleanTitle} project. I’d like to learn more about your process, pricing, and timeline.`;
+  }
+
+  const projectSubject = options.client ? `${options.client} ${cleanTitle}` : cleanTitle;
+  return `Hello ${brandName}, I’m interested in discussing a ${projectSubject} project. I’d like to learn more about your process, pricing, and timeline.`;
+}
+
+/**
  * Creates a standard WhatsApp deep link URL.
  * 
  * @param rawPhone The raw phone number from CMS
@@ -60,53 +140,45 @@ export function createWhatsAppUrl(
 
 /**
  * Generates a service-specific contextual WhatsApp link.
- * 
- * Example output messages:
- * - "Hello Lizzdo Media, I am interested in your Brand Identity service. I would like to discuss a project with your team."
- * - "Hello Lizzdo Media, I am interested in Web Development. I would like to discuss a website project with your team."
  */
 export function createServiceWhatsAppUrl(
   rawPhone?: string,
   serviceTitle?: string,
-  siteName: string = "Lizzdo Media"
+  siteName: string = "Lizzdo Media",
+  customMessage?: string,
+  category?: string
 ): string {
-  const brandName = siteName || "Lizzdo Media";
-  const cleanTitle = serviceTitle && serviceTitle.trim() ? serviceTitle.trim() : 'creative services';
-  
-  let message = `Hello ${brandName}, I am interested in your ${cleanTitle} service. I would like to discuss a project with your team.`;
-  
-  if (cleanTitle.toLowerCase().includes('web development') || cleanTitle.toLowerCase().includes('website')) {
-    message = `Hello ${brandName}, I am interested in Web Development. I would like to discuss a website project with your team.`;
-  } else if (cleanTitle.toLowerCase().includes('social media')) {
-    message = `Hello ${brandName}, I am interested in your Social Media services. I would like to discuss a project with your team.`;
-  } else if (cleanTitle.toLowerCase().endsWith('service') || cleanTitle.toLowerCase().endsWith('services')) {
-    message = `Hello ${brandName}, I am interested in your ${cleanTitle}. I would like to discuss a project with your team.`;
-  }
+  const message = generateContextualMessage({
+    title: serviceTitle,
+    category,
+    type: 'service',
+    customMessage,
+    siteName
+  });
 
   return createWhatsAppUrl(rawPhone, message);
 }
 
 /**
  * Generates a work/portfolio contextual WhatsApp link.
- * 
- * Example output message:
- * "Hello Lizzdo Media, I am interested in the Apex Brand Identity project. I would like to discuss a project with your team."
  */
 export function createWorkWhatsAppUrl(
   rawPhone?: string,
   projectTitle?: string,
   clientOrBrand?: string,
-  siteName: string = "Lizzdo Media"
+  siteName: string = "Lizzdo Media",
+  customMessage?: string,
+  category?: string
 ): string {
-  const brandName = siteName || "Lizzdo Media";
-  const projectLabel = clientOrBrand && projectTitle && !projectTitle.includes(clientOrBrand)
-    ? `${clientOrBrand} ${projectTitle}`
-    : projectTitle || 'featured portfolio';
+  const message = generateContextualMessage({
+    title: projectTitle,
+    client: clientOrBrand,
+    category,
+    type: 'work',
+    customMessage,
+    siteName
+  });
 
-  // Avoid repeating "project" if already present
-  const projectSuffix = projectLabel.toLowerCase().endsWith('project') ? '' : ' project';
-
-  const message = `Hello ${brandName}, I am interested in the ${projectLabel}${projectSuffix}. I would like to discuss a project with your team.`;
   return createWhatsAppUrl(rawPhone, message);
 }
 
