@@ -28,7 +28,26 @@ export const ServicesIndexPage: React.FC<ServicesIndexPageProps> = ({
 
   const filteredServices = selectedCategory === 'All'
     ? services
-    : services.filter(s => s.category?.toLowerCase() === selectedCategory.toLowerCase() || (selectedCategory === 'Branding' && s.category === 'Branding'));
+    : services.filter(s => {
+        const cat = (s.category || '').toLowerCase();
+        const title = (s.title || '').toLowerCase();
+        switch (selectedCategory) {
+          case 'Branding':
+            return cat.includes('brand') || cat.includes('logo') || title.includes('brand') || title.includes('logo');
+          case 'Design':
+            return cat.includes('design') || cat.includes('graphic') || cat.includes('packaging') || cat.includes('flyer') || title.includes('flyer');
+          case 'Engineering':
+            return cat.includes('web') || title.includes('web') || title.includes('development');
+          case 'Social':
+            return cat.includes('social') || cat.includes('posting') || cat.includes('content') || title.includes('social');
+          case 'Marketing':
+            return cat.includes('market') || cat.includes('advertis') || title.includes('marketing') || title.includes('advertising');
+          case 'AI & Innovation':
+            return cat.includes('ai') || title.includes('ai');
+          default:
+            return cat.includes(selectedCategory.toLowerCase());
+        }
+      });
 
   return (
     <div className="min-h-screen bg-[#07090e] text-white selection:bg-[#ffbe1a] selection:text-black font-['Plus_Jakarta_Sans']">
@@ -125,9 +144,18 @@ export const ServicesIndexPage: React.FC<ServicesIndexPageProps> = ({
                   </div>
                 </div>
 
-                <div className="pt-5 mt-4 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono text-[#ffbe1a] font-semibold">
-                  <span>Explore Service Details</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+                <div className="pt-5 mt-4 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono">
+                  {service.startingPrice ? (
+                    <span className="text-slate-300">
+                      From <span className="text-white font-bold">{service.currency || '£'}{service.startingPrice.toLocaleString()}</span>{service.duration ? ` / ${service.duration}` : ''}
+                    </span>
+                  ) : (
+                    <span className="text-slate-400">Custom Scope</span>
+                  )}
+                  <span className="text-[#ffbe1a] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                    <span>Packages</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </span>
                 </div>
               </div>
             );

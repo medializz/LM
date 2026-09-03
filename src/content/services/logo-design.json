@@ -31,26 +31,273 @@
     "Clearance & Sizing Usage Cheat Sheet"
   ],
   "processSteps": [
-    { "stepNumber": "01", "title": "Logo Concept", "description": "Initial brief analysis and strategic symbol brainstorming." },
-    { "stepNumber": "02", "title": "Sketching", "description": "Hand-drawn geometric ideations exploring dozens of visual metaphors." },
-    { "stepNumber": "03", "title": "Vectorization", "description": "Precise bezier curve plotting with mathematical optical balance." },
-    { "stepNumber": "04", "title": "Refinement", "description": "Testing legibility at 16px favicon scale and massive billboard formats." },
-    { "stepNumber": "05", "title": "Substrate Testing", "description": "Verifying single-color reproduction, embroidery, and screen printability." },
-    { "stepNumber": "06", "title": "Final Identity", "description": "Exporting organized master vector packages in every required format." }
+    {
+      "stepNumber": "01",
+      "title": "Logo Concept",
+      "description": "Initial brief analysis and strategic symbol brainstorming."
+    },
+    {
+      "stepNumber": "02",
+      "title": "Sketching",
+      "description": "Hand-drawn geometric ideations exploring dozens of visual metaphors."
+    },
+    {
+      "stepNumber": "03",
+      "title": "Vectorization",
+      "description": "Precise bezier curve plotting with mathematical optical balance."
+    },
+    {
+      "stepNumber": "04",
+      "title": "Refinement",
+      "description": "Testing legibility at 16px favicon scale and massive billboard formats."
+    },
+    {
+      "stepNumber": "05",
+      "title": "Substrate Testing",
+      "description": "Verifying single-color reproduction, embroidery, and screen printability."
+    },
+    {
+      "stepNumber": "06",
+      "title": "Final Identity",
+      "description": "Exporting organized master vector packages in every required format."
+    }
   ],
   "gallery": [
-    { "id": "ld-g1", "title": "Geometric Vector Construction", "caption": "Golden-ratio bezier curves and geometric alignment", "visualType": "brand-identity", "layout": "large" },
-    { "id": "ld-g2", "title": "Monochrome Versatility", "caption": "High-contrast reproduction on light and dark surfaces", "visualType": "brand-guidelines", "layout": "half" },
-    { "id": "ld-g3", "title": "Embossed Foil Application", "caption": "Gold stamped insignia on black cotton paper", "visualType": "stationery", "layout": "half" }
+    {
+      "id": "ld-g1",
+      "title": "Geometric Vector Construction",
+      "caption": "Golden-ratio bezier curves and geometric alignment",
+      "visualType": "brand-identity",
+      "layout": "large"
+    },
+    {
+      "id": "ld-g2",
+      "title": "Monochrome Versatility",
+      "caption": "High-contrast reproduction on light and dark surfaces",
+      "visualType": "brand-guidelines",
+      "layout": "half"
+    },
+    {
+      "id": "ld-g3",
+      "title": "Embossed Foil Application",
+      "caption": "Gold stamped insignia on black cotton paper",
+      "visualType": "stationery",
+      "layout": "half"
+    }
   ],
   "faqs": [
-    { "question": "How many initial logo concepts do you present?", "answer": "We typically present 2 to 3 distinct, thoughtfully crafted creative directions rooted in strategy, each showing real-world application mockups." },
-    { "question": "Will the logo work in a single color or on dark backgrounds?", "answer": "Yes, every logo is engineered and rigorously tested for light backgrounds, dark mode, single-color black, white inverse, and monochromatic stamping." },
-    { "question": "Will I own the full copyright to the final logo?", "answer": "Yes. Once final sign-off is complete, full intellectual property and commercial copyright are transferred to you." }
+    {
+      "question": "How many initial logo concepts do you present?",
+      "answer": "We typically present 2 to 3 distinct, thoughtfully crafted creative directions rooted in strategy, each showing real-world application mockups."
+    },
+    {
+      "question": "Will the logo work in a single color or on dark backgrounds?",
+      "answer": "Yes, every logo is engineered and rigorously tested for light backgrounds, dark mode, single-color black, white inverse, and monochromatic stamping."
+    },
+    {
+      "question": "Will I own the full copyright to the final logo?",
+      "answer": "Yes. Once final sign-off is complete, full intellectual property and commercial copyright are transferred to you."
+    }
   ],
-  "relatedProjects": ["brand-identity-design"],
-  "relatedServices": ["brand-identity", "graphic-design", "social-media-design"],
+  "relatedProjects": [
+    "brand-identity-design"
+  ],
+  "relatedServices": [
+    "brand-identity",
+    "graphic-design",
+    "social-media-design"
+  ],
   "seoTitle": "Logo Design Services | Lizzdo Media",
   "seoDescription": "Distinctive, mathematically balanced logo design services by Lizzdo Media. Custom vector marks, monograms, and versatile symbol systems.",
-  "ogImage": "/uploads/services/logo-design.svg"
+  "ogImage": "/uploads/services/logo-design.svg",
+  "pricingModel": "project",
+  "startingPrice": 350,
+  "currency": "£",
+  "duration": "project",
+  "packages": [
+    {
+      "id": "starter",
+      "name": "Essential Logo",
+      "badge": "Startup Mark",
+      "recommended": false,
+      "description": "A clean, bespoke vector logo designed to give your venture an immediate professional trademark.",
+      "idealCustomer": "Startups, consultants, and independent creators needing a memorable visual mark.",
+      "price": 350,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £350 / project",
+      "revisionCount": "2 revision rounds",
+      "turnaroundTime": "5–7 business days",
+      "features": [
+        "2 bespoke concept directions based on your brief",
+        "Primary logo mark & monochrome variations",
+        "Export pack for web & print (SVG, PNG, EPS, PDF)",
+        "Font recommendations & basic color codes (HEX/RGB)",
+        "Full commercial usage rights"
+      ],
+      "deliverables": [
+        "Primary Vector Master (.ai, .svg, .eps)",
+        "Transparent High-Resolution PNGs (Dark & Light backgrounds)",
+        "Basic Color Palette Specification Sheet"
+      ],
+      "notIncluded": [
+        "Secondary sub-marks & favicon suites",
+        "Brand guidelines manual"
+      ],
+      "ctaText": "Request Essential Logo",
+      "sortOrder": 1
+    },
+    {
+      "id": "professional",
+      "name": "Brand Mark System",
+      "badge": "Recommended",
+      "recommended": true,
+      "description": "A complete responsive logo system designed for modern multi-platform versatility.",
+      "idealCustomer": "Growing businesses upgrading from DIY or marketplace logos to an authoritative trademark.",
+      "price": 650,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £650 / project",
+      "revisionCount": "4 revision rounds",
+      "turnaroundTime": "7–10 business days",
+      "features": [
+        "3–4 tailored strategic concept directions",
+        "Complete responsive logo system (Horizontal, Stacked, Icon/Favicon, Monogram)",
+        "Color hierarchy guide (CMYK, RGB, HEX, Pantone matching)",
+        "Typography pairing sheet with commercial licensing recommendations",
+        "Vector source files & social media profile avatar crop kit",
+        "Logo usage dos & don'ts rulesheet"
+      ],
+      "deliverables": [
+        "Full Responsive Logo Vector Archive (.ai, .svg, .eps, .pdf)",
+        "Favicon and App Icon Master Formats",
+        "Social Media Profile Avatars Sized for All Major Networks",
+        "Color System Specifications (CMYK/Pantone/HEX)",
+        "Logo Style Guide One-Pager (PDF)"
+      ],
+      "notIncluded": [
+        "Multi-page corporate stationery suite"
+      ],
+      "ctaText": "Request Logo System",
+      "sortOrder": 2
+    },
+    {
+      "id": "premium",
+      "name": "Master Trademark Suite",
+      "badge": "Complete Identity Mark",
+      "recommended": false,
+      "description": "Strategic visual trademark suite including 3D motion reveal, sub-brand lockups, and full legal copyright assignment.",
+      "idealCustomer": "Established enterprises, luxury brands, and funded ventures seeking an iconic trademark.",
+      "price": 1150,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £1,150 / project",
+      "revisionCount": "Comprehensive revisions",
+      "turnaroundTime": "2–3 weeks",
+      "features": [
+        "5 strategic visual directions with market differentiation analysis",
+        "Complete responsive logo lockup ecosystem including sub-brand variants",
+        "3D animated logo motion sting (4K MP4 + Transparent WebM/ProRes)",
+        "Bespoke brand iconography / secondary graphic symbols",
+        "Exhaustive Logo Standards Manual (15+ pages)",
+        "Formal Intellectual Property Assignment Documentation"
+      ],
+      "deliverables": [
+        "Master Vector Source Archives with Complete Trademark Transfer",
+        "Animated 3D Logo Reveal Video (4K + Alpha Channel)",
+        "Bespoke Vector Brand Monogram & Custom Icon Set",
+        "15-Page Logo Guidelines Manual",
+        "Full Print & Digital Handoff Guarantee"
+      ],
+      "notIncluded": [
+        "Trademark registration legal attorney filing fees"
+      ],
+      "ctaText": "Request Master Suite",
+      "sortOrder": 3
+    }
+  ],
+  "addOns": [
+    {
+      "id": "addon-logo-animation-ld",
+      "name": "3D Motion Logo Animation",
+      "description": "Smooth 3D or 2D animated reveal clip for video intros and presentations.",
+      "price": 280,
+      "currency": "£",
+      "unit": "one-time",
+      "priceType": "fixed"
+    },
+    {
+      "id": "addon-brand-guideline-sheet",
+      "name": "Brand Style One-Pager Guide",
+      "description": "Quick-reference style sheet covering logo spacing, color codes, and font rules.",
+      "price": 150,
+      "currency": "£",
+      "unit": "one-time",
+      "priceType": "fixed"
+    },
+    {
+      "id": "addon-express-turnaround-ld",
+      "name": "Priority 48-Hour Fast-Track Sprint",
+      "description": "Dedicated priority studio sprint delivering initial concepts within 48 hours.",
+      "price": 200,
+      "currency": "£",
+      "unit": "one-time",
+      "priceType": "fixed"
+    }
+  ],
+  "comparisonRows": [
+    {
+      "feature": "Concept Directions",
+      "category": "Creative Concepts",
+      "starter": "2 Concepts",
+      "professional": "3–4 Concepts",
+      "premium": "5 Strategic Directions"
+    },
+    {
+      "feature": "Logo Lockups Included",
+      "category": "Deliverables",
+      "starter": "Primary mark only",
+      "professional": "Horizontal, Stacked, Favicon, Monogram",
+      "premium": "Complete Ecosystem + Sub-Brands"
+    },
+    {
+      "feature": "Vector Source Files",
+      "category": "Deliverables",
+      "starter": true,
+      "professional": true,
+      "premium": true
+    },
+    {
+      "feature": "Animated Motion Logo",
+      "category": "Deliverables",
+      "starter": false,
+      "professional": "Optional add-on",
+      "premium": "Included (4K Motion Reveal)"
+    },
+    {
+      "feature": "Style Documentation",
+      "category": "Documentation",
+      "starter": "Basic color codes",
+      "professional": "Usage rules rulesheet",
+      "premium": "15-Page Logo Standards Manual"
+    },
+    {
+      "feature": "Revision Rounds",
+      "category": "Service",
+      "starter": "2 rounds",
+      "professional": "4 rounds",
+      "premium": "Comprehensive revisions"
+    }
+  ],
+  "whoIsThisFor": {
+    "starter": "New founders, creators, and freelancers who need a clean, polished vector logo mark quickly.",
+    "professional": "Growing companies looking to replace outdated or generic marks with an authoritative brand identity system.",
+    "premium": "Established corporations, premium products, and ventures seeking a memorable, protected visual trademark."
+  }
 }

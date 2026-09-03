@@ -32,27 +32,313 @@
     "Digital Social & Presentation Kits"
   ],
   "processSteps": [
-    { "stepNumber": "01", "title": "Brand Discovery", "description": "In-depth audit of your core values, mission, target personas, and industry competitive landscape." },
-    { "stepNumber": "02", "title": "Visual Direction", "description": "Creating moodboards, tonal concepts, and creative vectors aligned with your strategic aesthetic goals." },
-    { "stepNumber": "03", "title": "Logo System", "description": "Crafting mathematical vector logo marks, monograms, badges, and responsive variations." },
-    { "stepNumber": "04", "title": "Brand Guidelines", "description": "Documenting clear rules for spacing, minimum sizing, typography hierarchies, and do's/don'ts." },
-    { "stepNumber": "05", "title": "Brand Applications", "description": "Applying the visual identity across stationery, packaging, merchandise, and digital mockups." },
-    { "stepNumber": "06", "title": "Final Delivery", "description": "Handing over fully organized vector source files, export archives, and commercial usage licenses." }
+    {
+      "stepNumber": "01",
+      "title": "Brand Discovery",
+      "description": "In-depth audit of your core values, mission, target personas, and industry competitive landscape."
+    },
+    {
+      "stepNumber": "02",
+      "title": "Visual Direction",
+      "description": "Creating moodboards, tonal concepts, and creative vectors aligned with your strategic aesthetic goals."
+    },
+    {
+      "stepNumber": "03",
+      "title": "Logo System",
+      "description": "Crafting mathematical vector logo marks, monograms, badges, and responsive variations."
+    },
+    {
+      "stepNumber": "04",
+      "title": "Brand Guidelines",
+      "description": "Documenting clear rules for spacing, minimum sizing, typography hierarchies, and do's/don'ts."
+    },
+    {
+      "stepNumber": "05",
+      "title": "Brand Applications",
+      "description": "Applying the visual identity across stationery, packaging, merchandise, and digital mockups."
+    },
+    {
+      "stepNumber": "06",
+      "title": "Final Delivery",
+      "description": "Handing over fully organized vector source files, export archives, and commercial usage licenses."
+    }
   ],
   "gallery": [
-    { "id": "bi-g1", "title": "Obsidian Luxury Stationery Suite", "caption": "300 DPI vector stationery with gold foiling", "visualType": "brand-identity", "layout": "large" },
-    { "id": "bi-g2", "title": "Color & Typography Guidelines", "caption": "Precision hierarchy and contrast ratios", "visualType": "brand-guidelines", "layout": "half" },
-    { "id": "bi-g3", "title": "Embossed Substrate Mockup", "caption": "Premium tactile physical production spec", "visualType": "stationery", "layout": "half" }
+    {
+      "id": "bi-g1",
+      "title": "Obsidian Luxury Stationery Suite",
+      "caption": "300 DPI vector stationery with gold foiling",
+      "visualType": "brand-identity",
+      "layout": "large"
+    },
+    {
+      "id": "bi-g2",
+      "title": "Color & Typography Guidelines",
+      "caption": "Precision hierarchy and contrast ratios",
+      "visualType": "brand-guidelines",
+      "layout": "half"
+    },
+    {
+      "id": "bi-g3",
+      "title": "Embossed Substrate Mockup",
+      "caption": "Premium tactile physical production spec",
+      "visualType": "stationery",
+      "layout": "half"
+    }
   ],
   "faqs": [
-    { "question": "What is included in a complete brand identity package?", "answer": "Our brand identity package includes primary and secondary logo variations, responsive icon marks, color palette specifications (Pantone, CMYK, RGB, Hex), typography pairing rules, stationery design (business cards, letterheads, envelopes), social media brand templates, and a comprehensive PDF Brand Guidelines manual." },
-    { "question": "How long does a brand identity project usually take?", "answer": "A standard brand identity project typically takes 2 to 4 weeks depending on the complexity of deliverables, feedback cycles, and the breadth of collateral required." },
-    { "question": "Do you provide editable vector source files?", "answer": "Yes, upon project completion you receive 100% full commercial ownership and master vector source files (AI, EPS, SVG, PDF, and high-resolution transparent PNGs)." },
-    { "question": "Can you rebrand an existing business without losing recognition?", "answer": "Absolutely. We specialize in both brand evolutions (refining and modernizing your existing brand equity) and full strategic transformations." }
+    {
+      "question": "What is included in a complete brand identity package?",
+      "answer": "Our brand identity package includes primary and secondary logo variations, responsive icon marks, color palette specifications (Pantone, CMYK, RGB, Hex), typography pairing rules, stationery design (business cards, letterheads, envelopes), social media brand templates, and a comprehensive PDF Brand Guidelines manual."
+    },
+    {
+      "question": "How long does a brand identity project usually take?",
+      "answer": "A standard brand identity project typically takes 2 to 4 weeks depending on the complexity of deliverables, feedback cycles, and the breadth of collateral required."
+    },
+    {
+      "question": "Do you provide editable vector source files?",
+      "answer": "Yes, upon project completion you receive 100% full commercial ownership and master vector source files (AI, EPS, SVG, PDF, and high-resolution transparent PNGs)."
+    },
+    {
+      "question": "Can you rebrand an existing business without losing recognition?",
+      "answer": "Absolutely. We specialize in both brand evolutions (refining and modernizing your existing brand equity) and full strategic transformations."
+    }
   ],
-  "relatedProjects": ["brand-identity-design", "packaging-design"],
-  "relatedServices": ["logo-design", "graphic-design", "website-development"],
+  "relatedProjects": [
+    "brand-identity-design",
+    "packaging-design"
+  ],
+  "relatedServices": [
+    "logo-design",
+    "graphic-design",
+    "website-development"
+  ],
   "seoTitle": "Brand Identity Design Services | Lizzdo Media",
   "seoDescription": "Strategic brand identity design services by Lizzdo Media. Full vector logo systems, comprehensive brand guidelines, luxury stationery, and collateral.",
-  "ogImage": "/uploads/services/brand-identity.svg"
+  "ogImage": "/uploads/services/brand-identity.svg",
+  "pricingModel": "project",
+  "startingPrice": 750,
+  "currency": "£",
+  "duration": "project",
+  "packages": [
+    {
+      "id": "starter",
+      "name": "Brand Foundation",
+      "badge": "Essential",
+      "recommended": false,
+      "description": "Essential visual branding tailored for new ventures and founders launching with a clear, cohesive identity.",
+      "idealCustomer": "Startups, independent professionals & new businesses establishing their foundational market mark.",
+      "price": 750,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £750 / project",
+      "revisionCount": "2 revision rounds",
+      "turnaroundTime": "10–14 business days",
+      "features": [
+        "Primary bespoke vector logo design (2 strategic directions)",
+        "Curated brand color palette (HEX, RGB, CMYK)",
+        "Typography pairing system & hierarchy guidelines",
+        "Monochrome & inverted logo variations",
+        "Digital export pack (SVG, PNG, EPS, PDF)",
+        "Essential Brand Direction One-Pager"
+      ],
+      "deliverables": [
+        "Primary Logo in All Standard Formats (Vector SVG/EPS + Raster PNG/JPG)",
+        "Monochrome Black & White Master Formats",
+        "Curated 5-Color Brand Palette Specification Sheet",
+        "Primary & Secondary Typography Font System Recommendations",
+        "Essential Brand Identity Guidelines Sheet"
+      ],
+      "notIncluded": [
+        "Complete multi-page Brand Guidelines manual",
+        "Custom stationery and business card print artwork",
+        "Social media template kits"
+      ],
+      "ctaText": "Request Foundation Package",
+      "sortOrder": 1
+    },
+    {
+      "id": "professional",
+      "name": "Brand Authority",
+      "badge": "Recommended",
+      "recommended": true,
+      "description": "A complete, strategic brand identity system engineered for businesses seeking market distinction and credibility.",
+      "idealCustomer": "Growing businesses ready to upgrade from generic visuals to a distinctive, market-leading identity.",
+      "price": 1450,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £1,450 / project",
+      "revisionCount": "4 revision rounds",
+      "turnaroundTime": "2–3 weeks",
+      "features": [
+        "Complete responsive logo system (Primary, Secondary, Monogram, Favicon)",
+        "Comprehensive Brand Guidelines Manual (20+ pages)",
+        "Primary & extended color system with accessibility contrast ratings",
+        "Custom brand pattern, iconography & graphic device suite",
+        "Print stationery suite (Business cards, letterhead, presentation folder)",
+        "Social media profile kit (Avatars, banners & 6 editable launch templates)",
+        "Real-world mockups demonstrating brand applications"
+      ],
+      "deliverables": [
+        "Full Vector Master Asset Archive (Illustrator, EPS, SVG, PDF)",
+        "Comprehensive 20+ Page Brand Guidelines Manual (PDF)",
+        "Complete Stationery Suite Ready for Commercial Print (CMYK + Bleed)",
+        "Social Media Launch Kit (Avatars, LinkedIn/X Banners, 6 Post Templates)",
+        "Bespoke Brand Graphic Devices, Texture, and Iconography Suite",
+        "Commercial Copyright & Intellectual Property Transfer"
+      ],
+      "notIncluded": [
+        "Packaging structural engineering",
+        "Website development (available in Brand Launch Bundle)"
+      ],
+      "ctaText": "Request Authority Package",
+      "sortOrder": 2
+    },
+    {
+      "id": "premium",
+      "name": "Enterprise Identity System",
+      "badge": "Flagship",
+      "recommended": false,
+      "description": "Comprehensive corporate brand architecture, strategy, and cross-medium design system for established market leaders.",
+      "idealCustomer": "Established enterprises, scale-ups, and luxury brands executing a major repositioning or IPO launch.",
+      "price": 2800,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £2,800 / project",
+      "revisionCount": "Comprehensive iterative revisions",
+      "turnaroundTime": "4–6 weeks",
+      "features": [
+        "Strategic brand discovery workshop & competitive landscape audit",
+        "Complete omnichannel brand architecture & sub-brand system",
+        "Exhaustive 40+ page Master Brand Design System manual",
+        "Complete corporate stationery & luxury print packaging specifications",
+        "3D animated logo sting / video brand motion intro",
+        "Full digital UI design system kit (Figma tokens & components)",
+        "Comprehensive marketing collateral templates (Pitch deck, brochures, ads)",
+        "Dedicated Senior Creative Director consultation throughout"
+      ],
+      "deliverables": [
+        "Master Vector Archive with Full Commercial IP Transfer",
+        "Exhaustive 40+ Page Brand Standards Bible (Digital & Print)",
+        "Figma Component Library & Design Tokens",
+        "Corporate Stationery & Luxury Print Production Consultation",
+        "15-Slide Master Pitch Deck Template (Keynote & PowerPoint)",
+        "3D Motion Logo Sting (4K MP4 + Transparent ProRes)",
+        "Sub-Brand / Product Extension Hierarchy Matrix"
+      ],
+      "notIncluded": [
+        "Third-party font license purchase fees",
+        "Physical printing manufacturing costs"
+      ],
+      "ctaText": "Request Enterprise Package",
+      "sortOrder": 3
+    }
+  ],
+  "addOns": [
+    {
+      "id": "addon-stationery-suite",
+      "name": "Luxury Print Stationery Suite",
+      "description": "Print-ready business cards, letterhead, envelope, and presentation folder with spot UV/foil specs.",
+      "price": 280,
+      "currency": "£",
+      "unit": "one-time",
+      "priceType": "fixed"
+    },
+    {
+      "id": "addon-logo-animation",
+      "name": "3D Motion Logo Sting",
+      "description": "Custom 3D or 2D animated logo reveal for video intros, presentations, and website heroes.",
+      "price": 320,
+      "currency": "£",
+      "unit": "one-time",
+      "priceType": "fixed"
+    },
+    {
+      "id": "addon-pitch-deck",
+      "name": "15-Slide Branded Pitch Deck",
+      "description": "Custom investor or sales presentation deck in Figma, PowerPoint, or Keynote.",
+      "price": 450,
+      "currency": "£",
+      "unit": "one-time",
+      "priceType": "fixed"
+    },
+    {
+      "id": "addon-social-kit-brand",
+      "name": "Social Media Profile & Template Kit",
+      "description": "Custom banners, highlight icons, and 9 bespoke post/story templates.",
+      "price": 250,
+      "currency": "£",
+      "unit": "one-time",
+      "priceType": "fixed"
+    }
+  ],
+  "comparisonRows": [
+    {
+      "feature": "Initial Concept Directions",
+      "category": "Creative Concepts",
+      "starter": "2 strategic directions",
+      "professional": "3–4 strategic directions",
+      "premium": "5+ exhaustive directions"
+    },
+    {
+      "feature": "Logo Lockups Included",
+      "category": "Deliverables",
+      "starter": "Primary + Monochrome",
+      "professional": "Full System (Primary, Secondary, Favicon, Monogram)",
+      "premium": "Omnichannel System + Sub-Brand Lockups"
+    },
+    {
+      "feature": "Brand Guidelines Manual",
+      "category": "Documentation",
+      "starter": "One-pager overview",
+      "professional": "20+ Page Comprehensive Book",
+      "premium": "40+ Page Enterprise Design System"
+    },
+    {
+      "feature": "Stationery Suite",
+      "category": "Collateral",
+      "starter": "Optional add-on",
+      "professional": true,
+      "premium": "Full Corporate + Luxury Specs"
+    },
+    {
+      "feature": "Social Media Asset Suite",
+      "category": "Collateral",
+      "starter": "Optional add-on",
+      "professional": "Avatars + Banners + 6 Templates",
+      "premium": "Full Omnichannel Asset Suite"
+    },
+    {
+      "feature": "Animated Motion Logo",
+      "category": "Motion & 3D",
+      "starter": false,
+      "professional": "Optional add-on",
+      "premium": "Included (4K MP4 + ProRes)"
+    },
+    {
+      "feature": "Revision Rounds",
+      "category": "Service & Support",
+      "starter": "2 revision rounds",
+      "professional": "4 revision rounds",
+      "premium": "Comprehensive revisions"
+    },
+    {
+      "feature": "Delivery Timeline",
+      "category": "Service & Support",
+      "starter": "10–14 business days",
+      "professional": "2–3 weeks",
+      "premium": "4–6 weeks dedicated sprint"
+    }
+  ],
+  "whoIsThisFor": {
+    "starter": "Early-stage founders, creators, and new businesses needing clean, cohesive, professional visual fundamentals to enter the market.",
+    "professional": "Growing companies and established businesses ready to command higher prices, build brand equity, and ensure total visual consistency across all touchpoints.",
+    "premium": "Enterprise corporations, VC-backed scale-ups, and heritage brands requiring comprehensive brand architecture, sub-brand governance, and executive oversight."
+  }
 }

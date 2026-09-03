@@ -30,24 +30,263 @@
     "A/B Creative Testing Matrix & Strategy Guide"
   ],
   "processSteps": [
-    { "stepNumber": "01", "title": "Creative Brief", "description": "Defining value proposition, customer friction points, and competitor ads." },
-    { "stepNumber": "02", "title": "Angle Ideation", "description": "Developing 5 distinct psychological hooks (logic, emotion, proof, fear-of-missing-out, speed)." },
-    { "stepNumber": "03", "title": "Design & Motion", "description": "Composing high-contrast graphics and kinetic text animations." },
-    { "stepNumber": "04", "title": "Multi-Format Export", "description": "Adapting every winning concept into all required ad specs." },
-    { "stepNumber": "05", "title": "Testing & QA", "description": "Verifying text ratio compliance and mobile readability." },
-    { "stepNumber": "06", "title": "Performance Iteration", "description": "Refining top-converting creative variations." }
+    {
+      "stepNumber": "01",
+      "title": "Creative Brief",
+      "description": "Defining value proposition, customer friction points, and competitor ads."
+    },
+    {
+      "stepNumber": "02",
+      "title": "Angle Ideation",
+      "description": "Developing 5 distinct psychological hooks (logic, emotion, proof, fear-of-missing-out, speed)."
+    },
+    {
+      "stepNumber": "03",
+      "title": "Design & Motion",
+      "description": "Composing high-contrast graphics and kinetic text animations."
+    },
+    {
+      "stepNumber": "04",
+      "title": "Multi-Format Export",
+      "description": "Adapting every winning concept into all required ad specs."
+    },
+    {
+      "stepNumber": "05",
+      "title": "Testing & QA",
+      "description": "Verifying text ratio compliance and mobile readability."
+    },
+    {
+      "stepNumber": "06",
+      "title": "Performance Iteration",
+      "description": "Refining top-converting creative variations."
+    }
   ],
   "gallery": [
-    { "id": "ac-g1", "title": "Acoustix Sound Ad Campaign Suite", "caption": "4.2x ROAS high-conversion audio product creatives", "visualType": "social-campaign", "layout": "large" },
-    { "id": "ac-g2", "title": "Multi-Format Display Banners", "caption": "Complete IAB responsive banner matrix", "visualType": "brand-identity", "layout": "half" },
-    { "id": "ac-g3", "title": "Vertical Motion Ad Hooks", "caption": "9:16 TikTok and Reels thumb-stopping intro frames", "visualType": "social-stories", "layout": "half" }
+    {
+      "id": "ac-g1",
+      "title": "Acoustix Sound Ad Campaign Suite",
+      "caption": "4.2x ROAS high-conversion audio product creatives",
+      "visualType": "social-campaign",
+      "layout": "large"
+    },
+    {
+      "id": "ac-g2",
+      "title": "Multi-Format Display Banners",
+      "caption": "Complete IAB responsive banner matrix",
+      "visualType": "brand-identity",
+      "layout": "half"
+    },
+    {
+      "id": "ac-g3",
+      "title": "Vertical Motion Ad Hooks",
+      "caption": "9:16 TikTok and Reels thumb-stopping intro frames",
+      "visualType": "social-stories",
+      "layout": "half"
+    }
   ],
   "faqs": [
-    { "question": "What ad sizes do you include in creative packages?", "answer": "We provide all standard sizes: 1080x1080 (Square), 1080x1350 (Portrait), 1080x1920 (Vertical Story/Reel), 1200x628 (Horizontal Landscape), and standard Google Display banners." }
+    {
+      "question": "What ad sizes do you include in creative packages?",
+      "answer": "We provide all standard sizes: 1080x1080 (Square), 1080x1350 (Portrait), 1080x1920 (Vertical Story/Reel), 1200x628 (Horizontal Landscape), and standard Google Display banners."
+    }
   ],
-  "relatedProjects": ["social-media-campaign"],
-  "relatedServices": ["digital-marketing", "social-media-design", "graphic-design"],
+  "relatedProjects": [
+    "social-media-campaign"
+  ],
+  "relatedServices": [
+    "digital-marketing",
+    "social-media-design",
+    "graphic-design"
+  ],
   "seoTitle": "Advertising Creatives & High-CTR Ad Design | Lizzdo Media",
   "seoDescription": "High-converting advertising creatives for Meta, Google, and TikTok ads designed to increase CTR and lower acquisition costs.",
-  "ogImage": "/uploads/services/advertising-creatives.svg"
+  "ogImage": "/uploads/services/advertising-creatives.svg",
+  "pricingModel": "project",
+  "startingPrice": 350,
+  "currency": "£",
+  "duration": "project",
+  "packages": [
+    {
+      "id": "starter",
+      "name": "Test & Learn Creative Pack",
+      "badge": "Starter Sprint",
+      "recommended": false,
+      "description": "High-converting static ad creatives engineered to test new offers, hooks, and audience segments.",
+      "idealCustomer": "Brands launching a new campaign or testing creative angles to find their winning hook.",
+      "price": 350,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £350 / project",
+      "revisionCount": "2 revision rounds",
+      "turnaroundTime": "3–5 business days",
+      "features": [
+        "4 bespoke static ad variations (1:1 Square & 9:16 Vertical formats)",
+        "Compelling visual hooks designed to stop the feed scroll",
+        "Clear, high-contrast call-to-action badges",
+        "Ad copy headlines and primary text recommendations",
+        "Formatted and tested for Meta Ads (Instagram/Facebook) and TikTok"
+      ],
+      "deliverables": [
+        "4 High-Resolution Ad Creatives (1:1 & 9:16 PNG/JPG)",
+        "Strategic Copy Hooks & Headline Matrix (Sheet)",
+        "Ad Compliance Check for Text-to-Image Ratio"
+      ],
+      "notIncluded": [
+        "Motion video animation",
+        "Ad campaign management in Meta/Google Ads"
+      ],
+      "ctaText": "Request Creative Pack",
+      "sortOrder": 1
+    },
+    {
+      "id": "professional",
+      "name": "High-Converting Multi-Format Suite",
+      "badge": "Recommended",
+      "recommended": true,
+      "description": "A dynamic suite of static and motion video ad creatives engineered to lower customer acquisition costs (CAC).",
+      "idealCustomer": "Active advertisers looking to beat ad fatigue and improve click-through rates across Meta, TikTok, and LinkedIn.",
+      "price": 650,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £650 / project",
+      "revisionCount": "3 revision rounds",
+      "turnaroundTime": "5–7 business days",
+      "features": [
+        "8 multi-format ad creatives (4 Static Visuals + 4 Motion Video Hooks)",
+        "Dynamic text animation, sound design, and subtitle captions for video ads",
+        "Format variations for Feed (1:1), Stories/Reels (9:16), and Landscape (16:9)",
+        "Split-test angle variations (Social proof, pain point, aspirational, and urgency)",
+        "Competitor creative landscape analysis and hook benchmarking"
+      ],
+      "deliverables": [
+        "4 High-Impact Static Ad Designs in Multi-Ratios",
+        "4 Motion Video Ads (1080x1920 MP4 with Sound & Subtitles)",
+        "Full Hook & Storyboard Documentation",
+        "Editable Figma Design Source Files"
+      ],
+      "notIncluded": [
+        "Physical product videography shoot"
+      ],
+      "ctaText": "Request Multi-Format Suite",
+      "sortOrder": 2
+    },
+    {
+      "id": "premium",
+      "name": "Performance Creative Arsenal",
+      "badge": "High Velocity",
+      "recommended": false,
+      "description": "Extensive performance creative arsenal: 16 high-impact ads including UGC-style video hooks, static suites, and seasonal variations.",
+      "idealCustomer": "Scale-ups and performance marketing teams requiring continuous fresh creative rotation for high monthly ad spend.",
+      "price": 1200,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £1,200 / project",
+      "revisionCount": "Comprehensive revisions",
+      "turnaroundTime": "10–14 business days",
+      "features": [
+        "16 comprehensive performance creatives (8 Motion Reels + 8 Static Variations)",
+        "UGC-style dynamic edits, voiceover pacing, and kinetic typography hooks",
+        "Rapid hook testing variations (3 alternative 3-second openers per video)",
+        "Cross-platform sizing for Meta, TikTok, YouTube Shorts, and Pinterest Ads",
+        "Direct collaboration with your media buyer to tailor creative iterations based on CPA data",
+        "Master source archives (After Effects, Premiere, and Figma)"
+      ],
+      "deliverables": [
+        "16 Production-Ready Master Ad Assets (MP4 & PNG)",
+        "24 Total Hook Variants for A/B Testing",
+        "Full Source Files (Adobe AE / PR / Figma)",
+        "Creative Strategy & Hook Breakdown Playbook",
+        "Commercial Sound & Asset Licensing"
+      ],
+      "notIncluded": [
+        "Media spend ad budget"
+      ],
+      "ctaText": "Request Creative Arsenal",
+      "sortOrder": 3
+    }
+  ],
+  "addOns": [
+    {
+      "id": "addon-hook-variations",
+      "name": "3 Alternative Video Hooks",
+      "description": "3 additional opening 3-second video hooks to test against your winning video ad.",
+      "price": 140,
+      "currency": "£",
+      "unit": "per pack",
+      "priceType": "per_unit"
+    },
+    {
+      "id": "addon-resizing-pack",
+      "name": "Cross-Platform Resizing Suite",
+      "description": "Adaptation of all approved creatives into 16:9 Landscape and 4:5 Portrait ratios.",
+      "price": 120,
+      "currency": "£",
+      "unit": "one-time",
+      "priceType": "fixed"
+    },
+    {
+      "id": "addon-express-ad",
+      "name": "48-Hour Rapid Ad Delivery",
+      "description": "Fast-track sprint delivering initial ad concepts within 48 hours.",
+      "price": 180,
+      "currency": "£",
+      "unit": "one-time",
+      "priceType": "fixed"
+    }
+  ],
+  "comparisonRows": [
+    {
+      "feature": "Total Creatives Included",
+      "category": "Volume",
+      "starter": "4 Static Creatives",
+      "professional": "8 Creatives (4 Static + 4 Motion)",
+      "premium": "16 Creatives (8 Static + 8 Motion)"
+    },
+    {
+      "feature": "Motion Video Ads (Reels / TikTok)",
+      "category": "Formats",
+      "starter": false,
+      "professional": "4 Motion Video Ads",
+      "premium": "8 Motion Ads + 24 Hook Variations"
+    },
+    {
+      "feature": "Sound Design & Captions",
+      "category": "Production",
+      "starter": false,
+      "professional": true,
+      "premium": true
+    },
+    {
+      "feature": "Strategic Angle Split-Testing",
+      "category": "Strategy",
+      "starter": "2 Angles",
+      "professional": "4 Angles (Pain, Proof, Urgency)",
+      "premium": "Comprehensive Playbook & Hook Matrix"
+    },
+    {
+      "feature": "Editable Source Files",
+      "category": "Deliverables",
+      "starter": false,
+      "professional": "Figma Source",
+      "premium": "After Effects + Premiere + Figma"
+    },
+    {
+      "feature": "Revision Rounds",
+      "category": "Service",
+      "starter": "2 rounds",
+      "professional": "3 rounds",
+      "premium": "Comprehensive revisions"
+    }
+  ],
+  "whoIsThisFor": {
+    "starter": "Businesses launching their first paid social campaign who need clean, trustworthy, high-contrast ad visuals.",
+    "professional": "Active media buyers and DTC brands looking to rotate fresh video reels and static ads to keep CTRs high and CPAs low.",
+    "premium": "High-spending advertisers needing an endless stream of tested hooks, UGC-style edits, and variations to scale spend profitably."
+  }
 }

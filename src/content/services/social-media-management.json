@@ -30,24 +30,267 @@
     "Monthly Strategy & Planning Review Sessions"
   ],
   "processSteps": [
-    { "stepNumber": "01", "title": "Channel Audit", "description": "Analyzing past performance, follower demographics, and brand tone." },
-    { "stepNumber": "02", "title": "Playbook", "description": "Defining engagement guidelines, FAQ response protocols, and tone." },
-    { "stepNumber": "03", "title": "Publishing", "description": "Executing seamless daily publishing according to approved schedules." },
-    { "stepNumber": "04", "title": "Community Care", "description": "Replying to comments, engaging with industry leaders, and triaging DMs." },
-    { "stepNumber": "05", "title": "Analytics", "description": "Extracting key engagement metrics and identifying growth trends." },
-    { "stepNumber": "06", "title": "Optimization", "description": "Iterating strategies to continually grow qualified follower reach." }
+    {
+      "stepNumber": "01",
+      "title": "Channel Audit",
+      "description": "Analyzing past performance, follower demographics, and brand tone."
+    },
+    {
+      "stepNumber": "02",
+      "title": "Playbook",
+      "description": "Defining engagement guidelines, FAQ response protocols, and tone."
+    },
+    {
+      "stepNumber": "03",
+      "title": "Publishing",
+      "description": "Executing seamless daily publishing according to approved schedules."
+    },
+    {
+      "stepNumber": "04",
+      "title": "Community Care",
+      "description": "Replying to comments, engaging with industry leaders, and triaging DMs."
+    },
+    {
+      "stepNumber": "05",
+      "title": "Analytics",
+      "description": "Extracting key engagement metrics and identifying growth trends."
+    },
+    {
+      "stepNumber": "06",
+      "title": "Optimization",
+      "description": "Iterating strategies to continually grow qualified follower reach."
+    }
   ],
   "gallery": [
-    { "id": "smm-g1", "title": "Community Engagement Dashboard", "caption": "Response time tracking and community sentiment analysis", "visualType": "saas-dashboard", "layout": "large" },
-    { "id": "smm-g2", "title": "Audience Growth Trajectory", "caption": "Organic follower acquisition and reach metrics", "visualType": "social-grid", "layout": "half" },
-    { "id": "smm-g3", "title": "Tone of Voice Playbook", "caption": "Documented community response standards", "visualType": "brand-guidelines", "layout": "half" }
+    {
+      "id": "smm-g1",
+      "title": "Community Engagement Dashboard",
+      "caption": "Response time tracking and community sentiment analysis",
+      "visualType": "saas-dashboard",
+      "layout": "large"
+    },
+    {
+      "id": "smm-g2",
+      "title": "Audience Growth Trajectory",
+      "caption": "Organic follower acquisition and reach metrics",
+      "visualType": "social-grid",
+      "layout": "half"
+    },
+    {
+      "id": "smm-g3",
+      "title": "Tone of Voice Playbook",
+      "caption": "Documented community response standards",
+      "visualType": "brand-guidelines",
+      "layout": "half"
+    }
   ],
   "faqs": [
-    { "question": "Do you respond to customer inquiries in our DMs and comments?", "answer": "Yes, we work with you to establish a custom FAQ and response matrix so we can handle routine inquiries and escalate VIP requests to your team." }
+    {
+      "question": "Do you respond to customer inquiries in our DMs and comments?",
+      "answer": "Yes, we work with you to establish a custom FAQ and response matrix so we can handle routine inquiries and escalate VIP requests to your team."
+    }
   ],
-  "relatedProjects": ["social-media-campaign"],
-  "relatedServices": ["social-media-design", "content-posting", "digital-marketing"],
+  "relatedProjects": [
+    "social-media-campaign"
+  ],
+  "relatedServices": [
+    "social-media-design",
+    "content-posting",
+    "digital-marketing"
+  ],
   "seoTitle": "Social Media Management Services | Lizzdo Media",
   "seoDescription": "Full-service social media management by Lizzdo Media. Daily community engagement, content scheduling, and audience growth.",
-  "ogImage": "/uploads/services/social-media-management.svg"
+  "ogImage": "/uploads/services/social-media-management.svg",
+  "pricingModel": "recurring",
+  "startingPrice": 480,
+  "currency": "£",
+  "duration": "4 weeks",
+  "packages": [
+    {
+      "id": "starter",
+      "name": "Foundation Management",
+      "badge": "Essential Presence",
+      "recommended": false,
+      "description": "Professional management of your primary social channel including publishing, basic moderation, and monthly performance tracking.",
+      "idealCustomer": "Small businesses wanting a well-tended, responsive social media channel without overhead.",
+      "price": 480,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "4 weeks",
+      "pricingModel": "recurring",
+      "pricingLabel": "From £480 / 4 weeks",
+      "revisionCount": "Monthly strategic review",
+      "turnaroundTime": "Ongoing weekly execution",
+      "features": [
+        "Management of 1 core social platform (Instagram or LinkedIn)",
+        "3 curated posts per week (12 posts / 4 weeks)",
+        "Basic comment and DM inbox triage (Business days)",
+        "Targeted audience hashtag research & geo-tagging",
+        "Monthly growth & engagement analytics report"
+      ],
+      "deliverables": [
+        "12 Published High-Quality Posts",
+        "Active Inbox Triage & Spam Removal",
+        "Monthly Audience Growth & Analytics Report"
+      ],
+      "notIncluded": [
+        "Proactive outbound engagement campaigns",
+        "Influencer marketing coordination"
+      ],
+      "ctaText": "Request Foundation Management",
+      "sortOrder": 1
+    },
+    {
+      "id": "professional",
+      "name": "Growth Management",
+      "badge": "Most Popular",
+      "recommended": true,
+      "description": "Active multi-channel management designed to build community, engage prospects, and drive qualified inquiries.",
+      "idealCustomer": "Growing brands looking to turn their social channels into active community-building and lead-generation funnels.",
+      "price": 780,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "4 weeks",
+      "pricingModel": "recurring",
+      "pricingLabel": "From £780 / 4 weeks",
+      "revisionCount": "Bi-weekly strategy check-ins",
+      "turnaroundTime": "Ongoing weekly execution",
+      "features": [
+        "Management of 2 social platforms (e.g. Instagram & LinkedIn or TikTok)",
+        "5 high-engagement posts per week (20 posts / 4 weeks)",
+        "Proactive daily community engagement (Interacting with target accounts & industry hashtags)",
+        "Comment responses & direct message lead qualification",
+        "Weekly interactive story updates (Polls, Q&As, announcements)",
+        "Monthly strategic review call & content performance breakdown"
+      ],
+      "deliverables": [
+        "20 Published Strategic Posts Across 2 Platforms",
+        "Daily Community Engagement & Lead Nurturing",
+        "8+ Interactive Story Touchpoints",
+        "Monthly Strategic Performance Video Call (45 mins)",
+        "Comprehensive Growth, Reach & Inquiry Report"
+      ],
+      "notIncluded": [
+        "Paid advertising campaign ad spend"
+      ],
+      "ctaText": "Request Growth Management",
+      "sortOrder": 2
+    },
+    {
+      "id": "premium",
+      "name": "Omnichannel Brand Leadership",
+      "badge": "Full Partnership",
+      "recommended": false,
+      "description": "Full-scale social leadership: multi-channel daily publishing, rapid moderation, influencer outreach, and executive social strategy.",
+      "idealCustomer": "Scale-ups, established brands, and high-growth companies demanding an authoritative, always-on social presence.",
+      "price": 1250,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "4 weeks",
+      "pricingModel": "recurring",
+      "pricingLabel": "From £1,250 / 4 weeks",
+      "revisionCount": "Weekly agile adjustments",
+      "turnaroundTime": "Priority dedicated account manager",
+      "features": [
+        "Comprehensive management across up to 4 platforms",
+        "Daily publishing (7 posts/week, 28+ posts / 4 weeks)",
+        "Rapid response community moderation (Under 2-hour response during business hours)",
+        "Influencer & brand partnership outreach coordination",
+        "Reputation management & review response handling",
+        "Bi-weekly strategy reviews & dedicated Slack/WhatsApp channel",
+        "Competitor benchmark tracking and trend hijacking"
+      ],
+      "deliverables": [
+        "28+ Published Posts Across Up to 4 Platforms",
+        "Daily Active Community Building & Rapid Inbox Management",
+        "Micro-Influencer Outreach & Collaboration Coordination",
+        "Bi-Weekly Strategic Marketing Reviews",
+        "Executive Social Media KPI Dashboard & ROI Reporting",
+        "Dedicated Social Media Account Manager"
+      ],
+      "notIncluded": [
+        "Influencer collaboration fee budgets"
+      ],
+      "ctaText": "Request Leadership Management",
+      "sortOrder": 3
+    }
+  ],
+  "addOns": [
+    {
+      "id": "addon-extra-channel-smm",
+      "name": "Additional Social Channel Management",
+      "description": "Expand your management package to an additional platform with tailored publishing and moderation.",
+      "price": 250,
+      "currency": "£",
+      "unit": "per 4 weeks",
+      "priceType": "recurring"
+    },
+    {
+      "id": "addon-influencer-outreach",
+      "name": "Influencer Outreach & Seeding Campaign",
+      "description": "Curating, contacting, and coordinating product gifting with 15 verified micro-influencers.",
+      "price": 350,
+      "currency": "£",
+      "unit": "per campaign",
+      "priceType": "fixed"
+    },
+    {
+      "id": "addon-competitor-report",
+      "name": "Monthly Competitor Intelligence Report",
+      "description": "In-depth monthly breakdown of 3 top competitors' creative strategies, top posts, and engagement tactics.",
+      "price": 180,
+      "currency": "£",
+      "unit": "per report",
+      "priceType": "recurring"
+    }
+  ],
+  "comparisonRows": [
+    {
+      "feature": "Platforms Managed",
+      "category": "Channels",
+      "starter": "1 Platform",
+      "professional": "2 Platforms",
+      "premium": "Up to 4 Platforms"
+    },
+    {
+      "feature": "Weekly Post Frequency",
+      "category": "Volume",
+      "starter": "3 Posts / Week (12 total)",
+      "professional": "5 Posts / Week (20 total)",
+      "premium": "Daily 7 Posts / Week (28+ total)"
+    },
+    {
+      "feature": "Proactive Community Engagement",
+      "category": "Community",
+      "starter": "Basic moderation only",
+      "professional": "Daily outbound engagement & comments",
+      "premium": "Extensive industry engagement + influencer outreach"
+    },
+    {
+      "feature": "DM & Comment Response Speed",
+      "category": "Customer Care",
+      "starter": "24–48 hours",
+      "professional": "Same-day response",
+      "premium": "Under 2 hours during business hours"
+    },
+    {
+      "feature": "Interactive Stories",
+      "category": "Content",
+      "starter": false,
+      "professional": "Weekly interactive stories",
+      "premium": "Multi-weekly custom stories"
+    },
+    {
+      "feature": "Strategy & Reporting Calls",
+      "category": "Strategy",
+      "starter": "Written monthly report",
+      "professional": "Monthly video review call",
+      "premium": "Bi-weekly strategy reviews + dedicated Slack"
+    }
+  ],
+  "whoIsThisFor": {
+    "starter": "Local businesses and independent practitioners looking for a clean, professional, spam-free presence on their primary channel.",
+    "professional": "Growing companies looking to actively cultivate their community, boost organic engagement, and nurture inbound customer inquiries.",
+    "premium": "Established brands and rapid-growth organizations requiring a dedicated social media agency team handling daily operations, community care, and outreach."
+  }
 }

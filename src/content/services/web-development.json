@@ -32,26 +32,299 @@
     "Automated GitHub Actions CI/CD Deployment Pipeline"
   ],
   "processSteps": [
-    { "stepNumber": "01", "title": "Information Architecture", "description": "Mapping user flows, sitemaps, and core conversion paths." },
-    { "stepNumber": "02", "title": "UI/UX Prototyping", "description": "Designing high-fidelity Figma components with interactive states." },
-    { "stepNumber": "03", "title": "Frontend Engineering", "description": "Writing modular TypeScript components with Tailwind utility architecture." },
-    { "stepNumber": "04", "title": "CMS Integration", "description": "Setting up Decap CMS collections and automated Git publishing." },
-    { "stepNumber": "05", "title": "Performance Audit", "description": "Tuning Core Web Vitals, caching rules, and asset payloads." },
-    { "stepNumber": "06", "title": "Production Deployment", "description": "Launching on global edge CDN with automated SSL certificates." }
+    {
+      "stepNumber": "01",
+      "title": "Information Architecture",
+      "description": "Mapping user flows, sitemaps, and core conversion paths."
+    },
+    {
+      "stepNumber": "02",
+      "title": "UI/UX Prototyping",
+      "description": "Designing high-fidelity Figma components with interactive states."
+    },
+    {
+      "stepNumber": "03",
+      "title": "Frontend Engineering",
+      "description": "Writing modular TypeScript components with Tailwind utility architecture."
+    },
+    {
+      "stepNumber": "04",
+      "title": "CMS Integration",
+      "description": "Setting up Decap CMS collections and automated Git publishing."
+    },
+    {
+      "stepNumber": "05",
+      "title": "Performance Audit",
+      "description": "Tuning Core Web Vitals, caching rules, and asset payloads."
+    },
+    {
+      "stepNumber": "06",
+      "title": "Production Deployment",
+      "description": "Launching on global edge CDN with automated SSL certificates."
+    }
   ],
   "gallery": [
-    { "id": "wd-g1", "title": "Responsive SaaS Web Platform", "caption": "Cross-device responsive desktop and mobile dashboards", "visualType": "saas-dashboard", "layout": "large" },
-    { "id": "wd-g2", "title": "Mobile UX Interface", "caption": "Thumb-friendly mobile navigation and micro-interactions", "visualType": "saas-mobile", "layout": "half" },
-    { "id": "wd-g3", "title": "Performance & Lighthouse 100", "caption": "Sub-100ms TTFB and perfect Core Web Vitals score", "visualType": "web-development", "layout": "half" }
+    {
+      "id": "wd-g1",
+      "title": "Responsive SaaS Web Platform",
+      "caption": "Cross-device responsive desktop and mobile dashboards",
+      "visualType": "saas-dashboard",
+      "layout": "large"
+    },
+    {
+      "id": "wd-g2",
+      "title": "Mobile UX Interface",
+      "caption": "Thumb-friendly mobile navigation and micro-interactions",
+      "visualType": "saas-mobile",
+      "layout": "half"
+    },
+    {
+      "id": "wd-g3",
+      "title": "Performance & Lighthouse 100",
+      "caption": "Sub-100ms TTFB and perfect Core Web Vitals score",
+      "visualType": "web-development",
+      "layout": "half"
+    }
   ],
   "faqs": [
-    { "question": "What technologies do you use for web development?", "answer": "We engineer with React, TypeScript, Vite, Tailwind CSS, and Decap CMS deployed on Cloudflare or GitHub Pages for maximum speed, security, and zero server maintenance." },
-    { "question": "Can I edit text, images, and blog posts myself?", "answer": "Yes, we integrate Decap CMS so your team can log in via GitHub OAuth, update text, upload images, and publish pages without writing code." },
-    { "question": "Is the website optimized for mobile phones and tablets?", "answer": "Every layout is built mobile-first and tested rigorously across smartphones, tablets, laptops, and ultra-wide desktop monitors." }
+    {
+      "question": "What technologies do you use for web development?",
+      "answer": "We engineer with React, TypeScript, Vite, Tailwind CSS, and Decap CMS deployed on Cloudflare or GitHub Pages for maximum speed, security, and zero server maintenance."
+    },
+    {
+      "question": "Can I edit text, images, and blog posts myself?",
+      "answer": "Yes, we integrate Decap CMS so your team can log in via GitHub OAuth, update text, upload images, and publish pages without writing code."
+    },
+    {
+      "question": "Is the website optimized for mobile phones and tablets?",
+      "answer": "Every layout is built mobile-first and tested rigorously across smartphones, tablets, laptops, and ultra-wide desktop monitors."
+    }
   ],
-  "relatedProjects": ["web-development", "saas-website-design"],
-  "relatedServices": ["website-development", "brand-identity", "digital-marketing"],
+  "relatedProjects": [
+    "web-development",
+    "saas-website-design"
+  ],
+  "relatedServices": [
+    "website-development",
+    "brand-identity",
+    "digital-marketing"
+  ],
   "seoTitle": "Web Development Services | Lizzdo Media",
   "seoDescription": "High-performance web development services by Lizzdo Media. Modern React, TypeScript, Vite, Decap CMS, and sub-100ms edge speed.",
-  "ogImage": "/uploads/services/web-development.svg"
+  "ogImage": "/uploads/services/web-development.svg",
+  "pricingModel": "project",
+  "startingPrice": 950,
+  "currency": "£",
+  "duration": "project",
+  "packages": [
+    {
+      "id": "starter",
+      "name": "Starter Business Website",
+      "badge": "Essential Launch",
+      "recommended": false,
+      "description": "A fast, modern, mobile-first website engineered to establish credibility and capture inbound client inquiries.",
+      "idealCustomer": "Local businesses, professional service providers, and startups requiring a sharp web presence.",
+      "price": 950,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £950 / project",
+      "revisionCount": "2 revision rounds",
+      "turnaroundTime": "2–3 weeks",
+      "features": [
+        "Modern responsive website up to 5 core pages (Home, About, Services, Contact, Legal)",
+        "High-conversion lead capture inquiry form",
+        "Mobile-first responsive layout (Optimized for iOS & Android)",
+        "Clean on-page SEO foundation & Meta tags",
+        "Google Maps & WhatsApp contact integration",
+        "SSL security & lightning-fast speed optimization"
+      ],
+      "deliverables": [
+        "Fully Deployed Live Website on Custom Domain",
+        "Responsive Clean Codebase (React / TypeScript / Tailwind)",
+        "Interactive Contact Form with Email Notifications",
+        "Essential Meta & Open Graph Social Share Setup",
+        "30-Day Post-Launch Bug-Fix Warranty"
+      ],
+      "notIncluded": [
+        "Dynamic CMS content management dashboard",
+        "E-commerce payment gateway integration",
+        "Custom API third-party integrations"
+      ],
+      "ctaText": "Request Starter Website",
+      "sortOrder": 1
+    },
+    {
+      "id": "professional",
+      "name": "Custom Agency Website",
+      "badge": "Most Popular",
+      "recommended": true,
+      "description": "A bespoke, custom-engineered website featuring Decap CMS, interactive animations, and deep conversion optimization.",
+      "idealCustomer": "Growing businesses, digital agencies, and companies seeking inbound lead generation and effortless content management.",
+      "price": 1850,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £1,850 / project",
+      "revisionCount": "4 revision rounds",
+      "turnaroundTime": "3–5 weeks",
+      "features": [
+        "Custom bespoke architecture up to 10 pages + dynamic case studies/services",
+        "Decap CMS integration (Edit text, images, case studies & blogs without code)",
+        "Smooth scroll animations, micro-interactions & motion transitions",
+        "Advanced SEO engineering (Schema.org structured data, XML sitemap, canonicals)",
+        "Google Analytics 4 & Google Tag Manager tracking integration",
+        "Interactive filters, search, and dynamic service package cards",
+        "Automated lead capture & WhatsApp deep links"
+      ],
+      "deliverables": [
+        "Production Deployment with Git-Backed CMS Engine",
+        "Full Content Editing Admin Dashboard (/admin/)",
+        "Schema.org JSON-LD Structured Data for Rich Google Snippets",
+        "Automated Dynamic XML Sitemap Generator",
+        "1-on-1 CMS Video Training Session for Your Team",
+        "60-Day Post-Launch Technical Support & Warranty"
+      ],
+      "notIncluded": [
+        "Complex custom user authentication or subscription portals",
+        "Third-party paid hosting / domain registration fees"
+      ],
+      "ctaText": "Request Custom Website",
+      "sortOrder": 2
+    },
+    {
+      "id": "premium",
+      "name": "Enterprise Digital Platform",
+      "badge": "Advanced Web Engine",
+      "recommended": false,
+      "description": "High-performance custom web application or advanced e-commerce platform with custom logic, integrations, and scale.",
+      "idealCustomer": "Scale-ups, e-commerce brands, SaaS companies, and organizations requiring bespoke interactive workflows.",
+      "price": 3500,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £3,500 / project",
+      "revisionCount": "Comprehensive iterative revisions",
+      "turnaroundTime": "5–8 weeks",
+      "features": [
+        "Custom multi-page web application or complete e-commerce architecture",
+        "Bespoke interactive features (Product configurators, calculators, or member areas)",
+        "Stripe / PayPal payment processing & subscription checkout flows",
+        "Custom headless CMS workflows, webhooks, and REST/GraphQL API connections",
+        "Advanced speed optimization scoring 95+ on Google Lighthouse",
+        "High-conversion CRO design architecture tailored to your audience",
+        "Priority 90-day post-launch support and developer SLA"
+      ],
+      "deliverables": [
+        "Full Master Source Code Repository with Complete Commercial Ownership",
+        "Custom Production Server Configuration & CI/CD Pipeline",
+        "Secure Payment & Checkout Integrations",
+        "Enterprise Google Lighthouse Audit & Performance Sign-off",
+        "Dedicated Senior Full-Stack Architect Support",
+        "Comprehensive Architecture Documentation"
+      ],
+      "notIncluded": [
+        "Ongoing monthly cloud hosting and SaaS API subscription costs"
+      ],
+      "ctaText": "Request Enterprise Platform",
+      "sortOrder": 3
+    }
+  ],
+  "addOns": [
+    {
+      "id": "addon-additional-page",
+      "name": "Additional Custom Web Page",
+      "description": "Design and development of an extra bespoke page with custom layout and responsive styling.",
+      "price": 150,
+      "currency": "£",
+      "unit": "per page",
+      "priceType": "per_unit"
+    },
+    {
+      "id": "addon-ecommerce-module",
+      "name": "E-Commerce Checkout & Product Module",
+      "description": "Stripe-powered checkout, shopping cart, and product management setup.",
+      "price": 650,
+      "currency": "£",
+      "unit": "one-time",
+      "priceType": "fixed"
+    },
+    {
+      "id": "addon-maintenance-plan",
+      "name": "Monthly Maintenance, Security & Backups",
+      "description": "Monthly plugin updates, security scanning, performance monitoring, and 2 hours of content updates.",
+      "price": 120,
+      "currency": "£",
+      "unit": "per month",
+      "priceType": "recurring"
+    },
+    {
+      "id": "addon-multilingual",
+      "name": "Multi-Language Localization Setup",
+      "description": "Bespoke multilingual routing, language switcher, and translation architecture.",
+      "price": 450,
+      "currency": "£",
+      "unit": "one-time",
+      "priceType": "fixed"
+    }
+  ],
+  "comparisonRows": [
+    {
+      "feature": "Number of Core Pages",
+      "category": "Scope",
+      "starter": "Up to 5 Pages",
+      "professional": "Up to 10 Pages + Dynamic CMS",
+      "premium": "Bespoke Architecture (15+ Pages)"
+    },
+    {
+      "feature": "Decap CMS Content Dashboard",
+      "category": "Content Management",
+      "starter": false,
+      "professional": "Included (Full visual admin)",
+      "premium": "Advanced CMS + Custom Schemas"
+    },
+    {
+      "feature": "Responsive Design & Mobile Tuning",
+      "category": "Design & UX",
+      "starter": true,
+      "professional": true,
+      "premium": true
+    },
+    {
+      "feature": "Interactive Motion & Animations",
+      "category": "Design & UX",
+      "starter": "Standard CSS transitions",
+      "professional": "Bespoke scroll motion & micro-interactions",
+      "premium": "Advanced 3D / WebGL / motion effects"
+    },
+    {
+      "feature": "SEO & Schema.org Structured Data",
+      "category": "SEO & Performance",
+      "starter": "Basic Meta & Open Graph",
+      "professional": "Full Schema.org JSON-LD + Sitemap",
+      "premium": "Enterprise SEO + Core Web Vitals 95+"
+    },
+    {
+      "feature": "E-Commerce / Payment Integration",
+      "category": "Features",
+      "starter": "Optional add-on",
+      "professional": "Optional add-on",
+      "premium": "Included (Stripe / Cart)"
+    },
+    {
+      "feature": "Post-Launch Warranty",
+      "category": "Support",
+      "starter": "30 Days",
+      "professional": "60 Days",
+      "premium": "90 Days Dedicated SLA"
+    }
+  ],
+  "whoIsThisFor": {
+    "starter": "Businesses and solo entrepreneurs needing an authoritative, elegant website quickly to showcase services and receive customer inquiries.",
+    "professional": "Companies demanding a competitive digital edge, effortless in-house content editing via CMS, and advanced SEO visibility.",
+    "premium": "E-commerce brands, high-growth scale-ups, and established organizations requiring custom digital applications, payments, and integrations."
+  }
 }

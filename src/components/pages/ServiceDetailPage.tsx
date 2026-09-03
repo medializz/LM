@@ -4,7 +4,7 @@ import {
   ArrowRight, CheckCircle2, MessageCircle, Sparkles, Layers, 
   ChevronRight, ChevronDown, ChevronUp, ExternalLink, ShieldCheck, Zap
 } from 'lucide-react';
-import { ServiceCategory, DecapCMSData, GalleryItem } from '../../types';
+import { ServiceCategory, DecapCMSData, GalleryItem, ServicePackage } from '../../types';
 import { Breadcrumb } from '../Breadcrumb';
 import { ServiceHeroVisual } from '../visuals/ServiceHeroVisual';
 import { ProjectGalleryVisual } from '../visuals/ProjectGalleryVisual';
@@ -13,8 +13,15 @@ import { SEOHead } from '../SEOHead';
 import { navigateTo } from '../../utils/router';
 import { ServiceIcon } from '../ServiceIcons';
 import { createServiceWhatsAppUrl } from '../../utils/whatsapp';
-import { getWorksForService, getRelatedServices } from '../../data/cmsContent';
+import { getWorksForService, getRelatedServices, getBundlesForService } from '../../data/cmsContent';
 import { ProjectInquiryChoiceModal } from '../ProjectInquiryChoiceModal';
+import {
+  PackageGrid,
+  AddonSelector,
+  PackageComparisonTable,
+  WhoIsThisForSection,
+  BundleCard
+} from '../services/packages';
 
 interface ServiceDetailPageProps {
   service: ServiceCategory;
@@ -31,8 +38,9 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [inquiryChoiceOpen, setInquiryChoiceOpen] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState<ServicePackage | null>(null);
 
-  const { siteSettings, services = [], portfolio = [] } = cmsData;
+  const { siteSettings, services = [], portfolio = [], bundles = [] } = cmsData;
 
   const toggleFaq = (idx: number) => {
     setOpenFaqIndex(openFaqIndex === idx ? null : idx);
@@ -99,6 +107,14 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
 
   // Related work projects (using centralized bidirectional helper)
   const relatedWorkList = getWorksForService(service, portfolio, services);
+
+  // Applicable cross-service bundles
+  const applicableBundles = getBundlesForService(service.slug, bundles);
+
+  const handleRequestPackageInquiry = (pkg: ServicePackage) => {
+    setSelectedPackage(pkg);
+    setInquiryChoiceOpen(true);
+  };
 
   const openLightboxAt = (idx: number) => {
     setActiveGalleryIndex(idx);
@@ -177,6 +193,26 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
     }
   ];
 
+  // Add structured offer catalog schema if packages are defined
+  if (service.packages && service.packages.length > 0) {
+    (schemaData[0] as any).hasOfferCatalog = {
+      "@type": "OfferCatalog",
+      "name": `${service.title} Packages`,
+      "itemListElement": service.packages.map((pkg) => ({
+        "@type": "Offer",
+        "name": pkg.name,
+        "description": pkg.description,
+        "price": pkg.price,
+        "priceCurrency": "GBP",
+        "url": `${canonicalUrl}#package-card-${pkg.id}`,
+        "itemOffered": {
+          "@type": "Service",
+          "name": `${service.title} - ${pkg.name}`
+        }
+      }))
+    };
+  }
+
   if (service.faqs && service.faqs.length > 0) {
     schemaData.push({
       "@context": "https://schema.org",
@@ -223,9 +259,20 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
           
           {/* Left Column: Details */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ffbe1a]/10 border border-[#ffbe1a]/30 text-[#ffbe1a] text-xs font-mono font-bold tracking-wider uppercase">
-              <ServiceIcon iconKey={service.iconKey} size={14} />
-              <span>{service.category}</span>
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ffbe1a]/10 border border-[#ffbe1a]/30 text-[#ffbe1a] text-xs font-mono font-bold tracking-wider uppercase">
+                <ServiceIcon iconKey={service.iconKey} size={14} />
+                <span>{service.category}</span>
+              </div>
+              {service.startingPrice && (
+                <a
+                  href="#service-packages-section"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-slate-300 hover:text-white text-xs font-mono transition-colors"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ffbe1a]" />
+                  <span>Packages from {service.currency || '£'}{service.startingPrice.toLocaleString()}{service.duration ? ` / ${service.duration}` : ''}</span>
+                </a>
+              )}
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black font-['Outfit'] text-white tracking-tight leading-[1.1]">
@@ -246,6 +293,15 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
                 <span>{ctaBtnText}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
+
+              {service.packages && service.packages.length > 0 && (
+                <a
+                  href="#service-packages-section"
+                  className="px-6 py-3.5 rounded-full bg-white/[0.03] hover:bg-white/[0.08] text-slate-300 hover:text-white border border-white/10 font-bold text-sm font-['Outfit'] transition-all hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer"
+                >
+                  <span>View Packages ↓</span>
+                </a>
+              )}
 
               <button
                 onClick={handleWhatsApp}
@@ -307,7 +363,87 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
         </section>
 
         {/* ========================================================================= */}
-        {/* 2. WHAT WE OFFER / KEY CAPABILITIES */}
+        {/* 2. PRODUCTIZED PACKAGES SYSTEM */}
+        {/* ========================================================================= */}
+        {service.packages && service.packages.length > 0 && (
+          <PackageGrid
+            service={service}
+            packages={service.packages}
+            siteSettings={siteSettings}
+            selectedPackageId={selectedPackage?.id}
+            onSelectPackage={(pkg) => setSelectedPackage(pkg)}
+            onRequestInquiry={handleRequestPackageInquiry}
+          />
+        )}
+
+        {/* ========================================================================= */}
+        {/* 3. WHO IS THIS FOR? (TARGET AUDIENCE CLARITY) */}
+        {/* ========================================================================= */}
+        {service.whoIsThisFor && (
+          <WhoIsThisForSection
+            whoIsThisFor={service.whoIsThisFor}
+            packages={service.packages}
+          />
+        )}
+
+        {/* ========================================================================= */}
+        {/* 4. INTERACTIVE BUILD YOUR PACKAGE / ADD-ON SELECTOR */}
+        {/* ========================================================================= */}
+        {service.packages && service.packages.length > 0 && service.addOns && service.addOns.length > 0 && (
+          <AddonSelector
+            service={service}
+            packages={service.packages}
+            addOns={service.addOns}
+            siteSettings={siteSettings}
+            initialPackageId={selectedPackage?.id}
+            onOpenContact={onOpenContact}
+          />
+        )}
+
+        {/* ========================================================================= */}
+        {/* 5. SIDE-BY-SIDE FEATURE & DELIVERABLE COMPARISON MATRIX */}
+        {/* ========================================================================= */}
+        {service.comparisonRows && service.comparisonRows.length > 0 && (
+          <PackageComparisonTable
+            comparisonRows={service.comparisonRows}
+            packages={service.packages}
+          />
+        )}
+
+        {/* ========================================================================= */}
+        {/* 6. CROSS-SERVICE BUNDLES & STRATEGIC UPGRADES */}
+        {/* ========================================================================= */}
+        {applicableBundles.length > 0 && (
+          <section id="service-bundles-section" className="space-y-6 pt-4 border-t border-white/[0.08]">
+            <div className="space-y-2">
+              <div className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-wider text-[#ffbe1a] uppercase">
+                <Layers className="w-3.5 h-3.5" />
+                <span>Strategic Agency Bundles</span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-black font-['Outfit'] text-white">
+                Multi-Discipline Package Upgrades
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-400">
+                Combine {service.title} with complementary creative solutions to establish a cohesive brand presence while saving up to 25%.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {applicableBundles.map((bundle) => (
+                <BundleCard
+                  key={bundle.id}
+                  bundle={bundle}
+                  siteSettings={siteSettings}
+                  services={services}
+                  onOpenContact={onOpenContact}
+                />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* ========================================================================= */}
+        {/* 7. WHAT WE OFFER / KEY CAPABILITIES */}
         {/* ========================================================================= */}
         <section className="space-y-6">
           <div className="space-y-2">
@@ -692,13 +828,18 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
       {/* Start Service Project Modal (WhatsApp vs Contact Form clean choice) */}
       <ProjectInquiryChoiceModal
         isOpen={inquiryChoiceOpen}
-        onClose={() => setInquiryChoiceOpen(false)}
+        onClose={() => {
+          setInquiryChoiceOpen(false);
+          setSelectedPackage(null);
+        }}
         title={service.title}
         category={service.category}
         slug={service.slug}
         type="service"
         siteSettings={siteSettings}
         customWhatsAppMessage={service.whatsappMessage}
+        packageName={selectedPackage?.name}
+        estimatedPrice={selectedPackage?.price}
       />
     </div>
   );

@@ -329,8 +329,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
 
   const contactFaqs = [
     {
-      question: "How do you provide project estimates without fixed price sheets?",
-      answer: "Every brand has distinct objectives, deliverables, and timelines. We evaluate your specific scope—such as number of packaging SKUs, custom typography, web architecture, or collateral requirements—and prepare a transparent, itemized proposal within 24 business hours."
+      question: "How do you price projects and structured service packages?",
+      answer: "We offer both transparent, productized service packages (Starter, Professional, and Premium) with clearly defined deliverables on each service page, as well as bespoke project scoping for custom enterprise briefs. All quotes and packages include clear turnaround times and fixed deliverables."
     },
     {
       question: "What is your standard project payment schedule?",

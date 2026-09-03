@@ -234,6 +234,64 @@ collections:
       - { label: "CTA Button Text", name: "ctaButtonText", widget: "string", default: "Build My Brand →" }
       - { label: "Key Capabilities", name: "capabilities", widget: "list", required: false }
       - { label: "Deliverables List", name: "deliverables", widget: "list", required: false }
+      - { label: "Pricing Model", name: "pricingModel", widget: "select", options: ["project", "recurring"], default: "project", required: false }
+      - { label: "Starting Price (£)", name: "startingPrice", widget: "number", value_type: "int", required: false }
+      - { label: "Currency Symbol", name: "currency", widget: "string", default: "£", required: false }
+      - { label: "Duration Unit", name: "duration", widget: "string", default: "project", required: false }
+      - label: "Pricing Packages (Starter, Professional, Premium)"
+        name: "packages"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Package ID (e.g. starter, professional, premium)", name: "id", widget: "string" }
+          - { label: "Package Name", name: "name", widget: "string" }
+          - { label: "Highlight Badge (e.g. Recommended, Most Popular)", name: "badge", widget: "string", required: false }
+          - { label: "Is Recommended / Featured?", name: "recommended", widget: "boolean", default: false }
+          - { label: "Short Description", name: "description", widget: "text" }
+          - { label: "Target Audience (Who is this for?)", name: "idealCustomer", widget: "string", required: false }
+          - { label: "Price (Numerical)", name: "price", widget: "number", value_type: "int" }
+          - { label: "Price Prefix (e.g. 'From ')", name: "pricePrefix", widget: "string", default: "From ", required: false }
+          - { label: "Currency Symbol", name: "currency", widget: "string", default: "£", required: false }
+          - { label: "Duration Label (e.g. '4 weeks', 'project')", name: "duration", widget: "string", default: "project" }
+          - { label: "Pricing Model", name: "pricingModel", widget: "select", options: ["project", "recurring"], default: "project", required: false }
+          - { label: "Pricing Display Label (Optional Override)", name: "pricingLabel", widget: "string", required: false }
+          - { label: "Revision Policy", name: "revisionCount", widget: "string", default: "2 revision rounds", required: false }
+          - { label: "Turnaround Time", name: "turnaroundTime", widget: "string", default: "7–10 business days", required: false }
+          - { label: "Key Features (Card Checklist)", name: "features", widget: "list" }
+          - { label: "Detailed Deliverables (Expanded Scope)", name: "deliverables", widget: "list", required: false }
+          - { label: "What's NOT Included (Transparency Scope)", name: "notIncluded", widget: "list", required: false }
+          - { label: "CTA Button Text", name: "ctaText", widget: "string", default: "Request This Package", required: false }
+          - { label: "Display Order", name: "sortOrder", widget: "number", value_type: "int", default: 1 }
+      - label: "Optional Add-Ons"
+        name: "addOns"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Add-on ID", name: "id", widget: "string" }
+          - { label: "Add-on Name", name: "name", widget: "string" }
+          - { label: "Description", name: "description", widget: "string", required: false }
+          - { label: "Price (£)", name: "price", widget: "number", value_type: "int" }
+          - { label: "Currency", name: "currency", widget: "string", default: "£", required: false }
+          - { label: "Billing Unit (e.g. per video, per page, one-time)", name: "unit", widget: "string", default: "one-time", required: false }
+          - { label: "Price Type", name: "priceType", widget: "select", options: ["fixed", "recurring", "per_unit"], default: "fixed", required: false }
+      - label: "Feature Comparison Rows"
+        name: "comparisonRows"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Feature Name", name: "feature", widget: "string" }
+          - { label: "Category (e.g. Deliverables, Strategy, Support)", name: "category", widget: "string", required: false }
+          - { label: "Starter Tier Value", name: "starter", widget: "string" }
+          - { label: "Professional Tier Value", name: "professional", widget: "string" }
+          - { label: "Premium Tier Value", name: "premium", widget: "string" }
+      - label: "Who Is This For? (Breakdown)"
+        name: "whoIsThisFor"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "For Starter Package", name: "starter", widget: "text", required: false }
+          - { label: "For Professional Package", name: "professional", widget: "text", required: false }
+          - { label: "For Premium Package", name: "premium", widget: "text", required: false }
       - label: "Process Steps"
         name: "processSteps"
         widget: "list"
@@ -500,3 +558,28 @@ collections:
       - { label: "Featured Testimonial", name: "featured", widget: "boolean", default: true }
       - { label: "Published", name: "published", widget: "boolean", default: true }
       - { label: "Sort Order", name: "order", widget: "number", value_type: "int", default: 1 }
+
+  # =========================================================================
+  # 11. SERVICE BUNDLES / COMBINATIONS
+  # =========================================================================
+  - name: "bundles"
+    label: "Service Bundles"
+    file: "src/content/bundles.json"
+    fields:
+      - label: "Bundles List"
+        name: "bundles"
+        widget: "list"
+        fields:
+          - { label: "Bundle ID", name: "id", widget: "string" }
+          - { label: "Bundle Name", name: "name", widget: "string" }
+          - { label: "Tagline / Badge", name: "tagline", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Original Total Price (£)", name: "originalPrice", widget: "number", value_type: "int" }
+          - { label: "Bundle Price (£)", name: "bundlePrice", widget: "number", value_type: "int" }
+          - { label: "Discount / Savings Note", name: "savings", widget: "string" }
+          - { label: "Duration / Billing Cycle", name: "duration", widget: "string", default: "project" }
+          - { label: "Included Services (Slugs)", name: "servicesIncluded", widget: "list" }
+          - { label: "Key Deliverables", name: "deliverables", widget: "list" }
+          - { label: "Ideal For", name: "idealFor", widget: "string" }
+          - { label: "CTA Button Text", name: "ctaText", widget: "string", default: "Enquire About Bundle" }
+

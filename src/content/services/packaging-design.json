@@ -32,27 +32,285 @@
     "Barcode Clearance & Regulatory Compliance Layouts"
   ],
   "processSteps": [
-    { "stepNumber": "01", "title": "Discovery & Substrates", "description": "Analyzing product dimensions, weight distribution, shelf space requirements, and sustainable substrate options." },
-    { "stepNumber": "02", "title": "Dieline Engineering", "description": "Drafting millimeter-precise structural dieline templates with calibrated fold lines and glue flaps." },
-    { "stepNumber": "03", "title": "Visual Artwork", "description": "Composing distinctive surface graphics, custom typography, luxury color palettes, and finishing masks." },
-    { "stepNumber": "04", "title": "3D Raytracing", "description": "Generating realistic 3D lighting, material shaders, and unboxing angles for stakeholder approval." },
-    { "stepNumber": "05", "title": "Press Proofing", "description": "Pre-flighting files with Pantone metallic specs, varnish masks, and printer alignment marks." },
-    { "stepNumber": "06", "title": "Production Delivery", "description": "Delivering print-ready production files directly to your manufacturing and print partners." }
+    {
+      "stepNumber": "01",
+      "title": "Discovery & Substrates",
+      "description": "Analyzing product dimensions, weight distribution, shelf space requirements, and sustainable substrate options."
+    },
+    {
+      "stepNumber": "02",
+      "title": "Dieline Engineering",
+      "description": "Drafting millimeter-precise structural dieline templates with calibrated fold lines and glue flaps."
+    },
+    {
+      "stepNumber": "03",
+      "title": "Visual Artwork",
+      "description": "Composing distinctive surface graphics, custom typography, luxury color palettes, and finishing masks."
+    },
+    {
+      "stepNumber": "04",
+      "title": "3D Raytracing",
+      "description": "Generating realistic 3D lighting, material shaders, and unboxing angles for stakeholder approval."
+    },
+    {
+      "stepNumber": "05",
+      "title": "Press Proofing",
+      "description": "Pre-flighting files with Pantone metallic specs, varnish masks, and printer alignment marks."
+    },
+    {
+      "stepNumber": "06",
+      "title": "Production Delivery",
+      "description": "Delivering print-ready production files directly to your manufacturing and print partners."
+    }
   ],
   "gallery": [
-    { "id": "pd-g1", "title": "Luxury Rigid Box & Elixir Dropper Suite", "caption": "3D Structural packaging with magnetic lid and 24K gold foil stamping", "visualType": "packaging-hero", "layout": "large" },
-    { "id": "pd-g2", "title": "2D Dieline Net Template & Folded Box", "caption": "Unfolded dieline blueprint with fold lines, glue tabs, and folded 3D carton", "visualType": "packaging-dieline", "layout": "large" },
-    { "id": "pd-g3", "title": "Stand-Up Zipper Barrier Pouch", "caption": "Botanical surface artwork and realistic 3D standing pouch mockup", "visualType": "packaging-pouch", "layout": "half" },
-    { "id": "pd-g4", "title": "Corrugated Delivery & E-Commerce Suite", "caption": "Cardboard delivery box with inner lid typography and security tape", "visualType": "packaging-delivery", "layout": "half" }
+    {
+      "id": "pd-g1",
+      "title": "Luxury Rigid Box & Elixir Dropper Suite",
+      "caption": "3D Structural packaging with magnetic lid and 24K gold foil stamping",
+      "visualType": "packaging-hero",
+      "layout": "large"
+    },
+    {
+      "id": "pd-g2",
+      "title": "2D Dieline Net Template & Folded Box",
+      "caption": "Unfolded dieline blueprint with fold lines, glue tabs, and folded 3D carton",
+      "visualType": "packaging-dieline",
+      "layout": "large"
+    },
+    {
+      "id": "pd-g3",
+      "title": "Stand-Up Zipper Barrier Pouch",
+      "caption": "Botanical surface artwork and realistic 3D standing pouch mockup",
+      "visualType": "packaging-pouch",
+      "layout": "half"
+    },
+    {
+      "id": "pd-g4",
+      "title": "Corrugated Delivery & E-Commerce Suite",
+      "caption": "Cardboard delivery box with inner lid typography and security tape",
+      "visualType": "packaging-delivery",
+      "layout": "half"
+    }
   ],
   "faqs": [
-    { "question": "Do you provide actual dieline blueprints for manufacturing?", "answer": "Yes, we engineer millimeter-accurate vector dielines including fold lines, bleed allowances, glue tabs, and finish masks ready for direct manufacturer production." },
-    { "question": "Can you design for sustainable and eco-friendly substrates?", "answer": "Absolutely. We specialize in FSC-certified duplex boards, recyclable corrugated flutes, compostable barrier films, and soy-based ink systems." },
-    { "question": "Do you create 3D renders before print production?", "answer": "Yes, we produce photorealistic 3D renders with realistic studio reflections and foil shaders so you can inspect every angle prior to committing to print runs." }
+    {
+      "question": "Do you provide actual dieline blueprints for manufacturing?",
+      "answer": "Yes, we engineer millimeter-accurate vector dielines including fold lines, bleed allowances, glue tabs, and finish masks ready for direct manufacturer production."
+    },
+    {
+      "question": "Can you design for sustainable and eco-friendly substrates?",
+      "answer": "Absolutely. We specialize in FSC-certified duplex boards, recyclable corrugated flutes, compostable barrier films, and soy-based ink systems."
+    },
+    {
+      "question": "Do you create 3D renders before print production?",
+      "answer": "Yes, we produce photorealistic 3D renders with realistic studio reflections and foil shaders so you can inspect every angle prior to committing to print runs."
+    }
   ],
-  "relatedProjects": ["packaging-design", "brand-identity-design"],
-  "relatedServices": ["brand-identity", "graphic-design", "ai-visual-content"],
+  "relatedProjects": [
+    "packaging-design",
+    "brand-identity-design"
+  ],
+  "relatedServices": [
+    "brand-identity",
+    "graphic-design",
+    "ai-visual-content"
+  ],
   "seoTitle": "Packaging Design & Structural Dielines | Lizzdo Media",
   "seoDescription": "Luxury packaging design, structural dielines, 3D product renders, and sustainable unboxing solutions by Lizzdo Media.",
-  "ogImage": "/uploads/services/packaging-design.svg"
+  "ogImage": "/uploads/services/packaging-design.svg",
+  "pricingModel": "project",
+  "startingPrice": 550,
+  "currency": "£",
+  "duration": "project",
+  "packages": [
+    {
+      "id": "starter",
+      "name": "Single Product Packaging",
+      "badge": "Essential",
+      "recommended": false,
+      "description": "Professional packaging artwork designed for single-SKU product launches and initial production runs.",
+      "idealCustomer": "Startups and DTC creators launching their first physical product.",
+      "price": 550,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £550 / project",
+      "revisionCount": "2 revision rounds",
+      "turnaroundTime": "7–10 business days",
+      "features": [
+        "Packaging design concept for 1 product SKU / format",
+        "Front, back, and panel layout configuration",
+        "Production dieline alignment & barcode/nutrition panel integration",
+        "Print-ready CMYK master artwork with bleeds & crop marks",
+        "High-resolution 3D digital mockup for e-commerce preview"
+      ],
+      "deliverables": [
+        "Print-Ready Press PDF (CMYK, 300 DPI, Vectors Outlined)",
+        "Vector Master Source File (Adobe Illustrator / InDesign)",
+        "1 Photorealistic 3D Product Mockup (PNG & JPG)",
+        "Pre-Flight Print Specification Sheet"
+      ],
+      "notIncluded": [
+        "Multiple flavor / color variations",
+        "Direct manufacturer print proof inspections"
+      ],
+      "ctaText": "Request Single SKU Package",
+      "sortOrder": 1
+    },
+    {
+      "id": "professional",
+      "name": "Retail Brand Packaging",
+      "badge": "Recommended",
+      "recommended": true,
+      "description": "Retail-shelf ready packaging design engineered to command consumer attention in physical stores and online.",
+      "idealCustomer": "Consumer brands expanding into supermarkets, retail boutiques, or high-volume e-commerce.",
+      "price": 950,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £950 / project",
+      "revisionCount": "4 revision rounds",
+      "turnaroundTime": "2–3 weeks",
+      "features": [
+        "2 distinct creative packaging concepts for primary SKU",
+        "Complete multi-panel dieline engineering with accurate structural fold testing",
+        "Specialty finish consultation (Spot UV, metallic foil stamping, emboss/deboss)",
+        "Print-ready CMYK + Pantone spot color separation",
+        "Set of 3 photorealistic 3D product renders (Angles, lifestyle & hero)",
+        "Regulatory compliance checklist (Ingredients, warnings, barcode zones)",
+        "Direct communication with your packaging manufacturer or print house"
+      ],
+      "deliverables": [
+        "Production-Ready Packaging Files (CMYK + Pantone Spot Separations)",
+        "Fully Layered Dieline Illustrator Source Files (.ai)",
+        "3 High-Resolution Photorealistic 3D Studio Mockups",
+        "Finishing Guide & Foil/Emboss Mask Layers",
+        "Direct Manufacturer Pre-Press Handoff Support"
+      ],
+      "notIncluded": [
+        "Physical sample printing / prototype manufacturing costs"
+      ],
+      "ctaText": "Request Retail Package",
+      "sortOrder": 2
+    },
+    {
+      "id": "premium",
+      "name": "Full Product Line Suite",
+      "badge": "Multi-SKU System",
+      "recommended": false,
+      "description": "Complete packaging architecture for comprehensive product families, multiple SKUs, and retail distribution.",
+      "idealCustomer": "Established FMCG, cosmetics, food & beverage, or luxury lifestyle brands with multiple product lines.",
+      "price": 1850,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £1,850 / project",
+      "revisionCount": "Comprehensive iterative revisions",
+      "turnaroundTime": "3–5 weeks",
+      "features": [
+        "Complete packaging design system for up to 4 SKUs or flavour/size variants",
+        "Harmonized colour hierarchy & SKU differentiation strategy",
+        "Luxury substrate & tactile finish specifications (Kraft, soft-touch, foil, embossing)",
+        "Shipper box / secondary retail display packaging design (SRP)",
+        "Comprehensive 3D render suite (Individual SKUs, group lineup, and e-commerce packshots)",
+        "Packaging brand standards manual (Colour rules, typography, dieline rules)",
+        "End-to-end print vendor coordination and press proof approvals"
+      ],
+      "deliverables": [
+        "Complete Vector Master Files for All 4 SKUs",
+        "Secondary Outer Packaging / Shipper Box Dielines",
+        "8 High-Definition 3D Commercial Product Renders",
+        "Packaging Standards & SKU Extension Manual (PDF)",
+        "Manufacturer-Ready Pantone/CMYK Technical Proofs",
+        "Complete Commercial IP Rights"
+      ],
+      "notIncluded": [
+        "Physical mass manufacturing production costs"
+      ],
+      "ctaText": "Request Product Line Suite",
+      "sortOrder": 3
+    }
+  ],
+  "addOns": [
+    {
+      "id": "addon-additional-sku",
+      "name": "Additional SKU Variant (Flavor / Color)",
+      "description": "Adaptation of approved base packaging concept to an additional SKU flavor, scent, or shade.",
+      "price": 220,
+      "currency": "£",
+      "unit": "per SKU",
+      "priceType": "per_unit"
+    },
+    {
+      "id": "addon-3d-animated-turnaround",
+      "name": "3D Animated 360° Product Reel",
+      "description": "Smooth 360-degree rotating 3D video render of your packaged product for ads and website heroes.",
+      "price": 350,
+      "currency": "£",
+      "unit": "per video",
+      "priceType": "per_unit"
+    },
+    {
+      "id": "addon-outer-carton",
+      "name": "Outer Shipper / Retail Display Box",
+      "description": "Design of master shipping carton or shelf-ready packaging (SRP) tray.",
+      "price": 280,
+      "currency": "£",
+      "unit": "one-time",
+      "priceType": "fixed"
+    }
+  ],
+  "comparisonRows": [
+    {
+      "feature": "SKUs / Variants Included",
+      "category": "Scope",
+      "starter": "1 SKU",
+      "professional": "1 Primary SKU (Detailed)",
+      "premium": "Up to 4 SKUs / Variants"
+    },
+    {
+      "feature": "Initial Design Directions",
+      "category": "Design",
+      "starter": "1 Concept Direction",
+      "professional": "2 Distinct Directions",
+      "premium": "3 Strategic Lineup Concepts"
+    },
+    {
+      "feature": "Photorealistic 3D Renders",
+      "category": "Visuals",
+      "starter": "1 basic 3D preview",
+      "professional": "3 studio angle renders",
+      "premium": "8 high-fidelity renders + group lineup"
+    },
+    {
+      "feature": "Specialty Finishes (Foil/Emboss)",
+      "category": "Print Prep",
+      "starter": "Standard CMYK only",
+      "professional": "Pantone + Foil / Emboss layers",
+      "premium": "Full luxury tactile finish guide"
+    },
+    {
+      "feature": "Manufacturer Coordination",
+      "category": "Service",
+      "starter": "Pre-flight specs sheet",
+      "professional": "Direct vendor email handoff",
+      "premium": "End-to-end printer proof verification"
+    },
+    {
+      "feature": "Revision Rounds",
+      "category": "Service",
+      "starter": "2 rounds",
+      "professional": "4 rounds",
+      "premium": "Comprehensive revisions"
+    }
+  ],
+  "whoIsThisFor": {
+    "starter": "Emerging creators and DTC entrepreneurs launching their initial product or running a boutique production batch.",
+    "professional": "Brands transitioning into retail stores, supermarkets, or high-end retail boutiques where packaging shelf appeal drives sales.",
+    "premium": "Multi-product consumer brands, cosmetic lines, food & beverage companies, and luxury goods distributors requiring an extensible packaging ecosystem."
+  }
 }

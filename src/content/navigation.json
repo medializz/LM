@@ -8,10 +8,12 @@
     "dropdownItems": [
       { "title": "Brand Identity", "slug": "brand-identity", "description": "Strategic brand identity & design systems" },
       { "title": "Logo Design", "slug": "logo-design", "description": "Memorable, mathematical vector logo marks" },
-      { "title": "Graphic Design", "slug": "graphic-design", "description": "Print, editorial, & corporate visual craft" },
       { "title": "Packaging Design", "slug": "packaging-design", "description": "Luxury structural packaging & custom dielines" },
+      { "title": "Flyer & Leaflet Design", "slug": "flyer-design", "description": "High-impact promotional print & marketing collateral" },
+      { "title": "Graphic Design", "slug": "graphic-design", "description": "Print, editorial, & corporate visual craft" },
       { "title": "Web Development", "slug": "web-development", "description": "Fast, modern web engineering & UX" },
       { "title": "Social Media Design", "slug": "social-media-design", "description": "Scroll-stopping social visual assets" },
+      { "title": "Content Creation", "slug": "content-creation", "description": "Multi-format video, reels & brand storytelling" },
       { "title": "Content Posting", "slug": "content-posting", "description": "Consistent storytelling & scheduling" },
       { "title": "Digital Marketing", "slug": "digital-marketing", "description": "Data-driven marketing & CRO campaigns" },
       { "title": "Social Media Management", "slug": "social-media-management", "description": "Community growth & profile management" },

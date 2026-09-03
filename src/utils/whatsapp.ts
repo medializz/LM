@@ -159,6 +159,73 @@ export function createServiceWhatsAppUrl(
   return createWhatsAppUrl(rawPhone, message);
 }
 
+export interface PackageWhatsAppOptions {
+  rawPhone?: string;
+  siteName?: string;
+  serviceTitle: string;
+  packageName: string;
+  duration?: string;
+  selectedAddons?: string[];
+  estimatedTotal?: string;
+}
+
+/**
+ * Generates a dynamic, contextual WhatsApp link for a selected package, duration, and add-ons.
+ * Strictly uses the CMS-controlled WhatsApp number.
+ */
+export function createPackageWhatsAppUrl(options: PackageWhatsAppOptions): string {
+  const {
+    rawPhone,
+    siteName = "Lizzdo Media",
+    serviceTitle,
+    packageName,
+    duration,
+    selectedAddons = [],
+    estimatedTotal
+  } = options;
+
+  let msg = `Hi ${siteName}, I'm interested in the ${serviceTitle} – ${packageName} package`;
+
+  if (duration && duration.toLowerCase() !== 'project') {
+    msg += ` for ${duration}`;
+  }
+
+  if (selectedAddons && selectedAddons.length > 0) {
+    if (selectedAddons.length === 1) {
+      msg += `. I'd also like to add ${selectedAddons[0]}`;
+    } else {
+      msg += `. I'd also like to add: ${selectedAddons.join(', ')}`;
+    }
+  }
+
+  if (estimatedTotal) {
+    msg += ` (Estimated investment: ${estimatedTotal})`;
+  }
+
+  const isRecurring = duration && (duration.includes('week') || duration.includes('month'));
+  if (isRecurring) {
+    msg += `. Please send me more details.`;
+  } else {
+    msg += `. I'd like to discuss my project requirements.`;
+  }
+
+  return createWhatsAppUrl(rawPhone, msg);
+}
+
+/**
+ * Generates a contextual WhatsApp link for a cross-service bundle.
+ */
+export function createBundleWhatsAppUrl(
+  rawPhone?: string,
+  siteName: string = "Lizzdo Media",
+  bundleName: string = "Launch Package",
+  startingPrice?: string
+): string {
+  const priceSnippet = startingPrice ? ` (${startingPrice})` : '';
+  const msg = `Hi ${siteName}, I'm interested in the ${bundleName}${priceSnippet}. I'd like to discuss scheduling and scope details.`;
+  return createWhatsAppUrl(rawPhone, msg);
+}
+
 /**
  * Generates a work/portfolio contextual WhatsApp link.
  */

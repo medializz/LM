@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.0] - 2026-09-03
+
+### Added
+- **Productized Service & Pricing Package System**: Complete conversion-focused agency tiering architecture across all service offerings:
+  - 3-tier packages per service (Starter, Professional, and Premium) with highlighted "Recommended" tier badges.
+  - Transparent itemized pricing, turnaround estimations, revision policies, deliverable checklists, and clear inclusions/exclusions.
+  - Interactive Add-on Configurator & Real-time Total Calculator (`AddonSelector.tsx`) with instant WhatsApp scope bundling.
+  - Side-by-side Feature Comparison Matrix (`PackageComparisonTable.tsx`) with category grouping and tooltips.
+  - Persona & Use-Case Decision Guide (`WhoIsThisForSection.tsx`) assisting clients in identifying their ideal tier.
+  - Cross-Disciplinary Service Bundles (`src/content/bundles.json`, `BundleCard.tsx`) for multi-service offerings.
+  - Contextual WhatsApp Deep-Linking (`createPackageWhatsAppUrl`) with prefilled tier scope, deliverables, and selected add-ons.
+- **Service Catalog Expansion**: Added dedicated services for `Flyer & Leaflet Design` and `Content Creation` with full packages and metadata.
+
+### Changed
+- **Services Index Page Filtering**: Re-engineered category filtering in `ServicesIndexPage.tsx` to handle multi-word, case variations, and title keywords across Branding, Design, Engineering, Social, Marketing, and AI.
+- **Header Dropdown & HTML Noscript Sync**: Synchronized `src/content/navigation.json` and `index.html` to reflect all 14 active agency services.
+- **Contact Page Pricing Guidance**: Updated pricing FAQ to reflect transparent 3-tier productized service packages.
+
+### Fixed
+- **Cross-Service Bundle Matching**: Enhanced `getBundlesForService()` to support alias normalization for related service slugs.
+- **Service Categories Normalization**: Aligned category taxonomy across all service JSON files to maintain consistent display.
+
+---
+
 ## [1.0.0] - 2026-08-30
 
 ### Added

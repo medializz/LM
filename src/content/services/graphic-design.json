@@ -31,26 +31,264 @@
     "Print-Ready CMYK Files with Bleed Marks"
   ],
   "processSteps": [
-    { "stepNumber": "01", "title": "Briefing", "description": "Understanding the communication objective, audience, and media format." },
-    { "stepNumber": "02", "title": "Layout Grid", "description": "Establishing typographic hierarchy and geometric balance." },
-    { "stepNumber": "03", "title": "Visual Craft", "description": "Composing custom vector artwork, photography, and colors." },
-    { "stepNumber": "04", "title": "Proofing", "description": "Rigorous review of copy, color calibration, and bleed margins." },
-    { "stepNumber": "05", "title": "Pre-Flight", "description": "Verifying printer color profiles and digital DPI settings." },
-    { "stepNumber": "06", "title": "Handoff", "description": "Delivering print-ready files and digital presentation packs." }
+    {
+      "stepNumber": "01",
+      "title": "Briefing",
+      "description": "Understanding the communication objective, audience, and media format."
+    },
+    {
+      "stepNumber": "02",
+      "title": "Layout Grid",
+      "description": "Establishing typographic hierarchy and geometric balance."
+    },
+    {
+      "stepNumber": "03",
+      "title": "Visual Craft",
+      "description": "Composing custom vector artwork, photography, and colors."
+    },
+    {
+      "stepNumber": "04",
+      "title": "Proofing",
+      "description": "Rigorous review of copy, color calibration, and bleed margins."
+    },
+    {
+      "stepNumber": "05",
+      "title": "Pre-Flight",
+      "description": "Verifying printer color profiles and digital DPI settings."
+    },
+    {
+      "stepNumber": "06",
+      "title": "Handoff",
+      "description": "Delivering print-ready files and digital presentation packs."
+    }
   ],
   "gallery": [
-    { "id": "gd-g1", "title": "Exhibition Poster Series", "caption": "High-contrast typographic and geometric posters", "visualType": "brand-identity", "layout": "large" },
-    { "id": "gd-g2", "title": "Marketing Collateral Suite", "caption": "Brochures and corporate lookbooks", "visualType": "stationery", "layout": "half" },
-    { "id": "gd-g3", "title": "Custom Packaging Dieline", "caption": "Vector dielines and foil finishes", "visualType": "packaging", "layout": "half" }
+    {
+      "id": "gd-g1",
+      "title": "Exhibition Poster Series",
+      "caption": "High-contrast typographic and geometric posters",
+      "visualType": "brand-identity",
+      "layout": "large"
+    },
+    {
+      "id": "gd-g2",
+      "title": "Marketing Collateral Suite",
+      "caption": "Brochures and corporate lookbooks",
+      "visualType": "stationery",
+      "layout": "half"
+    },
+    {
+      "id": "gd-g3",
+      "title": "Custom Packaging Dieline",
+      "caption": "Vector dielines and foil finishes",
+      "visualType": "packaging",
+      "layout": "half"
+    }
   ],
   "faqs": [
-    { "question": "What graphic design services do you provide?", "answer": "We design marketing collateral, brochures, flyers, pitch decks, product packaging, dielines, exhibition displays, banners, and digital marketing graphics." },
-    { "question": "Do you prepare print-ready files with bleeds and crop marks?", "answer": "Yes, all print collateral is pre-flighted with precise 300 DPI resolution, CMYK color profiles, bleed margins, and crop marks ready for your print vendor." },
-    { "question": "Can you design materials aligned with our existing brand guidelines?", "answer": "Yes, we strictly adhere to your existing brand book, typography, and palette guidelines to ensure seamless visual harmony." }
+    {
+      "question": "What graphic design services do you provide?",
+      "answer": "We design marketing collateral, brochures, flyers, pitch decks, product packaging, dielines, exhibition displays, banners, and digital marketing graphics."
+    },
+    {
+      "question": "Do you prepare print-ready files with bleeds and crop marks?",
+      "answer": "Yes, all print collateral is pre-flighted with precise 300 DPI resolution, CMYK color profiles, bleed margins, and crop marks ready for your print vendor."
+    },
+    {
+      "question": "Can you design materials aligned with our existing brand guidelines?",
+      "answer": "Yes, we strictly adhere to your existing brand book, typography, and palette guidelines to ensure seamless visual harmony."
+    }
   ],
-  "relatedProjects": ["packaging-design", "social-media-campaign"],
-  "relatedServices": ["brand-identity", "social-media-design", "advertising-creatives"],
+  "relatedProjects": [
+    "packaging-design",
+    "social-media-campaign"
+  ],
+  "relatedServices": [
+    "brand-identity",
+    "social-media-design",
+    "advertising-creatives"
+  ],
   "seoTitle": "Graphic Design Services | Lizzdo Media",
   "seoDescription": "High-impact graphic design services by Lizzdo Media. Brochures, posters, packaging dielines, corporate collateral, and visual communication craft.",
-  "ogImage": "/uploads/services/graphic-design.svg"
+  "ogImage": "/uploads/services/graphic-design.svg",
+  "pricingModel": "project",
+  "startingPrice": 250,
+  "currency": "£",
+  "duration": "project",
+  "packages": [
+    {
+      "id": "starter",
+      "name": "Single Collateral Item",
+      "badge": "Essential Asset",
+      "recommended": false,
+      "description": "Design of a single marketing collateral asset tailored for a specific promotional requirement or event.",
+      "idealCustomer": "Businesses needing one key graphic asset designed quickly with professional polish.",
+      "price": 250,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £250 / project",
+      "revisionCount": "2 revision rounds",
+      "turnaroundTime": "3–5 business days",
+      "features": [
+        "Design of 1 collateral item (e.g. Roll-up banner, poster, menu, or certificate)",
+        "Print-ready PDF with bleed and crop marks or digital export",
+        "Custom vector typography & brand color alignment",
+        "High-resolution stock imagery integration",
+        "Full commercial usage rights"
+      ],
+      "deliverables": [
+        "Print-Ready PDF (CMYK, 300 DPI)",
+        "Digital Web Optimized JPG & PNG Formats",
+        "2 Iterative Revision Passes"
+      ],
+      "notIncluded": [
+        "Physical printing & shipping",
+        "Editable vector master design files"
+      ],
+      "ctaText": "Request Single Collateral",
+      "sortOrder": 1
+    },
+    {
+      "id": "professional",
+      "name": "Marketing Collateral Suite",
+      "badge": "Recommended",
+      "recommended": true,
+      "description": "A coordinated suite of marketing collateral assets ensuring seamless brand presentation across offline and digital channels.",
+      "idealCustomer": "Businesses launching a campaign, trade show booth, or comprehensive marketing initiative.",
+      "price": 500,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £500 / project",
+      "revisionCount": "3 revision rounds",
+      "turnaroundTime": "5–8 business days",
+      "features": [
+        "Suite of up to 4 coordinated marketing collateral assets (e.g. Banner, brochure, flyers, social graphics)",
+        "Print-shop technical coordination & substrate finish advice",
+        "Custom vector graphics, charts, and iconography",
+        "Editable Canva or Figma template handoff for future in-house updates",
+        "Export specifications tailored for high-volume commercial printing"
+      ],
+      "deliverables": [
+        "4 Print-Ready Press PDFs with Precise Printer Specifications",
+        "Digital High-Res Asset Pack for Multi-Channel Distribution",
+        "Editable Template Source Links (Canva / Figma)",
+        "Print House Technical Handoff Support"
+      ],
+      "notIncluded": [
+        "Physical printing production invoices"
+      ],
+      "ctaText": "Request Collateral Suite",
+      "sortOrder": 2
+    },
+    {
+      "id": "premium",
+      "name": "Corporate Asset Ecosystem",
+      "badge": "Complete Suite",
+      "recommended": false,
+      "description": "Complete corporate graphic design suite including multi-page editorial brochure, pitch deck, and exhibition displays.",
+      "idealCustomer": "Enterprises, corporate service firms, and event organizers requiring extensive high-end collateral.",
+      "price": 950,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £950 / project",
+      "revisionCount": "Comprehensive revisions",
+      "turnaroundTime": "2–3 weeks",
+      "features": [
+        "Multi-page corporate brochure or catalogue (Up to 12 pages)",
+        "Full pitch deck / presentation design (Up to 15 slides)",
+        "Exhibition booth / trade show backdrop graphic set",
+        "Full editable source files (Adobe InDesign, Illustrator, or Figma)",
+        "Dedicated senior art director guidance throughout the sprint"
+      ],
+      "deliverables": [
+        "Multi-Page Editorial Brochure (Print & Interactive Digital PDF)",
+        "Master Presentation Deck (.pptx, Keynote, or Figma)",
+        "Exhibition Large-Format Vector Graphics",
+        "Complete Layered Source Archive (.indd, .ai, .psd)",
+        "Full Commercial Copyright"
+      ],
+      "notIncluded": [
+        "Physical printing and exhibition booth hardware"
+      ],
+      "ctaText": "Request Corporate Ecosystem",
+      "sortOrder": 3
+    }
+  ],
+  "addOns": [
+    {
+      "id": "addon-extra-collateral",
+      "name": "Additional Collateral Asset",
+      "description": "Design of an extra marketing collateral item aligned with your approved aesthetic.",
+      "price": 120,
+      "currency": "£",
+      "unit": "per asset",
+      "priceType": "per_unit"
+    },
+    {
+      "id": "addon-interactive-pdf",
+      "name": "Interactive Digital PDF Setup",
+      "description": "Addition of clickable links, navigation buttons, and bookmarks for digital brochure distribution.",
+      "price": 150,
+      "currency": "£",
+      "unit": "per document",
+      "priceType": "fixed"
+    },
+    {
+      "id": "addon-rush-turnaround-gd",
+      "name": "24-Hour Urgent Delivery Sprint",
+      "description": "Fast-tracked studio turnaround delivering print-ready artwork within 24 hours.",
+      "price": 180,
+      "currency": "£",
+      "unit": "one-time",
+      "priceType": "fixed"
+    }
+  ],
+  "comparisonRows": [
+    {
+      "feature": "Number of Assets Included",
+      "category": "Scope",
+      "starter": "1 Asset",
+      "professional": "Up to 4 Coordinated Assets",
+      "premium": "Full Multi-Page Brochure + Deck + Display"
+    },
+    {
+      "feature": "Print-Ready Vector PDFs",
+      "category": "Deliverables",
+      "starter": true,
+      "professional": true,
+      "premium": true
+    },
+    {
+      "feature": "Editable Templates (Canva/Figma)",
+      "category": "Deliverables",
+      "starter": false,
+      "professional": true,
+      "premium": "Full Master Source Files (.ai/.indd)"
+    },
+    {
+      "feature": "Printer Technical Coordination",
+      "category": "Service",
+      "starter": "Bleed/crop specs included",
+      "professional": "Direct vendor liaison",
+      "premium": "End-to-end print proof verification"
+    },
+    {
+      "feature": "Revision Rounds",
+      "category": "Service",
+      "starter": "2 rounds",
+      "professional": "3 rounds",
+      "premium": "Comprehensive revisions"
+    }
+  ],
+  "whoIsThisFor": {
+    "starter": "Businesses with a single pressing design need such as an event banner, menu update, or promotional poster.",
+    "professional": "Companies running integrated marketing campaigns requiring cohesive flyers, banners, and digital graphics.",
+    "premium": "Enterprises, corporate teams, and trade show exhibitors needing extensive multi-page brochures, sales decks, and environmental displays."
+  }
 }

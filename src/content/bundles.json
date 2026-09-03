@@ -1,0 +1,86 @@
+[
+  {
+    "id": "brand-launch-bundle",
+    "name": "Brand Launch Package",
+    "tagline": "Everything required to launch a new brand into the market",
+    "description": "From custom vector logo identity and brand guidelines to a bespoke responsive website, social media launch kit, and first month of content.",
+    "services": [
+      "brand-identity",
+      "web-development",
+      "website-development",
+      "social-media-design",
+      "content-creation",
+      "content-posting"
+    ],
+    "startingPrice": 3200,
+    "currency": "£",
+    "duration": "4–6 weeks delivery",
+    "discountNote": "Combined studio rate saving ~15%",
+    "badge": "Complete Launch",
+    "features": [
+      "Complete Brand Identity System & Vector Guidelines",
+      "Custom Bespoke High-Conversion Website (Up to 8 Pages)",
+      "15 Bespoke Social Media Launch Assets & Templates",
+      "4 Weeks of Launch Content & Short-Form Video Production",
+      "Full Vector Master Files with Complete Commercial Ownership",
+      "Dedicated Creative Director Guidance Throughout"
+    ],
+    "sortOrder": 1
+  },
+  {
+    "id": "product-launch-bundle",
+    "name": "Product Launch Package",
+    "tagline": "Engineered for physical and retail products entering distribution",
+    "description": "Complete product packaging engineering, 3D photorealistic mockups, launch campaign visual content, social media assets, and high-CTR paid ad creatives.",
+    "services": [
+      "packaging-design",
+      "brand-identity",
+      "ai-visuals-content",
+      "ai-visual-content",
+      "social-media-design",
+      "advertising-creatives"
+    ],
+    "startingPrice": 2650,
+    "currency": "£",
+    "duration": "3–5 weeks delivery",
+    "discountNote": "Multi-disciplinary product suite",
+    "badge": "Retail & E-commerce",
+    "features": [
+      "Print-Ready Packaging & Dieline Production Files (CMYK/Pantone)",
+      "High-Fidelity 3D Photorealistic Product Renders",
+      "8 High-Converting Paid Advertising Creatives (Feed & Story)",
+      "15 Product Social Media Launch Templates",
+      "Print Finishing & Substrate Manufacturing Specs",
+      "Full Commercial Product IP Rights"
+    ],
+    "sortOrder": 2
+  },
+  {
+    "id": "digital-growth-bundle",
+    "name": "Digital Growth Package",
+    "tagline": "Comprehensive ongoing digital acquisition & content engine",
+    "description": "Pairing high-performance custom website maintenance & SEO with weekly content creation, social media management, and paid digital marketing campaigns.",
+    "services": [
+      "web-development",
+      "website-development",
+      "digital-marketing",
+      "content-creation",
+      "content-posting",
+      "social-media-management"
+    ],
+    "startingPrice": 1450,
+    "currency": "£",
+    "duration": "Ongoing / 4-week cycles",
+    "discountNote": "Dedicated growth partnership",
+    "badge": "Scale & Acquire",
+    "features": [
+      "Bespoke Website Optimization & Conversion Tracking",
+      "5–7 Branded Social Posts & 2 Videos per Week",
+      "Full Multi-Platform Social Media Management",
+      "Targeted Paid Meta / Google Ad Campaign Management",
+      "Monthly Performance Analytics & Strategy Reviews",
+      "Continuous Creative Refresh & A/B Split Testing"
+    ],
+    "sortOrder": 3
+  }
+]

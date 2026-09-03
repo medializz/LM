@@ -30,24 +30,264 @@
     "Multi-Platform Crop Formats for Web, Print & Social"
   ],
   "processSteps": [
-    { "stepNumber": "01", "title": "Creative Concept", "description": "Defining the visual metaphor, moodboard, lighting, and palette." },
-    { "stepNumber": "02", "title": "Model Prompting", "description": "Engineering precise multi-stage neural prompts and seed variations." },
-    { "stepNumber": "03", "title": "Iterative Curation", "description": "Generating hundreds of candidates to isolate the most striking compositions." },
-    { "stepNumber": "04", "title": "8K Upscaling", "description": "Neural super-resolution upscaling with fine detail injection." },
-    { "stepNumber": "05", "title": "Artistic Retouching", "description": "Manual color grading, artifact removal, and composite polish in Photoshop." },
-    { "stepNumber": "06", "title": "Final Delivery", "description": "Delivering production-ready digital and print-scale master files." }
+    {
+      "stepNumber": "01",
+      "title": "Creative Concept",
+      "description": "Defining the visual metaphor, moodboard, lighting, and palette."
+    },
+    {
+      "stepNumber": "02",
+      "title": "Model Prompting",
+      "description": "Engineering precise multi-stage neural prompts and seed variations."
+    },
+    {
+      "stepNumber": "03",
+      "title": "Iterative Curation",
+      "description": "Generating hundreds of candidates to isolate the most striking compositions."
+    },
+    {
+      "stepNumber": "04",
+      "title": "8K Upscaling",
+      "description": "Neural super-resolution upscaling with fine detail injection."
+    },
+    {
+      "stepNumber": "05",
+      "title": "Artistic Retouching",
+      "description": "Manual color grading, artifact removal, and composite polish in Photoshop."
+    },
+    {
+      "stepNumber": "06",
+      "title": "Final Delivery",
+      "description": "Delivering production-ready digital and print-scale master files."
+    }
   ],
   "gallery": [
-    { "id": "aiv-g1", "title": "Futuristic AI Studio Concept", "caption": "Hyper-detailed raytraced lighting and surreal studio architecture", "visualType": "brand-identity", "layout": "large" },
-    { "id": "aiv-g2", "title": "Product Photography Simulation", "caption": "Impossible material physics and liquid glass shaders", "visualType": "packaging-hero", "layout": "half" },
-    { "id": "aiv-g3", "title": "Cinematic Visual World", "caption": "Atmospheric depth and cinematic lighting compositing", "visualType": "brand-guidelines", "layout": "half" }
+    {
+      "id": "aiv-g1",
+      "title": "Futuristic AI Studio Concept",
+      "caption": "Hyper-detailed raytraced lighting and surreal studio architecture",
+      "visualType": "brand-identity",
+      "layout": "large"
+    },
+    {
+      "id": "aiv-g2",
+      "title": "Product Photography Simulation",
+      "caption": "Impossible material physics and liquid glass shaders",
+      "visualType": "packaging-hero",
+      "layout": "half"
+    },
+    {
+      "id": "aiv-g3",
+      "title": "Cinematic Visual World",
+      "caption": "Atmospheric depth and cinematic lighting compositing",
+      "visualType": "brand-guidelines",
+      "layout": "half"
+    }
   ],
   "faqs": [
-    { "question": "Can AI visuals be used commercially for our brand?", "answer": "Yes, we blend neural generation with human composite design and deliver commercial clearance documentation for your advertising and packaging needs." }
+    {
+      "question": "Can AI visuals be used commercially for our brand?",
+      "answer": "Yes, we blend neural generation with human composite design and deliver commercial clearance documentation for your advertising and packaging needs."
+    }
   ],
-  "relatedProjects": ["packaging-design", "saas-website-design"],
-  "relatedServices": ["graphic-design", "packaging-design", "social-media-design"],
+  "relatedProjects": [
+    "packaging-design",
+    "saas-website-design"
+  ],
+  "relatedServices": [
+    "graphic-design",
+    "packaging-design",
+    "social-media-design"
+  ],
   "seoTitle": "AI Visual Content & Next-Gen Imagery | Lizzdo Media",
   "seoDescription": "Cutting-edge AI-generated visual content and generative art direction by Lizzdo Media. Hyper-realistic imagery and rapid creative prototyping.",
-  "ogImage": "/uploads/services/ai-visuals-content.svg"
+  "ogImage": "/uploads/services/ai-visuals-content.svg",
+  "pricingModel": "project",
+  "startingPrice": 320,
+  "currency": "£",
+  "duration": "project",
+  "packages": [
+    {
+      "id": "starter",
+      "name": "Conceptual Brand Visuals",
+      "badge": "Experimental",
+      "recommended": false,
+      "description": "Bespoke generative visual assets developed for moodboards, brand conceptualization, and digital headers.",
+      "idealCustomer": "Designers, startups, and creative teams looking for hyper-custom visual assets without stock photo cliches.",
+      "price": 320,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £320 / project",
+      "revisionCount": "2 revision passes",
+      "turnaroundTime": "3–4 business days",
+      "features": [
+        "10 bespoke AI-generated visual assets tailored to your aesthetic direction",
+        "Advanced prompt engineering & model parameter tuning",
+        "High-resolution upscaling (Up to 4K resolution)",
+        "Artistic color correction & digital post-processing",
+        "Commercial usage rights & license clearance"
+      ],
+      "deliverables": [
+        "10 Master Visual Assets (4K JPG & PNG)",
+        "Curated Style Consistency Prompt Guide",
+        "Digital Post-Production Color Grading"
+      ],
+      "notIncluded": [
+        "Custom synthetic brand character training",
+        "Generative motion video clips"
+      ],
+      "ctaText": "Request Conceptual Pack",
+      "sortOrder": 1
+    },
+    {
+      "id": "professional",
+      "name": "Brand World Synthesis",
+      "badge": "Recommended",
+      "recommended": true,
+      "description": "A cohesive collection of 25 generative brand visuals sharing a consistent style, color palette, and visual identity.",
+      "idealCustomer": "Brands seeking distinctive campaign imagery, editorial visuals, and futuristic storytelling assets.",
+      "price": 580,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £580 / project",
+      "revisionCount": "4 revision passes",
+      "turnaroundTime": "5–7 business days",
+      "features": [
+        "25 curated generative brand visuals with tight stylistic continuity",
+        "Custom style consistency tuning (Lighting, palette, textures, atmosphere)",
+        "Professional Photoshop retouching & composite cleanup (Removing AI anomalies)",
+        "Multi-aspect ratio formatting (16:9 web hero, 1:1 feed, 9:16 mobile)",
+        "Commercial intellectual property clearance"
+      ],
+      "deliverables": [
+        "25 Polished Retouched Visual Assets in Multi-Ratios",
+        "Ultra High-Res 4K & 8K Upscaled Master Files",
+        "Brand Visual Consistency Style Bible",
+        "Complete Commercial Intellectual Property Rights"
+      ],
+      "notIncluded": [
+        "Full synthetic video generation"
+      ],
+      "ctaText": "Request Brand World",
+      "sortOrder": 2
+    },
+    {
+      "id": "premium",
+      "name": "Omniverse Generative Suite",
+      "badge": "Flagship Production",
+      "recommended": false,
+      "description": "Complete generative studio production: 50+ master renders, synthetic character consistency, and animated motion clips.",
+      "idealCustomer": "Visionary creative campaigns, gaming, web3, entertainment, and futuristic brand worlds.",
+      "price": 980,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £980 / project",
+      "revisionCount": "Comprehensive revisions",
+      "turnaroundTime": "10–14 business days",
+      "features": [
+        "50+ ultra-high-resolution conceptual renders and surreal environments",
+        "Custom consistent synthetic brand character / product model creation",
+        "5 generative animated motion video clips (Looping cinematic motion)",
+        "Professional studio grading, grain addition, and high-fidelity composite finishing",
+        "Master source generation seeds, prompts, and training workflows",
+        "Dedicated AI Art Director collaboration throughout"
+      ],
+      "deliverables": [
+        "50+ High-Resolution Master Renders (Print-Ready 300 DPI)",
+        "5 Generative Motion Video Clips (4K / 1080p MP4)",
+        "Custom Brand Character Consistency Library",
+        "Exhaustive Prompt & Model Parameter Workflow Bible",
+        "Full Commercial Usage Guarantee"
+      ],
+      "notIncluded": [
+        "Traditional physical camera crews"
+      ],
+      "ctaText": "Request Generative Suite",
+      "sortOrder": 3
+    }
+  ],
+  "addOns": [
+    {
+      "id": "addon-extra-generative-visuals",
+      "name": "10 Additional Generated Visuals",
+      "description": "Expansion pack of 10 customized generative assets aligned with your approved aesthetic.",
+      "price": 150,
+      "currency": "£",
+      "unit": "per 10 assets",
+      "priceType": "per_unit"
+    },
+    {
+      "id": "addon-motion-clip",
+      "name": "Cinematic Motion Video Loop",
+      "description": "Conversion of an approved static generative asset into a 4K looping cinematic video clip.",
+      "price": 180,
+      "currency": "£",
+      "unit": "per clip",
+      "priceType": "per_unit"
+    },
+    {
+      "id": "addon-print-upscale",
+      "name": "8K Large-Format Print Upscaling Pack",
+      "description": "Specialized ultra-deep upscaling suitable for large billboards, exhibition walls, and gallery prints.",
+      "price": 120,
+      "currency": "£",
+      "unit": "one-time",
+      "priceType": "fixed"
+    }
+  ],
+  "comparisonRows": [
+    {
+      "feature": "Assets Included",
+      "category": "Scope",
+      "starter": "10 Visual Assets",
+      "professional": "25 Visual Assets",
+      "premium": "50+ Visuals + 5 Motion Clips"
+    },
+    {
+      "feature": "Style & Character Consistency",
+      "category": "Consistency",
+      "starter": "Prompt-based",
+      "professional": "Fine-tuned aesthetic continuity",
+      "premium": "Synthetic character & world modeling"
+    },
+    {
+      "feature": "Post-Processing & Retouching",
+      "category": "Refinement",
+      "starter": "Color grading & basic upscale",
+      "professional": "Photoshop anomaly cleanup + 4K",
+      "premium": "Studio composite retouching + 8K print"
+    },
+    {
+      "feature": "Motion Video Clips",
+      "category": "Motion",
+      "starter": false,
+      "professional": "Optional add-on",
+      "premium": "5 Cinematic Motion Loops Included"
+    },
+    {
+      "feature": "Multi-Ratio Exports",
+      "category": "Deliverables",
+      "starter": "Single ratio",
+      "professional": "1:1, 16:9, and 9:16",
+      "premium": "All ratios + Print 300 DPI"
+    },
+    {
+      "feature": "Revision Passes",
+      "category": "Service",
+      "starter": "2 passes",
+      "professional": "4 passes",
+      "premium": "Comprehensive revisions"
+    }
+  ],
+  "whoIsThisFor": {
+    "starter": "Creators, bloggers, and designers needing evocative imagery for pitch concepts and website headers that cannot be found on stock sites.",
+    "professional": "Brands looking to establish a distinctive, surreal visual identity for campaigns, social feeds, and digital touchpoints with strict aesthetic continuity.",
+    "premium": "Creative agencies, gaming companies, and visionary brands launching immersive worlds, character stories, and multi-dimensional digital experiences."
+  }
 }

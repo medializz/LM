@@ -1,18 +1,18 @@
 # BRAIN.md — Lizzdo Media Persistent Engineering & Architectural Memory
 
-**Document Version:** 1.0.0  
-**Project Version:** 1.0.0  
+**Document Version:** 1.1.0  
+**Project Version:** 1.1.0  
 **Project Name:** Lizzdo Media  
 **Repository:** `medializz/LM`  
 **Production Domain:** `https://media.lizzdo.com/`  
-**Last Updated:** 2026-08-30  
+**Last Updated:** 2026-09-03  
 **Maintained By:** Lead Software Architect & AI Engineering Agent
 
 ---
 
 ## 1. PROJECT STATUS DASHBOARD
 
-*Verified live status across all subsystems as of August 2026:*
+*Verified live status across all subsystems as of September 2026:*
 
 | Subsystem | Status | Verification & Notes |
 | :--- | :--- | :--- |
@@ -24,12 +24,13 @@
 | **GitHub OAuth** | 🟢 **WORKING** | Integrated with Cloudflare Worker `/auth` & `/callback` flow |
 | **Content Pipeline** | 🟢 **WORKING** | Direct JSON import (`import.meta.glob`), zero stale client caching |
 | **Client Routing (SPA)** | 🟢 **WORKING** | Custom zero-dependency History API router with GitHub Pages 404 fallback |
+| **Productized Package System** | 🟢 **WORKING** | 3-tier pricing (Starter, Pro, Premium), deliverables, comparison table, add-on estimators, decision guides & bundle cards |
 | **Dedicated Contact Page** | 🟢 **WORKING** | `/contact` route active with direct studio channels, form & WhatsApp |
 | **Bidirectional Services ↔ Work** | 🟢 **WORKING** | Robust bidirectional linking between Services & Work/Case Studies via centralized helpers |
 | **Nested Active Navigation** | 🟢 **WORKING** | Active state persists accurately across nested routes in Header (desktop & mobile) |
 | **Dynamic WhatsApp** | 🟢 **WORKING** | Phone normalizer (`0300...` → `92300...`) & contextual prefilled text |
 | **Dynamic Social Media** | 🟢 **WORKING** | Universal `SocialLinks` component rendering enabled CMS channels |
-| **Service Detail Pages** | 🟢 **WORKING** | 12 dedicated service routes (`/services/:slug`) with rich mockups |
+| **Service Detail Pages** | 🟢 **WORKING** | 14 dedicated service routes (`/services/:slug`) with rich mockups & package tiers |
 | **Work Detail Pages** | 🟢 **WORKING** | 5 comprehensive case studies (`/work/:slug`) with gallery & specs |
 | **Blog System** | 🟢 **WORKING** | 6 in-depth articles (`/blog/:slug`) with Markdown body & FAQ schema |
 | **Clients Showcase** | 🟢 **WORKING** | 8 real partner brands connected to case studies and reviews |
@@ -324,7 +325,7 @@ public_folder: "/uploads"
 | :- | :--- | :--- | :--- | :--- | :--- |
 | **1** | `settings` | Site Settings & Configuration | Multi-File | `src/content/*.json` | Global branding, socials, about, contact, SEO, hero, footer |
 | **2** | `clients` | Clients / Companies | Folder | `src/content/clients/*.json` | Verified partner brands, logos, websites, linked case studies |
-| **3** | `services` | Services | Folder | `src/content/services/*.json` | 12 agency offerings, capabilities, deliverables, FAQs |
+| **3** | `services` | Services | Folder | `src/content/services/*.json` | 14 agency offerings, packages, add-ons, comparison tables, bundles, FAQs |
 | **4** | `portfolio` | Work & Case Studies | Folder | `src/content/portfolio/*.json` | 5 detailed case studies, challenges, strategies, dielines |
 | **5** | `blog` | Blog Articles | Folder | `src/content/blog/*.json` | Articles with Markdown body, tags, key takeaways, FAQs |
 | **6** | `team` | Team Members | Folder | `src/content/team/*.json` | Studio leadership, roles, bios, profile photos, socials |
@@ -370,10 +371,19 @@ public_folder: "/uploads"
 - `capabilities`, `deliverables` → Interactive checklist tabs on `/services/:slug`
 - `processSteps` → 4-step execution flow on `/services/:slug`
 - `gallery` → Interactive mockup grid on `/services/:slug`
+- `pricingPackages` → 3-tier package cards (`PackageCard.tsx`), recommended badge, deliverables, inclusions, exclusions, and contextual WhatsApp scoping
+- `packageComparison` → Side-by-side package comparison matrix (`PackageComparisonTable.tsx`)
+- `addons` → Interactive add-on selector & real-time total price calculator (`AddonSelector.tsx`)
+- `whoIsThisFor` → Persona and scenario decision guide (`WhoIsThisForSection.tsx`)
 - `faqs` → Accordion FAQ component on `/services/:slug` with Schema.org FAQPage injection
 - `relatedProjects`, `relatedServices` → Cross-linked recommendations
 
-### 7.4 Portfolio / Work (`src/content/portfolio/*.json`)
+### 7.4 Cross-Service Bundles (`src/content/bundles.json`)
+- Multi-disciplinary service packages: Brand Launch Package, Product Launch Package, Digital Growth Package
+- Rendered on service pages via `BundleCard.tsx` and resolved dynamically through `getBundlesForService()`
+- Includes package features, duration, discount badge, starting price, and WhatsApp inquiry actions
+
+### 7.5 Portfolio / Work (`src/content/portfolio/*.json`)
 - `title`, `slug`, `category`, `shortCategory`, `shortDescription` → Work cards
 - `visualType` → Renders specific interactive SVG 3D mockup compositions
 - `client`, `year`, `services`, `tools` → Case study metadata bar on `/work/:slug`
@@ -640,6 +650,10 @@ When a visitor accesses a direct deep link (e.g. `https://media.lizzdo.com/servi
 | **BUG-011** | Header navigation lost active visual state when viewing nested routes (e.g. `/services/brand-identity` or `/work/packaging-design`) | `src/components/Header.tsx` | Medium | **FIXED** | Implemented prefix-based path checks (`startsWith`) in desktop and mobile navigation logic to maintain active parent highlighting. |
 | **BUG-012** | Services and Work case studies lacked dynamic bidirectional relationships and reciprocal links | `cmsContent.ts`, `ServiceDetailPage.tsx`, `WorkDetailPage.tsx` | High | **FIXED** | Created `getWorksForService`, `getServicesForWork`, `getRelatedServices`, and `getRelatedProjects` helpers to automatically resolve cross-collection connections. |
 | **BUG-013** | Hardcoded placeholder WhatsApp/phone number persisted across CMS sync due to default fields in config and duplicated contact file | `public/admin/config.yml`, `src/content/settings.json`, `src/content/contact.json`, `src/data/cmsContent.ts` | Critical | **FIXED** | Removed placeholder defaults from `config.yml`, cleaned JSON files, and unified master settings (`settingsData`) as the single source of truth for all contact and WhatsApp deep-links. |
+| **BUG-014** | Category filtering in `ServicesIndexPage.tsx` did not reliably match multi-word and partial category keys for Engineering, AI, Social, and Marketing | `src/components/pages/ServicesIndexPage.tsx` | Medium | **FIXED** | Upgraded filter matching logic to intelligently match subcategory variants and titles (e.g. Design, Web, Social, Marketing, AI). |
+| **BUG-015** | Header dropdown menu and `index.html` noscript directory omitted newly created services (`flyer-design`, `content-creation`) | `src/content/navigation.json`, `index.html` | Medium | **FIXED** | Synchronized navigation dropdown items and noscript fallback links to represent all 14 active agency services. |
+| **BUG-016** | Cross-service bundle matching in `getBundlesForService()` failed when service slugs used common aliases (`website-development` vs `web-development`) | `src/data/cmsContent.ts`, `src/content/bundles.json` | High | **FIXED** | Enhanced bundle matcher to support slug normalization and reciprocal service aliases across all three productized bundles. |
+| **BUG-017** | Contact Page pricing FAQ stated that agency did not provide fixed pricing sheets despite launching productized service packages | `src/components/pages/ContactPage.tsx` | Low | **FIXED** | Updated FAQ to accurately describe the 3-tier transparent service packages alongside custom enterprise scoping. |
 
 ---
 

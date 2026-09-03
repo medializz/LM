@@ -31,25 +31,271 @@
     "Editable Master Figma Design Kits"
   ],
   "processSteps": [
-    { "stepNumber": "01", "title": "Social Audit", "description": "Auditing existing feeds and benchmarking niche top performers." },
-    { "stepNumber": "02", "title": "Visual System", "description": "Defining fonts, badge styles, CTA buttons, and color schemes." },
-    { "stepNumber": "03", "title": "Template Craft", "description": "Building modular layouts for quotes, carousels, and promos." },
-    { "stepNumber": "04", "title": "Asset Production", "description": "Batch-designing monthly social visual packages." },
-    { "stepNumber": "05", "title": "Review & Polish", "description": "Refining typography hierarchies and visual hooks." },
-    { "stepNumber": "06", "title": "Handoff", "description": "Exporting ready-to-post assets and organized Figma files." }
+    {
+      "stepNumber": "01",
+      "title": "Social Audit",
+      "description": "Auditing existing feeds and benchmarking niche top performers."
+    },
+    {
+      "stepNumber": "02",
+      "title": "Visual System",
+      "description": "Defining fonts, badge styles, CTA buttons, and color schemes."
+    },
+    {
+      "stepNumber": "03",
+      "title": "Template Craft",
+      "description": "Building modular layouts for quotes, carousels, and promos."
+    },
+    {
+      "stepNumber": "04",
+      "title": "Asset Production",
+      "description": "Batch-designing monthly social visual packages."
+    },
+    {
+      "stepNumber": "05",
+      "title": "Review & Polish",
+      "description": "Refining typography hierarchies and visual hooks."
+    },
+    {
+      "stepNumber": "06",
+      "title": "Handoff",
+      "description": "Exporting ready-to-post assets and organized Figma files."
+    }
   ],
   "gallery": [
-    { "id": "smd-g1", "title": "Multi-Slide Educational Carousel", "caption": "High-engagement typography and slide progression", "visualType": "social-grid", "layout": "large" },
-    { "id": "smd-g2", "title": "Social Campaign Visual Suite", "caption": "Launch campaign banners and product highlights", "visualType": "social-campaign", "layout": "half" },
-    { "id": "smd-g3", "title": "Story & Reel Cover Collection", "caption": "9:16 vertical motion hooks and visual anchors", "visualType": "social-stories", "layout": "half" }
+    {
+      "id": "smd-g1",
+      "title": "Multi-Slide Educational Carousel",
+      "caption": "High-engagement typography and slide progression",
+      "visualType": "social-grid",
+      "layout": "large"
+    },
+    {
+      "id": "smd-g2",
+      "title": "Social Campaign Visual Suite",
+      "caption": "Launch campaign banners and product highlights",
+      "visualType": "social-campaign",
+      "layout": "half"
+    },
+    {
+      "id": "smd-g3",
+      "title": "Story & Reel Cover Collection",
+      "caption": "9:16 vertical motion hooks and visual anchors",
+      "visualType": "social-stories",
+      "layout": "half"
+    }
   ],
   "faqs": [
-    { "question": "What formats do you deliver for social media posts?", "answer": "We deliver square (1:1), portrait feed (4:5), and full-screen vertical stories/reels (9:16) in high-resolution PNG, JPG, MP4, and master Figma files." },
-    { "question": "Can you design templates our internal team can edit?", "answer": "Yes, we create fully organized, locked-layer Figma templates with text styles and auto-layout so your team can easily update copy." }
+    {
+      "question": "What formats do you deliver for social media posts?",
+      "answer": "We deliver square (1:1), portrait feed (4:5), and full-screen vertical stories/reels (9:16) in high-resolution PNG, JPG, MP4, and master Figma files."
+    },
+    {
+      "question": "Can you design templates our internal team can edit?",
+      "answer": "Yes, we create fully organized, locked-layer Figma templates with text styles and auto-layout so your team can easily update copy."
+    }
   ],
-  "relatedProjects": ["social-media-campaign"],
-  "relatedServices": ["content-posting", "social-media-management", "advertising-creatives"],
+  "relatedProjects": [
+    "social-media-campaign"
+  ],
+  "relatedServices": [
+    "content-posting",
+    "social-media-management",
+    "advertising-creatives"
+  ],
   "seoTitle": "Social Media Design Services | Lizzdo Media",
   "seoDescription": "Stand out on social media with custom carousels, post kits, and scroll-stopping visuals by Lizzdo Media.",
-  "ogImage": "/uploads/services/social-media-design.svg"
+  "ogImage": "/uploads/services/social-media-design.svg",
+  "pricingModel": "project",
+  "startingPrice": 300,
+  "currency": "£",
+  "duration": "project",
+  "packages": [
+    {
+      "id": "starter",
+      "name": "Starter Social Kit",
+      "badge": "Essential Kit",
+      "recommended": false,
+      "description": "A cohesive set of customizable branded social media templates designed to establish an elevated feed aesthetic.",
+      "idealCustomer": "Small businesses and creators looking to post consistently with an on-brand look.",
+      "price": 300,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £300 / project",
+      "revisionCount": "2 revision rounds",
+      "turnaroundTime": "4–6 business days",
+      "features": [
+        "6 bespoke branded post & story templates (1:1 and 9:16 formats)",
+        "Fully editable in Figma or Canva (No technical software required)",
+        "Brand typography rules & color palette integration",
+        "Highlight covers / profile avatar styling",
+        "Easy-to-follow video walkthrough on how to customize templates"
+      ],
+      "deliverables": [
+        "6 Editable Master Templates (Canva or Figma)",
+        "High-Resolution PNG Sample Exports",
+        "5 Branded Instagram Story Highlight Covers",
+        "Template Customization Quick-Guide"
+      ],
+      "notIncluded": [
+        "Ongoing monthly content creation",
+        "Animated video story templates"
+      ],
+      "ctaText": "Request Starter Kit",
+      "sortOrder": 1
+    },
+    {
+      "id": "professional",
+      "name": "Authority Feed System",
+      "badge": "Recommended",
+      "recommended": true,
+      "description": "A comprehensive social media design system with multi-slide carousels, animated assets, and versatile promotional layouts.",
+      "idealCustomer": "Active brands and e-commerce stores looking to elevate engagement, reach, and visual authority.",
+      "price": 550,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £550 / project",
+      "revisionCount": "4 revision rounds",
+      "turnaroundTime": "7–10 business days",
+      "features": [
+        "15 bespoke multi-format templates (Feed posts, stories, announcements, testimonials)",
+        "2 educational multi-slide carousel frameworks (5–7 slides each)",
+        "3 subtle animated story / reel cover templates",
+        "Platform adaptations for Instagram, LinkedIn, and Facebook",
+        "Bespoke brand graphic devices, textures, and custom framing elements",
+        "Full Canva & Figma editable template handoff"
+      ],
+      "deliverables": [
+        "15 Master Editable Templates in Figma and Canva",
+        "2 Complete Carousel Slide Decks",
+        "10 Curated Highlight Icons",
+        "Animated Story Assets (MP4 / GIF)",
+        "Social Visual Guidelines Sheet (PDF)"
+      ],
+      "notIncluded": [
+        "Daily community moderation",
+        "Direct post publishing / scheduling"
+      ],
+      "ctaText": "Request Authority System",
+      "sortOrder": 2
+    },
+    {
+      "id": "premium",
+      "name": "Omnichannel Brand Suite",
+      "badge": "Complete System",
+      "recommended": false,
+      "description": "The complete visual social design library: 30+ templates, motion assets, paid ad creatives, and cross-network banners.",
+      "idealCustomer": "Fast-scaling brands, agency clients, and e-commerce brands demanding comprehensive multi-network visual distinction.",
+      "price": 950,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £950 / project",
+      "revisionCount": "Comprehensive revisions",
+      "turnaroundTime": "2–3 weeks",
+      "features": [
+        "30+ versatile multi-channel templates across Instagram, LinkedIn, TikTok & X",
+        "5 high-engagement carousel slide systems",
+        "6 animated motion reel / story templates with sound integration",
+        "4 paid advertising creative variations (High-CTR conversion layouts)",
+        "Complete header banner suite for LinkedIn, YouTube, X, and Facebook",
+        "Master design system library in Figma with reusable components & variants"
+      ],
+      "deliverables": [
+        "Comprehensive 30+ Template Figma Design System Library",
+        "Full Canva Pro Template Clones for In-House Marketing Teams",
+        "6 Motion Video Templates (1080x1920 MP4)",
+        "Multi-Platform Banner Suite",
+        "Source Assets & Commercial Typography Guidelines"
+      ],
+      "notIncluded": [
+        "Paid media advertising budget"
+      ],
+      "ctaText": "Request Omnichannel Suite",
+      "sortOrder": 3
+    }
+  ],
+  "addOns": [
+    {
+      "id": "addon-extra-templates",
+      "name": "5 Additional Custom Templates",
+      "description": "Expansion pack of 5 custom branded templates designed for specific content types.",
+      "price": 150,
+      "currency": "£",
+      "unit": "per 5 templates",
+      "priceType": "per_unit"
+    },
+    {
+      "id": "addon-animated-story",
+      "name": "Animated Motion Story Template",
+      "description": "Bespoke animated MP4 story graphic with dynamic kinetic typography.",
+      "price": 120,
+      "currency": "£",
+      "unit": "per template",
+      "priceType": "per_unit"
+    },
+    {
+      "id": "addon-banner-pack",
+      "name": "Multi-Platform Header Banner Pack",
+      "description": "Coordinated header banners sized for LinkedIn Company Page, personal profiles, X, and YouTube.",
+      "price": 160,
+      "currency": "£",
+      "unit": "one-time",
+      "priceType": "fixed"
+    }
+  ],
+  "comparisonRows": [
+    {
+      "feature": "Number of Templates Included",
+      "category": "Scope",
+      "starter": "6 Templates",
+      "professional": "15 Templates",
+      "premium": "30+ Templates"
+    },
+    {
+      "feature": "Multi-Slide Carousels",
+      "category": "Templates",
+      "starter": false,
+      "professional": "2 Carousel Decks",
+      "premium": "5 Carousel Decks"
+    },
+    {
+      "feature": "Animated Motion Elements",
+      "category": "Motion",
+      "starter": false,
+      "professional": "3 Animated Story Covers",
+      "premium": "6 Motion Video Templates"
+    },
+    {
+      "feature": "Editable Canva & Figma Links",
+      "category": "Deliverables",
+      "starter": true,
+      "professional": true,
+      "premium": "Figma Component Library + Canva"
+    },
+    {
+      "feature": "Paid Ad Creative Variations",
+      "category": "Deliverables",
+      "starter": "Optional add-on",
+      "professional": "Optional add-on",
+      "premium": "4 Ad Variations Included"
+    },
+    {
+      "feature": "Revision Rounds",
+      "category": "Service",
+      "starter": "2 rounds",
+      "professional": "4 rounds",
+      "premium": "Comprehensive revisions"
+    }
+  ],
+  "whoIsThisFor": {
+    "starter": "Businesses and solo founders wanting to establish a clean, recognizable aesthetic without designing from scratch each week.",
+    "professional": "Growing companies looking to share infographics, carousels, and motion clips that drive saves, shares, and inquiries.",
+    "premium": "Omnichannel brands and high-growth e-commerce ventures that require an extensive, unified design system across every major network."
+  }
 }

@@ -30,24 +30,271 @@
     "Live Performance Dashboard & Monthly Strategy Calls"
   ],
   "processSteps": [
-    { "stepNumber": "01", "title": "Audit & Research", "description": "Analyzing past marketing data, competitor funnels, and CAC benchmarks." },
-    { "stepNumber": "02", "title": "Funnel Design", "description": "Structuring top, middle, and bottom-of-funnel conversion journeys." },
-    { "stepNumber": "03", "title": "Campaign Launch", "description": "Deploying audience-targeted ad sets with multiple creative variants." },
-    { "stepNumber": "04", "title": "A/B Testing", "description": "Testing hooks, copy, landing pages, and bid strategies." },
-    { "stepNumber": "05", "title": "Optimization", "description": "Cutting underperforming ad sets and scaling winning combinations." },
-    { "stepNumber": "06", "title": "Scale", "description": "Expanding budget profitably while maintaining target ROAS." }
+    {
+      "stepNumber": "01",
+      "title": "Audit & Research",
+      "description": "Analyzing past marketing data, competitor funnels, and CAC benchmarks."
+    },
+    {
+      "stepNumber": "02",
+      "title": "Funnel Design",
+      "description": "Structuring top, middle, and bottom-of-funnel conversion journeys."
+    },
+    {
+      "stepNumber": "03",
+      "title": "Campaign Launch",
+      "description": "Deploying audience-targeted ad sets with multiple creative variants."
+    },
+    {
+      "stepNumber": "04",
+      "title": "A/B Testing",
+      "description": "Testing hooks, copy, landing pages, and bid strategies."
+    },
+    {
+      "stepNumber": "05",
+      "title": "Optimization",
+      "description": "Cutting underperforming ad sets and scaling winning combinations."
+    },
+    {
+      "stepNumber": "06",
+      "title": "Scale",
+      "description": "Expanding budget profitably while maintaining target ROAS."
+    }
   ],
   "gallery": [
-    { "id": "dm-g1", "title": "Real-Time Growth Dashboard", "caption": "Multi-channel ROAS and CAC performance telemetry", "visualType": "saas-dashboard", "layout": "large" },
-    { "id": "dm-g2", "title": "Ad Creative Split Testing", "caption": "Multivariate visual angle and copy testing", "visualType": "social-campaign", "layout": "half" },
-    { "id": "dm-g3", "title": "Conversion Funnel Architecture", "caption": "End-to-end lead journey and automated retargeting", "visualType": "saas-analytics", "layout": "half" }
+    {
+      "id": "dm-g1",
+      "title": "Real-Time Growth Dashboard",
+      "caption": "Multi-channel ROAS and CAC performance telemetry",
+      "visualType": "saas-dashboard",
+      "layout": "large"
+    },
+    {
+      "id": "dm-g2",
+      "title": "Ad Creative Split Testing",
+      "caption": "Multivariate visual angle and copy testing",
+      "visualType": "social-campaign",
+      "layout": "half"
+    },
+    {
+      "id": "dm-g3",
+      "title": "Conversion Funnel Architecture",
+      "caption": "End-to-end lead journey and automated retargeting",
+      "visualType": "saas-analytics",
+      "layout": "half"
+    }
   ],
   "faqs": [
-    { "question": "What ad platforms do you specialize in?", "answer": "We manage campaigns across Meta (Facebook & Instagram), Google Search & Performance Max, LinkedIn Ads, and TikTok Ads." }
+    {
+      "question": "What ad platforms do you specialize in?",
+      "answer": "We manage campaigns across Meta (Facebook & Instagram), Google Search & Performance Max, LinkedIn Ads, and TikTok Ads."
+    }
   ],
-  "relatedProjects": ["saas-website-design", "social-media-campaign"],
-  "relatedServices": ["advertising-creatives", "web-development", "content-posting"],
+  "relatedProjects": [
+    "saas-website-design",
+    "social-media-campaign"
+  ],
+  "relatedServices": [
+    "advertising-creatives",
+    "web-development",
+    "content-posting"
+  ],
   "seoTitle": "Digital Marketing & Performance Growth | Lizzdo Media",
   "seoDescription": "Data-driven digital marketing and paid advertising campaigns that maximize ROAS and customer acquisition for ambitious brands.",
-  "ogImage": "/uploads/services/digital-marketing.svg"
+  "ogImage": "/uploads/services/digital-marketing.svg",
+  "pricingModel": "recurring",
+  "startingPrice": 450,
+  "currency": "£",
+  "duration": "4 weeks",
+  "packages": [
+    {
+      "id": "starter",
+      "name": "Campaign Foundation",
+      "badge": "Launch Campaign",
+      "recommended": false,
+      "description": "Setup and targeted management of your primary paid advertising or email acquisition channel.",
+      "idealCustomer": "Businesses testing paid customer acquisition or initiating targeted digital advertising.",
+      "price": 450,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "4 weeks",
+      "pricingModel": "recurring",
+      "pricingLabel": "From £450 / 4 weeks",
+      "revisionCount": "Bi-weekly campaign optimization",
+      "turnaroundTime": "Campaign launch in 5 business days",
+      "features": [
+        "Setup & management of 1 advertising channel (Meta Ads or Google Search Ads)",
+        "Audience persona definition & keyword / interest targeting",
+        "Conversion tracking pixel installation & verification",
+        "A/B split testing of 2 ad copy & creative angles",
+        "Weekly budget monitoring & bid optimization",
+        "Monthly transparent ROAS & cost-per-lead reporting"
+      ],
+      "deliverables": [
+        "Configured Campaign Setup in Your Business Manager",
+        "Tracking Pixel & Conversion Event Verification",
+        "2 Active Ad Sets with Split-Tested Messaging",
+        "Monthly Performance & Acquisition Cost Report"
+      ],
+      "notIncluded": [
+        "Third-party paid media advertising budget (Paid directly to ad network)",
+        "Custom landing page development"
+      ],
+      "ctaText": "Request Campaign Foundation",
+      "sortOrder": 1
+    },
+    {
+      "id": "professional",
+      "name": "Growth Acquisition Engine",
+      "badge": "Most Popular",
+      "recommended": true,
+      "description": "Multi-channel paid acquisition with full-funnel retargeting, conversion rate tuning, and proactive creative rotation.",
+      "idealCustomer": "Scaling businesses and e-commerce brands wanting consistent, profitable customer acquisition.",
+      "price": 850,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "4 weeks",
+      "pricingModel": "recurring",
+      "pricingLabel": "From £850 / 4 weeks",
+      "revisionCount": "Weekly creative & budget tuning",
+      "turnaroundTime": "Campaign launch in 7 business days",
+      "features": [
+        "Multi-channel campaign management (Meta + Google Ads)",
+        "Full-funnel architecture: Cold prospecting, consideration, and retargeting",
+        "Lookalike audience modeling & customer list enrichment",
+        "A/B split testing across 6+ ad variants (Copy, headlines, and visual assets)",
+        "Google Analytics 4 event tracking & UTM parameter structure",
+        "Weekly bid management, negative keyword pruning & budget reallocation",
+        "Bi-weekly strategy call & real-time live performance dashboard"
+      ],
+      "deliverables": [
+        "Full-Funnel Campaign Architecture on Meta & Google",
+        "Retargeting Audiences for Abandoned Carts & Site Visitors",
+        "Live 24/7 Looker Studio Performance Dashboard",
+        "Bi-Weekly Video Strategy Review Meetings",
+        "Ongoing Creative Fatigue Monitoring & Recommendations"
+      ],
+      "notIncluded": [
+        "Direct ad spend media budget"
+      ],
+      "ctaText": "Request Growth Engine",
+      "sortOrder": 2
+    },
+    {
+      "id": "premium",
+      "name": "Enterprise Performance Scale",
+      "badge": "Scale & Dominate",
+      "recommended": false,
+      "description": "High-volume paid growth partnership: multi-network omni-campaigns, landing page CRO, advanced attribution, and dedicated senior media buyer.",
+      "idealCustomer": "Established e-commerce brands, funded startups, and enterprises managing significant monthly marketing budgets.",
+      "price": 1500,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "4 weeks",
+      "pricingModel": "recurring",
+      "pricingLabel": "From £1,500 / 4 weeks",
+      "revisionCount": "Continuous real-time optimization",
+      "turnaroundTime": "Priority dedicated campaign sprints",
+      "features": [
+        "Omnichannel advertising across Meta, Google Search/Shopping, YouTube, and TikTok",
+        "Full conversion rate optimization (CRO) audit of your landing pages",
+        "Advanced server-side tracking (Meta CAPI & Google Enhanced Conversions)",
+        "Continuous creative refreshes & weekly high-performing ad iterations",
+        "Multi-touch attribution modeling & lifetime customer value (LTV) analysis",
+        "Weekly executive strategy calls & dedicated Slack/WhatsApp war room",
+        "Senior Growth Director oversight on all accounts"
+      ],
+      "deliverables": [
+        "Complete Omnichannel Acquisition & Retention Engine",
+        "Server-Side Conversions API (CAPI) Architecture",
+        "Monthly Landing Page CRO Recommendations & Heatmap Audits",
+        "Weekly Performance Calls & Action Logs",
+        "Dedicated Senior Media Buyer & Creative Strategist",
+        "Custom Multi-Touch Attribution Reporting"
+      ],
+      "notIncluded": [
+        "Ad network media spend"
+      ],
+      "ctaText": "Request Enterprise Scale",
+      "sortOrder": 3
+    }
+  ],
+  "addOns": [
+    {
+      "id": "addon-landing-page",
+      "name": "High-Converting Campaign Landing Page",
+      "description": "Design and development of a dedicated high-converting landing page optimized for paid ad traffic.",
+      "price": 450,
+      "currency": "£",
+      "unit": "one-time",
+      "priceType": "fixed"
+    },
+    {
+      "id": "addon-email-automation",
+      "name": "Welcome & Abandoned Cart Email Flow",
+      "description": "Setup of 4 automated email sequences in Klaviyo or Mailchimp to convert paid ad traffic.",
+      "price": 380,
+      "currency": "£",
+      "unit": "one-time",
+      "priceType": "fixed"
+    },
+    {
+      "id": "addon-tracking-setup",
+      "name": "Advanced Tracking & GTM Setup",
+      "description": "Comprehensive Google Tag Manager container setup with custom event triggers and server-side tracking.",
+      "price": 280,
+      "currency": "£",
+      "unit": "one-time",
+      "priceType": "fixed"
+    }
+  ],
+  "comparisonRows": [
+    {
+      "feature": "Ad Platforms Managed",
+      "category": "Channels",
+      "starter": "1 Platform (Meta or Google)",
+      "professional": "2 Platforms (Meta + Google)",
+      "premium": "Omnichannel (Meta, Google, TikTok, YouTube)"
+    },
+    {
+      "feature": "Funnel Architecture",
+      "category": "Strategy",
+      "starter": "Single campaign focus",
+      "professional": "Full Funnel (Prospecting + Retargeting)",
+      "premium": "Advanced Multi-Tier Retention & Scale"
+    },
+    {
+      "feature": "Conversion Tracking & Attribution",
+      "category": "Analytics",
+      "starter": "Standard Pixel setup",
+      "professional": "GA4 Events + UTM Taxonomy",
+      "premium": "Server-Side CAPI + Multi-Touch Attribution"
+    },
+    {
+      "feature": "Creative A/B Split Testing",
+      "category": "Optimization",
+      "starter": "2 Variations",
+      "professional": "6+ Variations with weekly rotation",
+      "premium": "Continuous creative testing engine"
+    },
+    {
+      "feature": "Landing Page CRO Audits",
+      "category": "Optimization",
+      "starter": false,
+      "professional": "Basic feedback",
+      "premium": "Monthly in-depth CRO & heatmap analysis"
+    },
+    {
+      "feature": "Reporting & Strategy Cadence",
+      "category": "Support",
+      "starter": "Monthly report",
+      "professional": "Bi-weekly calls + Live Dashboard",
+      "premium": "Weekly strategy reviews + dedicated Slack"
+    }
+  ],
+  "whoIsThisFor": {
+    "starter": "Businesses dipping their toes into digital ads and wanting properly configured campaigns that do not waste ad budget.",
+    "professional": "Companies ready to systematically acquire customers, lower their cost-per-acquisition (CPA), and run retargeting funnels.",
+    "premium": "Established brands spending thousands monthly on digital media needing high-level media buying, CRO, and attribution modeling."
+  }
 }

@@ -17,7 +17,8 @@ import {
   ContactContent,
   SocialSettings,
   AnalyticsSettings,
-  NotFoundContent
+  NotFoundContent,
+  ServiceBundle
 } from '../types';
 
 import settingsData from '../content/settings.json';
@@ -33,6 +34,7 @@ import analyticsData from '../content/analytics.json';
 import notFoundData from '../content/not-found.json';
 import clientsSectionData from '../content/clients-section.json';
 import testimonialsSectionData from '../content/testimonials-section.json';
+import bundlesData from '../content/bundles.json';
 
 // Eagerly glob all collection JSON files from src/content/
 const serviceFiles = import.meta.glob('../content/services/*.json', { eager: true }) as Record<string, { default?: ServiceCategory } | ServiceCategory>;
@@ -279,10 +281,33 @@ export const DEFAULT_CMS_DATA: DecapCMSData = {
   clients: loadedClients,
   clientsSection: clientsSectionData as ClientsSectionContent,
   testimonialsSection: testimonialsSectionData as TestimonialsSectionContent,
+  bundles: bundlesData as ServiceBundle[],
   notFound: notFoundData as NotFoundContent
 };
 
-export { seoData, footerData, aboutData, contactData, socialData, analyticsData, notFoundData, clientsSectionData, testimonialsSectionData };
+export { seoData, footerData, aboutData, contactData, socialData, analyticsData, notFoundData, clientsSectionData, testimonialsSectionData, bundlesData };
+
+/**
+ * Helper to get relevant bundles for a specific service slug
+ */
+export function getBundlesForService(serviceSlug: string, allBundles?: ServiceBundle[]): ServiceBundle[] {
+  const bundlesList = allBundles || (bundlesData as ServiceBundle[]);
+  if (!bundlesList || !Array.isArray(bundlesList)) return [];
+  const normalizedSlug = serviceSlug.toLowerCase().trim();
+  return bundlesList.filter(b => {
+    if (!b.services || !Array.isArray(b.services)) return false;
+    return b.services.some(s => {
+      const normS = s.toLowerCase().trim();
+      return normS === normalizedSlug ||
+        (normalizedSlug === 'ai-visuals-content' && normS === 'ai-visual-content') ||
+        (normalizedSlug === 'ai-visual-content' && normS === 'ai-visuals-content') ||
+        (normalizedSlug === 'web-development' && normS === 'website-development') ||
+        (normalizedSlug === 'website-development' && normS === 'web-development') ||
+        (normalizedSlug === 'content-creation' && normS === 'content-posting') ||
+        (normalizedSlug === 'content-posting' && normS === 'content-creation');
+    });
+  });
+}
 
 /**
  * Generates a clean, standardized WhatsApp direct message URL with Pakistan & international number formatting
@@ -609,4 +634,5 @@ export function getRelatedProjects(
 
   return matched.slice(0, limit);
 }
+
 

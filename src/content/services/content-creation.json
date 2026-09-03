@@ -102,9 +102,247 @@
       "answer": "Both options are available. We provide one-off campaign asset packs for product launches as well as ongoing monthly content creation retainers for consistent brand growth."
     }
   ],
-  "relatedProjects": ["social-media-campaign"],
-  "relatedServices": ["content-posting", "social-media-design", "social-media-management", "advertising-creatives"],
+  "relatedProjects": [
+    "social-media-campaign"
+  ],
+  "relatedServices": [
+    "content-posting",
+    "social-media-design",
+    "social-media-management",
+    "advertising-creatives"
+  ],
   "seoTitle": "Content Creation Services | Cardiff & UK | Lizzdo Media",
   "seoDescription": "Elevate your brand with strategic content creation services by Lizzdo Media in Cardiff, South Wales. Social media graphics, reels, carousels, and copy.",
-  "ogImage": "/uploads/services/social-media-design.svg"
+  "ogImage": "/uploads/services/social-media-design.svg",
+  "pricingModel": "recurring",
+  "startingPrice": 400,
+  "currency": "£",
+  "duration": "4 weeks",
+  "packages": [
+    {
+      "id": "starter",
+      "name": "Starter Content",
+      "badge": "Entry Foundation",
+      "recommended": false,
+      "description": "Ideal for small businesses and emerging brands establishing their baseline content presence.",
+      "idealCustomer": "Small businesses & solo founders wanting a professional, consistent monthly content baseline.",
+      "price": 400,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "4 weeks",
+      "pricingModel": "recurring",
+      "pricingLabel": "From £400 / 4 weeks",
+      "revisionCount": "2 revision rounds per batch",
+      "turnaroundTime": "Initial batch in 5 business days",
+      "features": [
+        "5 branded social media posts per week (20 posts / 4 weeks)",
+        "1 short-form video reel per week (4 videos / 4 weeks)",
+        "Branded visual layout templates",
+        "Engaging caption copywriting & hashtag research",
+        "Structured monthly content calendar",
+        "Basic monthly content planning"
+      ],
+      "deliverables": [
+        "20 High-Resolution Static Visuals (1:1 & 4:5 ratios)",
+        "4 Vertical Short-Form Video Reels (9:16)",
+        "Complete Caption Sheet with Strategic Hooks & CTAs",
+        "Platform-Optimized Hashtag Sets",
+        "Pre-Scheduled Content Calendar Overview"
+      ],
+      "notIncluded": [
+        "Daily community comment moderation (available as add-on)",
+        "Dedicated on-location video shooting crew",
+        "Paid ad campaign management"
+      ],
+      "ctaText": "Request Starter Package",
+      "sortOrder": 1
+    },
+    {
+      "id": "professional",
+      "name": "Professional Content",
+      "badge": "Most Popular",
+      "recommended": true,
+      "description": "A comprehensive content engine for growing brands requiring consistent volume, motion video, and strategic authority.",
+      "idealCustomer": "Growing brands wanting higher reach, video velocity, and authoritative industry positioning.",
+      "price": 550,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "4 weeks",
+      "pricingModel": "recurring",
+      "pricingLabel": "From £550 / 4 weeks",
+      "revisionCount": "4 revision rounds per batch",
+      "turnaroundTime": "Initial batch in 4 business days",
+      "features": [
+        "5–7 branded posts per week (24 posts / 4 weeks)",
+        "2 short-form video reels per week (8 videos / 4 weeks)",
+        "Educational multi-slide carousel graphics",
+        "Dedicated content strategy & audience hook research",
+        "Hashtag & trending audio research",
+        "Monthly performance review & creative iteration",
+        "Priority Slack / WhatsApp production communication"
+      ],
+      "deliverables": [
+        "24 Bespoke Brand Graphic Assets & Infographics",
+        "8 Edited Vertical Video Reels with Motion Text & Captions",
+        "3 High-Engagement Carousel Slidesets (5–7 slides each)",
+        "Full Persuasive Copywriting & Storyboard Hooks",
+        "Curated Trending Audio Recommendations",
+        "Monthly Content Performance & Metric Review"
+      ],
+      "notIncluded": [
+        "On-location physical videography crew",
+        "Paid media ad spend"
+      ],
+      "ctaText": "Request Professional Package",
+      "sortOrder": 2
+    },
+    {
+      "id": "premium",
+      "name": "Premium Content Engine",
+      "badge": "High Velocity",
+      "recommended": false,
+      "description": "Full-spectrum, high-velocity content production system designed for established businesses demanding market dominance.",
+      "idealCustomer": "Established businesses and rapid-growth companies needing an omnichannel creative pipeline.",
+      "price": 750,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "4 weeks",
+      "pricingModel": "recurring",
+      "pricingLabel": "From £750 / 4 weeks",
+      "revisionCount": "Comprehensive rapid revisions",
+      "turnaroundTime": "Priority 48-hour turnarounds on urgent assets",
+      "features": [
+        "7+ posts per week (30+ posts / 4 weeks across channels)",
+        "3+ short-form video reels per week (12+ videos / 4 weeks)",
+        "Premium branded motion graphics & story cards",
+        "Advanced omnichannel content strategy & storytelling",
+        "Campaign-specific promotional creatives",
+        "Cross-platform copywriting (Instagram, LinkedIn, X)",
+        "Monthly strategy workshop & ROI reporting",
+        "Dedicated Senior Creative Director oversight"
+      ],
+      "deliverables": [
+        "30+ Multi-Platform Master Visual Assets",
+        "12 High-Impact Edited Video Reels with Sound Design & Subtitles",
+        "5 Thought-Leadership Carousel Sets",
+        "Dedicated Channel-Specific Copywriting (B2B + B2C tone)",
+        "Paid Social Ad Creative Adaptation Sets",
+        "Source Design Files (Figma / Adobe CC)",
+        "Monthly Strategic Creative Director Call"
+      ],
+      "notIncluded": [
+        "Third-party paid media advertising budget"
+      ],
+      "ctaText": "Request Premium Package",
+      "sortOrder": 3
+    }
+  ],
+  "addOns": [
+    {
+      "id": "addon-extra-short-form-video",
+      "name": "Additional Short-Form Video Reel",
+      "description": "Extra 9:16 vertical motion video including editing, dynamic captions, and sound design.",
+      "price": 75,
+      "currency": "£",
+      "unit": "per video",
+      "priceType": "per_unit"
+    },
+    {
+      "id": "addon-social-media-management",
+      "name": "Social Media Publishing & Scheduling",
+      "description": "Hands-off scheduling, post formatting, and first-comment setup across up to 3 channels.",
+      "price": 180,
+      "currency": "£",
+      "unit": "per 4 weeks",
+      "priceType": "recurring"
+    },
+    {
+      "id": "addon-carousel-infographic",
+      "name": "Educational Carousel Infographic",
+      "description": "Bespoke 6–8 slide visual carousel breaking down complex industry insights.",
+      "price": 60,
+      "currency": "£",
+      "unit": "per carousel",
+      "priceType": "per_unit"
+    },
+    {
+      "id": "addon-paid-ad-variation",
+      "name": "Paid Advertising Creative Pack",
+      "description": "3 high-converting ad variations adapted from your content batch for Meta or TikTok ads.",
+      "price": 120,
+      "currency": "£",
+      "unit": "per pack",
+      "priceType": "per_unit"
+    }
+  ],
+  "comparisonRows": [
+    {
+      "feature": "Weekly Post Volume",
+      "category": "Deliverables",
+      "starter": "5 posts / week (20 total)",
+      "professional": "5–7 posts / week (24 total)",
+      "premium": "7+ posts / week (30+ total)"
+    },
+    {
+      "feature": "Short-Form Video Reels",
+      "category": "Deliverables",
+      "starter": "1 reel / week (4 total)",
+      "professional": "2 reels / week (8 total)",
+      "premium": "3+ reels / week (12+ total)"
+    },
+    {
+      "feature": "Multi-Slide Carousels",
+      "category": "Deliverables",
+      "starter": "Optional add-on",
+      "professional": "3 carousel decks",
+      "premium": "5 carousel decks"
+    },
+    {
+      "feature": "Caption Writing & Hashtags",
+      "category": "Strategy & Copy",
+      "starter": true,
+      "professional": true,
+      "premium": "Multi-platform tailored"
+    },
+    {
+      "feature": "Content Calendar & Planning",
+      "category": "Strategy & Copy",
+      "starter": "Monthly baseline",
+      "professional": "Strategic pillars & hooks",
+      "premium": "Omnichannel campaign strategy"
+    },
+    {
+      "feature": "Revision Rounds",
+      "category": "Service & Support",
+      "starter": "2 rounds per batch",
+      "professional": "4 rounds per batch",
+      "premium": "Comprehensive rapid revisions"
+    },
+    {
+      "feature": "Production Turnaround",
+      "category": "Service & Support",
+      "starter": "5 business days",
+      "professional": "4 business days",
+      "premium": "Priority 48-hour sprints"
+    },
+    {
+      "feature": "Performance & Strategy Reviews",
+      "category": "Service & Support",
+      "starter": false,
+      "professional": "Monthly report",
+      "premium": "Monthly review call + report"
+    },
+    {
+      "feature": "Source Files (Figma / Adobe)",
+      "category": "Deliverables",
+      "starter": false,
+      "professional": false,
+      "premium": true
+    }
+  ],
+  "whoIsThisFor": {
+    "starter": "Small businesses, local services, and solo founders who need a consistent, professional monthly content presence without high overhead.",
+    "professional": "Growing brands, e-commerce stores, and service companies looking to scale reach, boost engagement, and leverage short-form video reels.",
+    "premium": "Established brands, funded startups, and industry leaders requiring a high-velocity, multi-platform content production machine."
+  }
 }

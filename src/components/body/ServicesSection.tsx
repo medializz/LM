@@ -102,12 +102,21 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               </h3>
 
               {/* Short Description */}
-              <p className="text-[10px] sm:text-[11px] text-slate-400 group-hover:text-slate-300 font-['Plus_Jakarta_Sans'] leading-relaxed line-clamp-3">
+              <p className="text-[10px] sm:text-[11px] text-slate-400 group-hover:text-slate-300 font-['Plus_Jakarta_Sans'] leading-relaxed line-clamp-2">
                 {service.shortDescription}
               </p>
 
+              {/* Starting Price Pill */}
+              {service.startingPrice && (
+                <div className="mt-2.5">
+                  <span className="text-[10px] font-mono text-[#ffbe1a] bg-[#ffbe1a]/10 group-hover:bg-[#ffbe1a]/20 px-2 py-0.5 rounded-full border border-[#ffbe1a]/30 transition-colors">
+                    From {service.currency || '£'}{service.startingPrice.toLocaleString()}
+                  </span>
+                </div>
+              )}
+
               {/* Subtle bottom indicator */}
-              <div className="mt-2.5 w-4 h-0.5 rounded-full bg-transparent group-hover:bg-[#ffbe1a] group-hover:w-8 transition-all duration-300" />
+              <div className="mt-2 w-4 h-0.5 rounded-full bg-transparent group-hover:bg-[#ffbe1a] group-hover:w-8 transition-all duration-300" />
             </motion.div>
           ))}
         </div>

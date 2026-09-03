@@ -62,6 +62,64 @@ export interface FAQItem {
   answer: string;
 }
 
+export interface ServicePackage {
+  id: string;
+  name: string;
+  badge?: string;
+  recommended?: boolean;
+  description: string;
+  idealCustomer?: string; // "Best for..."
+  price: number;
+  pricePrefix?: string; // e.g. "From "
+  currency?: string; // e.g. "£"
+  duration: string; // e.g. "4 weeks", "project", "8 weeks", "12 weeks"
+  pricingModel?: 'recurring' | 'project';
+  pricingLabel?: string; // e.g. "From £400 / 4 weeks"
+  revisionCount?: string; // e.g. "2 revision rounds"
+  turnaroundTime?: string; // e.g. "7–10 business days"
+  features: string[]; // Key card bullets
+  deliverables?: string[]; // Itemized deliverables
+  notIncluded?: string[]; // Transparent scope boundaries
+  ctaText?: string;
+  sortOrder?: number;
+}
+
+export interface ServiceAddon {
+  id: string;
+  name: string;
+  description?: string;
+  price: number;
+  currency?: string;
+  unit?: string; // e.g. "per video", "per page", "one-time", "per 4 weeks"
+  priceType?: 'fixed' | 'recurring' | 'per_unit';
+  availableForPackages?: string[];
+  sortOrder?: number;
+}
+
+export interface ServiceComparisonRow {
+  feature: string;
+  category?: string;
+  starter: string | boolean;
+  professional: string | boolean;
+  premium: string | boolean;
+  tooltip?: string;
+}
+
+export interface ServiceBundle {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  services: string[];
+  startingPrice: number;
+  currency?: string;
+  duration?: string;
+  discountNote?: string;
+  badge?: string;
+  features: string[];
+  sortOrder?: number;
+}
+
 export interface ServiceCategory {
   id: string;
   title: string;
@@ -70,6 +128,20 @@ export interface ServiceCategory {
   shortDescription: string;
   category: string;
   order: number;
+  // Pricing & Packages
+  pricingModel?: 'recurring' | 'project';
+  startingPrice?: number;
+  currency?: string;
+  duration?: string;
+  packages?: ServicePackage[];
+  addOns?: ServiceAddon[];
+  comparisonRows?: ServiceComparisonRow[];
+  whoIsThisFor?: {
+    starter?: string;
+    professional?: string;
+    premium?: string;
+  };
+  bundleSuggestions?: ServiceBundle[];
   // Service Preview Image / Visual Thumbnail (Decap CMS editable)
   previewImage?: string;
   image?: string;
@@ -534,6 +606,7 @@ export interface DecapCMSData {
   clients?: ClientItem[];
   clientsSection?: ClientsSectionContent;
   testimonialsSection?: TestimonialsSectionContent;
+  bundles?: ServiceBundle[];
   notFound?: NotFoundContent;
 }
 

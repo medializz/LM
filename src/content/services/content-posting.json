@@ -30,24 +30,267 @@
     "Monthly Publishing Summary Reports"
   ],
   "processSteps": [
-    { "stepNumber": "01", "title": "Topic Strategy", "description": "Brainstorming monthly content themes and key milestones." },
-    { "stepNumber": "02", "title": "Calendar Draft", "description": "Drafting post schedules, dates, and core message hooks." },
-    { "stepNumber": "03", "title": "Copy & Visuals", "description": "Writing punchy captions and pairing with custom graphics." },
-    { "stepNumber": "04", "title": "Client Review", "description": "One-click approval workflow for complete client peace of mind." },
-    { "stepNumber": "05", "title": "Scheduling", "description": "Loading approved content into top-tier publishing queues." },
-    { "stepNumber": "06", "title": "Monitoring", "description": "Verifying successful publishing and tracking early engagement." }
+    {
+      "stepNumber": "01",
+      "title": "Topic Strategy",
+      "description": "Brainstorming monthly content themes and key milestones."
+    },
+    {
+      "stepNumber": "02",
+      "title": "Calendar Draft",
+      "description": "Drafting post schedules, dates, and core message hooks."
+    },
+    {
+      "stepNumber": "03",
+      "title": "Copy & Visuals",
+      "description": "Writing punchy captions and pairing with custom graphics."
+    },
+    {
+      "stepNumber": "04",
+      "title": "Client Review",
+      "description": "One-click approval workflow for complete client peace of mind."
+    },
+    {
+      "stepNumber": "05",
+      "title": "Scheduling",
+      "description": "Loading approved content into top-tier publishing queues."
+    },
+    {
+      "stepNumber": "06",
+      "title": "Monitoring",
+      "description": "Verifying successful publishing and tracking early engagement."
+    }
   ],
   "gallery": [
-    { "id": "cp-g1", "title": "Monthly Editorial Calendar", "caption": "Clear weekly scheduling and thematic distribution", "visualType": "saas-dashboard", "layout": "large" },
-    { "id": "cp-g2", "title": "Caption & Hashtag Strategy", "caption": "Conversion-focused copywriting and discovery tags", "visualType": "social-grid", "layout": "half" },
-    { "id": "cp-g3", "title": "Multi-Platform Distribution", "caption": "Simultaneous deployment across Instagram and LinkedIn", "visualType": "social-campaign", "layout": "half" }
+    {
+      "id": "cp-g1",
+      "title": "Monthly Editorial Calendar",
+      "caption": "Clear weekly scheduling and thematic distribution",
+      "visualType": "saas-dashboard",
+      "layout": "large"
+    },
+    {
+      "id": "cp-g2",
+      "title": "Caption & Hashtag Strategy",
+      "caption": "Conversion-focused copywriting and discovery tags",
+      "visualType": "social-grid",
+      "layout": "half"
+    },
+    {
+      "id": "cp-g3",
+      "title": "Multi-Platform Distribution",
+      "caption": "Simultaneous deployment across Instagram and LinkedIn",
+      "visualType": "social-campaign",
+      "layout": "half"
+    }
   ],
   "faqs": [
-    { "question": "How far in advance is content planned and scheduled?", "answer": "We plan content in monthly batches, providing your team with full review and approval access at least 7 days before the start of each month." }
+    {
+      "question": "How far in advance is content planned and scheduled?",
+      "answer": "We plan content in monthly batches, providing your team with full review and approval access at least 7 days before the start of each month."
+    }
   ],
-  "relatedProjects": ["social-media-campaign"],
-  "relatedServices": ["social-media-design", "social-media-management", "digital-marketing"],
+  "relatedProjects": [
+    "social-media-campaign"
+  ],
+  "relatedServices": [
+    "social-media-design",
+    "social-media-management",
+    "digital-marketing"
+  ],
   "seoTitle": "Content Posting & Scheduling Services | Lizzdo Media",
   "seoDescription": "Keep your brand consistently active with professional content posting, copywriting, and scheduling services by Lizzdo Media.",
-  "ogImage": "/uploads/services/content-posting.svg"
+  "ogImage": "/uploads/services/content-posting.svg",
+  "pricingModel": "recurring",
+  "startingPrice": 280,
+  "currency": "£",
+  "duration": "4 weeks",
+  "packages": [
+    {
+      "id": "starter",
+      "name": "Essential Scheduling",
+      "badge": "Consistent Cadence",
+      "recommended": false,
+      "description": "Reliable, hands-off scheduling and publishing of your ready-to-go content across primary channels.",
+      "idealCustomer": "Founders who have content created but lack the time to schedule and maintain consistent weekly publishing.",
+      "price": 280,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "4 weeks",
+      "pricingModel": "recurring",
+      "pricingLabel": "From £280 / 4 weeks",
+      "revisionCount": "Ongoing schedule adjustments",
+      "turnaroundTime": "Scheduled 7 days in advance",
+      "features": [
+        "Scheduled publishing for 3 posts per week (12 posts / 4 weeks)",
+        "Coverage across 1 to 2 social channels (e.g. Instagram & Facebook or LinkedIn)",
+        "Optimal time-slot targeting based on audience activity data",
+        "Caption formatting & clean spacing layout",
+        "First-comment hashtag placement",
+        "Monthly posting confirmation log"
+      ],
+      "deliverables": [
+        "Clockwork Scheduled Publishing for 12 Posts",
+        "Optimal Posting Hour Optimization",
+        "Hashtag Formatting in First Comment",
+        "Monthly Dispatch Verification Log"
+      ],
+      "notIncluded": [
+        "Graphic design / video creation (Client provides content or pairs with Content Creation)",
+        "Direct comment and DM inbox replies"
+      ],
+      "ctaText": "Request Essential Scheduling",
+      "sortOrder": 1
+    },
+    {
+      "id": "professional",
+      "name": "Active Multi-Channel Posting",
+      "badge": "Most Popular",
+      "recommended": true,
+      "description": "Consistent 5-day weekly publishing across up to 3 platforms with caption optimization, hashtag clustering, and story shares.",
+      "idealCustomer": "Growing businesses seeking steady visibility and audience touchpoints without daily operational distraction.",
+      "price": 420,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "4 weeks",
+      "pricingModel": "recurring",
+      "pricingLabel": "From £420 / 4 weeks",
+      "revisionCount": "Ongoing schedule adjustments",
+      "turnaroundTime": "Scheduled 10 days in advance",
+      "features": [
+        "Scheduled publishing for 5 posts per week (20 posts / 4 weeks)",
+        "Coverage across up to 3 platforms (Instagram, LinkedIn, Facebook, or X)",
+        "Platform-specific caption tailoring (Hashtag clusters, mentions, line breaks)",
+        "Feed post sharing to Instagram & Facebook Stories upon publish",
+        "Link-in-bio maintenance & URL destination updates",
+        "Bi-weekly publishing review & timing refinements"
+      ],
+      "deliverables": [
+        "20 Clockwork Post Dispatches Across Up to 3 Platforms",
+        "Automatic Story Reshares for Maximum Initial Reach",
+        "Curated Strategic Hashtag Clusters",
+        "Active Link-in-Bio Maintenance",
+        "Monthly Publishing Analytics Summary"
+      ],
+      "notIncluded": [
+        "Active outbound engagement / cold DM outreach"
+      ],
+      "ctaText": "Request Active Posting",
+      "sortOrder": 2
+    },
+    {
+      "id": "premium",
+      "name": "Omnichannel Daily Publishing",
+      "badge": "Maximum Visibility",
+      "recommended": false,
+      "description": "Comprehensive daily publishing engine across up to 4 platforms with story scheduling and weekend automation.",
+      "idealCustomer": "High-visibility brands, e-commerce stores, and thought leaders demanding an omnipresent, clockwork cadence.",
+      "price": 650,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "4 weeks",
+      "pricingModel": "recurring",
+      "pricingLabel": "From £650 / 4 weeks",
+      "revisionCount": "Real-time calendar adjustments",
+      "turnaroundTime": "Scheduled 14 days in advance",
+      "features": [
+        "Daily scheduled publishing (7 posts per week, 28+ posts / 4 weeks)",
+        "Omnichannel distribution across up to 4 platforms (Instagram, LinkedIn, TikTok, Facebook/X)",
+        "Daily story scheduling (Polls, stickers, updates & reshares)",
+        "Multi-channel content repurposing & format adaptations",
+        "Community engagement notification alerts to your team for urgent leads",
+        "Dedicated scheduling specialist & emergency post adjustments"
+      ],
+      "deliverables": [
+        "28+ Clockwork Dispatches (Daily 7-Day Schedule)",
+        "15+ Scheduled Stories / Updates",
+        "Multi-Platform Custom Formatting (Video reels, carousels, text)",
+        "Real-Time Urgent Lead Notifications via Slack/WhatsApp",
+        "Comprehensive Monthly Reach & Impression Overview"
+      ],
+      "notIncluded": [
+        "Paid media advertising ad spend"
+      ],
+      "ctaText": "Request Daily Publishing",
+      "sortOrder": 3
+    }
+  ],
+  "addOns": [
+    {
+      "id": "addon-extra-platform-cp",
+      "name": "Additional Social Media Channel",
+      "description": "Addition of an extra social channel to your monthly publishing cadence.",
+      "price": 90,
+      "currency": "£",
+      "unit": "per 4 weeks",
+      "priceType": "recurring"
+    },
+    {
+      "id": "addon-story-pack-cp",
+      "name": "Story Publishing Expansion Pack",
+      "description": "Scheduling of 10 additional interactive stories with polls and question stickers.",
+      "price": 110,
+      "currency": "£",
+      "unit": "per 4 weeks",
+      "priceType": "recurring"
+    },
+    {
+      "id": "addon-triage-cp",
+      "name": "High-Priority Lead Notification Triage",
+      "description": "Daily monitoring for purchase-intent comments and instant forwarding to your WhatsApp.",
+      "price": 160,
+      "currency": "£",
+      "unit": "per 4 weeks",
+      "priceType": "recurring"
+    }
+  ],
+  "comparisonRows": [
+    {
+      "feature": "Weekly Post Frequency",
+      "category": "Volume",
+      "starter": "3 Posts / Week (12 total)",
+      "professional": "5 Posts / Week (20 total)",
+      "premium": "Daily 7 Posts / Week (28+ total)"
+    },
+    {
+      "feature": "Social Platforms Covered",
+      "category": "Channels",
+      "starter": "Up to 2 Platforms",
+      "professional": "Up to 3 Platforms",
+      "premium": "Up to 4 Platforms"
+    },
+    {
+      "feature": "Story Resharing & Scheduling",
+      "category": "Features",
+      "starter": false,
+      "professional": "Feed reshares to Stories",
+      "premium": "Dedicated scheduled stories + reshares"
+    },
+    {
+      "feature": "First-Comment Hashtags & Formatting",
+      "category": "Features",
+      "starter": true,
+      "professional": true,
+      "premium": true
+    },
+    {
+      "feature": "Link-in-Bio Updates",
+      "category": "Features",
+      "starter": false,
+      "professional": true,
+      "premium": true
+    },
+    {
+      "feature": "Emergency Post Insertion",
+      "category": "Service",
+      "starter": "48h notice",
+      "professional": "24h notice",
+      "premium": "Same-day priority adjustments"
+    }
+  ],
+  "whoIsThisFor": {
+    "starter": "Businesses with pre-existing content that need consistent publishing without having to remember to post manually.",
+    "professional": "Growing companies looking to maintain a 5-day weekly rhythm across their key social touchpoints with professional formatting.",
+    "premium": "E-commerce brands, high-profile executives, and active publishers requiring 7-day-a-week omnipresence across multiple social channels."
+  }
 }

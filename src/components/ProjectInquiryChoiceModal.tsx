@@ -14,6 +14,8 @@ export interface ProjectInquiryChoiceModalProps {
   type?: 'work' | 'service';
   siteSettings: SiteSettings;
   customWhatsAppMessage?: string;
+  packageName?: string;
+  estimatedPrice?: string | number;
 }
 
 export const ProjectInquiryChoiceModal: React.FC<ProjectInquiryChoiceModalProps> = ({
@@ -26,6 +28,8 @@ export const ProjectInquiryChoiceModal: React.FC<ProjectInquiryChoiceModalProps>
   type = 'work',
   siteSettings,
   customWhatsAppMessage,
+  packageName,
+  estimatedPrice,
 }) => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -44,12 +48,23 @@ export const ProjectInquiryChoiceModal: React.FC<ProjectInquiryChoiceModalProps>
   if (!isOpen) return null;
 
   const isWork = type === 'work';
-  const modalHeading = isWork ? 'Start a Similar Project' : 'Start a Project';
-  const subHeading = isWork
+  const modalHeading = packageName
+    ? `Request ${packageName}`
+    : isWork
+    ? 'Start a Similar Project'
+    : 'Start a Project';
+
+  const subHeading = packageName
+    ? `Discuss ${title} (${packageName}${estimatedPrice ? ` • £${estimatedPrice}` : ''}) with our creative team`
+    : isWork
     ? `Discuss a project similar to ${title}`
     : `Discuss your ${title} project with our creative team`;
 
   // WhatsApp generation
+  const defaultServiceMsg = packageName
+    ? `Hi ${siteSettings.siteName || 'Lizzdo Media'}, I am interested in the "${packageName}" package for ${title}${estimatedPrice ? ` (estimated £${estimatedPrice})` : ''}. Could you provide availability and onboarding details?`
+    : undefined;
+
   const whatsAppUrl = isWork
     ? createWorkWhatsAppUrl(
         siteSettings.whatsappNumber,
@@ -63,14 +78,14 @@ export const ProjectInquiryChoiceModal: React.FC<ProjectInquiryChoiceModalProps>
         siteSettings.whatsappNumber,
         title,
         siteSettings.siteName,
-        customWhatsAppMessage,
+        customWhatsAppMessage || defaultServiceMsg,
         category
       );
 
   // Contact page URL with query parameter context
   const contactUrl = isWork
     ? `/contact?project=${encodeURIComponent(slug || title)}&service=${encodeURIComponent(category || '')}`
-    : `/contact?service=${encodeURIComponent(slug || title)}`;
+    : `/contact?service=${encodeURIComponent(slug || title)}${packageName ? `&package=${encodeURIComponent(packageName)}` : ''}`;
 
   const handleGoToContact = (e: React.MouseEvent) => {
     e.preventDefault();

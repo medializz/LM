@@ -107,9 +107,204 @@
       "answer": "Initial design concepts are typically presented within 2 to 4 business days. Expedited turnaround options are also available for time-sensitive launches or event deadlines."
     }
   ],
-  "relatedProjects": ["brand-identity-design", "packaging-design"],
-  "relatedServices": ["graphic-design", "brand-identity", "advertising-creatives", "digital-marketing"],
+  "relatedProjects": [
+    "brand-identity-design",
+    "packaging-design"
+  ],
+  "relatedServices": [
+    "graphic-design",
+    "brand-identity",
+    "advertising-creatives",
+    "digital-marketing"
+  ],
   "seoTitle": "Flyer & Leaflet Design Services | Cardiff & UK | Lizzdo Media",
   "seoDescription": "Professional flyer and leaflet design services by Lizzdo Media in Cardiff, South Wales. High-impact print design, corporate brochures, and event collateral.",
-  "ogImage": "/uploads/services/graphic-design.svg"
+  "ogImage": "/uploads/services/graphic-design.svg",
+  "pricingModel": "project",
+  "startingPrice": 180,
+  "currency": "£",
+  "duration": "project",
+  "packages": [
+    {
+      "id": "starter",
+      "name": "Essential Flyer",
+      "badge": "Single Promotion",
+      "recommended": false,
+      "description": "Single or double-sided promotional flyer designed to generate immediate footfall or event attendance.",
+      "idealCustomer": "Local businesses, restaurants, nightlife, and events running targeted promotions.",
+      "price": 180,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £180 / project",
+      "revisionCount": "2 revision rounds",
+      "turnaroundTime": "2–3 business days",
+      "features": [
+        "Single or double-sided design (A6, A5, or DL format)",
+        "Print-ready PDF with industry-standard 3mm bleeds & crop marks",
+        "High-contrast hierarchy & compelling call-to-action",
+        "Digital web version sized for WhatsApp & social sharing",
+        "QR code generation & integration"
+      ],
+      "deliverables": [
+        "Print-Ready Press PDF (CMYK, 300 DPI)",
+        "Digital Web JPG & PNG Formats",
+        "Print-Ready Bleed & Trim Verification"
+      ],
+      "notIncluded": [
+        "Multi-panel folding structures",
+        "Physical paper printing"
+      ],
+      "ctaText": "Request Essential Flyer",
+      "sortOrder": 1
+    },
+    {
+      "id": "professional",
+      "name": "Folded Leaflet / Brochure",
+      "badge": "Recommended",
+      "recommended": true,
+      "description": "Multi-panel folded leaflet or brochure design for products or services requiring detailed storytelling.",
+      "idealCustomer": "Clinics, financial advisors, real estate agencies, and service companies explaining comprehensive offerings.",
+      "price": 320,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £320 / project",
+      "revisionCount": "3 revision rounds",
+      "turnaroundTime": "4–6 business days",
+      "features": [
+        "Tri-fold, Z-fold, or bi-fold layout (A4 to DL or A5 folded)",
+        "Precise panel creep & fold tolerance engineering",
+        "Custom vector iconography & feature breakdown tables",
+        "High-resolution curated imagery integration",
+        "Print house finish recommendations (Silk, matte, or gloss coatings)"
+      ],
+      "deliverables": [
+        "Print-Ready Folded Dieline PDF (CMYK + Cut/Crease Marks)",
+        "Interactive Digital PDF Version for Email Distribution",
+        "Social Media Promotional Snippet Crop",
+        "Layered Editable Source Files"
+      ],
+      "notIncluded": [
+        "Physical printing / distribution logistics"
+      ],
+      "ctaText": "Request Folded Leaflet",
+      "sortOrder": 2
+    },
+    {
+      "id": "premium",
+      "name": "Campaign Leaflet Suite",
+      "badge": "Full Campaign",
+      "recommended": false,
+      "description": "Complete multi-format campaign print suite with copywriting polish, luxury print specs, and digital adaptations.",
+      "idealCustomer": "High-end showrooms, luxury hospitality, private healthcare, and corporate direct-mail campaigns.",
+      "price": 580,
+      "pricePrefix": "From ",
+      "currency": "£",
+      "duration": "project",
+      "pricingModel": "project",
+      "pricingLabel": "From £580 / project",
+      "revisionCount": "Comprehensive revisions",
+      "turnaroundTime": "7–10 business days",
+      "features": [
+        "Suite of 3 format adaptations (e.g. A5 flyer, Tri-fold brochure, and DL insert card)",
+        "Professional headline & copy refinement review",
+        "Luxury finish specifications (Spot UV, metallic foil stamping, embossed accents)",
+        "Digital interactive PDF with active links and bookmarks",
+        "Direct communication with your selected commercial print house"
+      ],
+      "deliverables": [
+        "Complete Print Package for All 3 Formats",
+        "Specialty Foil / Spot UV Mask Separation Layers",
+        "Digital Interactive PDF Suite",
+        "Full Vector Source Files (InDesign / Illustrator)",
+        "End-to-End Print Proof Quality Inspection"
+      ],
+      "notIncluded": [
+        "Physical printing invoices"
+      ],
+      "ctaText": "Request Campaign Suite",
+      "sortOrder": 3
+    }
+  ],
+  "addOns": [
+    {
+      "id": "addon-copy-review",
+      "name": "Headline & Copywriting Polish",
+      "description": "Professional proofreading and persuasive copy refinement to maximize conversion rates.",
+      "price": 80,
+      "currency": "£",
+      "unit": "one-time",
+      "priceType": "fixed"
+    },
+    {
+      "id": "addon-additional-format",
+      "name": "Additional Size Format Adaptation",
+      "description": "Resizing and layout re-flow of approved flyer for another paper format (e.g. A4 to A6).",
+      "price": 90,
+      "currency": "£",
+      "unit": "per format",
+      "priceType": "per_unit"
+    },
+    {
+      "id": "addon-rush-flyer",
+      "name": "24-Hour Express Print-Ready Handoff",
+      "description": "Emergency fast-track turnaround delivering final press PDFs within 24 hours.",
+      "price": 120,
+      "currency": "£",
+      "unit": "one-time",
+      "priceType": "fixed"
+    }
+  ],
+  "comparisonRows": [
+    {
+      "feature": "Format & Structure",
+      "category": "Layout",
+      "starter": "Single / Double-sided (A6/A5/DL)",
+      "professional": "Folded Tri-fold / Bi-fold Brochure",
+      "premium": "3 Formats (Flyer, Folded Leaflet, Insert)"
+    },
+    {
+      "feature": "Print-Ready Press PDFs",
+      "category": "Deliverables",
+      "starter": true,
+      "professional": true,
+      "premium": true
+    },
+    {
+      "feature": "Digital Web / WhatsApp Version",
+      "category": "Deliverables",
+      "starter": true,
+      "professional": "Interactive PDF",
+      "premium": "Interactive PDF + Social Assets"
+    },
+    {
+      "feature": "Luxury Finishes (Foil/Spot UV)",
+      "category": "Print Prep",
+      "starter": false,
+      "professional": "Optional add-on",
+      "premium": "Included (Mask layers prepared)"
+    },
+    {
+      "feature": "Copywriting Review",
+      "category": "Content",
+      "starter": "Client provided",
+      "professional": "Minor proofing",
+      "premium": "Headline & CTA polish included"
+    },
+    {
+      "feature": "Revision Rounds",
+      "category": "Service",
+      "starter": "2 rounds",
+      "professional": "3 rounds",
+      "premium": "Comprehensive revisions"
+    }
+  ],
+  "whoIsThisFor": {
+    "starter": "Businesses with a focused promotion, event launch, or special discount offer needing an eye-catching flyer fast.",
+    "professional": "Companies with multiple service tiers, medical clinics, or property developments requiring folded panels for detailed storytelling.",
+    "premium": "Luxury brands, corporate marketing teams, and direct-mail campaigns demanding superior print finishes and multi-format collateral."
+  }
 }
