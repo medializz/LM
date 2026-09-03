@@ -1,0 +1,6 @@
+# =============================================================================
+# LIZZDO MEDIA EDGE REDIRECT RULES
+# =============================================================================
+
+# Explicit HTTP to HTTPS redirection
+http://media.lizzdo.com/* https://media.lizzdo.com/:splat 301!

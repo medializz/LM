@@ -3,6 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Immediate Insecure HTTP -> HTTPS Strict Upgrade Protocol -->
+    <script>
+      (function() {
+        if (window.location.protocol === 'http:' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+          window.location.replace('https://' + window.location.host + window.location.pathname + window.location.search + window.location.hash);
+        }
+      })();
+    </script>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+
     <title>Lizzdo Media — Creative & Digital Agency | Cardiff, UK & Worldwide</title>
     <meta name="description" content="Lizzdo Media is a creative and digital agency based in Cardiff, South Wales, crafting high-impact brand identities, packaging systems, high-speed websites, and digital marketing for clients across the UK and worldwide." />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />

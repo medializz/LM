@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.0] - 2026-09-03
+
+### Fixed
+- **In-App Browser & Insecure Connection Warning Fix (BUG-018)**:
+  - Discovered root cause: `http://media.lizzdo.com/` was responding with `200 OK` without redirecting, causing Instagram's in-app Android browser (Chromium WebView) to flag the unencrypted page with interactive form inputs as "This website is not using a secure connection".
+  - Implemented synchronous pre-render protocol upgrade script in `<head>` of `index.html` and `public/admin/index.html` to instantly replace location before HTML parsing, form creation, or React hydration.
+  - Upgraded GitHub Pages SPA router fallback script in `public/404.html` to enforce `https://` on all deep links.
+  - Added `Content-Security-Policy: upgrade-insecure-requests` directive to ensure all browser network calls are upgraded to HTTPS.
+  - Added `public/_headers` defining strict HSTS (`max-age=31536000; includeSubDomains; preload`), `X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN`, and strict Referrer Policy.
+  - Added `public/_redirects` to establish explicit HTTP to HTTPS 301 edge redirects.
+  - Fully documented the required Cloudflare Edge settings (**Always Use HTTPS**, **Automatic HTTPS Rewrites**, and **HSTS**) in `BRAIN.md`.
+
+---
+
 ## [1.1.0] - 2026-09-03
 
 ### Added

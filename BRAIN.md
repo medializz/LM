@@ -1,7 +1,7 @@
 # BRAIN.md — Lizzdo Media Persistent Engineering & Architectural Memory
 
-**Document Version:** 1.1.0  
-**Project Version:** 1.1.0  
+**Document Version:** 1.2.0  
+**Project Version:** 1.2.0  
 **Project Name:** Lizzdo Media  
 **Repository:** `medializz/LM`  
 **Production Domain:** `https://media.lizzdo.com/`  
@@ -17,6 +17,7 @@
 | Subsystem | Status | Verification & Notes |
 | :--- | :--- | :--- |
 | **Production Website** | 🟢 **LIVE** | Serving at `https://media.lizzdo.com/` via Cloudflare + GitHub Pages |
+| **HTTPS & SSL/TLS Security** | 🟢 **SECURED** | Synchronous pre-render upgrade script, CSP `upgrade-insecure-requests`, HSTS headers, and Cloudflare Edge HTTPS enforcement |
 | **Build Pipeline** | 🟢 **PASSING** | Vite 6 + React 19 + TypeScript 5.8 compiles with zero errors |
 | **TypeScript / Lint** | 🟢 **PASSING** | `tsc --noEmit` runs 100% clean across all modules |
 | **Decap CMS Engine** | 🟢 **WORKING** | Configured in `/public/admin/config.yml` with 11 full collections |
@@ -578,7 +579,44 @@ When a visitor accesses a direct deep link (e.g. `https://media.lizzdo.com/servi
 
 ---
 
-## 17. COMPONENT MAP & RESPONSIBILITY TABLE
+## 17. HTTPS, SSL/TLS, AND EDGE SECURITY ARCHITECTURE
+
+### 17.1 Edge & Origin Architecture
+- **Production URL:** `https://media.lizzdo.com/`
+- **DNS / Edge CDN:** Cloudflare (Proxied / Orange-Clouded `104.21.33.54`, `172.67.189.12`)
+- **Hosting Origin:** GitHub Pages (`medializz/LM`)
+- **Edge Certificate:** Universal SSL (Google Trust Services / Let's Encrypt for `*.lizzdo.com`, valid and covering `media.lizzdo.com`)
+- **Origin Certificate:** GitHub Pages custom domain TLS or Cloudflare Full SSL encryption
+
+### 17.2 Multi-Layered Defense Against Insecure Connections & In-App Browser Warnings
+When mobile users tap links from the Instagram bio or external apps, browsers (especially Android WebView and Chrome Mobile) inspect whether the initial document is requested over insecure HTTP port 80 and whether interactive input forms exist. If served over plain HTTP, Chromium displays:
+> *"This website is not using a secure connection. Any sensitive information you enter on this site (for example, passwords or credit cards) could be stolen by attackers."*
+
+To permanently eliminate this vulnerability and protect users:
+1. **Layer 1: Synchronous Pre-Render Protocol Upgrade (`index.html`)**
+   - Executed as the first synchronous script in `<head>`, before stylesheets, fonts, DOM body, or React hydration.
+   - Immediately invokes `window.location.replace('https://' + location.host + ...)` if accessed over `http:`.
+   - Aborts insecure page rendering before Chromium triggers form security warnings.
+2. **Layer 2: Content Security Policy Upgrade Directive**
+   - `<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />` in `index.html` and `public/admin/index.html`.
+   - Instructs browser engines to automatically upgrade all network requests (images, scripts, styles, APIs) to HTTPS.
+3. **Layer 3: Strict HTTPS GitHub Pages Fallback (`public/404.html`)**
+   - SPA route redirection script strictly upgrades any insecure protocol to `https://` before redirecting to the query-based SPA route.
+4. **Layer 4: Cloudflare Edge Headers & Redirects (`public/_headers`, `public/_redirects`)**
+   - `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload`
+   - `X-Content-Type-Options: nosniff`
+   - `X-Frame-Options: SAMEORIGIN`
+   - `Referrer-Policy: strict-origin-when-cross-origin`
+   - `Permissions-Policy: camera=(), microphone=(), geolocation=()`
+5. **Layer 5: Cloudflare Dashboard Configuration Requirements (Manual Verification)**
+   - **Always Use HTTPS:** Navigate to **Cloudflare Dashboard** → `lizzdo.com` → **SSL/TLS** → **Edge Certificates** → Toggle **Always Use HTTPS** to **ON**.
+   - **HSTS:** Enable HSTS with `max-age=31536000`, include subdomains, and preload.
+   - **Automatic HTTPS Rewrites:** Toggle **ON**.
+   - **SSL/TLS Mode:** Set to **Full** (or **Full (strict)** if GitHub Pages origin cert is verified).
+
+---
+
+## 18. COMPONENT MAP & RESPONSIBILITY TABLE
 
 | Component | File Path | Safe to Edit? | Key Dependencies & Notes |
 | :--- | :--- | :---: | :--- |
@@ -607,7 +645,7 @@ When a visitor accesses a direct deep link (e.g. `https://media.lizzdo.com/servi
 
 ---
 
-## 18. "WHERE DO I EDIT THIS?" PRACTICAL LOOKUP TABLE
+## 19. "WHERE DO I EDIT THIS?" PRACTICAL LOOKUP TABLE
 
 | Task | Primary Location (CMS or Code) | Specific File / Setting |
 | :--- | :--- | :--- |
@@ -631,7 +669,7 @@ When a visitor accesses a direct deep link (e.g. `https://media.lizzdo.com/servi
 
 ---
 
-## 19. PERMANENT BUG TRACKER
+## 20. PERMANENT BUG TRACKER
 
 *Historical records of all resolved, investigated, and verified bugs:*
 
@@ -654,10 +692,11 @@ When a visitor accesses a direct deep link (e.g. `https://media.lizzdo.com/servi
 | **BUG-015** | Header dropdown menu and `index.html` noscript directory omitted newly created services (`flyer-design`, `content-creation`) | `src/content/navigation.json`, `index.html` | Medium | **FIXED** | Synchronized navigation dropdown items and noscript fallback links to represent all 14 active agency services. |
 | **BUG-016** | Cross-service bundle matching in `getBundlesForService()` failed when service slugs used common aliases (`website-development` vs `web-development`) | `src/data/cmsContent.ts`, `src/content/bundles.json` | High | **FIXED** | Enhanced bundle matcher to support slug normalization and reciprocal service aliases across all three productized bundles. |
 | **BUG-017** | Contact Page pricing FAQ stated that agency did not provide fixed pricing sheets despite launching productized service packages | `src/components/pages/ContactPage.tsx` | Low | **FIXED** | Updated FAQ to accurately describe the 3-tier transparent service packages alongside custom enterprise scoping. |
+| **BUG-018** | Instagram in-app browser & Android WebView triggered "This website is not using a secure connection" warning when opened from Instagram bio | `index.html`, `public/404.html`, `public/admin/index.html`, `public/_headers`, `public/_redirects` | Critical | **FIXED** | Implemented multi-layered defense: synchronous pre-render protocol upgrade in `<head>`, CSP `upgrade-insecure-requests`, strict HTTPS in `404.html`, HSTS edge headers in `_headers`, and edge redirect rules in `_redirects`. Documented required Cloudflare "Always Use HTTPS" toggle. |
 
 ---
 
-## 20. ARCHITECTURAL DECISION RECORDS (ADR)
+## 21. ARCHITECTURAL DECISION RECORDS (ADR)
 
 ### ADR-001: Git-Backed Decap CMS with Static JSON Bundling
 - **Decision:** Use Decap CMS writing directly to `src/content/**/*.json` combined with Vite's `import.meta.glob({ eager: true })`.
@@ -675,9 +714,13 @@ When a visitor accesses a direct deep link (e.g. `https://media.lizzdo.com/servi
 - **Decision:** Implement `src/utils/whatsapp.ts` as the single source of truth for phone number sanitization, WhatsApp wa.me generation, `tel:` normalization, and `mailto:` links.
 - **Reason:** Ensures consistent formatting, eliminates broken deep-links across different regions/browsers, and provides context-aware customer messaging for high lead conversion.
 
+### ADR-005: Strict HTTPS Protocol Enforcement & Insecure Form Protection
+- **Decision:** Implement synchronous pre-render protocol upgrading in `<head>` and declare `Content-Security-Policy: upgrade-insecure-requests` in document markup alongside Cloudflare edge HSTS headers.
+- **Reason:** Guarantees that mobile in-app browsers (such as Instagram WebView and Android Chromium) never parse form inputs under an unencrypted HTTP session, immediately preventing "This website is not using a secure connection" security dialogs.
+
 ---
 
-## 21. DO NOT BREAK RULES
+## 22. DO NOT BREAK RULES
 
 1. **DO NOT** hardcode content in React components when a corresponding CMS field exists in `src/content/`.
 2. **DO NOT** remove or alter `public/404.html` — it is required for GitHub Pages SPA deep linking.
@@ -687,10 +730,11 @@ When a visitor accesses a direct deep link (e.g. `https://media.lizzdo.com/servi
 6. **DO NOT** create unused CMS fields in `config.yml` without creating a corresponding consumer in React components.
 7. **DO NOT** disable TypeScript strict typing (`tsc --noEmit` must always pass with zero errors).
 8. **DO NOT** delete historical entries in the Bug Tracker or Changelog.
+9. **DO NOT** remove the pre-render HTTPS protocol upgrade script from `index.html` or `public/404.html`.
 
 ---
 
-## 22. AI AGENT OPERATING INSTRUCTIONS
+## 23. AI AGENT OPERATING INSTRUCTIONS
 
 *Mandatory guidelines for any AI coding agent working in this repository:*
 
