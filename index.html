@@ -92,14 +92,26 @@
     </script>
 
     <script type="text/javascript">
-      // GitHub Pages Single Page App routing receiver
+      // GitHub Pages Single Page App routing receiver (handles ?p=/path and ?/path)
       (function(l) {
-        if (l.search[1] === '/' ) {
+        if (!l.search) return;
+        var p = null;
+        var q = '';
+        if (l.search.slice(0, 3) === '?p=') {
+          var searchParams = new URLSearchParams(l.search);
+          p = searchParams.get('p');
+          var rawQ = searchParams.get('q');
+          q = rawQ ? ('?' + rawQ.replace(/~and~/g, '&')) : '';
+        } else if (l.search[1] === '/') {
           var decoded = l.search.slice(1).split('&').map(function(s) { 
-            return s.replace(/~and~/g, '&')
+            return s.replace(/~and~/g, '&');
           }).join('?');
+          p = decoded;
+        }
+        if (p) {
+          var cleanPath = p.startsWith('/') ? p : ('/' + p);
           window.history.replaceState(null, null,
-              l.pathname.slice(0, -1) + decoded + l.hash
+            l.pathname.replace(/\/$/, '') + cleanPath + q + l.hash
           );
         }
       }(window.location))

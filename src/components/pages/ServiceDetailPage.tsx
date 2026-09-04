@@ -13,6 +13,7 @@ import { SEOHead } from '../SEOHead';
 import { navigateTo } from '../../utils/router';
 import { ServiceIcon } from '../ServiceIcons';
 import { createServiceWhatsAppUrl } from '../../utils/whatsapp';
+import { safeFormatPrice } from '../../utils/format';
 import { getWorksForService, getRelatedServices, getBundlesForService } from '../../data/cmsContent';
 import { ProjectInquiryChoiceModal } from '../ProjectInquiryChoiceModal';
 import {
@@ -270,7 +271,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
                   className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-slate-300 hover:text-white text-xs font-mono transition-colors"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-[#ffbe1a]" />
-                  <span>Packages from {service.currency || '£'}{service.startingPrice.toLocaleString()}{service.duration ? ` / ${service.duration}` : ''}</span>
+                  <span>Packages from {service.currency || '£'}{safeFormatPrice(service.startingPrice)}{service.duration ? ` / ${service.duration}` : ''}</span>
                 </a>
               )}
             </div>

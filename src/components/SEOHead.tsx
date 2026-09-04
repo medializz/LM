@@ -4,6 +4,7 @@ export interface SEOHeadProps {
   title?: string;
   description?: string;
   canonicalUrl?: string;
+  keywords?: string;
   ogImage?: string;
   type?: 'website' | 'article' | 'service';
   noindex?: boolean;
@@ -17,6 +18,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
   title = "Lizzdo Media | Branding, Graphic Design, Web Development & Digital Marketing",
   description = "Lizzdo Media provides branding, graphic design, social media content, digital marketing and website development for businesses looking to build a stronger digital presence.",
   canonicalUrl = "https://media.lizzdo.com/",
+  keywords,
   ogImage = "https://media.lizzdo.com/uploads/og-cover.png",
   type = "website",
   noindex = false,
@@ -49,6 +51,9 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
 
     // 2. Standard Meta Tags
     setMetaTag('name', 'description', description);
+    if (keywords) {
+      setMetaTag('name', 'keywords', keywords);
+    }
     
     // Meta Robots
     if (noindex) {

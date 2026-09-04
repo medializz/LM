@@ -3,6 +3,7 @@ import { Plus, Check, MessageCircle, ArrowRight, Calculator, SlidersHorizontal, 
 import { ServicePackage, ServiceAddon, ServiceCategory, SiteSettings } from '../../../types';
 import { createPackageWhatsAppUrl } from '../../../utils/whatsapp';
 import { navigateTo } from '../../../utils/router';
+import { safeFormatPrice } from '../../../utils/format';
 
 interface AddonSelectorProps {
   service: ServiceCategory;
@@ -48,8 +49,8 @@ export const AddonSelector: React.FC<AddonSelectorProps> = ({
   };
 
   const calculatedTotal = useMemo(() => {
-    const basePrice = selectedPkg?.price || 0;
-    const addonsTotal = selectedAddons.reduce((sum, item) => sum + item.price, 0);
+    const basePrice = Number(selectedPkg?.price) || 0;
+    const addonsTotal = selectedAddons.reduce((sum, item) => sum + (Number(item.price) || 0), 0);
     return basePrice + addonsTotal;
   }, [selectedPkg, selectedAddons]);
 
@@ -61,7 +62,7 @@ export const AddonSelector: React.FC<AddonSelectorProps> = ({
       packageName: selectedPkg?.name || 'Custom Package',
       duration: selectedPkg?.duration,
       selectedAddons: selectedAddons.map((a) => a.name),
-      estimatedTotal: `${currency}${calculatedTotal.toLocaleString()}`
+      estimatedTotal: `${currency}${safeFormatPrice(calculatedTotal)}`
     });
   }, [service, selectedPkg, selectedAddons, siteSettings, calculatedTotal, currency]);
 
@@ -171,7 +172,7 @@ export const AddonSelector: React.FC<AddonSelectorProps> = ({
 
                   <div className="text-right shrink-0">
                     <span className="text-sm font-bold font-mono text-[#ffbe1a]">
-                      +{addon.currency || '£'}{addon.price.toLocaleString()}
+                      +{addon.currency || '£'}{safeFormatPrice(addon.price)}
                     </span>
                     {addon.unit && (
                       <span className="block text-[10px] font-mono text-slate-500">
@@ -200,9 +201,9 @@ export const AddonSelector: React.FC<AddonSelectorProps> = ({
             {/* Base Tier Line Item */}
             <div className="space-y-2">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-slate-300 font-medium">Base: {selectedPkg?.name}</span>
+                <span className="text-slate-300 font-medium">Base: {selectedPkg?.name || 'Base Package'}</span>
                 <span className="font-mono text-white font-bold">
-                  £{selectedPkg?.price.toLocaleString()}
+                  £{safeFormatPrice(selectedPkg?.price)}
                 </span>
               </div>
 
@@ -213,7 +214,7 @@ export const AddonSelector: React.FC<AddonSelectorProps> = ({
                   {selectedAddons.map((addon) => (
                     <div key={addon.id} className="flex items-center justify-between text-xs text-slate-300 pl-2">
                       <span className="truncate pr-2">• {addon.name}</span>
-                      <span className="font-mono text-[#ffbe1a] shrink-0">+£{addon.price}</span>
+                      <span className="font-mono text-[#ffbe1a] shrink-0">+£{safeFormatPrice(addon.price)}</span>
                     </div>
                   ))}
                 </div>
@@ -230,7 +231,7 @@ export const AddonSelector: React.FC<AddonSelectorProps> = ({
                 <span className="text-xs font-mono uppercase font-bold text-slate-400">Estimated Total:</span>
                 <div className="text-right">
                   <span className="text-2xl sm:text-3xl font-black font-['Outfit'] text-white">
-                    £{calculatedTotal.toLocaleString()}
+                    £{safeFormatPrice(calculatedTotal)}
                   </span>
                   {selectedPkg?.duration && (
                     <span className="text-xs font-mono text-slate-400 block">

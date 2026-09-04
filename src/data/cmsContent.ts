@@ -401,11 +401,15 @@ export function getWorksForService(
     if (seenSlugs.has(proj.slug)) continue;
 
     const hasServiceKeyword = proj.services && proj.services.some(str => {
-      const lower = str.toLowerCase();
-      return lower === serviceTitle.toLowerCase() ||
-        lower === serviceSlug.toLowerCase() ||
-        (serviceTitle && lower.includes(serviceTitle.toLowerCase())) ||
-        (serviceCat && lower.includes(serviceCat.toLowerCase()));
+      if (!str) return false;
+      const lower = typeof str === 'string' ? str.toLowerCase() : String(str).toLowerCase();
+      const sTitleLower = serviceTitle ? serviceTitle.toLowerCase() : '';
+      const sSlugLower = serviceSlug ? serviceSlug.toLowerCase() : '';
+      const sCatLower = serviceCat ? serviceCat.toLowerCase() : '';
+      return (sTitleLower && lower === sTitleLower) ||
+        (sSlugLower && lower === sSlugLower) ||
+        (sTitleLower && lower.includes(sTitleLower)) ||
+        (sCatLower && lower.includes(sCatLower));
     });
 
     if (hasServiceKeyword) {
@@ -493,14 +497,17 @@ export function getServicesForWork(
   // 3. Match from work.services string tags
   if (workObj?.services && workObj.services.length > 0) {
     for (const tag of workObj.services) {
-      const tagLower = tag.toLowerCase();
+      if (!tag) continue;
+      const tagLower = typeof tag === 'string' ? tag.toLowerCase() : String(tag).toLowerCase();
       for (const srv of servicesList) {
         if (seenSlugs.has(srv.slug)) continue;
+        const srvTitleLower = srv.title ? srv.title.toLowerCase() : '';
+        const srvSlugLower = srv.slug ? srv.slug.toLowerCase() : '';
         if (
-          srv.title.toLowerCase() === tagLower ||
-          srv.slug.toLowerCase() === tagLower ||
-          srv.title.toLowerCase().includes(tagLower) ||
-          tagLower.includes(srv.title.toLowerCase())
+          (srvTitleLower && srvTitleLower === tagLower) ||
+          (srvSlugLower && srvSlugLower === tagLower) ||
+          (srvTitleLower && srvTitleLower.includes(tagLower)) ||
+          (srvTitleLower && tagLower.includes(srvTitleLower))
         ) {
           matchedServices.push(srv);
           seenSlugs.add(srv.slug);

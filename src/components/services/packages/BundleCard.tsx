@@ -3,6 +3,7 @@ import { PackageOpen, Sparkles, Check, ArrowRight, MessageCircle } from 'lucide-
 import { ServiceBundle, SiteSettings, ServiceCategory } from '../../../types';
 import { createBundleWhatsAppUrl } from '../../../utils/whatsapp';
 import { navigateTo } from '../../../utils/router';
+import { safeFormatPrice } from '../../../utils/format';
 
 interface BundleCardProps {
   bundle: ServiceBundle;
@@ -22,7 +23,7 @@ export const BundleCard: React.FC<BundleCardProps> = ({
     siteSettings?.whatsappNumber,
     siteSettings?.siteName,
     bundle.name,
-    `${currency}${bundle.startingPrice.toLocaleString()}`
+    `${currency}${safeFormatPrice(bundle.startingPrice)}`
   );
 
   const handleWhatsApp = (e: React.MouseEvent) => {
@@ -33,7 +34,7 @@ export const BundleCard: React.FC<BundleCardProps> = ({
   const handleContact = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (onOpenContact) {
-      onOpenContact(`Service Bundle: ${bundle.name} (${currency}${bundle.startingPrice.toLocaleString()})`);
+      onOpenContact(`Service Bundle: ${bundle.name} (${currency}${safeFormatPrice(bundle.startingPrice)})`);
     } else {
       navigateTo(`/contact?bundle=${encodeURIComponent(bundle.id)}`);
     }
@@ -79,7 +80,7 @@ export const BundleCard: React.FC<BundleCardProps> = ({
         {/* Pricing */}
         <div className="pt-2 pb-3 border-b border-white/[0.08] flex items-baseline gap-3 flex-wrap">
           <span className="text-2xl sm:text-3xl font-black font-['Outfit'] text-white">
-            {currency}{bundle.startingPrice.toLocaleString()}
+            {currency}{safeFormatPrice(bundle.startingPrice)}
           </span>
           <span className="text-xs font-mono text-slate-400">
             / {bundle.duration || 'project package'}

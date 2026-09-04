@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.2] - 2026-09-04
+
+### Fixed
+- **Blank Service & Work Detail Pages Resolution (BUG-020)**:
+  - **Global Error Boundary Protection**: Created `/src/components/ErrorBoundary.tsx` wrapping the application root to trap unexpected rendering exceptions and present a clean recovery UI rather than an empty blank screen.
+  - **SPA Route Receiver Harmonization**: Fixed mismatch in `index.html` where GitHub Pages 404 redirection format `?p=/services/...` was bypassed by a legacy check expecting `?/`. `index.html` now handles both `?p=` parameters and `?/` queries to immediately restore the canonical path on deep links via `window.history.replaceState`.
+  - **Safe Currency & Price Formatting (`src/utils/format.ts`)**: Built `safeFormatPrice` and replaced all direct `.toLocaleString()` calls across `AddonSelector.tsx`, `PackageCard.tsx`, `BundleCard.tsx`, `ServiceDetailPage.tsx`, `ServicesSection.tsx`, and `ServicesIndexPage.tsx`. Prevents `TypeError: Cannot read properties of undefined (reading 'toLocaleString')` when CMS packages or add-ons contain optional or unpriced tiers.
+  - **Defensive String & Keyword Matching**: Hardened `getWorksForService()` and `getServicesForWork()` in `src/data/cmsContent.ts` and `WorkDetailPage.tsx` against non-string deliverables, tags, and category items, preventing runtime `TypeError: .toLowerCase is not a function`.
+  - **TypeScript Type Definitions**: Installed `@types/react` and `@types/react-dom`, aligned `ContactContent` interface with Decap CMS attributes, and updated `SEOHead` and `ServiceHeroVisual` component props for strict type safety.
+
+---
+
 ## [1.2.1] - 2026-09-04
 
 ### Fixed

@@ -7,12 +7,15 @@ import {
 import { LizzdoLogo } from '../LizzdoLogo';
 
 interface ServiceHeroVisualProps {
-  slug: string;
+  slug?: string;
+  visualType?: string;
+  title?: string;
   className?: string;
 }
 
-export const ServiceHeroVisual: React.FC<ServiceHeroVisualProps> = ({ slug, className = '' }) => {
-  switch (slug) {
+export const ServiceHeroVisual: React.FC<ServiceHeroVisualProps> = ({ slug, visualType, className = '' }) => {
+  const activeSlug = slug || visualType || '';
+  switch (activeSlug) {
     case 'brand-identity':
       return (
         <div className={`w-full bg-gradient-to-br from-neutral-900 via-neutral-950 to-black border border-neutral-800/80 rounded-2xl p-6 sm:p-8 relative overflow-hidden shadow-2xl ${className}`}>

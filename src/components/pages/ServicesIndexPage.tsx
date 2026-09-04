@@ -6,6 +6,7 @@ import { SEOHead } from '../SEOHead';
 import { ServiceIcon } from '../ServiceIcons';
 import { navigateTo } from '../../utils/router';
 import { createWhatsAppUrl } from '../../utils/whatsapp';
+import { safeFormatPrice } from '../../utils/format';
 
 interface ServicesIndexPageProps {
   cmsData: DecapCMSData;
@@ -147,7 +148,7 @@ export const ServicesIndexPage: React.FC<ServicesIndexPageProps> = ({
                 <div className="pt-5 mt-4 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono">
                   {service.startingPrice ? (
                     <span className="text-slate-300">
-                      From <span className="text-white font-bold">{service.currency || '£'}{service.startingPrice.toLocaleString()}</span>{service.duration ? ` / ${service.duration}` : ''}
+                      From <span className="text-white font-bold">{service.currency || '£'}{safeFormatPrice(service.startingPrice)}</span>{service.duration ? ` / ${service.duration}` : ''}
                     </span>
                   ) : (
                     <span className="text-slate-400">Custom Scope</span>

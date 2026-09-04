@@ -496,6 +496,9 @@ export interface AboutContent {
 
 export interface ContactContent {
   heading: string;
+  title?: string;
+  headline?: string;
+  eyebrow?: string;
   subtitle?: string;
   tagline?: string;
   description: string;
@@ -517,6 +520,14 @@ export interface ContactContent {
   contactFormType?: 'native' | 'embed';
   contactFormUrl?: string;
   contactFormTitle?: string;
+  formType?: string;
+  formActionUrl?: string;
+  formEmbedUrl?: string;
+  formTitle?: string;
+  formSubtitle?: string;
+  formSubmitText?: string;
+  metaTitle?: string;
+  metaDescription?: string;
   seoTitle?: string;
   seoDescription?: string;
   ogImage?: string;

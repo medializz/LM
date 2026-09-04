@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Check, X, ArrowRight, MessageCircle, Clock, RotateCcw, Sparkles, ChevronDown, ChevronUp } from 'lucide-react';
 import { ServicePackage, ServiceCategory, SiteSettings } from '../../../types';
 import { createPackageWhatsAppUrl } from '../../../utils/whatsapp';
+import { safeFormatPrice } from '../../../utils/format';
 
 interface PackageCardProps {
   pkg: ServicePackage;
@@ -29,7 +30,7 @@ export const PackageCard: React.FC<PackageCardProps> = ({
     serviceTitle: service.title,
     packageName: pkg.name,
     duration: pkg.duration,
-    estimatedTotal: `${pkg.currency || '£'}${pkg.price.toLocaleString()}`
+    estimatedTotal: `${pkg.currency || '£'}${safeFormatPrice(pkg.price)}`
   });
 
   const handleWhatsApp = (e: React.MouseEvent) => {
@@ -89,7 +90,7 @@ export const PackageCard: React.FC<PackageCardProps> = ({
               {pkg.pricePrefix || 'From '}
             </span>
             <span className="text-3xl sm:text-4xl font-black font-['Outfit'] text-white tracking-tight">
-              {pkg.currency || '£'}{pkg.price.toLocaleString()}
+              {pkg.currency || '£'}{safeFormatPrice(pkg.price)}
             </span>
             {pkg.duration && (
               <span className="text-xs font-mono text-slate-400">
@@ -123,7 +124,7 @@ export const PackageCard: React.FC<PackageCardProps> = ({
             What's Included:
           </span>
           <ul className="space-y-2.5">
-            {pkg.features.map((feature, idx) => (
+            {(pkg.features || []).map((feature, idx) => (
               <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-200">
                 <div className="w-4 h-4 rounded-full bg-[#ffbe1a]/15 border border-[#ffbe1a]/40 flex items-center justify-center shrink-0 mt-0.5 text-[#ffbe1a]">
                   <Check className="w-2.5 h-2.5 stroke-[3]" />

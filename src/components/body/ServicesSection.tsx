@@ -3,6 +3,7 @@ import { ServiceCategory } from '../../types';
 import { ServiceIcon } from '../ServiceIcons';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
+import { safeFormatPrice } from '../../utils/format';
 
 interface ServicesSectionProps {
   services: ServiceCategory[];
@@ -110,7 +111,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               {service.startingPrice && (
                 <div className="mt-2.5">
                   <span className="text-[10px] font-mono text-[#ffbe1a] bg-[#ffbe1a]/10 group-hover:bg-[#ffbe1a]/20 px-2 py-0.5 rounded-full border border-[#ffbe1a]/30 transition-colors">
-                    From {service.currency || '£'}{service.startingPrice.toLocaleString()}
+                    From {service.currency || '£'}{safeFormatPrice(service.startingPrice)}
                   </span>
                 </div>
               )}

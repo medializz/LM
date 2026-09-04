@@ -308,10 +308,12 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
                     <span className="text-slate-400 font-mono block text-xs mb-1.5">Services & Deliverables</span>
                     <div className="flex flex-wrap gap-1.5">
                       {(project.services || project.tools || []).map((t, idx) => {
+                        const tStr = typeof t === 'string' ? t : String(t || '');
+                        const tLower = tStr.toLowerCase();
                         const matchedService = services.find(s => 
-                          s.slug === t || 
-                          s.title.toLowerCase() === t.toLowerCase() ||
-                          s.category.toLowerCase() === t.toLowerCase()
+                          (s.slug && s.slug.toLowerCase() === tLower) || 
+                          (s.title && s.title.toLowerCase() === tLower) ||
+                          (s.category && s.category.toLowerCase() === tLower)
                         );
                         if (matchedService) {
                           return (
