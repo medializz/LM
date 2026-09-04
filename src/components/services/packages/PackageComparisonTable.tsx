@@ -20,11 +20,8 @@ export const PackageComparisonTable: React.FC<PackageComparisonTableProps> = ({
   // Group rows by category if available, otherwise flat
   const categories = Array.from(new Set(comparisonRows.map((r) => r.category || 'Features & Scope')));
 
-  const renderCellContent = (value: string, isHighlighted: boolean = false) => {
-    const trimmed = (value || '').trim();
-    const lower = trimmed.toLowerCase();
-
-    if (lower === 'yes' || lower === 'true' || lower === 'included') {
+  const renderCellContent = (value: string | boolean | number | null | undefined, isHighlighted: boolean = false) => {
+    if (value === true) {
       return (
         <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#ffbe1a]/15 text-[#ffbe1a]">
           <Check className="w-3.5 h-3.5 stroke-[3]" />
@@ -32,7 +29,26 @@ export const PackageComparisonTable: React.FC<PackageComparisonTableProps> = ({
       );
     }
 
-    if (lower === 'no' || lower === 'false' || lower === '-' || lower === 'none' || lower === 'n/a') {
+    if (value === false || value === null || value === undefined) {
+      return (
+        <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white/[0.04] text-slate-500">
+          <Minus className="w-3 h-3" />
+        </span>
+      );
+    }
+
+    const trimmed = String(value).trim();
+    const lower = trimmed.toLowerCase();
+
+    if (lower === 'yes' || lower === 'true' || lower === 'included' || lower === '✓' || lower === 'check') {
+      return (
+        <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#ffbe1a]/15 text-[#ffbe1a]">
+          <Check className="w-3.5 h-3.5 stroke-[3]" />
+        </span>
+      );
+    }
+
+    if (lower === 'no' || lower === 'false' || lower === '-' || lower === 'none' || lower === 'n/a' || lower === '') {
       return (
         <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-white/[0.04] text-slate-500">
           <Minus className="w-3 h-3" />
@@ -191,7 +207,7 @@ export const PackageComparisonTable: React.FC<PackageComparisonTableProps> = ({
       {/* Mobile Stacked Rows */}
       <div className="md:hidden space-y-3">
         {comparisonRows.map((row, idx) => {
-          const value = row[activeMobileTab] || '-';
+          const value = row[activeMobileTab] ?? '-';
           return (
             <div
               key={idx}

@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.1] - 2026-09-04
+
+### Fixed
+- **Uncaught TypeError in Package Comparison Table (BUG-019)**:
+  - Fixed runtime error `Uncaught TypeError: (value || "").trim is not a function` in `PackageComparisonTable.tsx`.
+  - Service JSON documents contain boolean values (`true` and `false`) for tier inclusion in `comparisonRows`. When a boolean `true` was evaluated as `(value || '').trim()`, JavaScript attempted to invoke `.trim()` on a boolean primitive.
+  - Hardened `renderCellContent` to explicitly handle booleans (`true` displays checkmark, `false` displays minus), `null`/`undefined`, numbers, and strings safely with `String(value).trim()`.
+  - Updated mobile stacked comparison rows to use nullish coalescing `row[activeMobileTab] ?? '-'` to preserve boolean values.
+
+---
+
 ## [1.2.0] - 2026-09-03
 
 ### Fixed

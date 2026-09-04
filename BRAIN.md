@@ -1,11 +1,11 @@
 # BRAIN.md — Lizzdo Media Persistent Engineering & Architectural Memory
 
-**Document Version:** 1.2.0  
-**Project Version:** 1.2.0  
+**Document Version:** 1.2.1  
+**Project Version:** 1.2.1  
 **Project Name:** Lizzdo Media  
 **Repository:** `medializz/LM`  
 **Production Domain:** `https://media.lizzdo.com/`  
-**Last Updated:** 2026-09-03  
+**Last Updated:** 2026-09-04  
 **Maintained By:** Lead Software Architect & AI Engineering Agent
 
 ---
@@ -693,6 +693,7 @@ To permanently eliminate this vulnerability and protect users:
 | **BUG-016** | Cross-service bundle matching in `getBundlesForService()` failed when service slugs used common aliases (`website-development` vs `web-development`) | `src/data/cmsContent.ts`, `src/content/bundles.json` | High | **FIXED** | Enhanced bundle matcher to support slug normalization and reciprocal service aliases across all three productized bundles. |
 | **BUG-017** | Contact Page pricing FAQ stated that agency did not provide fixed pricing sheets despite launching productized service packages | `src/components/pages/ContactPage.tsx` | Low | **FIXED** | Updated FAQ to accurately describe the 3-tier transparent service packages alongside custom enterprise scoping. |
 | **BUG-018** | Instagram in-app browser & Android WebView triggered "This website is not using a secure connection" warning when opened from Instagram bio | `index.html`, `public/404.html`, `public/admin/index.html`, `public/_headers`, `public/_redirects` | Critical | **FIXED** | Implemented multi-layered defense: synchronous pre-render protocol upgrade in `<head>`, CSP `upgrade-insecure-requests`, strict HTTPS in `404.html`, HSTS edge headers in `_headers`, and edge redirect rules in `_redirects`. Documented required Cloudflare "Always Use HTTPS" toggle. |
+| **BUG-019** | Service comparison table threw `Uncaught TypeError: (value || "").trim is not a function` when rendering boolean values (`true`/`false`) in `comparisonRows` | `src/components/services/packages/PackageComparisonTable.tsx` | Critical | **FIXED** | Hardened `renderCellContent` to handle `boolean` primitives (`true` -> checkmark icon, `false` -> minus icon), `null`/`undefined`, `number`, and `string` via `String(value).trim()`. Updated mobile switcher to use nullish coalescing `??`. |
 
 ---
 
