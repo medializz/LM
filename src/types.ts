@@ -285,6 +285,8 @@ export interface BlogArticle {
   imageAlt?: string;
   visualType?: string;
   published?: boolean;
+  featured?: boolean;
+  canonicalUrl?: string;
   tags?: string[];
   keyTakeaways?: string[];
   faqs?: FAQItem[];
@@ -479,6 +481,14 @@ export interface LegalPage {
   content: string; // Markdown or rich text
 }
 
+export interface AboutValueItem {
+  id?: string;
+  title: string;
+  description: string;
+  iconKey?: string;
+  badge?: string;
+}
+
 export interface AboutContent {
   eyebrow: string;
   headlineLine1: string;
@@ -486,16 +496,25 @@ export interface AboutContent {
   introDescription: string;
   missionTitle: string;
   missionDescription: string;
+  missionPoints?: string[];
   visionTitle: string;
   visionDescription: string;
+  visionPoints?: string[];
   storyTitle: string;
   storyDescription: string;
+  storyParagraphs?: string[];
+  storyImage?: string;
+  storyBadge?: string;
+  valuesTitle?: string;
+  valuesDescription?: string;
+  values?: AboutValueItem[];
   ctaTitle: string;
   ctaDescription: string;
   ctaButtonText: string;
   ctaButtonUrl: string;
   seoTitle?: string;
   seoDescription?: string;
+  canonicalUrl?: string;
 }
 
 export interface ContactContent {

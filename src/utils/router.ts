@@ -39,7 +39,15 @@ export function parseRoute(pathname: string, search: string = window.location.se
 
   const serviceMatch = normalizedPath.match(/^\/services\/([a-zA-Z0-9_-]+)$/);
   if (serviceMatch) {
-    return { view: 'service-detail', slug: serviceMatch[1].toLowerCase(), path: `/services/${serviceMatch[1].toLowerCase()}` };
+    let serviceSlug = serviceMatch[1].toLowerCase();
+    // Canonical URL alias normalizations
+    if (serviceSlug === 'website-development') {
+      serviceSlug = 'web-development';
+    }
+    if (serviceSlug === 'ai-visuals-content') {
+      serviceSlug = 'ai-visual-content';
+    }
+    return { view: 'service-detail', slug: serviceSlug, path: `/services/${serviceSlug}` };
   }
 
   // 3. Work / Portfolio routes
@@ -146,15 +154,24 @@ export function useAppRoute(): AppRoute {
   );
 
   useEffect(() => {
+    // If current path was an alias, normalize address bar to canonical URL without refresh
+    if (window.location.pathname !== route.path && !window.location.search.includes('p=')) {
+      window.history.replaceState({}, '', route.path);
+    }
+
     const handleLocationChange = () => {
-      setRoute(parseRoute(window.location.pathname, window.location.search));
+      const nextRoute = parseRoute(window.location.pathname, window.location.search);
+      setRoute(nextRoute);
+      if (window.location.pathname !== nextRoute.path && !window.location.search.includes('p=')) {
+        window.history.replaceState({}, '', nextRoute.path);
+      }
     };
 
     window.addEventListener('popstate', handleLocationChange);
     return () => {
       window.removeEventListener('popstate', handleLocationChange);
     };
-  }, []);
+  }, [route.path]);
 
   return route;
 }

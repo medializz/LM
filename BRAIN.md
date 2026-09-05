@@ -1,11 +1,11 @@
 # BRAIN.md — Lizzdo Media Persistent Engineering & Architectural Memory
 
-**Document Version:** 1.2.1  
-**Project Version:** 1.2.1  
+**Document Version:** 1.4.0  
+**Project Version:** 1.4.0  
 **Project Name:** Lizzdo Media  
 **Repository:** `medializz/LM`  
 **Production Domain:** `https://media.lizzdo.com/`  
-**Last Updated:** 2026-09-04  
+**Last Updated:** 2026-09-05  
 **Maintained By:** Lead Software Architect & AI Engineering Agent
 
 ---
@@ -17,7 +17,11 @@
 | Subsystem | Status | Verification & Notes |
 | :--- | :--- | :--- |
 | **Production Website** | 🟢 **LIVE** | Serving at `https://media.lizzdo.com/` via Cloudflare + GitHub Pages |
-| **HTTPS & SSL/TLS Security** | 🟢 **SECURED** | Synchronous pre-render upgrade script, CSP `upgrade-insecure-requests`, HSTS headers, and Cloudflare Edge HTTPS enforcement |
+| **Search Visibility & SEO** | 🟢 **ADVANCED** | Complete Full Audit (Part 1) + Search-Intent Matrix (Part 49) documented in `/docs/SEARCH_VISIBILITY_MASTER_AUDIT.md` |
+| **Canonical URL System** | 🟢 **STANDARDIZED** | Clean URL alias normalization in `router.ts` (`web-development`, `ai-visual-content`), duplicate `website-development` removed |
+| **Sitemap XML & Robots** | 🟢 **OPTIMIZED** | `/public/sitemap.xml` listing 30+ canonical routes; `/public/robots.txt` enriched with AI agent directives (`GPTBot`, `ClaudeBot`, `PerplexityBot`) |
+| **Structured Data (Schema)** | 🟢 **COMPREHENSIVE** | Full Schema.org JSON-LD coverage: `Organization`, `LocalBusiness`, `Service`, `ItemList`, `CollectionPage`, `CreativeWork`, `BlogPosting`, `FAQPage`, `BreadcrumbList` |
+| **Open Graph & Twitter Cards** | 🟢 **STANDARDIZED** | Absolute image URLs, 1200x630 dimensions, `@lizzdomedia` handles, and `geo.region: GB-CRF` (Cardiff, UK) |
 | **Build Pipeline** | 🟢 **PASSING** | Vite 6 + React 19 + TypeScript 5.8 compiles with zero errors |
 | **TypeScript / Lint** | 🟢 **PASSING** | `tsc --noEmit` runs 100% clean across all modules |
 | **Decap CMS Engine** | 🟢 **WORKING** | Configured in `/public/admin/config.yml` with 11 full collections |
@@ -26,7 +30,9 @@
 | **Content Pipeline** | 🟢 **WORKING** | Direct JSON import (`import.meta.glob`), zero stale client caching |
 | **Client Routing (SPA)** | 🟢 **WORKING** | Custom zero-dependency History API router with GitHub Pages 404 fallback |
 | **Productized Package System** | 🟢 **WORKING** | 3-tier pricing (Starter, Pro, Premium), deliverables, comparison table, add-on estimators, decision guides & bundle cards |
-| **Dedicated Contact Page** | 🟢 **WORKING** | `/contact` route active with direct studio channels, form & WhatsApp |
+| **Dedicated Contact Page** | 🟢 **WORKING** | `/contact` route active with Cardiff & UK studio hours, one-click email/phone copy, fast WhatsApp & inquiry form |
+| **About Page Architecture** | 🟢 **WORKING** | Modular design (`AboutHero`, `AboutStory`, `AboutMissionVision`, `AboutValues`, `AboutWhyChooseUs`, `AboutStats`, `AboutCompanies`, `AboutCTA`) |
+| **Editorial Blog System** | 🟢 **WORKING** | High-end editorial magazine layout (`BlogIndexPage`, `BlogDetailPage`) with live search, category pills, semantic Markdown parser & FAQ schemas |
 | **Bidirectional Services ↔ Work** | 🟢 **WORKING** | Robust bidirectional linking between Services & Work/Case Studies via centralized helpers |
 | **Nested Active Navigation** | 🟢 **WORKING** | Active state persists accurately across nested routes in Header (desktop & mobile) |
 | **Dynamic WhatsApp** | 🟢 **WORKING** | Phone normalizer (`0300...` → `92300...`) & contextual prefilled text |
@@ -257,6 +263,15 @@ Content flows from structured CMS JSON files directly into the client applicatio
         ├── ServiceIcons.tsx         # Lucide icon mapping utility
         ├── ServiceStrip.tsx         # Compact service badges list
         ├── SocialLinks.tsx          # Universal dynamic social media renderer
+        ├── about/                   # Modular About page components
+        │   ├── AboutCompanies.tsx   # Verified partner logo marquee and stats
+        │   ├── AboutCTA.tsx         # High-converting bottom conversion banner
+        │   ├── AboutHero.tsx        # Dynamic hero headline, badges & quick metrics
+        │   ├── AboutMissionVision.tsx# Dual-card mission & vision layout
+        │   ├── AboutStats.tsx       # Live CMS statistics grid
+        │   ├── AboutStory.tsx       # Narrative brand story & studio foundation
+        │   ├── AboutValues.tsx      # Core agency values with Lucide icons
+        │   └── AboutWhyChooseUs.tsx # Comparative agency advantages
         ├── body/                    # Homepage section components
         │   ├── BodyCtaSection.tsx
         │   ├── ClientCard.tsx
@@ -634,6 +649,7 @@ To permanently eliminate this vulnerability and protect users:
 | **Work Index** | `src/components/pages/WorkIndexPage.tsx` | ✅ Yes | Portfolio showcase directory |
 | **Work Detail** | `src/components/pages/WorkDetailPage.tsx` | ✅ Yes | Case study presentation layout |
 | **About Page** | `src/components/pages/AboutPage.tsx` | ✅ Yes | Philosophy, team members, statistics |
+| **About Subcomponents** | `src/components/about/*.tsx` | ✅ Yes | Modular sections: Hero, Story, Mission, Values, WhyUs, Stats, Companies, CTA |
 | **Blog Index** | `src/components/pages/BlogIndexPage.tsx` | ✅ Yes | Article directory with search and categories |
 | **Blog Detail** | `src/components/pages/BlogDetailPage.tsx` | ✅ Yes | Full article view with Markdown rendering |
 | **Legal Renderer** | `src/components/pages/LegalPageRenderer.tsx` | ✅ Yes | Renders markdown legal policy files |
@@ -694,6 +710,8 @@ To permanently eliminate this vulnerability and protect users:
 | **BUG-017** | Contact Page pricing FAQ stated that agency did not provide fixed pricing sheets despite launching productized service packages | `src/components/pages/ContactPage.tsx` | Low | **FIXED** | Updated FAQ to accurately describe the 3-tier transparent service packages alongside custom enterprise scoping. |
 | **BUG-018** | Instagram in-app browser & Android WebView triggered "This website is not using a secure connection" warning when opened from Instagram bio | `index.html`, `public/404.html`, `public/admin/index.html`, `public/_headers`, `public/_redirects` | Critical | **FIXED** | Implemented multi-layered defense: synchronous pre-render protocol upgrade in `<head>`, CSP `upgrade-insecure-requests`, strict HTTPS in `404.html`, HSTS edge headers in `_headers`, and edge redirect rules in `_redirects`. Documented required Cloudflare "Always Use HTTPS" toggle. |
 | **BUG-019** | Service comparison table threw `Uncaught TypeError: (value || "").trim is not a function` when rendering boolean values (`true`/`false`) in `comparisonRows` | `src/components/services/packages/PackageComparisonTable.tsx` | Critical | **FIXED** | Hardened `renderCellContent` to handle `boolean` primitives (`true` -> checkmark icon, `false` -> minus icon), `null`/`undefined`, `number`, and `string` via `String(value).trim()`. Updated mobile switcher to use nullish coalescing `??`. |
+| **BUG-020** | Syntax error in `AboutValues.tsx` default values object where malformed key `description":` caused TypeScript compilation failure | `src/components/about/AboutValues.tsx` | High | **FIXED** | Corrected malformed JSON object literal key syntax to clean `"description":` property assignment. |
+| **BUG-021** | Contact page showed inaccurate PKT availability timezone and lacked quick copy buttons for agency email addresses | `src/components/pages/ContactPage.tsx` | Medium | **FIXED** | Updated to single source of truth (`contact?.availability || "Available Mon – Fri, 9:00 AM – 6:00 PM (GMT/BST)"`) reflecting Cardiff, UK headquarters and added interactive copy-to-clipboard functionality with toast confirmation. |
 
 ---
 
@@ -718,6 +736,10 @@ To permanently eliminate this vulnerability and protect users:
 ### ADR-005: Strict HTTPS Protocol Enforcement & Insecure Form Protection
 - **Decision:** Implement synchronous pre-render protocol upgrading in `<head>` and declare `Content-Security-Policy: upgrade-insecure-requests` in document markup alongside Cloudflare edge HSTS headers.
 - **Reason:** Guarantees that mobile in-app browsers (such as Instagram WebView and Android Chromium) never parse form inputs under an unencrypted HTTP session, immediately preventing "This website is not using a secure connection" security dialogs.
+
+### ADR-006: Modular Editorial Architecture for About, Blog, and Contact
+- **Decision:** Deconstruct monolithic page layouts into focused, composable sub-components (`AboutHero`, `AboutStory`, `AboutMissionVision`, `AboutValues`, `AboutWhyChooseUs`, `AboutStats`, `AboutCompanies`, `AboutCTA`), paired with an editorial blog system (`BlogIndexPage`, `BlogDetailPage`) featuring client-side search, category filter tabs, semantic Markdown rendering, author bios, social sharing, and automated `BlogPosting` + `FAQPage` JSON-LD schema generation.
+- **Reason:** Elevates the brand to the visual standard of a tier-one creative agency while maintaining complete Decap CMS editable control, zero hardcoded content, and maximum performance.
 
 ---
 

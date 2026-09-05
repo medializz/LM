@@ -275,6 +275,7 @@ export default function App() {
         {route.view === 'blog-index' && (
           <BlogIndexPage 
             cmsData={cmsData}
+            onOpenContact={handleOpenContactModal}
           />
         )}
 

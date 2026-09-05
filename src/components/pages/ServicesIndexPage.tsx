@@ -44,13 +44,64 @@ export const ServicesIndexPage: React.FC<ServicesIndexPageProps> = ({
         }
       });
 
+  const canonicalUrl = "https://media.lizzdo.com/services";
+  const seoTitle = "Creative & Digital Services Cardiff & UK | Lizzdo Media";
+  const seoDescription = "Explore full-spectrum creative capabilities: Brand Identity, Logo Design, Packaging Systems, High-Performance Web Development, Social Media Management, and AI Visuals from Cardiff, UK.";
+
+  const schemaData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Creative & Digital Services",
+      "description": seoDescription,
+      "url": canonicalUrl,
+      "publisher": {
+        "@type": "Organization",
+        "name": siteSettings?.siteName || "Lizzdo Media",
+        "url": "https://media.lizzdo.com/",
+        "logo": "https://media.lizzdo.com/uploads/lizzdo-media-logo.svg"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Lizzdo Media Service Capabilities",
+      "itemListElement": services.map((service, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": service.title,
+        "description": service.shortDescription,
+        "url": `https://media.lizzdo.com/services/${service.slug}`
+      }))
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://media.lizzdo.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": canonicalUrl
+        }
+      ]
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-[#07090e] text-white selection:bg-[#ffbe1a] selection:text-black font-['Plus_Jakarta_Sans']">
       <SEOHead
-        title="Lizzdo Media | Creative & Digital Services"
-        description="Explore our full spectrum of creative services: Brand Identity, Logo Design, Web Development, Social Media, Digital Marketing, and AI Content."
-        canonicalUrl="https://media.lizzdo.com/services"
+        title={seoTitle}
+        description={seoDescription}
+        canonicalUrl={canonicalUrl}
         type="website"
+        schemaData={schemaData}
       />
 
       {/* Breadcrumbs */}

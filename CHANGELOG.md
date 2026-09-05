@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.3.0] - 2026-09-05
+
+### Added
+- **Modular About Page System (`/about`)**:
+  - Re-architected `AboutPage.tsx` into composable sub-components (`AboutHero`, `AboutStory`, `AboutMissionVision`, `AboutValues`, `AboutWhyChooseUs`, `AboutStats`, `AboutCompanies`, `AboutCTA`).
+  - Integrated dynamic CMS data from `about.json`, `statistics`, `clients`, `team`, and `testimonials` with zero hardcoding.
+  - Added Cardiff studio location context and geographic Schema.org metadata.
+- **High-End Editorial Blog System (`/blog` & `/blog/:slug`)**:
+  - Redesigned `BlogIndexPage.tsx` with instant client-side keyword search, category filter pills, reading time badges, and a prominent editorial featured article hero.
+  - Redesigned `BlogDetailPage.tsx` featuring custom semantic Markdown parsing (`##`, `###`, blockquotes, lists, bold text), author byline and portrait, social sharing buttons (Twitter/X, LinkedIn, Facebook, WhatsApp, Copy Link with toast), key takeaways callout, and related case studies/services cross-linking.
+  - Injected dynamic JSON-LD schemas (`BlogPosting`, `FAQPage`, and `BreadcrumbList`) for every article.
+- **Interactive Contact Page Enhancements (`/contact`)**:
+  - Added one-click copy-to-clipboard buttons with feedback badges on primary, business, support emails, and telephone numbers.
+  - Updated studio hours to Cardiff & UK timezone (`Monday – Friday: 9:00 AM – 6:00 PM GMT/BST`).
+  - Added contextual inquiry banner for visitors arriving from specific service or case study pages (`?service=...` or `?work=...`).
+  - Maintained anti-spam honeypot protection and dynamic WhatsApp direct communication links.
+
+### Fixed
+- **AboutValues Syntax Error (BUG-020)**: Corrected malformed JSON object literal key assignment in `src/components/about/AboutValues.tsx`.
+- **Contact Page Availability & Timezone (BUG-021)**: Replaced stale timezone text with dynamic CMS-driven `contact.availability` aligned with the Cardiff studio.
+- **Section Props Alignment**: Aligned `TeamSection` and `TestimonialsSection` props in `AboutPage.tsx` with their component TypeScript interfaces.
+
+---
+
 ## [1.2.2] - 2026-09-04
 
 ### Fixed

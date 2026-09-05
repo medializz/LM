@@ -30,13 +30,64 @@ export const WorkIndexPage: React.FC<WorkIndexPageProps> = ({
         p.shortCategory?.toLowerCase().includes(selectedCategory.toLowerCase())
       );
 
+  const canonicalUrl = "https://media.lizzdo.com/work";
+  const seoTitle = "Selected Work & Case Studies | Lizzdo Media Cardiff";
+  const seoDescription = "Explore our verified design portfolio and case studies: luxury brand identities, dieline packaging systems, modern SaaS web platforms, and digital campaigns.";
+
+  const schemaData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Selected Commercial Work & Case Studies",
+      "description": seoDescription,
+      "url": canonicalUrl,
+      "publisher": {
+        "@type": "Organization",
+        "name": siteSettings?.siteName || "Lizzdo Media",
+        "url": "https://media.lizzdo.com/",
+        "logo": "https://media.lizzdo.com/uploads/lizzdo-media-logo.svg"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Featured Client Case Studies",
+      "itemListElement": portfolio.map((item, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": item.title,
+        "description": item.description,
+        "url": `https://media.lizzdo.com/work/${item.slug}`
+      }))
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://media.lizzdo.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Work",
+          "item": canonicalUrl
+        }
+      ]
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-[#07090e] text-white selection:bg-[#ffbe1a] selection:text-black font-['Plus_Jakarta_Sans']">
       <SEOHead
-        title="Lizzdo Media | Selected Work & Case Studies"
-        description="Explore our curated portfolio of brand identity systems, custom packaging, modern SaaS dashboards, and commercial digital campaigns."
-        canonicalUrl="https://media.lizzdo.com/work"
+        title={seoTitle}
+        description={seoDescription}
+        canonicalUrl={canonicalUrl}
         type="website"
+        schemaData={schemaData}
       />
 
       {/* Breadcrumbs */}

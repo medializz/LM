@@ -62,13 +62,22 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       setMetaTag('name', 'robots', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
     }
 
+    // Absolute Open Graph Image URL normalization
+    const absoluteOgImage = ogImage.startsWith('http')
+      ? ogImage
+      : `https://media.lizzdo.com${ogImage.startsWith('/') ? '' : '/'}${ogImage}`;
+
     // 3. Open Graph Tags
     setMetaTag('property', 'og:site_name', 'Lizzdo Media');
     setMetaTag('property', 'og:title', title);
     setMetaTag('property', 'og:description', description);
     setMetaTag('property', 'og:url', canonicalUrl);
     setMetaTag('property', 'og:type', type === 'service' ? 'website' : type);
-    setMetaTag('property', 'og:image', ogImage);
+    setMetaTag('property', 'og:image', absoluteOgImage);
+    setMetaTag('property', 'og:image:secure_url', absoluteOgImage);
+    setMetaTag('property', 'og:image:width', '1200');
+    setMetaTag('property', 'og:image:height', '630');
+    setMetaTag('property', 'og:image:alt', title);
     setMetaTag('property', 'og:locale', 'en_GB');
 
     // Geo Meta Tags for Cardiff, South Wales, UK
@@ -92,9 +101,12 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
 
     // 4. Twitter Card Tags
     setMetaTag('name', 'twitter:card', 'summary_large_image');
+    setMetaTag('name', 'twitter:site', '@lizzdomedia');
+    setMetaTag('name', 'twitter:creator', '@lizzdomedia');
     setMetaTag('name', 'twitter:title', title);
     setMetaTag('name', 'twitter:description', description);
-    setMetaTag('name', 'twitter:image', ogImage);
+    setMetaTag('name', 'twitter:image', absoluteOgImage);
+    setMetaTag('name', 'twitter:image:alt', title);
 
     // 5. Canonical Link
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;

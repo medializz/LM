@@ -5,12 +5,75 @@
   "introDescription": "Based in Cardiff, South Wales, Lizzdo Media is a creative and digital studio built for companies that demand distinction. We unite brand identity design, structural packaging, high-speed web engineering, and result-driven digital marketing for ambitious clients across Cardiff, South Wales, throughout the UK, and internationally.",
   "missionTitle": "Our Mission",
   "missionDescription": "To empower ambitious businesses with uncompromising design craft and high-performance digital engineering that turn casual visitors into loyal brand advocates.",
+  "missionPoints": [
+    "Uncompromising design craft with mathematical balance and optical alignment",
+    "High-speed, conversion-focused digital engineering built for sub-100ms load times",
+    "Data-backed strategic positioning that commands premium market pricing"
+  ],
   "visionTitle": "Our Vision",
   "visionDescription": "To set the standard for modern brand design systems, packaging dielines, and web performance where mathematical precision meets pure creative expression.",
+  "visionPoints": [
+    "Establishing globally enduring visual identities that scale across print and digital",
+    "Pioneering tactile packaging finishes that disrupt retail shelves and unboxing experiences",
+    "Fostering long-term strategic partnerships that yield compounding business growth"
+  ],
   "storyTitle": "Built on Strategy, Craft & Speed in Cardiff, Wales",
   "storyDescription": "Founded with a relentless dedication to craftsmanship in Cardiff, South Wales, Lizzdo Media bridges the gap between high-level brand strategy and agile production execution. We operate as an integrated creative partner for ambitious businesses in Cardiff, across the United Kingdom, and globally seeking to build authority, scale digital revenue, and lead their industries.",
+  "storyParagraphs": [
+    "Founded with a relentless dedication to craftsmanship in Cardiff, South Wales, Lizzdo Media bridges the gap between high-level brand strategy and agile production execution.",
+    "Too many agencies either deliver theoretical slide decks without production polish, or produce generic aesthetic mockups devoid of commercial strategy. We built Lizzdo Media to eliminate this compromise.",
+    "From high-end vector branding and tactile packaging dielines to modern web applications and omni-channel campaigns, our integrated studio model delivers cohesive brand equity at every touchpoint."
+  ],
+  "storyImage": "/uploads/services/brand-identity.svg",
+  "storyBadge": "Cardiff Studio • UK & Worldwide",
+  "valuesTitle": "The Principles That Define Our Work",
+  "valuesDescription": "Every project we accept is guided by six foundational commitments to craft, speed, and commercial integrity.",
+  "values": [
+    {
+      "id": "val-creative",
+      "title": "Creative-First Thinking",
+      "description": "We resist template homogeneity. Every identity and digital interface is bespoke, designed to provoke emotional resonance and distinctive recall.",
+      "iconKey": "sparkles",
+      "badge": "01"
+    },
+    {
+      "id": "val-strategy",
+      "title": "Strategic Rigor",
+      "description": "Aesthetics without commercial purpose is vanity. Every color choice, typographic scale, and structural layout is backed by rigorous market positioning.",
+      "iconKey": "compass",
+      "badge": "02"
+    },
+    {
+      "id": "val-craft",
+      "title": "Uncompromising Craft",
+      "description": "From micro-radius bezier curves to tactile foil print dielines, we obsess over the microscopic details that elevate good design to great design.",
+      "iconKey": "shield",
+      "badge": "03"
+    },
+    {
+      "id": "val-speed",
+      "title": "Production Speed",
+      "description": "Ambitious businesses cannot afford bureaucratic delays. We maintain lean sprint cycles, transparent communication, and rapid turnaround.",
+      "iconKey": "zap",
+      "badge": "04"
+    },
+    {
+      "id": "val-engineering",
+      "title": "Modern Engineering",
+      "description": "Clean, scalable TypeScript architectures, headless CMS control, and sub-second performance ensure your digital platform scales without technical debt.",
+      "iconKey": "code",
+      "badge": "05"
+    },
+    {
+      "id": "val-partnership",
+      "title": "Long-Term Partnership",
+      "description": "We do not disappear after delivery. We act as your ongoing creative director and engineering partner as your company expands.",
+      "iconKey": "handshake",
+      "badge": "06"
+    }
+  ],
   "ctaTitle": "Ready to Build Something Extraordinary?",
-  "ctaDescription": "Join forces with our creative directors, designers, and engineers to elevate your brand presence.",
+  "ctaDescription": "Join forces with our creative directors, designers, and engineers to elevate your brand presence and scale your digital growth.",
   "ctaButtonText": "Start a Project",
   "ctaButtonUrl": "/contact",
   "seoTitle": "About Lizzdo Media | Creative & Digital Agency in Cardiff & UK",

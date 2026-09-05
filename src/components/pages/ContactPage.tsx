@@ -2,7 +2,8 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { 
   Mail, Phone, MessageCircle, Send, CheckCircle2, 
   Sparkles, Clock, ShieldCheck, ChevronDown, ChevronUp, ArrowRight, ExternalLink,
-  Briefcase, Calendar, Check, AlertCircle, RefreshCw, X, MapPin, Globe, Headphones
+  Briefcase, Calendar, Check, AlertCircle, RefreshCw, X, MapPin, Globe, Headphones,
+  Copy
 } from 'lucide-react';
 import { DecapCMSData, ProjectInquiryData } from '../../types';
 import { Breadcrumb } from '../Breadcrumb';
@@ -183,6 +184,20 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
   });
 
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+  const [copiedItem, setCopiedItem] = useState<string | null>(null);
+
+  const handleCopy = (text: string, id: string, e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(() => {
+        setCopiedItem(id);
+        setTimeout(() => setCopiedItem(null), 2500);
+      });
+    }
+  };
 
   // Sync initial service and description if changed
   useEffect(() => {
@@ -364,6 +379,32 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
         "logo": "https://media.lizzdo.com/uploads/lizzdo-media-logo.svg",
         "email": mainEmail,
         "telephone": siteSettings.whatsappNumber,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Cardiff",
+          "addressRegion": "South Wales",
+          "addressCountry": "GB"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "51.4816",
+          "longitude": "-3.1791"
+        },
+        "areaServed": [
+          "Cardiff",
+          "South Wales",
+          "Wales",
+          "United Kingdom",
+          "Worldwide"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "18:00"
+          }
+        ],
         "contactPoint": {
           "@type": "ContactPoint",
           "contactType": "Customer Inquiries & Estimates",
@@ -498,77 +539,143 @@ export const ContactPage: React.FC<ContactPageProps> = ({ cmsData, initialServic
               </div>
 
               {/* Direct Inquiries Email Card */}
-              <a
-                href={createMailtoUrl(mainEmail, `Project Inquiry - ${siteSettings.siteName}`)}
-                className="p-5 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/50 transition-all flex items-start gap-4 group block shadow-md"
-              >
-                <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 text-[#ffbe1a] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                  <Mail className="w-5 h-5" />
-                </div>
-                <div className="overflow-hidden">
-                  <div className="text-xs text-slate-400 font-mono">Project &amp; Estimate Inquiries</div>
-                  <div className="text-sm sm:text-base font-bold text-white group-hover:text-[#ffbe1a] transition-colors mt-0.5 truncate">
-                    {mainEmail}
+              <div className="p-5 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/50 transition-all flex items-center justify-between gap-4 group shadow-md">
+                <a
+                  href={createMailtoUrl(mainEmail, `Project Inquiry - ${siteSettings.siteName}`)}
+                  className="flex items-start gap-4 overflow-hidden flex-1"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 text-[#ffbe1a] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                    <Mail className="w-5 h-5" />
                   </div>
-                  <div className="text-xs text-slate-400 mt-1">Guaranteed review within 24 business hours</div>
-                </div>
-              </a>
+                  <div className="overflow-hidden">
+                    <div className="text-xs text-slate-400 font-mono">Project &amp; Estimate Inquiries</div>
+                    <div className="text-sm sm:text-base font-bold text-white group-hover:text-[#ffbe1a] transition-colors mt-0.5 truncate">
+                      {mainEmail}
+                    </div>
+                    <div className="text-xs text-slate-400 mt-1">Guaranteed review within 24 business hours</div>
+                  </div>
+                </a>
+                <button
+                  type="button"
+                  onClick={(e) => handleCopy(mainEmail, 'main-email', e)}
+                  className="p-2 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] text-slate-400 hover:text-white border border-white/[0.08] transition-colors relative cursor-pointer shrink-0"
+                  title="Copy email address"
+                  aria-label="Copy primary email address"
+                >
+                  {copiedItem === 'main-email' ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                  {copiedItem === 'main-email' && (
+                    <span className="absolute -top-7 right-0 px-2 py-0.5 rounded bg-emerald-500 text-black text-[10px] font-mono whitespace-nowrap font-bold">
+                      Copied!
+                    </span>
+                  )}
+                </button>
+              </div>
 
               {/* Business / Partnerships Email (Conditional) */}
               {businessEmail && businessEmail !== mainEmail && (
-                <a
-                  href={createMailtoUrl(businessEmail, `Partnership Inquiry - ${siteSettings.siteName}`)}
-                  className="p-5 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/50 transition-all flex items-start gap-4 group block shadow-md"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 text-cyan-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                    <Briefcase className="w-5 h-5" />
-                  </div>
-                  <div className="overflow-hidden">
-                    <div className="text-xs text-slate-400 font-mono">Business &amp; Partnerships</div>
-                    <div className="text-sm sm:text-base font-bold text-white group-hover:text-cyan-400 transition-colors mt-0.5 truncate">
-                      {businessEmail}
+                <div className="p-5 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/50 transition-all flex items-center justify-between gap-4 group shadow-md">
+                  <a
+                    href={createMailtoUrl(businessEmail, `Partnership Inquiry - ${siteSettings.siteName}`)}
+                    className="flex items-start gap-4 overflow-hidden flex-1"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 text-cyan-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                      <Briefcase className="w-5 h-5" />
                     </div>
-                    <div className="text-xs text-slate-400 mt-1">Corporate collabs, joint ventures &amp; media</div>
-                  </div>
-                </a>
+                    <div className="overflow-hidden">
+                      <div className="text-xs text-slate-400 font-mono">Business &amp; Partnerships</div>
+                      <div className="text-sm sm:text-base font-bold text-white group-hover:text-cyan-400 transition-colors mt-0.5 truncate">
+                        {businessEmail}
+                      </div>
+                      <div className="text-xs text-slate-400 mt-1">Corporate collabs, joint ventures &amp; media</div>
+                    </div>
+                  </a>
+                  <button
+                    type="button"
+                    onClick={(e) => handleCopy(businessEmail, 'biz-email', e)}
+                    className="p-2 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] text-slate-400 hover:text-white border border-white/[0.08] transition-colors relative cursor-pointer shrink-0"
+                    title="Copy business email"
+                    aria-label="Copy business email address"
+                  >
+                    {copiedItem === 'biz-email' ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                    {copiedItem === 'biz-email' && (
+                      <span className="absolute -top-7 right-0 px-2 py-0.5 rounded bg-emerald-500 text-black text-[10px] font-mono whitespace-nowrap font-bold">
+                        Copied!
+                      </span>
+                    )}
+                  </button>
+                </div>
               )}
 
               {/* Support Email (Conditional) */}
               {supportEmail && supportEmail !== mainEmail && (
-                <a
-                  href={createMailtoUrl(supportEmail, `Support Request - ${siteSettings.siteName}`)}
-                  className="p-5 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/50 transition-all flex items-start gap-4 group block shadow-md"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                    <Headphones className="w-5 h-5" />
-                  </div>
-                  <div className="overflow-hidden">
-                    <div className="text-xs text-slate-400 font-mono">Client Support &amp; Operations</div>
-                    <div className="text-sm sm:text-base font-bold text-white group-hover:text-emerald-400 transition-colors mt-0.5 truncate">
-                      {supportEmail}
+                <div className="p-5 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/50 transition-all flex items-center justify-between gap-4 group shadow-md">
+                  <a
+                    href={createMailtoUrl(supportEmail, `Support Request - ${siteSettings.siteName}`)}
+                    className="flex items-start gap-4 overflow-hidden flex-1"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                      <Headphones className="w-5 h-5" />
                     </div>
-                    <div className="text-xs text-slate-400 mt-1">Active client support and deliverables</div>
-                  </div>
-                </a>
+                    <div className="overflow-hidden">
+                      <div className="text-xs text-slate-400 font-mono">Client Support &amp; Operations</div>
+                      <div className="text-sm sm:text-base font-bold text-white group-hover:text-emerald-400 transition-colors mt-0.5 truncate">
+                        {supportEmail}
+                      </div>
+                      <div className="text-xs text-slate-400 mt-1">Active client support and deliverables</div>
+                    </div>
+                  </a>
+                  <button
+                    type="button"
+                    onClick={(e) => handleCopy(supportEmail, 'sup-email', e)}
+                    className="p-2 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] text-slate-400 hover:text-white border border-white/[0.08] transition-colors relative cursor-pointer shrink-0"
+                    title="Copy support email"
+                    aria-label="Copy support email address"
+                  >
+                    {copiedItem === 'sup-email' ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                    {copiedItem === 'sup-email' && (
+                      <span className="absolute -top-7 right-0 px-2 py-0.5 rounded bg-emerald-500 text-black text-[10px] font-mono whitespace-nowrap font-bold">
+                        Copied!
+                      </span>
+                    )}
+                  </button>
+                </div>
               )}
 
               {/* Phone / Office (Conditional) */}
               {phone && (
-                <a
-                  href={createTelUrl(phone)}
-                  className="p-5 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/50 transition-all flex items-start gap-4 group block shadow-md"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 text-amber-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  <div className="overflow-hidden">
-                    <div className="text-xs text-slate-400 font-mono">Phone / WhatsApp Voice</div>
-                    <div className="text-sm sm:text-base font-bold text-white group-hover:text-amber-400 transition-colors mt-0.5 truncate">
-                      {phone}
+                <div className="p-5 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/50 transition-all flex items-center justify-between gap-4 group shadow-md">
+                  <a
+                    href={createTelUrl(phone)}
+                    className="flex items-start gap-4 overflow-hidden flex-1"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 text-amber-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                      <Phone className="w-5 h-5" />
                     </div>
-                    <div className="text-xs text-slate-400 mt-1">Available Mon – Sat, 9:00 AM – 7:00 PM (PKT)</div>
-                  </div>
-                </a>
+                    <div className="overflow-hidden">
+                      <div className="text-xs text-slate-400 font-mono">Phone / WhatsApp Voice</div>
+                      <div className="text-sm sm:text-base font-bold text-white group-hover:text-amber-400 transition-colors mt-0.5 truncate">
+                        {phone}
+                      </div>
+                      <div className="text-xs text-slate-400 mt-1">
+                        {contact?.availability || "Available Mon – Fri, 9:00 AM – 6:00 PM (GMT/BST)"}
+                      </div>
+                    </div>
+                  </a>
+                  <button
+                    type="button"
+                    onClick={(e) => handleCopy(phone, 'phone-num', e)}
+                    className="p-2 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] text-slate-400 hover:text-white border border-white/[0.08] transition-colors relative cursor-pointer shrink-0"
+                    title="Copy phone number"
+                    aria-label="Copy phone number"
+                  >
+                    {copiedItem === 'phone-num' ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                    {copiedItem === 'phone-num' && (
+                      <span className="absolute -top-7 right-0 px-2 py-0.5 rounded bg-emerald-500 text-black text-[10px] font-mono whitespace-nowrap font-bold">
+                        Copied!
+                      </span>
+                    )}
+                  </button>
+                </div>
               )}
 
               {/* Physical Studio Location (Conditional) */}

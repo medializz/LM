@@ -78,6 +78,10 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
   const seoTitle = project.seoTitle || `${project.title} Case Study | Lizzdo Media`;
   const seoDescription = project.seoDescription || project.description || "Explore this featured case study by Lizzdo Media.";
 
+  const projectImageUrl = project.image?.startsWith('http')
+    ? project.image
+    : `https://media.lizzdo.com${project.image?.startsWith('/') ? '' : '/'}${project.image || '/uploads/services/brand-identity.svg'}`;
+
   const schemaData = [
     {
       "@context": "https://schema.org",
@@ -86,12 +90,22 @@ export const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
       "headline": project.title,
       "description": project.description,
       "genre": project.category,
+      "image": projectImageUrl,
+      "datePublished": project.year || "2026",
+      "inLanguage": "en-GB",
       "url": canonicalUrl,
       "creator": {
         "@type": "Organization",
         "name": siteSettings.siteName,
-        "url": "https://media.lizzdo.com/"
-      }
+        "url": "https://media.lizzdo.com/",
+        "logo": "https://media.lizzdo.com/uploads/lizzdo-media-logo.svg"
+      },
+      ...(project.client ? {
+        "sponsor": {
+          "@type": "Organization",
+          "name": project.client
+        }
+      } : {})
     },
     {
       "@context": "https://schema.org",

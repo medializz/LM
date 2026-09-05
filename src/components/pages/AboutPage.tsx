@@ -1,15 +1,17 @@
 import React from 'react';
-import { motion } from 'motion/react';
-import { 
-  Sparkles, CheckCircle2, ArrowRight, ShieldCheck, 
-  Layers, Compass, Zap, MessageCircle, HeartHandshake, Eye
-} from 'lucide-react';
 import { DecapCMSData } from '../../types';
 import { Breadcrumb } from '../Breadcrumb';
 import { SEOHead } from '../SEOHead';
-import { navigateTo } from '../../utils/router';
+import { AboutHero } from '../about/AboutHero';
+import { AboutStory } from '../about/AboutStory';
+import { AboutMissionVision } from '../about/AboutMissionVision';
+import { AboutValues } from '../about/AboutValues';
+import { AboutWhyChooseUs } from '../about/AboutWhyChooseUs';
+import { AboutStats } from '../about/AboutStats';
 import { TeamSection } from '../body/TeamSection';
-import { getWhatsAppUrl } from '../../data/cmsContent';
+import { AboutCompanies } from '../about/AboutCompanies';
+import { TestimonialsSection } from '../body/TestimonialsSection';
+import { AboutCTA } from '../about/AboutCTA';
 
 interface AboutPageProps {
   cmsData: DecapCMSData;
@@ -17,22 +19,24 @@ interface AboutPageProps {
 }
 
 export const AboutPage: React.FC<AboutPageProps> = ({ cmsData, onOpenContact }) => {
-  const { siteSettings, services = [], clients = [], about } = cmsData;
-  const publishedClients = clients.filter(c => c.published !== false);
-
-  const handleWhatsApp = () => {
-    const message = `Hi ${siteSettings.siteName || 'Lizzdo Media'}, I visited your About page and would like to connect about an upcoming project.`;
-    const url = getWhatsAppUrl(siteSettings.whatsappNumber, message);
-    if (url && url !== '#') {
-      window.open(url, '_blank', 'noopener,noreferrer');
-    }
-  };
+  const { 
+    siteSettings, 
+    about, 
+    whyChooseUs, 
+    statistics = [], 
+    teamMembers = [], 
+    clients = [], 
+    clientsSection, 
+    testimonials = [], 
+    testimonialsSection,
+    portfolio = []
+  } = cmsData;
 
   const canonicalUrl = "https://media.lizzdo.com/about";
-  const seoTitle = about?.seoTitle || "About Lizzdo Media | Creative & Digital Agency";
-  const seoDescription = about?.seoDescription || "Learn about Lizzdo Media, our design philosophy, creative disciplines, and how we help brands build lasting authority through branding, packaging, web engineering, and digital growth.";
+  const seoTitle = about?.seoTitle || "About Lizzdo Media | Creative & Digital Agency in Cardiff & UK";
+  const seoDescription = about?.seoDescription || "Discover Lizzdo Media, our Cardiff creative studio, design philosophy, and how we help ambitious businesses across South Wales, the UK, and worldwide scale through branding, web, and marketing.";
 
-  const publishedTeam = (cmsData.teamMembers || []).filter(m => m.published !== false);
+  const publishedTeam = (teamMembers || []).filter(m => m.published !== false);
 
   const schemaData = [
     {
@@ -43,11 +47,35 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cmsData, onOpenContact }) 
       "url": canonicalUrl,
       "mainEntity": {
         "@type": "Organization",
-        "name": siteSettings.siteName,
+        "name": siteSettings.siteName || "Lizzdo Media",
         "url": "https://media.lizzdo.com/",
         "logo": "https://media.lizzdo.com/uploads/lizzdo-media-logo.svg",
-        "email": siteSettings.contactEmail,
-        "description": "Lizzdo Media is a premier creative and digital agency crafting high-impact brand identities, packaging systems, web development, and digital marketing.",
+        "email": siteSettings.contactEmail || "contact@media.lizzdo.com",
+        "telephone": siteSettings.phone,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Cardiff",
+          "addressRegion": "South Wales",
+          "addressCountry": "GB"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "51.4816",
+          "longitude": "-3.1791"
+        },
+        "areaServed": [
+          "Cardiff",
+          "South Wales",
+          "Wales",
+          "United Kingdom",
+          "Worldwide"
+        ],
+        "sameAs": [
+          "https://www.instagram.com/lizzdomedia",
+          "https://www.linkedin.com/company/lizzdomedia",
+          "https://x.com/lizzdomedia"
+        ],
+        "description": "Lizzdo Media is a premier creative and digital agency crafting high-impact brand identities, packaging systems, web engineering, and digital marketing.",
         ...(publishedTeam.length > 0 ? {
           "member": publishedTeam.map(m => ({
             "@type": "Person",
@@ -79,29 +107,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cmsData, onOpenContact }) 
     }
   ];
 
-  const coreValues = [
-    {
-      icon: Compass,
-      title: "Strategic Clarity Over Visual Noise",
-      description: "We don't design for vanity metrics or fleeting aesthetics. Every vector curve, typographic scale, and digital interface is anchored in rigorous market research and genuine brand differentiation."
-    },
-    {
-      icon: Layers,
-      title: "Mathematical Craft & Precision",
-      description: "From millimeter-exact packaging dielines to sub-100ms web application performance, our studio holds every creative deliverable to uncompromising engineering standards."
-    },
-    {
-      icon: Zap,
-      title: "Speed, Reliability & Transparency",
-      description: "We respect your time and business milestones. Our transparent workflow, proactive communication, and clear timelines ensure you are always informed and ahead of schedule."
-    },
-    {
-      icon: HeartHandshake,
-      title: "Long-Term Creative Partnership",
-      description: "We don't view client engagements as transactional handoffs. We build durable partnerships, continuously optimizing and scaling your brand assets as your business grows."
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-[#07090e] text-white selection:bg-[#ffbe1a] selection:text-black font-['Plus_Jakarta_Sans']">
       <SEOHead
@@ -112,322 +117,79 @@ export const AboutPage: React.FC<AboutPageProps> = ({ cmsData, onOpenContact }) 
         schemaData={schemaData}
       />
 
-      {/* Hero Section */}
-      <section className="relative pt-24 sm:pt-32 pb-16 sm:pb-24 border-b border-white/[0.08] overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(#ffbe1a0a_1px,transparent_1px)] [background-size:32px_32px] pointer-events-none opacity-60" />
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#ffbe1a]/[0.03] rounded-full blur-3xl pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* Top Breadcrumb Navigation */}
+      <div className="bg-[#07090e] pt-20 sm:pt-24 border-b border-white/[0.04]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <Breadcrumb items={[{ label: "About", href: "/about" }]} />
-
-          <div className="max-w-3xl mx-auto text-center space-y-6 pt-6 sm:pt-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#ffbe1a]/10 border border-[#ffbe1a]/30 text-[#ffbe1a] text-xs font-mono tracking-wider uppercase">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>{about?.eyebrow || "Agency Overview & Philosophy"}</span>
-            </div>
-
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black font-['Outfit'] text-white tracking-tight leading-[1.1]">
-              {about?.headlineLine1 || "Design. Build."} <span className="text-[#ffbe1a]">{about?.headlineHighlight || "Grow. Together."}</span>
-            </h1>
-
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto">
-              {about?.introDescription || `${siteSettings.siteName} is a creative and digital studio built for companies that demand distinction. We unite brand identity design, structural packaging, high-speed web engineering, and result-driven marketing into one cohesive execution powerhouse.`}
-            </p>
-
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-              <a
-                href="/services"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigateTo('/services');
-                }}
-                className="px-6 sm:px-8 py-3.5 rounded-full bg-[#ffbe1a] hover:bg-amber-400 text-black font-extrabold text-sm font-['Outfit'] transition-all shadow-[0_0_20px_rgba(255,190,26,0.3)] hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer"
-              >
-                <span>Explore Services</span>
-                <ArrowRight className="w-4 h-4" />
-              </a>
-
-              <a
-                href="/work"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigateTo('/work');
-                }}
-                className="px-6 sm:px-8 py-3.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-white border border-white/20 font-bold text-sm font-['Outfit'] transition-all hover:scale-105 active:scale-95 cursor-pointer"
-              >
-                <span>View Case Studies</span>
-              </a>
-            </div>
-          </div>
         </div>
-      </section>
+      </div>
 
-      {/* Mission & Vision Section */}
-      <section className="py-12 sm:py-16 bg-white/[0.015] border-b border-white/[0.08]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-            <div className="p-8 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/50 transition-all space-y-4">
-              <div className="w-10 h-10 rounded-xl bg-[#ffbe1a]/10 border border-[#ffbe1a]/30 flex items-center justify-center text-[#ffbe1a]">
-                <Compass className="w-5 h-5" />
-              </div>
-              <h2 className="text-xl sm:text-2xl font-bold font-['Outfit'] text-white">
-                {about?.missionTitle || "Our Mission"}
-              </h2>
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                {about?.missionDescription || "To empower ambitious businesses with uncompromising design craft and high-performance digital engineering that turn casual visitors into loyal brand advocates."}
-              </p>
-            </div>
-
-            <div className="p-8 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/50 transition-all space-y-4">
-              <div className="w-10 h-10 rounded-xl bg-[#ffbe1a]/10 border border-[#ffbe1a]/30 flex items-center justify-center text-[#ffbe1a]">
-                <Eye className="w-5 h-5" />
-              </div>
-              <h2 className="text-xl sm:text-2xl font-bold font-['Outfit'] text-white">
-                {about?.visionTitle || "Our Vision"}
-              </h2>
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                {about?.visionDescription || "To set the global standard for modern brand design systems, packaging dielines, and web performance where mathematical precision meets pure creative expression."}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Narrative & Story */}
-      <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          <div className="lg:col-span-6 space-y-6">
-            <div className="space-y-2">
-              <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Our Story & Purpose</span>
-              <h2 className="text-2xl sm:text-4xl font-bold font-['Outfit'] text-white">
-                {about?.storyTitle || "Built on Strategy, Craft & Speed"}
-              </h2>
-            </div>
-
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              {about?.storyDescription || `Founded with a relentless dedication to craftsmanship, ${siteSettings.siteName} bridges the gap between high-level brand strategy and production execution. We operate as an integrated creative partner for brands seeking to build authority, scale digital revenue, and lead their industries.`}
-            </p>
-
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              Whether we are crafting a mathematical vector logo mark, engineering millimeter-accurate packaging dielines, or building sub-second loading web applications, our multidisciplinary team handles every detail with pride and ownership.
-            </p>
-
-            <div className="pt-2 grid grid-cols-2 gap-4">
-              <div className="p-4 rounded-xl bg-white/[0.03] border border-white/[0.08]">
-                <div className="text-2xl font-black font-['Outfit'] text-[#ffbe1a]">100%</div>
-                <div className="text-xs text-slate-400 mt-1 font-medium">Bespoke Vector & Code Craft</div>
-              </div>
-              <div className="p-4 rounded-xl bg-white/[0.03] border border-white/[0.08]">
-                <div className="text-2xl font-black font-['Outfit'] text-white">Sub-100ms</div>
-                <div className="text-xs text-slate-400 mt-1 font-medium">Fast Global Edge Delivery</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="lg:col-span-6">
-            <div className="rounded-2xl bg-gradient-to-br from-neutral-900 via-[#12151e] to-black border border-white/10 p-8 sm:p-10 shadow-2xl relative overflow-hidden space-y-6">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#ffbe1a]/10 border border-[#ffbe1a]/30 flex items-center justify-center text-[#ffbe1a]">
-                  <Eye className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold font-['Outfit'] text-white">Our Creative Standards</h3>
-                  <p className="text-xs text-slate-400 font-mono">Disciplined Production Quality</p>
-                </div>
-              </div>
-
-              <ul className="space-y-3.5 text-sm text-slate-300">
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-4 h-4 text-[#ffbe1a] shrink-0 mt-0.5" />
-                  <span><strong>Zero Template Shortcuts:</strong> Every logo, packaging dieline, and web frontend is created from a blank canvas tailored to your goals.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-4 h-4 text-[#ffbe1a] shrink-0 mt-0.5" />
-                  <span><strong>Full Vector Ownership:</strong> You own 100% of master source files (AI, SVG, EPS, PDF, Figma, React code) with no restrictive licensing clauses.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-4 h-4 text-[#ffbe1a] shrink-0 mt-0.5" />
-                  <span><strong>Technical SEO & Performance First:</strong> Websites are engineered for sub-second loading, 100 Core Web Vitals, and semantic crawlability.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-4 h-4 text-[#ffbe1a] shrink-0 mt-0.5" />
-                  <span><strong>Accessible Direct Communication:</strong> Direct access to creative directors and engineers without bureaucratic layers.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* Core Principles Grid */}
-      <section className="py-16 sm:py-24 bg-white/[0.02] border-y border-white/[0.08]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          
-          <div className="text-center max-w-2xl mx-auto space-y-3">
-            <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Our DNA</span>
-            <h2 className="text-2xl sm:text-4xl font-bold font-['Outfit'] text-white">
-              Principles That Guide Every Project
-            </h2>
-            <p className="text-slate-400 text-sm">
-              Our studio operates on fundamental beliefs that ensure consistent creative excellence and lasting business impact.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-            {coreValues.map((val, idx) => {
-              const Icon = val.icon;
-              return (
-                <div 
-                  key={idx}
-                  className="p-8 rounded-2xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/50 transition-all duration-300 group space-y-4"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-white/[0.05] border border-white/10 group-hover:bg-[#ffbe1a]/10 group-hover:border-[#ffbe1a]/40 group-hover:text-[#ffbe1a] text-slate-300 flex items-center justify-center transition-colors">
-                    <Icon className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-xl font-bold font-['Outfit'] text-white group-hover:text-[#ffbe1a] transition-colors">
-                    {val.title}
-                  </h3>
-                  <p className="text-sm text-slate-300 leading-relaxed">
-                    {val.description}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-
-        </div>
-      </section>
-
-      {/* Team / Leadership Section (from CMS) */}
-      <TeamSection 
-        teamMembers={cmsData.teamMembers || []} 
-        siteSettings={cmsData.siteSettings} 
+      {/* 1. Hero Section (Compact, typography & branding focus) */}
+      <AboutHero
+        content={about}
+        siteSettings={siteSettings}
+        onOpenContact={() => onOpenContact()}
       />
 
-      {/* Services Directory Strip */}
-      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div>
-            <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Comprehensive Capabilities</span>
-            <h2 className="text-2xl sm:text-3xl font-bold font-['Outfit'] text-white">
-              Our Core Disciplines
-            </h2>
-          </div>
-          <a
-            href="/services"
-            onClick={(e) => {
-              e.preventDefault();
-              navigateTo('/services');
-            }}
-            className="text-xs sm:text-sm text-slate-400 hover:text-[#ffbe1a] flex items-center gap-1 font-mono transition-colors"
-          >
-            <span>View All 11 Services</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </a>
-        </div>
+      {/* 2. Story Section (Cardiff heritage, narrative paragraphs, visual card) */}
+      <AboutStory
+        content={about}
+        siteSettings={siteSettings}
+      />
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-          {services.slice(0, 8).map((srv) => (
-            <a
-              key={srv.id}
-              href={`/services/${srv.slug}`}
-              onClick={(e) => {
-                e.preventDefault();
-                navigateTo(`/services/${srv.slug}`);
-              }}
-              className="p-4 rounded-xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/50 transition-all group block"
-            >
-              <div className="text-sm font-bold text-white group-hover:text-[#ffbe1a] transition-colors">
-                {srv.title}
-              </div>
-              <div className="text-[11px] text-slate-400 mt-1 font-mono">{srv.category}</div>
-            </a>
-          ))}
-        </div>
-      </section>
+      {/* 3. Mission & Vision Section (Dedicated cards, complementary asymmetric layout) */}
+      <AboutMissionVision
+        content={about}
+      />
 
-      {/* Client Brands Showcase */}
-      {publishedClients.length > 0 && (
-        <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 border-t border-white/[0.06]">
-          <div className="text-center space-y-2 max-w-2xl mx-auto">
-            <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">
-              Trusted Partnerships
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold font-['Outfit'] text-white">
-              Brands &amp; Companies We've Worked With
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-400">
-              Delivering high-impact identity, packaging, digital engineering, and marketing creatives for world-class businesses.
-            </p>
-          </div>
+      {/* 4. Core Values Section (6 key principles with icons & badges) */}
+      <AboutValues
+        content={about}
+      />
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 pt-4">
-            {publishedClients.map((client) => (
-              <div
-                key={client.id}
-                className="p-5 rounded-xl bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/40 transition-all flex flex-col items-center justify-center text-center space-y-3 group"
-              >
-                <div className="h-9 flex items-center justify-center">
-                  <img
-                    src={client.logo}
-                    alt={client.logoAlt || `${client.name} logo`}
-                    loading="lazy"
-                    className="max-h-8 max-w-full object-contain filter grayscale group-hover:grayscale-0 group-hover:brightness-110 transition-all duration-300"
-                  />
-                </div>
-                <div className="text-xs font-bold text-white group-hover:text-[#ffbe1a] transition-colors">
-                  {client.name}
-                </div>
-                {client.services && client.services.length > 0 && (
-                  <div className="text-[10px] text-slate-400 font-mono">
-                    {client.services.slice(0, 2).join(' • ')}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
+      {/* 5. Why Choose Us Section (6 concise visual points) */}
+      <AboutWhyChooseUs
+        content={whyChooseUs}
+        siteSettings={siteSettings}
+        onOpenContact={() => onOpenContact()}
+      />
+
+      {/* 6. Statistics Section (Verified CMS entries only) */}
+      <AboutStats
+        stats={statistics}
+      />
+
+      {/* 7. Team Section (Actual CMS entries) */}
+      {publishedTeam.length > 0 && (
+        <TeamSection
+          teamMembers={teamMembers}
+          siteSettings={siteSettings}
+        />
       )}
 
-      {/* Final Call to Action */}
-      <section className="py-16 sm:py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-gradient-to-br from-[#171a24] via-[#12151e] to-[#0d0f16] border border-[#ffbe1a]/30 p-8 sm:p-14 text-center relative overflow-hidden shadow-2xl space-y-6">
-          <div className="absolute inset-0 bg-[radial-gradient(#ffbe1a15_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
-          
-          <div className="relative z-10 space-y-4 max-w-2xl mx-auto">
-            <span className="text-xs uppercase font-mono tracking-widest text-[#ffbe1a]">Ready to Collaborate?</span>
-            <h2 className="text-2xl sm:text-4xl font-black font-['Outfit'] text-white">
-              {about?.ctaTitle || "Let's Build Something Exceptional Together."}
-            </h2>
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              {about?.ctaDescription || "Reach out with your project requirements to receive a customized creative strategy, timeline estimate, and production plan."}
-            </p>
+      {/* 8. Companies We've Worked With Section (Verified CMS clients) */}
+      <AboutCompanies
+        clients={clients}
+        sectionContent={clientsSection}
+      />
 
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-              <a
-                href={about?.ctaButtonUrl || "/contact"}
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigateTo(about?.ctaButtonUrl || '/contact');
-                }}
-                className="px-8 py-3.5 rounded-full bg-[#ffbe1a] hover:bg-amber-400 text-black font-extrabold text-base font-['Outfit'] transition-all shadow-xl shadow-[#ffbe1a]/20 hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer"
-              >
-                <span>{about?.ctaButtonText || "Start a Conversation →"}</span>
-              </a>
-              <button
-                onClick={handleWhatsApp}
-                className="px-6 py-3.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-white border border-white/20 font-bold text-base font-['Outfit'] transition-all hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer"
-              >
-                <MessageCircle className="w-4 h-4 text-[#25D366]" />
-                <span>WhatsApp Us</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* 9. Client Testimonials Section (Verified client feedback) */}
+      {testimonials && testimonials.length > 0 && (
+        <TestimonialsSection
+          testimonials={testimonials}
+          content={testimonialsSection}
+          siteSettings={siteSettings}
+          clients={clients}
+          portfolio={portfolio}
+        />
+      )}
 
+      {/* 10. Final Call to Action */}
+      <AboutCTA
+        content={about}
+        siteSettings={siteSettings}
+        onOpenContact={() => onOpenContact()}
+      />
     </div>
   );
 };
