@@ -3,10 +3,9 @@ import { ArrowRight, Sparkles, Filter, ChevronRight, MessageCircle } from 'lucid
 import { DecapCMSData } from '../../types';
 import { Breadcrumb } from '../Breadcrumb';
 import { SEOHead } from '../SEOHead';
-import { ServiceIcon } from '../ServiceIcons';
+import { ServiceCard } from '../services/ServiceCard';
 import { navigateTo } from '../../utils/router';
 import { createWhatsAppUrl } from '../../utils/whatsapp';
-import { safeFormatPrice } from '../../utils/format';
 
 interface ServicesIndexPageProps {
   cmsData: DecapCMSData;
@@ -19,11 +18,6 @@ export const ServicesIndexPage: React.FC<ServicesIndexPageProps> = ({
 }) => {
   const { services = [], siteSettings } = cmsData;
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
-  const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
-
-  const handleImageError = (serviceId: string) => {
-    setFailedImages(prev => ({ ...prev, [serviceId]: true }));
-  };
 
   const categories = ['All', 'Branding', 'Design', 'Engineering', 'Social', 'Marketing', 'AI & Innovation'];
 
@@ -74,11 +68,11 @@ export const ServicesIndexPage: React.FC<ServicesIndexPageProps> = ({
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-['Outfit'] font-black text-white tracking-tight">
-            Creative Solutions For <span className="text-[#ffbe1a]">Every Need.</span>
+            Creative Disciplines For <span className="text-[#ffbe1a]">Commercial Growth.</span>
           </h1>
 
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            From strategic brand identity to scalable web architecture and high-conversion social campaigns, explore our complete array of design and digital services.
+            From strategic brand identity to scalable web architecture and high-conversion social campaigns, explore our full spectrum of design and digital services.
           </p>
         </div>
 
@@ -99,68 +93,16 @@ export const ServicesIndexPage: React.FC<ServicesIndexPageProps> = ({
           ))}
         </div>
 
-        {/* 11 Services Grid */}
+        {/* Services Grid with new ServiceCard */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredServices.map((service) => {
-            const imageSrc = service.previewImage || service.image;
-            const hasValidImage = Boolean(imageSrc && !failedImages[service.id]);
-
-            return (
-              <div
-                key={service.id}
-                onClick={() => navigateTo(`/services/${service.slug}`)}
-                className="group bg-[#10131d] border border-white/[0.08] hover:border-[#ffbe1a]/60 rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer shadow-xl flex flex-col justify-between overflow-hidden"
-              >
-                <div className="space-y-4">
-                  {/* Service Image / Visual Preview Thumbnail (Optional, Transparent-safe) */}
-                  {hasValidImage && (
-                    <div className="relative w-full h-36 sm:h-40 rounded-xl bg-gradient-to-b from-white/[0.03] to-transparent border border-white/[0.05] overflow-hidden flex items-center justify-center p-2.5 group-hover:border-[#ffbe1a]/30 transition-all">
-                      <img
-                        src={imageSrc}
-                        alt={service.previewImageAlt || `${service.title} visual preview and mockup`}
-                        loading="lazy"
-                        decoding="async"
-                        onError={() => handleImageError(service.id)}
-                        className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                  )}
-
-                  <div className="flex items-center justify-between">
-                    <div className="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/[0.08] group-hover:border-[#ffbe1a]/40 flex items-center justify-center text-[#ffbe1a] group-hover:bg-[#ffbe1a] group-hover:text-black transition-all shadow-md">
-                      <ServiceIcon iconKey={service.iconKey} size={22} />
-                    </div>
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400 bg-[#07090e] px-2.5 py-0.5 rounded border border-white/[0.08]">
-                      {service.category}
-                    </span>
-                  </div>
-
-                  <div>
-                    <h3 className="text-xl font-bold text-white group-hover:text-[#ffbe1a] transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="text-sm text-slate-300 mt-2 leading-relaxed">
-                      {service.shortDescription}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="pt-5 mt-4 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono">
-                  {service.startingPrice ? (
-                    <span className="text-slate-300">
-                      From <span className="text-white font-bold">{service.currency || '£'}{safeFormatPrice(service.startingPrice)}</span>{service.duration ? ` / ${service.duration}` : ''}
-                    </span>
-                  ) : (
-                    <span className="text-slate-400">Custom Scope</span>
-                  )}
-                  <span className="text-[#ffbe1a] font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                    <span>Packages</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </span>
-                </div>
-              </div>
-            );
-          })}
+          {filteredServices.map((service, idx) => (
+            <ServiceCard
+              key={service.id || service.slug}
+              service={service}
+              onNavigate={navigateTo}
+              featured={idx === 0 && selectedCategory === 'All'}
+            />
+          ))}
         </div>
 
         {/* Global CTA Box */}
@@ -171,7 +113,7 @@ export const ServicesIndexPage: React.FC<ServicesIndexPageProps> = ({
               Let's Create Something Remarkable Together.
             </h2>
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              Tell us what you need and we will tailor the right creative solution for your business.
+              Tell us what you need and our Cardiff studio will tailor the ideal creative solution for your business.
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
@@ -201,7 +143,7 @@ export const ServicesIndexPage: React.FC<ServicesIndexPageProps> = ({
                       }}
                       className="px-8 py-3.5 rounded-full bg-[#ffbe1a] hover:bg-amber-400 text-black font-extrabold text-base transition-all transform hover:scale-105 active:scale-95 shadow-xl shadow-[#ffbe1a]/20 cursor-pointer flex items-center gap-2"
                     >
-                      <span>Contact Us →</span>
+                      <span>Contact Studio →</span>
                     </a>
                   </>
                 );

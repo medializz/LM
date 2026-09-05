@@ -219,6 +219,10 @@ export interface PortfolioItem {
   // Rich Case Study Extensions
   client?: string;
   brand?: string;
+  industry?: string;
+  location?: string;
+  projectType?: string;
+  tags?: string[];
   year?: string;
   duration?: string;
   hours?: string;

@@ -2,7 +2,8 @@ import React from 'react';
 import { 
   Sparkles, Layers, PenTool, Layout, Smartphone, Calendar, 
   TrendingUp, Users, Target, Cpu, Globe, CheckCircle2, Code2, 
-  Palette, MousePointer2, Zap
+  Palette, MousePointer2, Zap, Box, Package, FileText, Monitor, 
+  Laptop, Tablet, Video, Camera, Compass
 } from 'lucide-react';
 import { LizzdoLogo } from '../LizzdoLogo';
 
@@ -73,10 +74,9 @@ export const ServiceHeroVisual: React.FC<ServiceHeroVisualProps> = ({ slug, visu
             {/* Vector Construction Grid */}
             <div className="w-60 h-44 bg-neutral-900/90 border border-neutral-800 rounded-xl p-4 flex flex-col justify-between relative shadow-2xl">
               <div className="flex justify-between items-center text-[9px] font-mono text-neutral-400 border-b border-neutral-800 pb-2">
-                <span>Vector Grid construction</span>
+                <span>Vector Grid Construction</span>
                 <PenTool className="w-3.5 h-3.5 text-[#e5a93c]" />
               </div>
-              {/* Construction Circles & Icon */}
               <div className="my-auto flex items-center justify-center relative">
                 <div className="w-20 h-20 rounded-full border border-dashed border-[#e5a93c]/40 flex items-center justify-center">
                   <div className="w-14 h-14 rounded-full border border-neutral-700 flex items-center justify-center">
@@ -85,11 +85,10 @@ export const ServiceHeroVisual: React.FC<ServiceHeroVisualProps> = ({ slug, visu
                     </div>
                   </div>
                 </div>
-                {/* Vector Nodes */}
                 <span className="absolute top-2 left-16 w-1.5 h-1.5 bg-[#e5a93c] border border-black" />
                 <span className="absolute bottom-2 right-16 w-1.5 h-1.5 bg-[#e5a93c] border border-black" />
               </div>
-              <div className="text-[8px] font-mono text-neutral-500 text-center">Golden Ratio Vector System</div>
+              <div className="text-[8px] font-mono text-neutral-500 text-center">Golden Ratio Vector Precision</div>
             </div>
 
             {/* Logo Variants Column */}
@@ -103,8 +102,124 @@ export const ServiceHeroVisual: React.FC<ServiceHeroVisualProps> = ({ slug, visu
                 <LizzdoLogo size="xxs" theme="dark" variant="mark-only" />
               </div>
               <div className="bg-gradient-to-r from-purple-950 to-neutral-900 border border-purple-800/40 rounded-lg p-2.5 flex items-center justify-between">
-                <span className="text-[9px] font-mono text-purple-300">Accent Mark</span>
+                <span className="text-[9px] font-mono text-purple-300">Monogram Mark</span>
                 <Sparkles className="w-3.5 h-3.5 text-[#e5a93c]" />
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+
+    case 'packaging-design':
+      return (
+        <div className={`w-full bg-gradient-to-br from-neutral-900 via-neutral-950 to-black border border-neutral-800/80 rounded-2xl p-6 sm:p-8 relative overflow-hidden shadow-2xl ${className}`}>
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#e5a93c]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 py-4 relative z-10">
+            {/* 3D Box Mockup Frame */}
+            <div className="w-56 h-48 bg-gradient-to-b from-neutral-900 to-black border border-[#e5a93c]/50 rounded-2xl p-4 flex flex-col justify-between shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform">
+              <div className="flex items-center justify-between border-b border-neutral-800 pb-2">
+                <span className="text-[9px] font-mono text-[#e5a93c] flex items-center gap-1.5">
+                  <Box className="w-3.5 h-3.5" /> 3D Dieline Spec
+                </span>
+                <span className="text-[8px] font-mono bg-[#e5a93c]/20 text-[#e5a93c] px-2 py-0.5 rounded">Foil Embossed</span>
+              </div>
+              <div className="my-auto flex flex-col items-center justify-center py-2 space-y-2">
+                <div className="w-24 h-16 rounded-lg bg-neutral-950 border-2 border-[#e5a93c] flex items-center justify-center shadow-lg relative">
+                  <LizzdoLogo size="xxs" theme="gold" variant="mark-only" />
+                  <span className="absolute -bottom-2 px-2 py-0.5 bg-[#e5a93c] text-black text-[7px] font-mono font-bold rounded">
+                    600 GSM
+                  </span>
+                </div>
+                <div className="text-[8px] font-mono text-neutral-400">Tactile Matte Obsidian Unboxing</div>
+              </div>
+              <div className="flex justify-between items-center text-[8px] font-mono text-neutral-500 border-t border-neutral-800 pt-2">
+                <span>Pantone 871 C</span>
+                <span>CMYK + Spot UV</span>
+              </div>
+            </div>
+
+            {/* Packaging Assets Column */}
+            <div className="w-52 space-y-2.5">
+              <div className="bg-neutral-900/90 border border-neutral-800 rounded-xl p-3 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Package className="w-4 h-4 text-[#e5a93c]" />
+                  <div>
+                    <div className="text-[10px] font-bold text-white font-['Outfit']">Luxury Rigid Box</div>
+                    <div className="text-[8px] font-mono text-neutral-400">Magnetic Flap & Foam Insert</div>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-neutral-900/90 border border-neutral-800 rounded-xl p-3 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Layers className="w-4 h-4 text-[#e5a93c]" />
+                  <div>
+                    <div className="text-[10px] font-bold text-white font-['Outfit']">Custom Bottle & Label</div>
+                    <div className="text-[8px] font-mono text-neutral-400">Waterproof Metallic Substrate</div>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-neutral-900/90 border border-neutral-800 rounded-xl p-3 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <FileText className="w-4 h-4 text-[#e5a93c]" />
+                  <div>
+                    <div className="text-[10px] font-bold text-white font-['Outfit']">Production Dieline</div>
+                    <div className="text-[8px] font-mono text-neutral-400">Direct Factory Ready PDF/AI</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+
+    case 'web-development':
+    case 'website-development':
+      return (
+        <div className={`w-full bg-gradient-to-br from-neutral-900 via-neutral-950 to-black border border-neutral-800/80 rounded-2xl p-6 sm:p-8 relative overflow-hidden shadow-2xl ${className}`}>
+          <div className="max-w-xl mx-auto space-y-4 relative z-10">
+            {/* Desktop Browser Window */}
+            <div className="bg-neutral-900/95 border border-neutral-800 rounded-xl overflow-hidden shadow-2xl">
+              <div className="px-4 py-2 bg-neutral-950 border-b border-neutral-800 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="flex gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+                  </div>
+                  <span className="text-[10px] font-mono text-neutral-400 ml-2 bg-neutral-900 px-3 py-0.5 rounded border border-neutral-800">
+                    https://brand.lizzdo.com
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-[9px] font-mono text-emerald-400 flex items-center gap-1">
+                    <CheckCircle2 className="w-3 h-3" /> 100 Perf
+                  </span>
+                  <span className="text-[9px] font-mono text-cyan-400 hidden sm:inline-flex items-center gap-1">
+                    <Zap className="w-3 h-3" /> &lt;0.8s LCP
+                  </span>
+                </div>
+              </div>
+              <div className="p-4 grid grid-cols-3 gap-3">
+                <div className="col-span-2 space-y-2">
+                  <div className="h-3 w-32 bg-[#e5a93c] rounded" />
+                  <div className="h-2 w-48 bg-neutral-700 rounded" />
+                  <div className="h-16 w-full bg-neutral-950 rounded-lg border border-neutral-800 p-2 flex items-center justify-between">
+                    <div className="space-y-1">
+                      <div className="text-[9px] font-mono text-[#e5a93c]">Next.js / Vite SPA</div>
+                      <div className="text-[8px] font-mono text-neutral-400">Decap CMS + Tailwind CSS</div>
+                    </div>
+                    <div className="flex items-center gap-1.5 text-neutral-400">
+                      <Monitor className="w-4 h-4 text-[#e5a93c]" />
+                      <Tablet className="w-3.5 h-3.5" />
+                      <Smartphone className="w-3 h-3" />
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-neutral-950 border border-neutral-800 rounded-lg p-2.5 flex flex-col justify-between">
+                  <div className="text-[8px] font-mono text-neutral-400">Responsive Engine:</div>
+                  <div className="text-[9px] font-mono text-white font-medium">Fluid Breakpoints</div>
+                  <div className="h-1.5 w-full bg-gradient-to-r from-[#e5a93c] to-emerald-400 rounded-full" />
+                </div>
               </div>
             </div>
           </div>
@@ -145,48 +260,6 @@ export const ServiceHeroVisual: React.FC<ServiceHeroVisualProps> = ({ slug, visu
                 MARKETING CRAFT
               </div>
               <div className="w-full h-1 bg-purple-500 rounded" />
-            </div>
-          </div>
-        </div>
-      );
-
-    case 'web-development':
-    case 'website-development':
-      return (
-        <div className={`w-full bg-gradient-to-br from-neutral-900 via-neutral-950 to-black border border-neutral-800/80 rounded-2xl p-6 sm:p-8 relative overflow-hidden shadow-2xl ${className}`}>
-          <div className="max-w-xl mx-auto space-y-3 relative z-10">
-            {/* Browser Window Header */}
-            <div className="bg-neutral-900/90 border border-neutral-800 rounded-xl overflow-hidden shadow-2xl">
-              <div className="px-4 py-2.5 bg-neutral-950 border-b border-neutral-800 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="flex gap-1.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-                  </div>
-                  <span className="text-[10px] font-mono text-neutral-400 ml-2 bg-neutral-900 px-3 py-0.5 rounded border border-neutral-800">
-                    https://brand.lizzdo.com
-                  </span>
-                </div>
-                <span className="text-[9px] font-mono text-emerald-400 flex items-center gap-1">
-                  <CheckCircle2 className="w-3 h-3" /> 100 Perf
-                </span>
-              </div>
-              {/* Mock Content */}
-              <div className="p-4 grid grid-cols-3 gap-3">
-                <div className="col-span-2 space-y-2">
-                  <div className="h-3 w-28 bg-[#e5a93c] rounded" />
-                  <div className="h-2 w-48 bg-neutral-700 rounded" />
-                  <div className="h-16 w-full bg-neutral-800/60 rounded-lg border border-neutral-700/50 p-2 flex items-center justify-center">
-                    <span className="text-[9px] font-mono text-[#e5a93c]">Next.js / Vite SPA Architecture</span>
-                  </div>
-                </div>
-                <div className="bg-neutral-950 border border-neutral-800 rounded-lg p-2 flex flex-col justify-between">
-                  <div className="text-[8px] font-mono text-neutral-400">Stack:</div>
-                  <div className="text-[9px] font-mono text-white font-medium">React 18 + Tailwind</div>
-                  <div className="h-1 w-full bg-emerald-400 rounded-full" />
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -289,25 +362,92 @@ export const ServiceHeroVisual: React.FC<ServiceHeroVisualProps> = ({ slug, visu
         </div>
       );
 
+    case 'ai-visual-content':
     case 'ai-visuals-content':
       return (
         <div className={`w-full bg-gradient-to-br from-purple-950/40 via-neutral-950 to-black border border-purple-800/40 rounded-2xl p-6 sm:p-8 relative overflow-hidden shadow-2xl ${className}`}>
           <div className="absolute top-0 right-0 w-64 h-64 bg-purple-600/15 rounded-full blur-3xl pointer-events-none" />
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 py-2 relative z-10">
-            <div className="w-60 bg-neutral-900/90 border border-purple-500/50 rounded-xl p-4 shadow-2xl space-y-3">
+            <div className="w-64 bg-neutral-900/90 border border-purple-500/50 rounded-xl p-4 shadow-2xl space-y-3">
               <div className="flex items-center justify-between border-b border-neutral-800 pb-2">
                 <span className="text-[9px] font-mono text-purple-300 flex items-center gap-1.5">
-                  <Cpu className="w-3.5 h-3.5 text-[#e5a93c]" /> Neural Prompt Studio
+                  <Cpu className="w-3.5 h-3.5 text-[#e5a93c]" /> Neural Studio
                 </span>
-                <span className="text-[8px] font-mono bg-purple-500/20 text-purple-300 px-1.5 py-0.5 rounded">4K Gen</span>
+                <span className="text-[8px] font-mono bg-purple-500/20 text-purple-300 px-1.5 py-0.5 rounded">8K Render</span>
               </div>
-              <div className="text-[9px] font-mono text-neutral-300 bg-neutral-950 p-2 rounded border border-neutral-800/80 italic">
+              <div className="text-[9px] font-mono text-neutral-300 bg-neutral-950 p-2.5 rounded border border-neutral-800/80 italic">
                 "Hyper-realistic cinematic obsidian bottle with gold leaf accents on black volcanic sand, 8k resolution..."
               </div>
               <div className="flex items-center justify-between text-[8px] font-mono text-neutral-400">
                 <span>Output: Multi-angle Assets</span>
                 <span className="text-[#e5a93c] font-bold">100% Vector & 8K</span>
               </div>
+            </div>
+          </div>
+        </div>
+      );
+
+    case 'flyer-design':
+    case 'flyer-and-leaflet-design':
+      return (
+        <div className={`w-full bg-gradient-to-br from-neutral-900 via-neutral-950 to-black border border-neutral-800/80 rounded-2xl p-6 sm:p-8 relative overflow-hidden shadow-2xl ${className}`}>
+          <div className="flex items-center justify-center gap-4 py-4 relative z-10">
+            {/* Tri-fold Flyer Mockup */}
+            <div className="w-56 h-48 bg-gradient-to-r from-neutral-950 via-neutral-900 to-black border border-[#e5a93c]/50 rounded-xl p-4 flex flex-col justify-between shadow-2xl transform -rotate-1 hover:rotate-0 transition-transform">
+              <div className="flex justify-between items-center border-b border-neutral-800 pb-2">
+                <span className="text-[9px] font-mono text-[#e5a93c] flex items-center gap-1">
+                  <FileText className="w-3.5 h-3.5" /> High-Spec Print
+                </span>
+                <span className="text-[8px] font-mono text-slate-400">A5 / DL Leaflet</span>
+              </div>
+              <div className="grid grid-cols-3 gap-1.5 my-auto">
+                <div className="h-16 bg-neutral-900 border border-neutral-800 rounded p-1 flex flex-col justify-between">
+                  <div className="h-1 w-6 bg-[#e5a93c] rounded" />
+                  <div className="h-0.5 w-full bg-neutral-700 rounded" />
+                  <span className="text-[6px] font-mono text-neutral-500">Fold 01</span>
+                </div>
+                <div className="h-16 bg-neutral-950 border border-[#e5a93c]/40 rounded p-1 flex flex-col justify-between">
+                  <div className="h-1 w-8 bg-amber-400 rounded" />
+                  <div className="h-0.5 w-full bg-neutral-700 rounded" />
+                  <span className="text-[6px] font-mono text-[#e5a93c]">Hero</span>
+                </div>
+                <div className="h-16 bg-neutral-900 border border-neutral-800 rounded p-1 flex flex-col justify-between">
+                  <div className="h-1 w-5 bg-neutral-600 rounded" />
+                  <div className="h-0.5 w-full bg-neutral-700 rounded" />
+                  <span className="text-[6px] font-mono text-neutral-500">Fold 03</span>
+                </div>
+              </div>
+              <div className="flex justify-between items-center text-[8px] font-mono text-neutral-400 border-t border-neutral-800 pt-2">
+                <span>350gsm Silk Finish</span>
+                <span>Crop Marks & Bleed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+
+    case 'content-creation':
+      return (
+        <div className={`w-full bg-gradient-to-br from-neutral-900 via-neutral-950 to-black border border-neutral-800/80 rounded-2xl p-6 sm:p-8 relative overflow-hidden shadow-2xl ${className}`}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 py-2 relative z-10">
+            <div className="w-56 bg-neutral-900/90 border border-[#e5a93c]/50 rounded-xl p-4 space-y-3 shadow-2xl">
+              <div className="flex items-center justify-between border-b border-neutral-800 pb-2">
+                <span className="text-[9px] font-mono text-[#e5a93c] flex items-center gap-1.5">
+                  <Video className="w-3.5 h-3.5" /> Media Production
+                </span>
+                <span className="text-[8px] font-mono bg-[#e5a93c]/20 text-[#e5a93c] px-2 py-0.5 rounded">4K 60fps</span>
+              </div>
+              <div className="space-y-1.5 text-[8px] font-mono">
+                <div className="flex items-center justify-between p-1.5 rounded bg-neutral-950 border border-neutral-800 text-neutral-300">
+                  <span className="flex items-center gap-1"><Camera className="w-3 h-3 text-[#e5a93c]" /> Photography</span>
+                  <span className="text-emerald-400">Mastered</span>
+                </div>
+                <div className="flex items-center justify-between p-1.5 rounded bg-neutral-950 border border-neutral-800 text-neutral-300">
+                  <span className="flex items-center gap-1"><Video className="w-3 h-3 text-[#e5a93c]" /> Short-form Reels</span>
+                  <span className="text-emerald-400">Color-Graded</span>
+                </div>
+              </div>
+              <div className="text-[8px] font-mono text-neutral-400 text-center">Multi-platform hooks & storytelling</div>
             </div>
           </div>
         </div>
